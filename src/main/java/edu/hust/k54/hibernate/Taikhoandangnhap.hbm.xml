@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="edu.hust.k54.hibernate.Taikhoandangnhap" table="taikhoandangnhap" catalog="spms">
+        <id name="iduser" type="int">
+            <column name="iduser" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="soyeulylich" class="edu.hust.k54.hibernate.Soyeulylich" fetch="select">
+            <column name="idsoyeulylich" not-null="true" />
+        </many-to-one>
+        <property name="username" type="string">
+            <column name="username" length="30" not-null="true" />
+        </property>
+        <property name="pass" type="string">
+            <column name="pass" length="50" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="50" not-null="true" />
+        </property>
+        <property name="laCb" type="boolean">
+            <column name="laCB" not-null="true" />
+        </property>
+        <property name="sohieucongchuc" type="int">
+            <column name="sohieucongchuc" not-null="true" />
+        </property>
+        <set name="nhatkyhethongs" table="nhatkyhethong" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iduser" />
+            </key>
+            <one-to-many class="edu.hust.k54.hibernate.Nhatkyhethong" />
+        </set>
+    </class>
+</hibernate-mapping>

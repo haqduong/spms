@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="thread">
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.password">123456</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/spms</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+        
+        <mapping resource="main/java/edu/hust/k54/hibernate/Capuy.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Chucvu.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Danhhieu.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Dantoc.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Dienbienhocham.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Dienbienhocvi.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Dienbienluong.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Dienbienphucap.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Donviquanly.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Giaoducphothong.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Hesoluong.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Hocham.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Hocvi.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Khenthuong.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Khoidonviquanly.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Kyluat.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Lylichkhoahoc.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Muckyluat.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Ngachluong.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Nhatkyhethong.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Phanquyen.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Phongban.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Phucap.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Quatrinhdinuocngoai.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Quatrinhnghiencuu.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Quocgia.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Sachxuatban.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Soyeulylich.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Taikhoandangnhap.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Tongiao.hbm.xml"/>
+        <mapping resource="main/java/edu/hust/k54/hibernate/Xuatthan.hbm.xml"/>       
+    </session-factory>
+</hibernate-configuration>

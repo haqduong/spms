@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="edu.hust.k54.hibernate.Dienbienhocvi" table="dienbienhocvi" catalog="spms">
+        <id name="iddienbienhocvi" type="java.lang.Integer">
+            <column name="iddienbienhocvi" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="hocvi" class="edu.hust.k54.hibernate.Hocvi" fetch="select">
+            <column name="idhocvi" not-null="true" />
+        </many-to-one>
+        <many-to-one name="soyeulylich" class="edu.hust.k54.hibernate.Soyeulylich" fetch="select">
+            <column name="idsoyeulylich" not-null="true" />
+        </many-to-one>
+        <property name="namphong" type="java.lang.Integer">
+            <column name="namphong" />
+        </property>
+    </class>
+</hibernate-mapping>

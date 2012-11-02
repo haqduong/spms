@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="edu.hust.k54.hibernate.Donviquanly" table="donviquanly" catalog="spms">
+        <id name="iddonviquanly" type="java.lang.Integer">
+            <column name="iddonviquanly" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="khoidonviquanly" class="edu.hust.k54.hibernate.Khoidonviquanly" fetch="select">
+            <column name="idkhoidonviquanly" />
+        </many-to-one>
+        <property name="ten" type="string">
+            <column name="ten" length="200" />
+        </property>
+        <property name="nhiemvu" type="string">
+            <column name="nhiemvu" />
+        </property>
+        <property name="chucnang" type="string">
+            <column name="chucnang" />
+        </property>
+        <property name="hoatdongthuongxuyen" type="string">
+            <column name="hoatdongthuongxuyen" />
+        </property>
+        <property name="thanhtuu" type="string">
+            <column name="thanhtuu" length="65535" />
+        </property>
+        <property name="thongtinkhac" type="string">
+            <column name="thongtinkhac" />
+        </property>
+        <property name="diachitruso" type="string">
+            <column name="diachitruso" length="200" />
+        </property>
+        <property name="dienthoai" type="string">
+            <column name="dienthoai" length="65535" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="65535" />
+        </property>
+        <property name="fax" type="string">
+            <column name="fax" length="65535" />
+        </property>
+        <property name="thudientu" type="string">
+            <column name="thudientu" length="128" />
+        </property>
+        <property name="duongdananh" type="string">
+            <column name="duongdananh" length="200" />
+        </property>
+        <set name="phongbans" table="phongban" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iddonviquanly" not-null="true" />
+            </key>
+            <one-to-many class="edu.hust.k54.hibernate.Phongban" />
+        </set>
+        <set name="soyeulyliches" table="soyeulylich" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="iddonviquanly" />
+            </key>
+            <one-to-many class="edu.hust.k54.hibernate.Soyeulylich" />
+        </set>
+    </class>
+</hibernate-mapping>
