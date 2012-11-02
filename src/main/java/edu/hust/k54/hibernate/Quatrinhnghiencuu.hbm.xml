@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="edu.hust.k54.hibernate.Quatrinhnghiencuu" table="quatrinhnghiencuu" catalog="spms">
+        <id name="idquatrinhnghiencuu" type="java.lang.Integer">
+            <column name="idquatrinhnghiencuu" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="soyeulylich" class="edu.hust.k54.hibernate.Soyeulylich" fetch="select">
+            <column name="idsoyeulylich" not-null="true" />
+        </many-to-one>
+        <property name="tungay" type="timestamp">
+            <column name="tungay" length="19" />
+        </property>
+        <property name="denngay" type="timestamp">
+            <column name="denngay" length="19" />
+        </property>
+        <property name="tendetai" type="string">
+            <column name="tendetai" length="200" />
+        </property>
+        <property name="coquanchutri" type="string">
+            <column name="coquanchutri" length="200" />
+        </property>
+        <property name="ngaynhiemthu" type="timestamp">
+            <column name="ngaynhiemthu" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

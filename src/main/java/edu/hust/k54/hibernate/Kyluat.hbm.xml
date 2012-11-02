@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="edu.hust.k54.hibernate.Kyluat" table="kyluat" catalog="spms">
+        <id name="idkyluat" type="java.lang.Integer">
+            <column name="idkyluat" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="soyeulylich" class="edu.hust.k54.hibernate.Soyeulylich" fetch="select">
+            <column name="idsoyeulylich" />
+        </many-to-one>
+        <many-to-one name="muckyluat" class="edu.hust.k54.hibernate.Muckyluat" fetch="select">
+            <column name="idmuckyluat" />
+        </many-to-one>
+        <property name="thoigian" type="timestamp">
+            <column name="thoigian" length="19" />
+        </property>
+        <property name="hinhthuc" type="string">
+            <column name="hinhthuc" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>
