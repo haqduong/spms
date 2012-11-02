@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="edu.hust.k54.hibernate.Capuy" table="capuy" catalog="spms">
+        <id name="idcapuy" type="java.lang.Integer">
+            <column name="idcapuy" />
+            <generator class="identity" />
+        </id>
+        <property name="ten" type="string">
+            <column name="ten" length="200" />
+        </property>
+        <set name="soyeulyliches" table="soyeulylich" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idcapuy" />
+            </key>
+            <one-to-many class="edu.hust.k54.hibernate.Soyeulylich" />
+        </set>
+    </class>
+</hibernate-mapping>
