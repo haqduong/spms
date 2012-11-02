@@ -1,4 +1,4 @@
-package edu.hust.k54;
+package edu.hust.k54.controller;
 
 import java.text.DateFormat;
 import java.util.Date;

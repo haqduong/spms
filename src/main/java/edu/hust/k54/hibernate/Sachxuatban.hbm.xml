@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="edu.hust.k54.hibernate.Sachxuatban" table="sachxuatban" catalog="spms">
+        <id name="idsachxuatban" type="java.lang.Integer">
+            <column name="idsachxuatban" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="soyeulylich" class="edu.hust.k54.hibernate.Soyeulylich" fetch="select">
+            <column name="idsoyeulylich" not-null="true" />
+        </many-to-one>
+        <property name="ten" type="string">
+            <column name="ten" length="200" />
+        </property>
+        <property name="namxuatban" type="java.lang.Integer">
+            <column name="namxuatban" />
+        </property>
+        <property name="sotrang" type="java.lang.Integer">
+            <column name="sotrang" />
+        </property>
+        <property name="theloai" type="string">
+            <column name="theloai" length="128" />
+        </property>
+        <property name="coquanxuatban" type="string">
+            <column name="coquanxuatban" length="128" />
+        </property>
+    </class>
+</hibernate-mapping>
