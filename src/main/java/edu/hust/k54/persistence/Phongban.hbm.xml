@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<!-- Generated Nov 5, 2012 10:28:08 AM by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="edu.hust.k54.hibernate.Phongban" table="phongban" catalog="spms">
+    <class name="edu.hust.k54.persistence.Phongban" table="phongban" catalog="spms">
         <id name="idphongban" type="java.lang.Integer">
             <column name="idphongban" />
             <generator class="identity" />
         </id>
-        <many-to-one name="donviquanly" class="edu.hust.k54.hibernate.Donviquanly" fetch="select">
+        <many-to-one name="donviquanly" class="edu.hust.k54.persistence.Donviquanly" fetch="select">
             <column name="iddonviquanly" not-null="true" />
         </many-to-one>
         <property name="dienthoai" type="string">
@@ -30,7 +30,7 @@
             <key>
                 <column name="idphongban" />
             </key>
-            <one-to-many class="edu.hust.k54.hibernate.Soyeulylich" />
+            <one-to-many class="edu.hust.k54.persistence.Soyeulylich" />
         </set>
     </class>
 </hibernate-mapping>
