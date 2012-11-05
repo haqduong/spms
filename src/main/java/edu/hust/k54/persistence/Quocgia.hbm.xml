@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<!-- Generated Nov 5, 2012 10:28:08 AM by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="edu.hust.k54.hibernate.Quocgia" table="quocgia" catalog="spms">
+    <class name="edu.hust.k54.persistence.Quocgia" table="quocgia" catalog="spms">
         <id name="idquocgia" type="java.lang.Integer">
             <column name="idquocgia" />
             <generator class="identity" />
@@ -15,13 +15,13 @@
             <key>
                 <column name="idquocgia" />
             </key>
-            <one-to-many class="edu.hust.k54.hibernate.Soyeulylich" />
+            <one-to-many class="edu.hust.k54.persistence.Soyeulylich" />
         </set>
         <set name="quatrinhdinuocngoais" table="quatrinhdinuocngoai" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idquocgia" not-null="true" />
             </key>
-            <one-to-many class="edu.hust.k54.hibernate.Quatrinhdinuocngoai" />
+            <one-to-many class="edu.hust.k54.persistence.Quatrinhdinuocngoai" />
         </set>
     </class>
 </hibernate-mapping>

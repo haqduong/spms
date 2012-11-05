@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<!-- Generated Nov 5, 2012 10:28:08 AM by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="edu.hust.k54.hibernate.Dienbienphucap" table="dienbienphucap" catalog="spms">
+    <class name="edu.hust.k54.persistence.Dienbienphucap" table="dienbienphucap" catalog="spms">
         <id name="iddienbienphucap" type="java.lang.Integer">
             <column name="iddienbienphucap" />
             <generator class="identity" />
         </id>
-        <many-to-one name="soyeulylich" class="edu.hust.k54.hibernate.Soyeulylich" fetch="select">
+        <many-to-one name="soyeulylich" class="edu.hust.k54.persistence.Soyeulylich" fetch="select">
             <column name="idsoyeulylich" />
         </many-to-one>
-        <many-to-one name="phucap" class="edu.hust.k54.hibernate.Phucap" fetch="select">
+        <many-to-one name="phucap" class="edu.hust.k54.persistence.Phucap" fetch="select">
             <column name="idphucap" />
         </many-to-one>
         <property name="ngaythaydoi" type="timestamp">

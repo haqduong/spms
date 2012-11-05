@@ -1,6 +1,6 @@
 package edu.hust.k54.persistence;
 
-// Generated Nov 2, 2012 10:18:46 AM by Hibernate Tools 4.0.0
+// Generated Nov 5, 2012 10:28:09 AM by Hibernate Tools 4.0.0
 
 import java.util.List;
 import javax.naming.InitialContext;
@@ -95,7 +95,7 @@ public class QuatrinhnghiencuuHome {
 		try {
 			Quatrinhnghiencuu instance = (Quatrinhnghiencuu) sessionFactory
 					.getCurrentSession().get(
-							"edu.hust.k54.hibernate.Quatrinhnghiencuu", id);
+							"edu.hust.k54.persistence.Quatrinhnghiencuu", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -111,8 +111,10 @@ public class QuatrinhnghiencuuHome {
 	public List findByExample(Quatrinhnghiencuu instance) {
 		log.debug("finding Quatrinhnghiencuu instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
-					.createCriteria("edu.hust.k54.hibernate.Quatrinhnghiencuu")
+			List results = sessionFactory
+					.getCurrentSession()
+					.createCriteria(
+							"edu.hust.k54.persistence.Quatrinhnghiencuu")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
