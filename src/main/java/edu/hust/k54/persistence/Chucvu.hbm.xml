@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<!-- Generated Nov 5, 2012 10:28:08 AM by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="edu.hust.k54.hibernate.Chucvu" table="chucvu" catalog="spms">
+    <class name="edu.hust.k54.persistence.Chucvu" table="chucvu" catalog="spms">
         <id name="idchucvu" type="java.lang.Integer">
             <column name="idchucvu" />
             <generator class="identity" />
@@ -15,7 +15,7 @@
             <key>
                 <column name="idchucvu" />
             </key>
-            <one-to-many class="edu.hust.k54.hibernate.Soyeulylich" />
+            <one-to-many class="edu.hust.k54.persistence.Soyeulylich" />
         </set>
     </class>
 </hibernate-mapping>

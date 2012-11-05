@@ -1,6 +1,6 @@
 package edu.hust.k54.persistence;
 
-// Generated Nov 2, 2012 10:18:44 AM by Hibernate Tools 4.0.0
+// Generated Nov 5, 2012 10:28:07 AM by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;

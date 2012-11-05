@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<!-- Generated Nov 5, 2012 10:28:08 AM by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="edu.hust.k54.hibernate.Lylichkhoahoc" table="lylichkhoahoc" catalog="spms">
+    <class name="edu.hust.k54.persistence.Lylichkhoahoc" table="lylichkhoahoc" catalog="spms">
         <id name="idsoyeulylich" type="int">
             <column name="idsoyeulylich" />
             <generator class="foreign">
                 <param name="property">soyeulylich</param>
             </generator>
         </id>
-        <one-to-one name="soyeulylich" class="edu.hust.k54.hibernate.Soyeulylich" constrained="true"></one-to-one>
+        <one-to-one name="soyeulylich" class="edu.hust.k54.persistence.Soyeulylich" constrained="true"></one-to-one>
         <property name="idquatrinhghiencuu" type="int">
             <column name="idquatrinhghiencuu" not-null="true" />
         </property>
