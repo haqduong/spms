@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<!-- Generated Nov 5, 2012 10:28:08 AM by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="edu.hust.k54.hibernate.Hesoluong" table="hesoluong" catalog="spms">
+    <class name="edu.hust.k54.persistence.Hesoluong" table="hesoluong" catalog="spms">
         <id name="idhesoluong" type="java.lang.Integer">
             <column name="idhesoluong" />
             <generator class="identity" />
         </id>
-        <many-to-one name="ngachluong" class="edu.hust.k54.hibernate.Ngachluong" fetch="select">
+        <many-to-one name="ngachluong" class="edu.hust.k54.persistence.Ngachluong" fetch="select">
             <column name="idngachluong" />
         </many-to-one>
         <property name="bacluong" type="java.lang.Float">
@@ -21,13 +21,13 @@
             <key>
                 <column name="idhesoluong" not-null="true" />
             </key>
-            <one-to-many class="edu.hust.k54.hibernate.Dienbienluong" />
+            <one-to-many class="edu.hust.k54.persistence.Dienbienluong" />
         </set>
         <set name="soyeulyliches" table="soyeulylich" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idhesoluong" />
             </key>
-            <one-to-many class="edu.hust.k54.hibernate.Soyeulylich" />
+            <one-to-many class="edu.hust.k54.persistence.Soyeulylich" />
         </set>
     </class>
 </hibernate-mapping>

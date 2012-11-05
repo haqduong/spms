@@ -1,6 +1,6 @@
 package edu.hust.k54.persistence;
 
-// Generated Nov 2, 2012 10:18:46 AM by Hibernate Tools 4.0.0
+// Generated Nov 5, 2012 10:28:09 AM by Hibernate Tools 4.0.0
 
 import java.util.List;
 import javax.naming.InitialContext;
@@ -93,7 +93,7 @@ public class HocviHome {
 		log.debug("getting Hocvi instance with id: " + id);
 		try {
 			Hocvi instance = (Hocvi) sessionFactory.getCurrentSession().get(
-					"edu.hust.k54.hibernate.Hocvi", id);
+					"edu.hust.k54.persistence.Hocvi", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -110,7 +110,7 @@ public class HocviHome {
 		log.debug("finding Hocvi instance by example");
 		try {
 			List results = sessionFactory.getCurrentSession()
-					.createCriteria("edu.hust.k54.hibernate.Hocvi")
+					.createCriteria("edu.hust.k54.persistence.Hocvi")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());

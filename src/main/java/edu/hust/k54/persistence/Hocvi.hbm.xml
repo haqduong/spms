@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 2, 2012 10:18:45 AM by Hibernate Tools 4.0.0 -->
+<!-- Generated Nov 5, 2012 10:28:08 AM by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
-    <class name="edu.hust.k54.hibernate.Hocvi" table="hocvi" catalog="spms">
+    <class name="edu.hust.k54.persistence.Hocvi" table="hocvi" catalog="spms">
         <id name="idhocvi" type="java.lang.Integer">
             <column name="idhocvi" />
             <generator class="identity" />
@@ -18,13 +18,13 @@
             <key>
                 <column name="idhocvi" not-null="true" />
             </key>
-            <one-to-many class="edu.hust.k54.hibernate.Dienbienhocvi" />
+            <one-to-many class="edu.hust.k54.persistence.Dienbienhocvi" />
         </set>
         <set name="soyeulyliches" table="soyeulylich" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idhocvi" />
             </key>
-            <one-to-many class="edu.hust.k54.hibernate.Soyeulylich" />
+            <one-to-many class="edu.hust.k54.persistence.Soyeulylich" />
         </set>
     </class>
 </hibernate-mapping>
