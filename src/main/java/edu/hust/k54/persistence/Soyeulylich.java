@@ -1,6 +1,6 @@
 package edu.hust.k54.persistence;
 
-// Generated Nov 5, 2012 10:28:07 AM by Hibernate Tools 4.0.0
+// Generated Nov 6, 2012 9:41:46 PM by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -18,7 +18,6 @@ public class Soyeulylich implements java.io.Serializable {
 	private Xuatthan xuatthan;
 	private Hocham hocham;
 	private Hocvi hocvi;
-	private Phanquyen phanquyen;
 	private Chucvu chucvu;
 	private Quocgia quocgia;
 	private Tongiao tongiao;
@@ -68,9 +67,9 @@ public class Soyeulylich implements java.io.Serializable {
 	}
 
 	public Soyeulylich(Capuy capuy, Phongban phongban, Danhhieu danhhieu,
-			Xuatthan xuatthan, Hocham hocham, Hocvi hocvi, Phanquyen phanquyen,
-			Chucvu chucvu, Quocgia quocgia, Tongiao tongiao,
-			Hesoluong hesoluong, Dantoc dantoc, Donviquanly donviquanly,
+			Xuatthan xuatthan, Hocham hocham, Hocvi hocvi, Chucvu chucvu,
+			Quocgia quocgia, Tongiao tongiao, Hesoluong hesoluong,
+			Dantoc dantoc, Donviquanly donviquanly,
 			Giaoducphothong giaoducphothong, boolean loaiCb,
 			Integer sohieucongchuc, String chungminhnhandan, String hoten,
 			String gioitinh, String duongdananh, String tenthuongdung,
@@ -88,7 +87,6 @@ public class Soyeulylich implements java.io.Serializable {
 		this.xuatthan = xuatthan;
 		this.hocham = hocham;
 		this.hocvi = hocvi;
-		this.phanquyen = phanquyen;
 		this.chucvu = chucvu;
 		this.quocgia = quocgia;
 		this.tongiao = tongiao;
@@ -185,14 +183,6 @@ public class Soyeulylich implements java.io.Serializable {
 
 	public void setHocvi(Hocvi hocvi) {
 		this.hocvi = hocvi;
-	}
-
-	public Phanquyen getPhanquyen() {
-		return this.phanquyen;
-	}
-
-	public void setPhanquyen(Phanquyen phanquyen) {
-		this.phanquyen = phanquyen;
 	}
 
 	public Chucvu getChucvu() {

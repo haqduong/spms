@@ -1,6 +1,6 @@
 package edu.hust.k54.persistence;
 
-// Generated Nov 5, 2012 10:28:07 AM by Hibernate Tools 4.0.0
+// Generated Nov 6, 2012 9:41:46 PM by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,35 +15,30 @@ public class Taikhoandangnhap implements java.io.Serializable {
 	private String username;
 	private String pass;
 	private String email;
-	private boolean laCb;
-	private int sohieucongchuc;
+	private boolean permission;
 	private Set nhatkyhethongs = new HashSet(0);
 
 	public Taikhoandangnhap() {
 	}
 
-	public Taikhoandangnhap(int iduser, Soyeulylich soyeulylich,
-			String username, String pass, String email, boolean laCb,
-			int sohieucongchuc) {
+	public Taikhoandangnhap(int iduser, String username, String pass,
+			String email, boolean permission) {
 		this.iduser = iduser;
-		this.soyeulylich = soyeulylich;
 		this.username = username;
 		this.pass = pass;
 		this.email = email;
-		this.laCb = laCb;
-		this.sohieucongchuc = sohieucongchuc;
+		this.permission = permission;
 	}
 
 	public Taikhoandangnhap(int iduser, Soyeulylich soyeulylich,
-			String username, String pass, String email, boolean laCb,
-			int sohieucongchuc, Set nhatkyhethongs) {
+			String username, String pass, String email, boolean permission,
+			Set nhatkyhethongs) {
 		this.iduser = iduser;
 		this.soyeulylich = soyeulylich;
 		this.username = username;
 		this.pass = pass;
 		this.email = email;
-		this.laCb = laCb;
-		this.sohieucongchuc = sohieucongchuc;
+		this.permission = permission;
 		this.nhatkyhethongs = nhatkyhethongs;
 	}
 
@@ -87,20 +82,12 @@ public class Taikhoandangnhap implements java.io.Serializable {
 		this.email = email;
 	}
 
-	public boolean isLaCb() {
-		return this.laCb;
+	public boolean isPermission() {
+		return this.permission;
 	}
 
-	public void setLaCb(boolean laCb) {
-		this.laCb = laCb;
-	}
-
-	public int getSohieucongchuc() {
-		return this.sohieucongchuc;
-	}
-
-	public void setSohieucongchuc(int sohieucongchuc) {
-		this.sohieucongchuc = sohieucongchuc;
+	public void setPermission(boolean permission) {
+		this.permission = permission;
 	}
 
 	public Set getNhatkyhethongs() {
