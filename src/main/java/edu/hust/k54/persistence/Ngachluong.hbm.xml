@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-<!-- Generated Nov 5, 2012 10:28:08 AM by Hibernate Tools 4.0.0 -->
+<!-- Generated Nov 6, 2012 9:41:47 PM by Hibernate Tools 4.0.0 -->
 <hibernate-mapping>
     <class name="edu.hust.k54.persistence.Ngachluong" table="ngachluong" catalog="spms">
         <id name="idngachluong" type="java.lang.Integer">
