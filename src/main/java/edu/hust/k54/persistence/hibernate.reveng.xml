@@ -22,7 +22,6 @@
   <table-filter match-catalog="spms" match-name="muckyluat"/>
   <table-filter match-catalog="spms" match-name="ngachluong"/>
   <table-filter match-catalog="spms" match-name="nhatkyhethong"/>
-  <table-filter match-catalog="spms" match-name="phanquyen"/>
   <table-filter match-catalog="spms" match-name="phongban"/>
   <table-filter match-catalog="spms" match-name="phucap"/>
   <table-filter match-catalog="spms" match-name="quatrinhdinuocngoai"/>
