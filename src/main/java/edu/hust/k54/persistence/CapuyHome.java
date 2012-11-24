@@ -4,6 +4,7 @@ package edu.hust.k54.persistence;
 
 import java.util.List;
 import javax.naming.InitialContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
@@ -20,6 +21,7 @@ public class CapuyHome {
 	private static final Log log = LogFactory.getLog(CapuyHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
+	//private final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 
 	protected SessionFactory getSessionFactory() {
 		try {
