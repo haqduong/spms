@@ -11,13 +11,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
 /**
- * Home object for domain model class Tongiao.
- * @see edu.hust.k54.persistence.Tongiao
+ * Home object for domain model class Baocao.
+ * @see edu.hust.k54.persistence.Baocao
  * @author Hibernate Tools
  */
-public class TongiaoHome {
+public class BaocaoHome {
 
-	private static final Log log = LogFactory.getLog(TongiaoHome.class);
+	private static final Log log = LogFactory.getLog(BaocaoHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
@@ -32,8 +32,8 @@ public class TongiaoHome {
 		}
 	}
 
-	public void persist(Tongiao transientInstance) {
-		log.debug("persisting Tongiao instance");
+	public void persist(Baocao transientInstance) {
+		log.debug("persisting Baocao instance");
 		try {
 			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
@@ -43,8 +43,8 @@ public class TongiaoHome {
 		}
 	}
 
-	public void attachDirty(Tongiao instance) {
-		log.debug("attaching dirty Tongiao instance");
+	public void attachDirty(Baocao instance) {
+		log.debug("attaching dirty Baocao instance");
 		try {
 			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
@@ -54,8 +54,8 @@ public class TongiaoHome {
 		}
 	}
 
-	public void attachClean(Tongiao instance) {
-		log.debug("attaching clean Tongiao instance");
+	public void attachClean(Baocao instance) {
+		log.debug("attaching clean Baocao instance");
 		try {
 			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
@@ -65,8 +65,8 @@ public class TongiaoHome {
 		}
 	}
 
-	public void delete(Tongiao persistentInstance) {
-		log.debug("deleting Tongiao instance");
+	public void delete(Baocao persistentInstance) {
+		log.debug("deleting Baocao instance");
 		try {
 			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
@@ -76,11 +76,11 @@ public class TongiaoHome {
 		}
 	}
 
-	public Tongiao merge(Tongiao detachedInstance) {
-		log.debug("merging Tongiao instance");
+	public Baocao merge(Baocao detachedInstance) {
+		log.debug("merging Baocao instance");
 		try {
-			Tongiao result = (Tongiao) sessionFactory.getCurrentSession()
-					.merge(detachedInstance);
+			Baocao result = (Baocao) sessionFactory.getCurrentSession().merge(
+					detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -89,11 +89,11 @@ public class TongiaoHome {
 		}
 	}
 
-	public Tongiao findById(java.lang.Integer id) {
-		log.debug("getting Tongiao instance with id: " + id);
+	public Baocao findById(char id) {
+		log.debug("getting Baocao instance with id: " + id);
 		try {
-			Tongiao instance = (Tongiao) sessionFactory.getCurrentSession()
-					.get("edu.hust.k54.persistence.Tongiao", id);
+			Baocao instance = (Baocao) sessionFactory.getCurrentSession().get(
+					"edu.hust.k54.persistence.Baocao", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
 			} else {
@@ -106,11 +106,11 @@ public class TongiaoHome {
 		}
 	}
 
-	public List findByExample(Tongiao instance) {
-		log.debug("finding Tongiao instance by example");
+	public List findByExample(Baocao instance) {
+		log.debug("finding Baocao instance by example");
 		try {
 			List results = sessionFactory.getCurrentSession()
-					.createCriteria("edu.hust.k54.persistence.Tongiao")
+					.createCriteria("edu.hust.k54.persistence.Baocao")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
