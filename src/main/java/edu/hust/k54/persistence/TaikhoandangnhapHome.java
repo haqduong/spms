@@ -1,6 +1,6 @@
 package edu.hust.k54.persistence;
 
-// Generated Nov 6, 2012 9:41:48 PM by Hibernate Tools 4.0.0
+// Generated Nov 26, 2012 7:17:42 PM by Hibernate Tools 4.0.0
 
 import java.util.List;
 import javax.naming.InitialContext;
@@ -90,7 +90,7 @@ public class TaikhoandangnhapHome {
 		}
 	}
 
-	public Taikhoandangnhap findById(int id) {
+	public Taikhoandangnhap findById(java.lang.Integer id) {
 		log.debug("getting Taikhoandangnhap instance with id: " + id);
 		try {
 			Taikhoandangnhap instance = (Taikhoandangnhap) sessionFactory
