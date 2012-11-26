@@ -1,6 +1,6 @@
 package edu.hust.k54.persistence;
 
-// Generated Nov 6, 2012 9:41:46 PM by Hibernate Tools 4.0.0
+// Generated Nov 26, 2012 7:17:41 PM by Hibernate Tools 4.0.0
 
 import java.util.Date;
 import java.util.HashSet;
@@ -53,6 +53,7 @@ public class Soyeulylich implements java.io.Serializable {
 	private Set dienbienhocvis = new HashSet(0);
 	private Set quatrinhdinuocngoais = new HashSet(0);
 	private Set dienbienluongs = new HashSet(0);
+	private Set baocaos = new HashSet(0);
 	private Set khenthuongs = new HashSet(0);
 	private Set dienbienhochams = new HashSet(0);
 	private Set taikhoandangnhaps = new HashSet(0);
@@ -79,8 +80,9 @@ public class Soyeulylich implements java.io.Serializable {
 			String namtn3, Date ngaycapnhat, String suckhoe,
 			String ngonngubiet, Set quatrinhnghiencuus, Set dienbienphucaps,
 			Set kyluats, Set dienbienhocvis, Set quatrinhdinuocngoais,
-			Set dienbienluongs, Set khenthuongs, Set dienbienhochams,
-			Set taikhoandangnhaps, Lylichkhoahoc lylichkhoahoc, Set sachxuatbans) {
+			Set dienbienluongs, Set baocaos, Set khenthuongs,
+			Set dienbienhochams, Set taikhoandangnhaps,
+			Lylichkhoahoc lylichkhoahoc, Set sachxuatbans) {
 		this.capuy = capuy;
 		this.phongban = phongban;
 		this.danhhieu = danhhieu;
@@ -122,6 +124,7 @@ public class Soyeulylich implements java.io.Serializable {
 		this.dienbienhocvis = dienbienhocvis;
 		this.quatrinhdinuocngoais = quatrinhdinuocngoais;
 		this.dienbienluongs = dienbienluongs;
+		this.baocaos = baocaos;
 		this.khenthuongs = khenthuongs;
 		this.dienbienhochams = dienbienhochams;
 		this.taikhoandangnhaps = taikhoandangnhaps;
@@ -463,6 +466,14 @@ public class Soyeulylich implements java.io.Serializable {
 
 	public void setDienbienluongs(Set dienbienluongs) {
 		this.dienbienluongs = dienbienluongs;
+	}
+
+	public Set getBaocaos() {
+		return this.baocaos;
+	}
+
+	public void setBaocaos(Set baocaos) {
+		this.baocaos = baocaos;
 	}
 
 	public Set getKhenthuongs() {
