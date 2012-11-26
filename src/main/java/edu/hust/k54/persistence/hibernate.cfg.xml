@@ -4,9 +4,9 @@
 <hibernate-configuration>
 	<session-factory name="thread">
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="hibernate.connection.password">spml1234</property>
-		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/spms</property>
 		<property name="hibernate.connection.username">spms</property>
+		<property name="hibernate.connection.password">spms1234</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/spms</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
 		<property name="hibernate.session_factory_name">SessionFactory</property>
 
@@ -41,6 +41,7 @@
 		<mapping resource="edu/hust/k54/persistence/Taikhoandangnhap.hbm.xml" />
 		<mapping resource="edu/hust/k54/persistence/Tongiao.hbm.xml" />
 		<mapping resource="edu/hust/k54/persistence/Xuatthan.hbm.xml" />
+		<mapping resource="edu/hust/k54/persistence/Baocao.hbm.xml" />
 
 
 	</session-factory>

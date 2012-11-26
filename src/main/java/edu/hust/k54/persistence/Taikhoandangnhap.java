@@ -1,6 +1,6 @@
 package edu.hust.k54.persistence;
 
-// Generated Nov 6, 2012 9:41:46 PM by Hibernate Tools 4.0.0
+// Generated Nov 26, 2012 7:17:41 PM by Hibernate Tools 4.0.0
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,7 +10,7 @@ import java.util.Set;
  */
 public class Taikhoandangnhap implements java.io.Serializable {
 
-	private int iduser;
+	private Integer iduser;
 	private Soyeulylich soyeulylich;
 	private String username;
 	private String pass;
@@ -21,19 +21,16 @@ public class Taikhoandangnhap implements java.io.Serializable {
 	public Taikhoandangnhap() {
 	}
 
-	public Taikhoandangnhap(int iduser, String username, String pass,
-			String email, boolean permission) {
-		this.iduser = iduser;
+	public Taikhoandangnhap(String username, String pass, String email,
+			boolean permission) {
 		this.username = username;
 		this.pass = pass;
 		this.email = email;
 		this.permission = permission;
 	}
 
-	public Taikhoandangnhap(int iduser, Soyeulylich soyeulylich,
-			String username, String pass, String email, boolean permission,
-			Set nhatkyhethongs) {
-		this.iduser = iduser;
+	public Taikhoandangnhap(Soyeulylich soyeulylich, String username,
+			String pass, String email, boolean permission, Set nhatkyhethongs) {
 		this.soyeulylich = soyeulylich;
 		this.username = username;
 		this.pass = pass;
@@ -42,11 +39,11 @@ public class Taikhoandangnhap implements java.io.Serializable {
 		this.nhatkyhethongs = nhatkyhethongs;
 	}
 
-	public int getIduser() {
+	public Integer getIduser() {
 		return this.iduser;
 	}
 
-	public void setIduser(int iduser) {
+	public void setIduser(Integer iduser) {
 		this.iduser = iduser;
 	}
 
