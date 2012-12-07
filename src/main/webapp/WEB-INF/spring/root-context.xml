@@ -12,7 +12,7 @@
 		<property name="username" value="spms" />
 		<property name="password" value="spms1234" />
 	</bean>
-
+	
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
@@ -25,4 +25,32 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	
+	<bean id="viewResolver"
+			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/WEB-INF/views/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+	<bean id="urlMapping"
+			class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref local="localeChangeInterceptor"/>
+			</list>
+		</property>
+		<property name="urlMap">
+			<map>			   
+				<entry key="/hello.html">
+					<ref bean="helloController"/>
+				</entry>				
+			</map>			
+		</property>		 	
+	</bean>	
+	<bean id="helloController" class="edu.hust.k54.controller.Test">	</bean>	
+	<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="hl"/>
+	</bean>
 </beans>

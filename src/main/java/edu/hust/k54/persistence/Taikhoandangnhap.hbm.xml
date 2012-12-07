@@ -20,7 +20,7 @@
         <property name="email" type="string">
             <column name="email" length="50" not-null="true" />
         </property>
-        <property name="permission" type="boolean">
+        <property name="permission" type="int">
             <column name="permission" not-null="true" />
         </property>
         <set name="nhatkyhethongs" table="nhatkyhethong" inverse="true" lazy="true" fetch="select">
