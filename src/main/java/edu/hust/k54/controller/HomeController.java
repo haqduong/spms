@@ -32,7 +32,12 @@ public class HomeController {
 		
 		CapuyHome cui = new CapuyHome ();
 		cui.delete(new Capuy());
-		
+		Guest guest = new Guest();
+		boolean dk = guest.DangKy("dam", "ngo", "ham");
+		if (dk){
+			System.out.println("dk duoc");
+		}
+		System.out.println(guest.DangNhap("dam", "ngo"));
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		

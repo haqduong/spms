@@ -25,7 +25,7 @@ public class Soyeulylich implements java.io.Serializable {
 	private Dantoc dantoc;
 	private Donviquanly donviquanly;
 	private Giaoducphothong giaoducphothong;
-	private boolean loaiCb;
+	private int loaiCb;
 	private Integer sohieucongchuc;
 	private String chungminhnhandan;
 	private String hoten;
@@ -63,7 +63,7 @@ public class Soyeulylich implements java.io.Serializable {
 	public Soyeulylich() {
 	}
 
-	public Soyeulylich(boolean loaiCb) {
+	public Soyeulylich(int loaiCb) {
 		this.loaiCb = loaiCb;
 	}
 
@@ -71,7 +71,7 @@ public class Soyeulylich implements java.io.Serializable {
 			Xuatthan xuatthan, Hocham hocham, Hocvi hocvi, Chucvu chucvu,
 			Quocgia quocgia, Tongiao tongiao, Hesoluong hesoluong,
 			Dantoc dantoc, Donviquanly donviquanly,
-			Giaoducphothong giaoducphothong, boolean loaiCb,
+			Giaoducphothong giaoducphothong, int loaiCb,
 			Integer sohieucongchuc, String chungminhnhandan, String hoten,
 			String gioitinh, String duongdananh, String tenthuongdung,
 			Date ngaysinh, String noisinh, String quequan, String noiohiennay,
@@ -244,11 +244,11 @@ public class Soyeulylich implements java.io.Serializable {
 		this.giaoducphothong = giaoducphothong;
 	}
 
-	public boolean isLoaiCb() {
+	public int isLoaiCb() {
 		return this.loaiCb;
 	}
 
-	public void setLoaiCb(boolean loaiCb) {
+	public void setLoaiCb(int loaiCb) {
 		this.loaiCb = loaiCb;
 	}
 
