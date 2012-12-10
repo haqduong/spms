@@ -376,6 +376,7 @@ ul,ol         { list-style:none; }
     margin-bottom: 10px;
 }
 #wrap_main .result_find{
+    margin-top: 30px;
     height: 400px;
 }
 
@@ -475,6 +476,128 @@ ul,ol         { list-style:none; }
     float: left;
 }
 /* ======================================================================================= */
+
+/*================================Tim kiem======================================*/
+#wrap_main .list_data{
+    
+    
+}
+
+#wrap_main .title_table{
+    padding-top: 10px;
+    /*background: floralwhite;*/
+    text-align: center;
+    margin-bottom: 10px;
+}
+#wrap_main  .title_table a{
+    color: #C00000;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: bold;
+    
+}
+#wrap_main .list_data .tieu_de{
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eadddd', endColorstr='#757171'); /* IE6-9 */
+    background: -webkit-gradient(linear, left top, left bottom, from(#eadddd), to(#757171));
+    background: -moz-linear-gradient(top,  #eadddd,  #757171); /* firefox 3.6+ */
+    background: -o-linear-gradient(top,  #eadddd,  #757171); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #eadddd,  #757171); /* IE10+ */
+}
+#wrap_main .list_data table .tieu_de td{
+    border: 1px solid #FFFFFF;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+#wrap_main .list_data .description{
+    width:730px; 
+    height:300px; 
+    overflow-y:auto;
+    overflow-x: hidden;
+    /*border-bottom: 2px solid #2b2a25;*/
+}
+#wrap_main .row_1{
+    background-color: #FFFFFF;
+}
+#wrap_main .row_2{
+    background-color: rgb(247, 247, 247);
+}
+#wrap_main .list_data .description tr:hover{
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f4b6b6', endColorstr='#f4e8b6');      /*IE6-9*/ 
+    background: -webkit-gradient(linear, left top, left bottom, from(#f4b6b6), to(#f4e8b6));
+    background: -moz-linear-gradient(top,  #f4b6b6,  #f4e8b6);      /*firefox 3.6+*/ 
+    background: -o-linear-gradient(top,  #f4b6b6,  #f4e8b6);      /*Opera 11.10+*/ 
+    background: -ms-linear-gradient(top,  #f4b6b6,  #f4e8b6);      /*IE10+*/ 
+}
+#wrap_main .list_data .description tr td{
+    border: 1px solid #0055A8;
+    text-align: center;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+#wrap_main .list_data .description tr td a:hover{
+    text-decoration: underline;
+}
+
+#wrap_main .detail_data{
+    float: left;
+    width: 800px;
+    margin-top: 20px;
+}
+#wrap_main .detail_data .title_tab{
+    float: left;
+}
+#wrap_main .detail_data .title_tab ul{
+    list-style: none;
+    width: 800px;
+}
+#wrap_main .detail_data .title_tab ul li{
+    background: #FFFFFF;
+    border-left: 1px solid #757171;
+    border-top: 1px solid #757171;
+    border-right: 1px solid #757171;
+    border-radius: 3px 3px 0 0;
+    margin-right: 5px;
+    padding: 7px;
+    list-style: none;
+    float: left;
+}
+#wrap_main .detail_data .title_tab ul li:hover{
+    cursor: pointer;
+}
+#wrap_main .detail_data .title_tab ul .active{
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#d9d8f8');      /*IE6-9*/ 
+    background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#d9d8f8));
+    background: -moz-linear-gradient(top,  #FFFFFF,  #d9d8f8);      /*firefox 3.6+*/ 
+    background: -o-linear-gradient(top,  #FFFFFF,  #d9d8f8);      /*Opera 11.10+*/ 
+    background: -ms-linear-gradient(top,  #FFFFFF,  #d9d8f8);      /*IE10+*/ 
+}
+#wrap_main .detail_data .title_tab ul .active a{
+    color: #2b2a25;
+}
+#wrap_main .detail_data .title_tab ul li a{
+    font-weight: bold;
+    color: #333399
+}
+
+#wrap_main .detail_data .content_tab{
+    border: 1px solid #757171;
+    float: left;
+    width: 800px;
+    /*height: 100px;*/
+    border-radius: 0px 6px 4px 4px;
+    /*background: #0055A8;*/
+}
+#wrap_main .detail_data .conTab{
+    margin: 20px 10px 20px 20px;
+    
+}
+
+
+
+/*===================================================================================*/
 root { 
     display: block;
 }
