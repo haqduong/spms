@@ -45,11 +45,15 @@
 			<map>			   
 				<entry key="/hello.html">
 					<ref bean="helloController"/>
+				</entry>
+				<entry key="/login.html">
+					<ref bean="sessionController"/>
 				</entry>				
 			</map>			
 		</property>		 	
 	</bean>	
 	<bean id="helloController" class="edu.hust.k54.controller.Test">	</bean>	
+	<bean id="sessionController" class="edu.hust.k54.controller.SessionController">	</bean>	
 	<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 		<property name="paramName" value="hl"/>
 	</bean>

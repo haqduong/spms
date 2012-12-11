@@ -1,0 +1,21 @@
+/* 
+    Document   : stype_test
+    Created on : Nov 25, 2012, 10:19:20 PM
+    Author     : DAT
+    Description:
+        Purpose of the stylesheet follows.
+*/
+.wrapper{
+    background: activecaption;
+    
+}
+.stitle_web{
+    color: #92b802;
+    font-size: 100px;
+}
+
+
+root { 
+    display: block;
+}
+
