@@ -109,7 +109,7 @@ public class TongiaoHome {
 	public List findByExample(Tongiao instance) {
 		log.debug("finding Tongiao instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = sessionFactory.openSession()
 					.createCriteria("edu.hust.k54.persistence.Tongiao")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

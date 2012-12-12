@@ -109,7 +109,7 @@ public class MuckyluatHome {
 	public List findByExample(Muckyluat instance) {
 		log.debug("finding Muckyluat instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = sessionFactory.openSession()
 					.createCriteria("edu.hust.k54.persistence.Muckyluat")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

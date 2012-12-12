@@ -110,7 +110,7 @@ public class NhatkyhethongHome {
 	public List findByExample(Nhatkyhethong instance) {
 		log.debug("finding Nhatkyhethong instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = sessionFactory.openSession()
 					.createCriteria("edu.hust.k54.persistence.Nhatkyhethong")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

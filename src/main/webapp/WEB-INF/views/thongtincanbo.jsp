@@ -1,13 +1,14 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
 <!DOCTYPE html>
 <html>
     <head>
         <title>Home page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="<c:url value = "/resources/css/stype.css"/>" >
-        <script type="text/javascript" src="<c:url value = "/resources//js/jquery-1.7.2.min.js"/>"></script>
+        <link rel="stylesheet" type="text/css" href='http://localhost/DoAnTest/css/stype.css' >
+        <script type="text/javascript" src="http://localhost/DoAnTest/js/jquery-1.7.2.min.js"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -20,6 +21,8 @@
                     <div class="header-row-1"> 
                         <ul class="header-menu">
                             <li><a href="#">Trang chủ</a></li>
+                            <li><a href="#">Thông báo</a></li>
+                            <li><a href="#">Nghiên cứu</a></li>
                             <li><a href="#">Tìm kiếm</a></li>
                             <li><a href="#">Giới thiệu</a></li>
                             <li><a href="#">Liên hệ</a></li>
@@ -29,81 +32,16 @@
             </div> <!--End wrap_header -->
 
             <div id="wrap_main">
-                <div class="title_home"><h2>Quản lý cán bộ</h2></div>
-                <div class="images">
-                    <div class="button">
-                        <a>Thêm cán bộ</a>
-                    </div>
-
-                </div><!--End images-->
-                <div class="clear"></div>
-                <div class="manager_staff">
-                    <form>
-
-                        <table border="0" bgcolor="#fff" align="center" id="info" style="width: 100%">
-                            <tr class="title_table">
-                                <td style="width: 30%">Họ và tên </td>
-                                <td style="width: 30%">Phòng ban</td>
-                                <td style="width: 20%">Học hàm học vị</td>
-                                <td style="width: 5%"></td>
-                                <td  style="width: 10%"></td>
-                                <td style="width: 5%"></td>
-                                
-                            </tr>
-                            <tr>
-                                <td >Nguyễn văn A</td>
-                                <td  >Viện toán học</td>
-                                <td  >phó giáo sư</td>
-                                <td  >Sửa</td>
-                                <td  >Chi tiết</td>
-                                <td  >Xóa</td>
-                                
-                            </tr>
-                            <tr>
-                                <td >Nguyễn văn A</td>
-                                <td  >Viện toán học</td>
-                                <td  >phó giáo sư</td>
-                                <td  >Sửa</td>
-                                <td  >Chi tiết</td>
-                                <td  >Xóa</td>
-                                
-                            </tr>
-                            <tr>
-                                <td >Nguyễn văn A</td>
-                                <td  >Viện toán học</td>
-                                <td  >phó giáo sư</td>
-                                <td  >Sửa</td>
-                                <td  >Chi tiết</td>
-                                <td  >Xóa</td>
-                                
-                            </tr>
-                            <tr>
-                                <td >Nguyễn văn A</td>
-                                <td  >Viện toán học</td>
-                                <td  >phó giáo sư</td>
-                                <td  >Sửa</td>
-                                <td  >Chi tiết</td>
-                                <td  >Xóa</td>
-                                
-                            </tr>
-                            
-                        </table>
-
-                        <br/><br/>
-
-
-                    </form>
-                </div><!--End infomation -->
                 <div class="title_home"><h2>Thông tin sơ yếu lý lịch</h2></div>
                 <div class="images">
                     <img style="margin-left: 30px;" src="../images/public/mainh.jpg" width="100" height="150"/>
 
                 </div><!--End images-->
-                
-                
+
+
                 <div class="contact_us">
                     <div>
-                        
+
                         <div class="title_info"><a >Họ tên:&nbsp&nbsp</a><span style="text-transform: uppercase">Phạm Minh Đạt</span> </div>
 
 
@@ -124,20 +62,20 @@
                         <div class="title_info"><a >Chức vụ:&nbsp&nbsp</a><span style="text-transform: uppercase;">Viện trưởng</span></div>
                     </div>
                     <div>
-                                
-<!--                        <div align="left" class="detail_info"><b>Viện trưởng: </b> Phạm Minh Đạt</sdivong></div>
-                        <div align="left" class="detail_info"><b>Phó viện trưởng:</b></div>
-                            <div align="left" class="detail_info_sub">
-                                    
-                            <a>&nbsp;Kỹ sư&nbsp;Nguyễn Tuấn Vinh</a> <br>
-                                            
-                            <a>&nbsp;Kỹ sư&nbsp;Nguyễn Duy Hưởng</a> <br>
-                                            
-                        </div>-->
+
+                        <!--                        <div align="left" class="detail_info"><b>Viện trưởng: </b> Phạm Minh Đạt</sdivong></div>
+                                                <div align="left" class="detail_info"><b>Phó viện trưởng:</b></div>
+                                                    <div align="left" class="detail_info_sub">
+                                                            
+                                                    <a>&nbsp;Kỹ sư&nbsp;Nguyễn Tuấn Vinh</a> <br>
+                                                                    
+                                                    <a>&nbsp;Kỹ sư&nbsp;Nguyễn Duy Hưởng</a> <br>
+                                                                    
+                                                </div>-->
                     </div>                    
                 </div><!--End contact_us-->
                 <div class="clear"></div>
-                
+
                 <div class="infomation_staff">
                     <form>
 
@@ -285,13 +223,42 @@
                                 </td>
                             </tr>
                         </table>
+                        
+                        <table border="0" bgcolor="#fff" align="center" id="info" >
+                            <tr>
+                                <td class="title" colspan=2 align="center" height="50">
+                                    Công trình nghiên cứu
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Công trình</th>
+                                                <th>Thời gian</th>
+                                            </tr>
+                                        </thead>
 
+                                        <tbody>
+
+                                            <tr>
+                                                <td class="list">Xử lý ngôn ngữ tự nhiên</td>
+                                                <td class="list_ret">2012</td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        
                         <br/><br/>
 
 
                     </form>
                 </div><!--End infomation -->
-                
+
 
             </div> <!--End wrap_main-->
 

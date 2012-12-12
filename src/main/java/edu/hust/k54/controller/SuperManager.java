@@ -13,7 +13,7 @@ import edu.hust.k54.persistence.PhongbanHome;
 import edu.hust.k54.persistence.Soyeulylich;
 import edu.hust.k54.persistence.SoyeulylichHome;
 
-public class ManagerDep {
+public class SuperManager {
 
 	public void capNhatKhenThuowng(Khenthuong khenthuong){
 		KhenthuongHome khenthuongHome = new KhenthuongHome();

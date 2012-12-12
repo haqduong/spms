@@ -37,6 +37,103 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
+				<h2>Quản lý đơn vị</h2>
+			</div>
+			<div class="images">
+				<div class="button">
+					<a>Thêm đơn vị</a>
+				</div>
+
+			</div>
+			<!--End images-->
+			<div class="clear"></div>
+			<div class="manager_staff">
+				<form>
+
+					<table border="0" bgcolor="#fff" align="center" id="info"
+						style="width: 100%">
+						<tr class="title_table">
+							<td style="width: 30%">Tên đơn vị</td>
+							<td style="width: 30%">Địa chỉ</td>
+							<td style="width: 10%">Số điện thoại</td>
+							<td style="width: 10%">Số fax</td>
+							<td style="width: 5%"></td>
+							<td style="width: 10%"></td>
+							<td style="width: 5%"></td>
+
+						</tr>
+						<tr>
+							<td>Viện toán học</td>
+							<td>Nhà A4, 18 Tạ Quang Bửu</td>
+							<td>(84+)123456789</td>
+							<td>(84+)123456789</td>
+							<td>Sửa</td>
+							<td>Chi tiết</td>
+							<td>Xóa</td>
+
+						</tr>
+						<tr>
+							<td>Viện toán học</td>
+							<td>Nhà A4, 18 Tạ Quang Bửu</td>
+							<td>(84+)123456789</td>
+							<td>(84+)123456789</td>
+							<td>Sửa</td>
+							<td>Chi tiết</td>
+							<td>Xóa</td>
+
+						</tr>
+						<tr>
+							<td>Viện toán học</td>
+							<td>Nhà A4, 18 Tạ Quang Bửu</td>
+							<td>(84+)123456789</td>
+							<td>(84+)123456789</td>
+							<td>Sửa</td>
+							<td>Chi tiết</td>
+							<td>Xóa</td>
+
+						</tr>
+						<tr>
+							<td>Viện toán học</td>
+							<td>Nhà A4, 18 Tạ Quang Bửu</td>
+							<td>(84+)123456789</td>
+							<td>(84+)123456789</td>
+							<td>Sửa</td>
+							<td>Chi tiết</td>
+							<td>Xóa</td>
+
+						</tr>
+						<tr>
+							<td>Viện toán học</td>
+							<td>Nhà A4, 18 Tạ Quang Bửu</td>
+							<td>(84+)123456789</td>
+							<td>(84+)123456789</td>
+							<td>Sửa</td>
+							<td>Chi tiết</td>
+							<td>Xóa</td>
+
+						</tr>
+						<tr>
+							<td>Viện toán học</td>
+							<td>Nhà A4, 18 Tạ Quang Bửu</td>
+							<td>(84+)123456789</td>
+							<td>(84+)123456789</td>
+							<td>Sửa</td>
+							<td>Chi tiết</td>
+							<td>Xóa</td>
+
+						</tr>
+
+
+					</table>
+
+					<br />
+					<br />
+
+
+				</form>
+			</div>
+			<!--End infomation -->
+			<div class="title_home">
 				<h2>Viện toán học</h2>
 			</div>
 			<div class="images">
@@ -90,62 +187,11 @@
 			</div>
 			<!--End contact_us-->
 			<div class="clear"></div>
-			<div class="infomation">
-				<div class="title_info">CHỨC NĂNG VÀ NHIỆM VỤ</div>
-				<div class="content_text">Chức năng Nghiên cứu và triển khai
-					các kết quả nghiên cứu về những vấn đề toán học và các giải pháp
-					quan trọng có ý nghĩa quốc gia nhằm nâng cao lĩnh vực Toán học của
-					Việt Nam trên thế giới. Nhiệm vụ Nghiên cứu về lý thuyết ánh xạ đa
-					trị trong các bài toán tối ưu và cân bằng, lý thuyết định tính hệ
-					động lực và điều khiển, lý thuyết tối ưu vectơ và ứng dụng trong
-					kinh tế, lý thuyết Nevanlinna p-adic và ứng dụng của nó, lý thuyết
-					về hệ động lực ngẫu nhiên và ứng dụng. Nghiên cứu các phương pháp
-					định tính và giải số các phương trình vi phân đạo hàm riêng cấp 1
-					và cấp 2, các phương pháp tính toán và tổ hợp trong đại số và hình
-					học đại số, các phương pháp đại số và hình học với ứng dụng vào lý
-					thuyết số. Nghiên cứu Tôpô và hình học của các đa tạp thấp chiều và
-					ứng dụng của nó, nghiên cứu các bài toán của phương trình vật lý
-					toán, nghiên cứu về phương trình elliptic suy biến phi tuyến và ứng
-					dụng. Xây dựng các thuật toán và chương trình giải các bài toán cân
-					bằng. Phối hợp với các cơ quan nghiên cứu khác và các trường giảng
-					dạy trong nước cũng như quốc tế triển khai ứng dụng các kết quả
-					nghiên cứu vào thực tiễn. Đào tạo cán bộ nghiên cứu khoa học công
-					nghệ về toán học. Tổ chức hợp tác quốc tế trong lĩnh vực địa chất.
-					Xây dựng cơ sở vật chất cho việc nghiên cứu khoa học về toán học,
-					triển khai ứng dụng, chuyển giao công nghệ tiên tiến thuộc lĩnh vực
-					nghiên cứu của Việt Nam. Quản lý đội ngũ cán bộ, cơ sở hạ tầng và
-					các tài sản khác của Viện.</div>
-				<!-- content_text -->
-			</div>
-			<!--End infomation -->
 
-
-			<div class="infomation">
-				<div class="title_info">CƠ CẤU TỔ CHỨC</div>
-				<div class="content_text">
-					<p>Các phòng chuyên môn</p>
-					<p>Các đơn vị quản lý nghiệp vụ</p>
-					<p>- Phòng Quản lý tổng hợp</p>
-					<p>Trung tâm Đào tạo sau đại học và tính toán hiệu năng cao</p>
-				</div>
-				<!-- content_text -->
-			</div>
-			<!--End infomation -->
-
-			<div class="infomation">
-				<div class="title_info">CƠ CẤU TỔ CHỨC</div>
-				<div class="content_text">
-					<p>Các phòng chuyên môn</p>
-					<p>Các đơn vị quản lý nghiệp vụ</p>
-					<p>- Phòng Quản lý tổng hợp</p>
-					<p>Trung tâm Đào tạo sau đại học và tính toán hiệu năng cao</p>
-				</div>
-				<!-- content_text -->
-			</div>
-			<!--End infomation -->
 
 		</div>
 		<!--End wrap_main-->
+
 		<div id="wrap_right">
 			<div class="box_right">
 				<div class="title_box">

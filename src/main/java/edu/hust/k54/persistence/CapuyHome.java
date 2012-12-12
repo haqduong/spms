@@ -109,7 +109,7 @@ public class CapuyHome {
 	public List findByExample(Capuy instance) {
 		log.debug("finding Capuy instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = sessionFactory.openSession()
 					.createCriteria("edu.hust.k54.persistence.Capuy")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

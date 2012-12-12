@@ -109,7 +109,7 @@ public class BaocaoHome {
 	public List findByExample(Baocao instance) {
 		log.debug("finding Baocao instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = sessionFactory.openSession()
 					.createCriteria("edu.hust.k54.persistence.Baocao")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
