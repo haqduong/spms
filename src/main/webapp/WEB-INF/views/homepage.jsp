@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
 <script type="text/javascript"
-	src="<c:url value = "/resources//js/jquery-1.7.2.min.js"/>"></script>
+	src="<c:url value = "/resources//js/jquery.js"/>"></script>
 </head>
 <body>
 	<div id="wrapper">
