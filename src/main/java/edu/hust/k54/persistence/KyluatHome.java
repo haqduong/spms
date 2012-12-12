@@ -109,7 +109,7 @@ public class KyluatHome {
 	public List findByExample(Kyluat instance) {
 		log.debug("finding Kyluat instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = sessionFactory.openSession()
 					.createCriteria("edu.hust.k54.persistence.Kyluat")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

@@ -109,7 +109,7 @@ public class PhongbanHome {
 	public List findByExample(Phongban instance) {
 		log.debug("finding Phongban instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = sessionFactory.openSession()
 					.createCriteria("edu.hust.k54.persistence.Phongban")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

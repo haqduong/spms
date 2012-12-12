@@ -109,7 +109,7 @@ public class DantocHome {
 	public List findByExample(Dantoc instance) {
 		log.debug("finding Dantoc instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = sessionFactory.openSession()
 					.createCriteria("edu.hust.k54.persistence.Dantoc")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

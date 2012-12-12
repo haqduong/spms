@@ -109,7 +109,7 @@ public class PhucapHome {
 	public List findByExample(Phucap instance) {
 		log.debug("finding Phucap instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = sessionFactory.openSession()
 					.createCriteria("edu.hust.k54.persistence.Phucap")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

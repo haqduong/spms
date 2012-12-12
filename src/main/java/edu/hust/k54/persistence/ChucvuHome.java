@@ -92,7 +92,7 @@ public class ChucvuHome {
 	public Chucvu findById(java.lang.Integer id) {
 		log.debug("getting Chucvu instance with id: " + id);
 		try {
-			Chucvu instance = (Chucvu) sessionFactory.getCurrentSession().get(
+			Chucvu instance = (Chucvu) sessionFactory.openSession().get(
 					"edu.hust.k54.persistence.Chucvu", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

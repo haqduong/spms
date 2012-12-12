@@ -112,7 +112,7 @@ public class QuatrinhnghiencuuHome {
 		log.debug("finding Quatrinhnghiencuu instance by example");
 		try {
 			List results = sessionFactory
-					.getCurrentSession()
+					.openSession()
 					.createCriteria(
 							"edu.hust.k54.persistence.Quatrinhnghiencuu")
 					.add(Example.create(instance)).list();

@@ -112,7 +112,7 @@ public class TaikhoandangnhapHome {
 		log.debug("finding Taikhoandangnhap instance by example");
 		try {
 			List results = sessionFactory
-					.getCurrentSession()
+					.openSession()
 					.createCriteria("edu.hust.k54.persistence.Taikhoandangnhap")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

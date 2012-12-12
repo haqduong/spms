@@ -109,7 +109,7 @@ public class XuatthanHome {
 	public List findByExample(Xuatthan instance) {
 		log.debug("finding Xuatthan instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = sessionFactory.openSession()
 					.createCriteria("edu.hust.k54.persistence.Xuatthan")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

@@ -109,7 +109,7 @@ public class HesoluongHome {
 	public List findByExample(Hesoluong instance) {
 		log.debug("finding Hesoluong instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = sessionFactory.openSession()
 					.createCriteria("edu.hust.k54.persistence.Hesoluong")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

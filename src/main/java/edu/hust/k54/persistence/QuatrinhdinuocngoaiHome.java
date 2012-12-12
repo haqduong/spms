@@ -112,7 +112,7 @@ public class QuatrinhdinuocngoaiHome {
 		log.debug("finding Quatrinhdinuocngoai instance by example");
 		try {
 			List results = sessionFactory
-					.getCurrentSession()
+					.openSession()
 					.createCriteria(
 							"edu.hust.k54.persistence.Quatrinhdinuocngoai")
 					.add(Example.create(instance)).list();
