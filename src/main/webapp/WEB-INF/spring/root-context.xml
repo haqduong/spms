@@ -12,21 +12,21 @@
 		<property name="username" value="spms" />
 		<property name="password" value="spms1234" />
 	</bean>
-	
+
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
+		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation"
 			value="classpath:edu/hust/k54/persistence/hibernate.cfg.xml" />
 	</bean>
-	
+
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
+
 	<bean id="viewResolver"
-			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
 			<value>/WEB-INF/views/</value>
 		</property>
@@ -35,25 +35,88 @@
 		</property>
 	</bean>
 	<bean id="urlMapping"
-			class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="interceptors">
 			<list>
-				<ref local="localeChangeInterceptor"/>
+				<ref local="localeChangeInterceptor" />
 			</list>
 		</property>
 		<property name="urlMap">
 			<map>
-			<entry key="/home.spms">
-					<ref bean="sessionController"/>
-				</entry>			   
+				<entry key="/home.spms">
+					<ref bean="sessionController" />
+				</entry>
 				<entry key="/login.spms">
-					<ref bean="sessionController"/>
-				</entry>				
-			</map>			
-		</property>		 	
-	</bean>	
-	<bean id="sessionController" class="edu.hust.k54.controller.SessionController">	</bean>	
-	<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-		<property name="paramName" value="hl"/>
+					<ref bean="sessionController" />
+				</entry>
+				
+				<entry key="/guest/search.spms">
+					<ref bean="guestController" />
+				</entry>
+				<entry key="/guest/info.spms">
+					<ref bean="guestController" />
+				</entry>
+				<entry key="/guest/contact.spms">
+					<ref bean="guestController" />
+				</entry>
+
+				<entry key="/staff/search.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/staff/info.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/staff/contact.spms">
+					<ref bean="staffController" />
+				</entry>
+
+				<entry key="/manager/search.spms">
+					<ref bean="managerController" />
+				</entry>
+				<entry key="/manager/info.spms">
+					<ref bean="managerController" />
+				</entry>
+				<entry key="/manager/contact.spms">
+					<ref bean="managerController" />
+				</entry>
+				
+				<entry key="/supperManager/search.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/supperManager/info.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/supperManager/contact.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				
+				<entry key="/admin/search.spms">
+					<ref bean="adminController" />
+				</entry>
+				<entry key="/admin/info.spms">
+					<ref bean="adminController" />
+				</entry>
+				<entry key="/admin/contact.spms">
+					<ref bean="adminController" />
+				</entry>
+				
+			</map>
+		</property>
+	</bean>
+	<bean id="sessionController" class="edu.hust.k54.controller.SessionController">
+	</bean>
+	<bean id="guestController" class="edu.hust.k54.controller.GuestController">
+	</bean>
+	<bean id="staffController" class="edu.hust.k54.controller.StaffController">
+	</bean>
+	<bean id="managerController" class="edu.hust.k54.controller.ManagerController">
+	</bean>
+	<bean id="superManagerController" class="edu.hust.k54.controller.SuperManagerController">
+	</bean>
+	<bean id="adminController" class="edu.hust.k54.controller.AdminController">
+	</bean>
+	<bean id="localeChangeInterceptor"
+		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="hl" />
 	</bean>
 </beans>
