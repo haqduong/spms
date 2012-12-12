@@ -79,7 +79,7 @@ public class Taikhoandangnhap implements java.io.Serializable {
 		this.email = email;
 	}
 
-	public int isPermission() {
+	public int getPermission() {
 		return this.permission;
 	}
 

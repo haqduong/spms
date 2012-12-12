@@ -10,7 +10,6 @@ public class GuestController  implements Controller {
 
 	public ModelAndView handleRequest(HttpServletRequest arg0,
 			HttpServletResponse arg1) throws Exception {
-		System.out.println("dam ngo kute");
 		return null;
 	}
 	

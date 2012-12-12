@@ -110,7 +110,7 @@ public class KhoidonviquanlyHome {
 	public List findByExample(Khoidonviquanly instance) {
 		log.debug("finding Khoidonviquanly instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = sessionFactory.openSession()
 					.createCriteria("edu.hust.k54.persistence.Khoidonviquanly")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

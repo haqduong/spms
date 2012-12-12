@@ -109,7 +109,7 @@ public class DanhhieuHome {
 	public List findByExample(Danhhieu instance) {
 		log.debug("finding Danhhieu instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List results = sessionFactory.openSession()
 					.createCriteria("edu.hust.k54.persistence.Danhhieu")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
