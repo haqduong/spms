@@ -21,68 +21,82 @@ public class SessionController implements Controller {
 	public ModelAndView handleRequest(HttpServletRequest arg0,
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("homepage");
-		String userName = arg0.getParameter("user_name");
-		String passWord = arg0.getParameter("user_password");
+		if (arg0.getSession().getAttribute("user") == null) {
+			String userName = arg0.getParameter("user_name");
+			String passWord = arg0.getParameter("user_password");
 
-		if (userName != null && passWord != null) {
-			TaikhoandangnhapHome checkLogin = new TaikhoandangnhapHome();
-			Taikhoandangnhap persion = new Taikhoandangnhap();
-			persion.setUsername(userName);
-			persion.setPass(passWord);
-			if (!checkLogin.findByExample(persion).isEmpty()) { // login Ok
-				Taikhoandangnhap user = (Taikhoandangnhap) checkLogin
-						.findByExample(persion).get(0);
-				int userPermission = user.getPermission();
-				if (userPermission == GUEST_PERMISSION) {
+			if (userName != null && passWord != null) {
+				TaikhoandangnhapHome checkLogin = new TaikhoandangnhapHome();
+				Taikhoandangnhap persion = new Taikhoandangnhap();
+				persion.setUsername(userName);
+				persion.setPass(passWord);
+				if (!checkLogin.findByExample(persion).isEmpty()) { // login Ok
+					Taikhoandangnhap user = (Taikhoandangnhap) checkLogin
+							.findByExample(persion).get(0);
+					int userPermission = user.getPermission();
+					modelAndView.addObject("homePage", "home.spms");
+					if (userPermission == GUEST_PERMISSION) {
+						modelAndView.addObject("search", "guest/search.spms");
+						modelAndView.addObject("info", "guest/info.spms");
+						modelAndView.addObject("contact", "guest/contact.spms");
+					} else if (userPermission == STAFF_PERMISSION) {
+						modelAndView.addObject("search", "staff/search.spms");
+						modelAndView.addObject("info", "staff/info.spms");
+						modelAndView.addObject("contact", "staff/contact.spms");
+					} else if (userPermission == MANAGER_PERMISSION) {
+						modelAndView.addObject("search", "manager/search.spms");
+						modelAndView.addObject("info", "manager/info.spms");
+						modelAndView.addObject("contact",
+								"manager/contact.spms");
+					} else if (userPermission == SUPER_MANAGER_PERMISSION) {
+						modelAndView.addObject("search",
+								"supperManager/search.spms");
+						modelAndView.addObject("info",
+								"supperManager/info.spms");
+						modelAndView.addObject("contact",
+								"supperManager/contact.spms");
+					} else if (userPermission == ADMIN_PERMISSION) {
+						modelAndView.addObject("search", "admin/search.spms");
+						modelAndView.addObject("info", "admin/info.spms");
+						modelAndView.addObject("contact", "admin/contact.spms");
+					}
+					arg0.getSession(true).setAttribute("user", user);
+				} else { // login false
 					modelAndView.addObject("homePage", "home.spms");
 					modelAndView.addObject("search", "search.spms");
 					modelAndView.addObject("info", "info.spms");
 					modelAndView.addObject("contact", "contact.spms");
-				} else if (userPermission == STAFF_PERMISSION) {
-					modelAndView.addObject("homePage", "home.spms");
-					modelAndView.addObject("search", "search.spms");
-					modelAndView.addObject("info", "info.spms");
-					modelAndView.addObject("contact", "contact.spms");
-				} else if (userPermission == MANAGER_PERMISSION) {
-					modelAndView.addObject("homePage", "home.spms");
-					modelAndView.addObject("search", "search.spms");
-					modelAndView.addObject("info", "info.spms");
-					modelAndView.addObject("contact", "contact.spms");
-				} else if (userPermission == SUPER_MANAGER_PERMISSION) {
-					modelAndView.addObject("homePage", "home.spms");
-					modelAndView.addObject("search", "search.spms");
-					modelAndView.addObject("info", "info.spms");
-					modelAndView.addObject("contact", "contact.spms");
-				} else if (userPermission == ADMIN_PERMISSION) {
-					modelAndView.addObject("homePage", "home.spms");
-					modelAndView.addObject("search", "search.spms");
-					modelAndView.addObject("info", "info.spms");
-					modelAndView.addObject("contact", "contact.spms");
+					modelAndView.addObject("loginFalse", LOGIN_FALSE);
 				}
-				arg0.getSession(true).setAttribute("user", user);
-			} else { // login false
+			} else {
+				int userPermission = ((Taikhoandangnhap) arg0
+						.getAttribute("user")).getPermission();
 				modelAndView.addObject("homePage", "home.spms");
-				modelAndView.addObject("search", "search.spms");
-				modelAndView.addObject("info", "info.spms");
-				modelAndView.addObject("contact", "contact.spms");
-				modelAndView.addObject("loginFalse", LOGIN_FALSE);
+				if (userPermission == GUEST_PERMISSION) {
+					modelAndView.addObject("search", "guest/search.spms");
+					modelAndView.addObject("info", "guest/info.spms");
+					modelAndView.addObject("contact", "guest/contact.spms");
+				} else if (userPermission == STAFF_PERMISSION) {
+					modelAndView.addObject("search", "staff/search.spms");
+					modelAndView.addObject("info", "staff/info.spms");
+					modelAndView.addObject("contact", "staff/contact.spms");
+				} else if (userPermission == MANAGER_PERMISSION) {
+					modelAndView.addObject("search", "manager/search.spms");
+					modelAndView.addObject("info", "manager/info.spms");
+					modelAndView.addObject("contact", "manager/contact.spms");
+				} else if (userPermission == SUPER_MANAGER_PERMISSION) {
+					modelAndView.addObject("search",
+							"supperManager/search.spms");
+					modelAndView.addObject("info", "supperManager/info.spms");
+					modelAndView.addObject("contact",
+							"supperManager/contact.spms");
+				} else if (userPermission == ADMIN_PERMISSION) {
+					modelAndView.addObject("search", "admin/search.spms");
+					modelAndView.addObject("info", "admin/info.spms");
+					modelAndView.addObject("contact", "admin/contact.spms");
+				}
 			}
 
-			// if(name.equals("1") && pass.equals("1")){
-			// modelAndView.addObject("loginOK", true);
-			// Representative test = new Representative(12, 12, "duong",
-			// "123456", "dong", 12, 12);
-			// arg0.getSession(true).putValue("abc", test);
-			// }
-			// }else{
-			// modelAndView.addObject("loginOK", false);
-			// }
-			// if(arg0.getSession().getValue("abc")!=null){
-			// System.out.println("chay" +
-			// ((Representative)arg0.getSession().getValue("abc")).getUserName());
-			//
-			// }
-			//
 			// System.out.println(arg0.getRequestDispatcher(null));
 			// System.out.println(arg0.getRequestURL());
 			// System.out.println(arg0.getRequestURI());
