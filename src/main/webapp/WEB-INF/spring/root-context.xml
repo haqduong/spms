@@ -49,7 +49,9 @@
 				<entry key="/login.spms">
 					<ref bean="sessionController" />
 				</entry>
-				
+				<entry key="/logout.spms">
+					<ref bean="sessionController" />
+				</entry>
 				<entry key="/guest/search.spms">
 					<ref bean="guestController" />
 				</entry>
