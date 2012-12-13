@@ -15,14 +15,14 @@ public class Taikhoandangnhap implements java.io.Serializable {
 	private String username;
 	private String pass;
 	private String email;
-	private int permission;
+	private Integer permission;
 	private Set nhatkyhethongs = new HashSet(0);
 
 	public Taikhoandangnhap() {
 	}
 
 	public Taikhoandangnhap(String username, String pass, String email,
-			int permission) {
+			Integer permission) {
 		this.username = username;
 		this.pass = pass;
 		this.email = email;
@@ -30,7 +30,7 @@ public class Taikhoandangnhap implements java.io.Serializable {
 	}
 
 	public Taikhoandangnhap(Soyeulylich soyeulylich, String username,
-			String pass, String email, int permission, Set nhatkyhethongs) {
+			String pass, String email, Integer permission, Set nhatkyhethongs) {
 		this.soyeulylich = soyeulylich;
 		this.username = username;
 		this.pass = pass;
@@ -79,11 +79,11 @@ public class Taikhoandangnhap implements java.io.Serializable {
 		this.email = email;
 	}
 
-	public int getPermission() {
+	public Integer getPermission() {
 		return this.permission;
 	}
 
-	public void setPermission(int permission) {
+	public void setPermission(Integer permission) {
 		this.permission = permission;
 	}
 
