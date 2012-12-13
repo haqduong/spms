@@ -6,10 +6,14 @@
     <head>
         <title>Home page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href='http://localhost/DoAnTest/css/stype.css' >
-        <script type="text/javascript" src="http://localhost/DoAnTest/js/jquery-1.7.2.min.js"></script>
-        <link rel="stylesheet" type="text/css" href='http://localhost/DoAnTest/css/jsDatePick_ltr.min.css' >
-        <script type="text/javascript" src="http://localhost/DoAnTest/js/jsDatePick.jquery.min.1.3.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value = "/resources/css/stype.css"/>">
+<script type="text/javascript"
+	src="<c:url value = "/resources/js/jquery.js"/>"></script>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value = "/resources/css/jsDatePick_ltr.min.css"/>">
+<script type="text/javascript"
+	src="<c:url value = "/resource/js/jsDatePick.jquery.min.1.3.js"/>"></script>
     </head>
     <body>
         <div id="wrapper">

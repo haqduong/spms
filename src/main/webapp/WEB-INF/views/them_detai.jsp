@@ -1,16 +1,19 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Home page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href='http://localhost/DoAnTest/css/stype.css' >
-        <script type="text/javascript" src="http://localhost/DoAnTest/js/jquery-1.7.2.min.js"></script>
-        <link rel="stylesheet" type="text/css" href='http://localhost/DoAnTest/css/jsDatePick_ltr.min.css' >
-        <script type="text/javascript" src="http://localhost/DoAnTest/js/jsDatePick.jquery.min.1.3.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value = "/resources/css/stype.css"/>">
+<script type="text/javascript"
+	src="<c:url value = "/resources/js/jquery.js"/>"></script>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value = "/resources/css/jsDatePick_ltr.min.css"/>">
+<script type="text/javascript"
+	src="<c:url value = "/resource/js/jsDatePick.jquery.min.1.3.js"/>"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -34,12 +37,22 @@ and open the template in the editor.
             </div> <!--End wrap_header -->
 
             <div id="wrap_main">
-                <div class="title_home"><h2>Thêm kỉ luật</h2></div>
+                <div class="title_home"><h2>Thêm đề tài nghiên cứu</h2></div>
                 <script type="text/javascript">
                     window.onload = function(){
                         new JsDatePick({
                             useMode:2,
-                            target:"inputField",
+                            target:"inputField_start",
+                            dateFormat:"%d-%M-%Y"
+                        });
+                        new JsDatePick({
+                            useMode:2,
+                            target:"inputField_end",
+                            dateFormat:"%d-%M-%Y"
+                        });
+                        new JsDatePick({
+                            useMode:2,
+                            target:"inputField_completed",
                             dateFormat:"%d-%M-%Y"
                         });
                     };
@@ -48,12 +61,16 @@ and open the template in the editor.
                     <form>
                         <table style="width: 100%">
                             <tr>
-                                <td style="width: 30%"><label>Cán bộ bị kỷ luật</label></td>
+                                <td style="width: 30%;"><label>Tên đề tài</label></td>
+                                <td><input name="tendetai" type="text"/></td>
+                            </tr>
+                            <tr>
+                                <td><label>Cán bộ Nghiên cứu </label></td>
                                 <td>
                                     <ul>
                                         <li>
                                             <label>Acount</label>
-                                            <input name="user_name_bonus" type="text" placeholder="Acount" />
+                                            <input name="user_name" type="text" placeholder="Acount" />
                                         </li>
                                         <li>
                                             <label>Họ tên: </label>
@@ -66,30 +83,24 @@ and open the template in the editor.
                                     </ul>
                                 </td>
                             </tr>
+                            
                             <tr>
-                                <td><label>Ngày bị kỉ luật</label></td>
-                                <td><input name="thoigian" type="text" id="inputField"/></td>
+                                <td><label>Ngày bắt đầu</label></td>
+                                <td><input name="tungay" type="text" id="inputField_start"/></td>
                             </tr>
                             <tr>
-                                <td><label>Mức kỉ luật</label></td>
-                                <td>
-                                    <select>
-                                        <option value="0" selected>Phòng chống cảnh sát</option>
-                                        <option value="1" >Phòng chống cảnh sát</option>
-                                        <option value="2" >Phòng chống cảnh sát</option>
-                                        <option value="3" >Phòng chống cảnh sát</option>
-                                        <option value="4" >Phòng chống cảnh sát</option>
-                                        <option value="5" >Phòng chống cảnh sát</option>
-                                        <option value="6" >Phòng chống cảnh sát</option>
-                                    </select>
-                                </td>
+                                <td><label>Ngày kết thúc</label></td>
+                                <td><input name="denngay" type="text" id="inputField_end"/></td>
                             </tr>
                             <tr>
-                                <td><label>Hình thức kỉ luật</label></td>
-                                <td>
-                                    <textarea></textarea>
-                                </td>
+                                <td><label>Ngày Nghiệm thu</label></td>
+                                <td><input name="ngaynghiemthu" type="text" id="inputField_completed"/></td>
                             </tr>
+                            <tr>
+                                <td><label>Cơ quan chủ trì</label></td>
+                                <td><input name="coquanchutri" type="text" id="coquan"/></td>
+                            </tr>
+                            
                         </table>
                         <div style="text-align: center; margin-top: 20px;" >
                             <input type="submit" class="button" value="Cập nhật"/>
