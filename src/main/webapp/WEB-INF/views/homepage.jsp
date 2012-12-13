@@ -22,10 +22,21 @@
 			<div id="nav_menu">
 				<div class="header-row-1">
 					<ul class="header-menu">
-						<li><a href="${homePage}">Trang chủ</a></li>
-						<li><a href="${search}">Tìm kiếm</a></li>
-						<li><a href="${info}">Giới thiệu</a></li>
-						<li><a href="${contact}">Liên hệ</a></li>
+						<li><a
+							href= "<c:if test="${not empty homePage}"> ${homePage} </c:if>
+							<c:if test="${empty homePage}"> home.spms</c:if>">Trang chủ</a></li>
+						<li><a
+							href="<c:if test="${not empty search}"> ${search} </c:if>
+							<c:if test="${empty search}"> guest/search.spms</c:if>">Tìm
+								kiếm</a></li>
+						<li><a
+							href="<c:if test="${not empty info}"> ${info} </c:if>
+							<c:if test="${empty info}"> guest/info.spms</c:if>">Giới
+								thiệu</a></li>
+						<li><a
+							href="<c:if test="${not empty contact}"> ${contact} </c:if>
+							<c:if test="${empty contact}"> guest/contact.spms</c:if>">Liên
+								hệ</a></li>
 					</ul>
 				</div>
 			</div>
@@ -387,8 +398,16 @@
 					<div class="title_ok">
 						<a>Xin chào:${user.username}</a>
 					</div>
+					<div class="content_box">
+						<div class="loginpopup" style="">
+							<form action="logout.spms" method="POST">
+								<input value="Đăng xuất" class="button" type="submit"
+									name="logout" />
+							</form>
+						</div>
+					</div>
 				</c:if>
-				
+
 				<c:if test="${empty user}">
 					<div class="title_box">
 						<a>Đăng nhập</a>
@@ -403,9 +422,7 @@
 								<input value="Đăng nhập" class="button" type="submit"
 									name="login" />
 							</form>
-							<label>
-							${loginFalse}
-							</label>
+							<label> ${loginFalse} </label>
 						</div>
 					</div>
 				</c:if>
