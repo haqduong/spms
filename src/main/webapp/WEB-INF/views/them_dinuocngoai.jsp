@@ -1,16 +1,19 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Home page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href='http://localhost/DoAnTest/css/stype.css' >
-        <script type="text/javascript" src="http://localhost/DoAnTest/js/jquery-1.7.2.min.js"></script>
-        <link rel="stylesheet" type="text/css" href='http://localhost/DoAnTest/css/jsDatePick_ltr.min.css' >
-        <script type="text/javascript" src="http://localhost/DoAnTest/js/jsDatePick.jquery.min.1.3.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value = "/resources/css/stype.css"/>">
+<script type="text/javascript"
+	src="<c:url value = "/resources/js/jquery.js"/>"></script>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value = "/resources/css/jsDatePick_ltr.min.css"/>">
+<script type="text/javascript"
+	src="<c:url value = "/resource/js/jsDatePick.jquery.min.1.3.js"/>"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -47,22 +50,14 @@ and open the template in the editor.
                             target:"inputField_end",
                             dateFormat:"%d-%M-%Y"
                         });
-                        new JsDatePick({
-                            useMode:2,
-                            target:"inputField_completed",
-                            dateFormat:"%d-%M-%Y"
-                        });
                     };
                 </script>
                 <div class="add_bonus">
                     <form>
                         <table style="width: 100%">
+                            
                             <tr>
-                                <td style="width: 30%;"><label>Tên đề tài</label></td>
-                                <td><input name="tendetai" type="text"/></td>
-                            </tr>
-                            <tr>
-                                <td><label>Cán bộ Nghiên cứu </label></td>
+                                <td style="width: 30%;"><label>Cán bộ Đi nước ngoài </label></td>
                                 <td>
                                     <ul>
                                         <li>
@@ -90,12 +85,23 @@ and open the template in the editor.
                                 <td><input name="denngay" type="text" id="inputField_end"/></td>
                             </tr>
                             <tr>
-                                <td><label>Ngày Nghiệm thu</label></td>
-                                <td><input name="ngaynghiemthu" type="text" id="inputField_completed"/></td>
+                                <td><label>Quốc gia</label></td>
+                                <td>
+                                    <select name="phongban">
+                                        <option value="0" selected>Nga</option>
+                                        <option value="1" >Mỹ</option>
+                                        <option value="2" >Hàn Quốc</option>
+                                        <option value="3" >Trung Quốc</option>
+                                        <option value="4" >Thụy Điển</option>
+                                        <option value="5" >Cuba</option>
+                                    </select><!--End select -->
+                                </td>
                             </tr>
                             <tr>
-                                <td><label>Cơ quan chủ trì</label></td>
-                                <td><input name="coquanchutri" type="text" id="coquan"/></td>
+                                <td><label>Mục đích</label></td>
+                                <td>
+                                    <input name="mucdich" type="text"/>
+                                </td>
                             </tr>
                             
                         </table>

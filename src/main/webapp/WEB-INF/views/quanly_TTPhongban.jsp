@@ -1,16 +1,15 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <title>Home page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href='http://localhost/DoAnTest/css/stype.css' >
-        <script type="text/javascript" src="http://localhost/DoAnTest/js/jquery-1.7.2.min.js"></script>
-        <link rel="stylesheet" type="text/css" href='http://localhost/DoAnTest/css/jsDatePick_ltr.min.css' >
-        <script type="text/javascript" src="http://localhost/DoAnTest/js/jsDatePick.jquery.min.1.3.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value = "/resources/css/stype.css"/>">
+<script type="text/javascript"
+	src="<c:url value = "/resources/js/jquery.js"/>"></script>
     </head>
     <body>
         <div id="wrapper">
@@ -34,95 +33,72 @@ and open the template in the editor.
             </div> <!--End wrap_header -->
 
             <div id="wrap_main">
-                <div class="title_home"><h2>Thêm khen thưởng</h2></div>
-                <script type="text/javascript">
-                    window.onload = function(){
-                        new JsDatePick({
-                            useMode:2,
-                            target:"inputField",
-                            dateFormat:"%d-%M-%Y"
-                            /*selectedDate:{				This is an example of what the full configuration offers.
-                                day:5,						For full documentation about these settings please see the full version of the code.
-                                month:9,
-                                year:2006
-                        },
-                        yearsRange:[1978,2020],
-                        limitToToday:false,
-                        cellColorScheme:"beige",
-                        dateFormat:"%m-%d-%Y",
-                        imgPath:"img/",
-                        weekStartDay:1*/
-                        });
-                    };
-                </script>
-                <div class="add_bonus">
-                    <form>
-                        <table style="width: 100%">
+                <div class="title_home"><h2>Thông tin phòng hành chính - Viện công nghệ thông tin</h2></div>
+                <div class="clear"></div>
+                <div class="infomation_staff">
+                    <form name="edit_staff"action="#" method="POST">
+
+                        <table border="0" bgcolor="#fff" align="center" id="info" style="width: 100%">
                             <tr>
-                                <td style="width: 30%"><label>Cán bộ được khen thưởng </label></td>
-                                <td>
-                                    <ul>
-                                        <li>
-                                            <label>Acount</label>
-                                            <input name="user_name_bonus" type="text" placeholder="Acount" />
-                                        </li>
-                                        <li>
-                                            <label>Họ tên: </label>
-                                            <b>Phạm Minh Đạt</b>
-                                        </li>
-                                        <li>
-                                            <label>Đơn vị: </label>
-                                            <b>Viện công nghệ thông tin</b>
-                                        </li>
-                                    </ul>
+                                <td class="list">Tên phòng ban </td>
+                                <td class="list_ret" width="70%" >
+                                    <input type="text" name="user_name" size="60" height="25"/>
                                 </td>
                             </tr>
                             <tr>
-                                <td><label>Người kí quyết định</label></td>
-                                <td>
-                                    <ul>
-                                        <li>
-                                            <label>Acount</label>
-                                            <input name="user_name_manager" type="text" placeholder="Acount" />
-                                        </li>
-                                        <li>
-                                            <label>Họ tên: </label>
-                                            <b>Phạm Minh Đạt</b>
-                                        </li>
-                                        <li>
-                                            <label>Đơn vị: </label>
-                                            <b>Viện công nghệ thông tin</b>
-                                        </li>
-                                    </ul>
+                                <td class="list" >Đơn vị quản lý </td>
+                                <td class="list_ret">
+                                    <select>
+                                        
+                                        <option value="0" selected>Viện đang quản lý</option> <!-- Tên viện đang quản lý phòng ban này -->
+                                        <option value="1">Viên sinh học</option>
+                                        <option value="1">Viên sinh học</option>
+                                        <option value="1">Viên sinh học</option>
+                                        <option value="1">Viên sinh học</option>
+                                        <option value="1">Viên sinh học</option>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
-                                <td><label>Ngày khen thưởng</label></td>
-                                <td><input name="ngayquyetdinh" type="text" id="inputField"/></td>
+                                <td class="list" >Điện thọai</td>
+                                <td class="list_ret"><input type="text" name="user_name" size="60" height="25"/></td>
                             </tr>
                             <tr>
-                                <td><label>Lý do khen thưởng</label></td>
-                                <td><input name="lydo" type="text" id="lydo"/></td>
+                                <td class="list">fax </td>
+                                <td class="list_ret"><input type="text" name="user_name" size="60" height="25"/></td>
+                            </tr>
+
+                            <tr>
+                                <td class="list">Thông tin chung </td>
+                                <td class="list_ret"><textarea name="thongtinchung"></textarea></td>
                             </tr>
                             <tr>
-                                <td><label>Hình thức khen thưởng</label></td>
-                                <td><input name="hinhthuc" type="text" id="hinhthuc"/></td>
-                            </tr>
-                            <tr>
-                                <td><label>Cấp khen thưởng</label></td>
-                                <td><textarea name="capkhenthuong"></textarea></td>
-                            </tr>
-                            
+                                <td class ="list"> Avatar</td>
+                                <td class="list_ret">
+                                    <img width="96" height="50" src="../images/public/vientoanhoc.jpg"/>
+                                    <br/>
+                                    <input type="button" name="upload" value="upload"/>
+                                    
+                                </td>
+                            </tr>           
                         </table>
                         <div style="text-align: center; margin-top: 20px;" >
                             <input type="submit" class="button" value="Cập nhật"/>
                         </div>
                     </form>
-
-                </div><!--End add_bonus -->
-
+                </div><!--End infomation -->
 
             </div> <!--End wrap_main-->
+
+
+
+
+
+
+
+
+
+
 
             <div id="wrap_right">
                 <div class="box_right">
