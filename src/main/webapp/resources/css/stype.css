@@ -293,20 +293,22 @@ ul,ol         { list-style:none; }
 }
 #wrap_main .tranfer_work tr .tranfer_STT{
     font-weight: bold;
-    border-right: 1px solid #646365;
+    
 }
 #wrap_main .tranfer_work tr .tranfer_name{
     font-weight: bold;
     color: #16025a;
-    border-right: 1px solid #646365;
-}
+    }
 #wrap_main .tranfer_work tr .tranfer_name:hover{
     text-decoration: underline;
     cursor: pointer;
 }
-#wrap_main .tranfer_work tr .tranfer_work_old, .tranfer_work_new{
+#wrap_main .tranfer_work tr td {
     border-right: 1px solid #646365;
-    
+   
+}
+#wrap_main .tranfer_work tr .end_col{
+    border-right: none;
 }
 #wrap_main .tranfer_work tr:hover{
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5bf06', endColorstr='#f9d65f'); /* IE6-9 */
