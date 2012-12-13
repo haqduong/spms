@@ -22,7 +22,7 @@ public class Taikhoandangnhap implements java.io.Serializable {
 	}
 
 	public Taikhoandangnhap(String username, String pass, String email,
-			int permission) {
+			Integer permission) {
 		this.username = username;
 		this.pass = pass;
 		this.email = email;
@@ -30,7 +30,7 @@ public class Taikhoandangnhap implements java.io.Serializable {
 	}
 
 	public Taikhoandangnhap(Soyeulylich soyeulylich, String username,
-			String pass, String email, int permission, Set nhatkyhethongs) {
+			String pass, String email, Integer permission, Set nhatkyhethongs) {
 		this.soyeulylich = soyeulylich;
 		this.username = username;
 		this.pass = pass;
