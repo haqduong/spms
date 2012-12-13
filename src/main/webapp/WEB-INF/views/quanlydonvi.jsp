@@ -124,8 +124,7 @@
 
 					</table>
 
-					<br />
-					<br />
+					<br /> <br />
 
 
 				</form>
@@ -201,8 +200,9 @@
 						<form action="#" method="POST">
 							<label>Tài khoản : </label> <input type="text" name="user_name"
 								placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
-								type="password" name="user_password" placeholder="Mật khẩu" /> <input
-								value="Đăng nhập" class="button" type="submit" name="login" />
+								type="password" name="user_password" placeholder="Mật khẩu" />
+							<input value="Đăng nhập" class="button" type="submit"
+								name="login" />
 						</form>
 					</div>
 				</div>

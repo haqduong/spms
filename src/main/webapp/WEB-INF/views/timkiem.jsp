@@ -65,8 +65,7 @@
 									<option value="3">Viện hóa học</option>
 									<option value="4">Viện công nghệ sinh học</option>
 									<option value="5">Viện công nghệ vũ trụ</option>
-							</select>
-							<!--End select --></td>
+							</select> <!--End select --></td>
 						</tr>
 						<tr>
 							<td><br /></td>
@@ -81,8 +80,7 @@
 									<option value="3">Phòng ban 3</option>
 									<option value="4">Phòng ban 4</option>
 									<option value="5">Phòng ban 5</option>
-							</select>
-							<!--End select --></td>
+							</select> <!--End select --></td>
 						</tr>
 						<tr>
 							<td><br /></td>
@@ -98,8 +96,7 @@
 									<option value="3">Cán bộ 2</option>
 									<option value="4">Cán bộ 3</option>
 									<option value="5">Cán bộ 4</option>
-							</select>
-							<!--End select --></td>
+							</select> <!--End select --></td>
 						</tr>
 						<tr>
 							<td><br /></td>

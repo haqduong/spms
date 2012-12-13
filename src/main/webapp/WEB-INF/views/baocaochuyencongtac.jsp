@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/jsDatePick_ltr.min.css"/>">
 <script type="text/javascript"
-	src="<c:url value = "/resource/js/jsDatePick.jquery.min.1.3.js"/>"></script>
+	src="<c:url value = "/resources/js/jsDatePick.jquery.min.1.3.js"/>"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -168,8 +168,9 @@
 						<form action="#" method="POST">
 							<label>Tài khoản : </label> <input type="text" name="user_name"
 								placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
-								type="password" name="user_password" placeholder="Mật khẩu" /> <input
-								value="Đăng nhập" class="button" type="submit" name="login" />
+								type="password" name="user_password" placeholder="Mật khẩu" />
+							<input value="Đăng nhập" class="button" type="submit"
+								name="login" />
 						</form>
 					</div>
 				</div>

@@ -23,8 +23,9 @@
 				<div class="header-row-1">
 					<ul class="header-menu">
 						<li><a
-							href= "<c:if test="${not empty homePage}"> ${homePage} </c:if>
-							<c:if test="${empty homePage}"> home.spms</c:if>">Trang chủ</a></li>
+							href="<c:if test="${not empty homePage}"> ${homePage} </c:if>
+							<c:if test="${empty homePage}"> home.spms</c:if>">Trang
+								chủ</a></li>
 						<li><a
 							href="<c:if test="${not empty search}"> ${search} </c:if>
 							<c:if test="${empty search}"> guest/search.spms</c:if>">Tìm
