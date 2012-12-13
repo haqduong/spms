@@ -13,14 +13,14 @@
 		http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
      	">
-
-	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	<tx:annotation-driven />
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<annotation-driven />
+	<mvc:annotation-driven />
 
-	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure --> 
+	<tx:annotation-driven />
+	
+		<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
@@ -28,6 +28,12 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
+	<!-- Configure the multipart resolver -->
+    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- one of the properties available; the maximum file size in bytes -->
+        <beans:property name="maxUploadSize" value="5242880"/>
+    </beans:bean>
 	
 	<context:component-scan base-package="edu.hust.k54" />
 	<context:component-scan base-package="edu.hust.k54.controller" />
