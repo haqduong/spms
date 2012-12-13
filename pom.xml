@@ -32,8 +32,8 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
-		<!--  ORM  -->
+
+		<!-- ORM -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
@@ -53,7 +53,22 @@
 			<version>2.2.2</version>
 			<scope>runtime</scope>
 		</dependency>
-		
+
+		<!-- Common file upload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.2.1</version>
+		</dependency>
+
+		<!-- commons-fileupload depend on it -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+
 		<!-- MySQL database driver -->
 		<dependency>
 			<groupId>mysql</groupId>
