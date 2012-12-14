@@ -36,7 +36,7 @@ public class QuatrinhdinuocngoaiHome {
 	public void persist(Quatrinhdinuocngoai transientInstance) {
 		log.debug("persisting Quatrinhdinuocngoai instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -47,7 +47,7 @@ public class QuatrinhdinuocngoaiHome {
 	public void attachDirty(Quatrinhdinuocngoai instance) {
 		log.debug("attaching dirty Quatrinhdinuocngoai instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -58,7 +58,7 @@ public class QuatrinhdinuocngoaiHome {
 	public void attachClean(Quatrinhdinuocngoai instance) {
 		log.debug("attaching clean Quatrinhdinuocngoai instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -69,7 +69,7 @@ public class QuatrinhdinuocngoaiHome {
 	public void delete(Quatrinhdinuocngoai persistentInstance) {
 		log.debug("deleting Quatrinhdinuocngoai instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -81,7 +81,7 @@ public class QuatrinhdinuocngoaiHome {
 		log.debug("merging Quatrinhdinuocngoai instance");
 		try {
 			Quatrinhdinuocngoai result = (Quatrinhdinuocngoai) sessionFactory
-					.getCurrentSession().merge(detachedInstance);
+					.openSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -94,7 +94,7 @@ public class QuatrinhdinuocngoaiHome {
 		log.debug("getting Quatrinhdinuocngoai instance with id: " + id);
 		try {
 			Quatrinhdinuocngoai instance = (Quatrinhdinuocngoai) sessionFactory
-					.getCurrentSession().get(
+					.openSession().get(
 							"edu.hust.k54.persistence.Quatrinhdinuocngoai", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

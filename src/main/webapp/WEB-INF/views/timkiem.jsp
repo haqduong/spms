@@ -22,7 +22,10 @@
 			<div id="nav_menu">
 				<div class="header-row-1">
 					<ul>
-						<li><a href="#">Trang chủ</a></li>
+						<li><a
+							href="<c:if test="${not empty homePage}"> ${homePage} </c:if>
+							<c:if test="${empty homePage}"> home.spms</c:if>">Trang
+								chủ</a></li>
 						<li><a href="#">Tin tức - thông báo</a>
 							<ul>
 								<li><a href="#">Hoạt động</a></li>
@@ -82,9 +85,18 @@
 									</ul></li>
 							</ul></li>
 						<li></li>
-						<li><a href="#">Tìm kiếm</a></li>
-						<li><a href="#">Giới thiệu</a></li>
-						<li><a href="#">Liên hệ</a></li>
+						<li><a
+							href="<c:if test="${not empty search}"> ${search} </c:if>
+							<c:if test="${empty search}"> guest/search.spms</c:if>">Tìm
+								kiếm</a></li>
+						<li><a
+							href="<c:if test="${not empty info}"> ${info} </c:if>
+							<c:if test="${empty info}"> guest/info.spms</c:if>">Giới
+								thiệu</a></li>
+						<li><a
+							href="<c:if test="${not empty contact}"> ${contact} </c:if>
+							<c:if test="${empty contact}"> guest/contact.spms</c:if>">Liên
+								hệ</a></li>
 					</ul>
 				</div>
 				<!--End header-row-1-->
@@ -107,7 +119,7 @@
 					<table>
 						<tr style="">
 							<td style="width: 150px"><label>Tên cán bộ : </label></td>
-							<td><input type="text" name="user_name"
+							<td><input type="text" name="tenCanBo"
 								placeholder="tên cán bộ" width="400px" /></td>
 						</tr>
 						<tr>
@@ -117,14 +129,10 @@
 						<tr>
 							<td><label>Viện : </label></td>
 							<td><select name="vien" id="find_vien">
-									<option value="0" id="normal_vien">Viện</option>
-									<option value="1">Viện toán học</option>
-									<option value="2">Viện công nghệ thông tin</option>
-									<option value="3">Viện hóa học</option>
-									<option value="4">Viện công nghệ sinh học</option>
-									<option value="5">Viện công nghệ vũ trụ</option>
-							</select>
-							<!--End select --></td>
+									<c:forEach items="${donviquanly}" var="donviquanly">
+										<option value="${donviquanly.ten}" id="normal_vien">${donviquanly.ten}</option>
+									</c:forEach>
+							</select> <!--End select --></td>
 						</tr>
 
 						<tr>
@@ -140,8 +148,7 @@
 									<option value="3">Phòng ban 3</option>
 									<option value="4">Phòng ban 4</option>
 									<option value="5">Phòng ban 5</option>
-							</select>
-							<!--End select --></td>
+							</select> <!--End select --></td>
 						</tr>
 						<tr>
 							<td><br /></td>
@@ -157,8 +164,7 @@
 									<option value="3">Cán bộ 2</option>
 									<option value="4">Cán bộ 3</option>
 									<option value="5">Cán bộ 4</option>
-							</select>
-							<!--End select --></td>
+							</select> <!--End select --></td>
 						</tr>
 						<tr>
 							<td><br /></td>
@@ -352,20 +358,38 @@
 		<!--End wrap_main-->
 		<div id="wrap_right">
 			<div class="box_right">
-				<div class="title_box">
-					<a>Đăng nhập</a>
-				</div>
-				<!--title_box-->
-				<div class="content_box">
-					<div class="loginpopup" style="">
-						<form action="#" method="POST">
-							<label>Tài khoản : </label> <input type="text" name="user_name"
-								placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
-								type="password" name="user_password" placeholder="Mật khẩu" /> <input
-								value="Đăng nhập" class="button" type="submit" name="login" />
-						</form>
+				<c:if test="${not empty user}">
+					<div class="title_ok">
+						<a>Xin chào:${user.username}</a>
 					</div>
-				</div>
+					<div class="content_box">
+						<div class="loginpopup" style="">
+							<form action="logout.spms" method="POST">
+								<input value="Đăng xuất" class="button" type="submit"
+									name="logout" />
+							</form>
+						</div>
+					</div>
+				</c:if>
+
+				<c:if test="${empty user}">
+					<div class="title_box">
+						<a>Đăng nhập</a>
+					</div>
+					<!--title_box-->
+					<div class="content_box">
+						<div class="loginpopup" style="">
+							<form action="login.spms" method="POST">
+								<label>Tài khoản : </label> <input type="text" name="user_name"
+									placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
+									type="password" name="user_password" placeholder="Mật khẩu" />
+								<input value="Đăng nhập" class="button" type="submit"
+									name="login" />
+							</form>
+							<label> ${loginFalse} </label>
+						</div>
+					</div>
+				</c:if>
 				<!--end content_box-->
 			</div>
 			<!--box_right-->

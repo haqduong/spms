@@ -35,7 +35,7 @@ public class LylichkhoahocHome {
 	public void persist(Lylichkhoahoc transientInstance) {
 		log.debug("persisting Lylichkhoahoc instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class LylichkhoahocHome {
 	public void attachDirty(Lylichkhoahoc instance) {
 		log.debug("attaching dirty Lylichkhoahoc instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class LylichkhoahocHome {
 	public void attachClean(Lylichkhoahoc instance) {
 		log.debug("attaching clean Lylichkhoahoc instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class LylichkhoahocHome {
 	public void delete(Lylichkhoahoc persistentInstance) {
 		log.debug("deleting Lylichkhoahoc instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -80,7 +80,7 @@ public class LylichkhoahocHome {
 		log.debug("merging Lylichkhoahoc instance");
 		try {
 			Lylichkhoahoc result = (Lylichkhoahoc) sessionFactory
-					.getCurrentSession().merge(detachedInstance);
+					.openSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -93,7 +93,7 @@ public class LylichkhoahocHome {
 		log.debug("getting Lylichkhoahoc instance with id: " + id);
 		try {
 			Lylichkhoahoc instance = (Lylichkhoahoc) sessionFactory
-					.getCurrentSession().get(
+					.openSession().get(
 							"edu.hust.k54.persistence.Lylichkhoahoc", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

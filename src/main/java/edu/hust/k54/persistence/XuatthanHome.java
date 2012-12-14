@@ -35,7 +35,7 @@ public class XuatthanHome {
 	public void persist(Xuatthan transientInstance) {
 		log.debug("persisting Xuatthan instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class XuatthanHome {
 	public void attachDirty(Xuatthan instance) {
 		log.debug("attaching dirty Xuatthan instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class XuatthanHome {
 	public void attachClean(Xuatthan instance) {
 		log.debug("attaching clean Xuatthan instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class XuatthanHome {
 	public void delete(Xuatthan persistentInstance) {
 		log.debug("deleting Xuatthan instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class XuatthanHome {
 	public Xuatthan merge(Xuatthan detachedInstance) {
 		log.debug("merging Xuatthan instance");
 		try {
-			Xuatthan result = (Xuatthan) sessionFactory.getCurrentSession()
+			Xuatthan result = (Xuatthan) sessionFactory.openSession()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class XuatthanHome {
 	public Xuatthan findById(java.lang.Integer id) {
 		log.debug("getting Xuatthan instance with id: " + id);
 		try {
-			Xuatthan instance = (Xuatthan) sessionFactory.getCurrentSession()
+			Xuatthan instance = (Xuatthan) sessionFactory.openSession()
 					.get("edu.hust.k54.persistence.Xuatthan", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

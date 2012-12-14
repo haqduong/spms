@@ -35,7 +35,7 @@ public class DienbienphucapHome {
 	public void persist(Dienbienphucap transientInstance) {
 		log.debug("persisting Dienbienphucap instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class DienbienphucapHome {
 	public void attachDirty(Dienbienphucap instance) {
 		log.debug("attaching dirty Dienbienphucap instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class DienbienphucapHome {
 	public void attachClean(Dienbienphucap instance) {
 		log.debug("attaching clean Dienbienphucap instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class DienbienphucapHome {
 	public void delete(Dienbienphucap persistentInstance) {
 		log.debug("deleting Dienbienphucap instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -80,7 +80,7 @@ public class DienbienphucapHome {
 		log.debug("merging Dienbienphucap instance");
 		try {
 			Dienbienphucap result = (Dienbienphucap) sessionFactory
-					.getCurrentSession().merge(detachedInstance);
+					.openSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -93,7 +93,7 @@ public class DienbienphucapHome {
 		log.debug("getting Dienbienphucap instance with id: " + id);
 		try {
 			Dienbienphucap instance = (Dienbienphucap) sessionFactory
-					.getCurrentSession().get(
+					.openSession().get(
 							"edu.hust.k54.persistence.Dienbienphucap", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

@@ -126,8 +126,7 @@
 
 					</table>
 
-					<br />
-					<br />
+					<br /> <br />
 
 
 				</form>
@@ -194,20 +193,38 @@
 
 		<div id="wrap_right">
 			<div class="box_right">
-				<div class="title_box">
-					<a>Đăng nhập</a>
-				</div>
-				<!--title_box-->
-				<div class="content_box">
-					<div class="loginpopup" style="">
-						<form action="#" method="POST">
-							<label>Tài khoản : </label> <input type="text" name="user_name"
-								placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
-								type="password" name="user_password" placeholder="Mật khẩu" /> <input
-								value="Đăng nhập" class="button" type="submit" name="login" />
-						</form>
+				<c:if test="${not empty user}">
+					<div class="title_ok">
+						<a>Xin chào:${user.username}</a>
 					</div>
-				</div>
+					<div class="content_box">
+						<div class="loginpopup" style="">
+							<form action="logout.spms" method="POST">
+								<input value="Đăng xuất" class="button" type="submit"
+									name="logout" />
+							</form>
+						</div>
+					</div>
+				</c:if>
+
+				<c:if test="${empty user}">
+					<div class="title_box">
+						<a>Đăng nhập</a>
+					</div>
+					<!--title_box-->
+					<div class="content_box">
+						<div class="loginpopup" style="">
+							<form action="login.spms" method="POST">
+								<label>Tài khoản : </label> <input type="text" name="user_name"
+									placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
+									type="password" name="user_password" placeholder="Mật khẩu" />
+								<input value="Đăng nhập" class="button" type="submit"
+									name="login" />
+							</form>
+							<label> ${loginFalse} </label>
+						</div>
+					</div>
+				</c:if>
 				<!--end content_box-->
 			</div>
 			<!--box_right-->

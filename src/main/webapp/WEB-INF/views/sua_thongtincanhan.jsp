@@ -305,8 +305,7 @@
 						</tr>
 
 					</table>
-					<br />
-					<br />
+					<br /> <br />
 
 					<table border="0" bgcolor="#fff" align="center" id="info">
 						<tr>
@@ -353,8 +352,7 @@
 
 					</table>
 
-					<br />
-					<br />
+					<br /> <br />
 					<div style="text-align: center; margin-top: 20px;">
 						<input type="submit" class="button" value="Cập nhật" />
 					</div>
@@ -378,46 +376,67 @@
 
 		<div id="wrap_right">
 			<div class="box_right">
-				<div class="title_box">
-					<a>Đăng nhập</a>
-				</div>
-				<!--title_box-->
-				<div class="content_box">
-					<div class="loginpopup" style="">
-						<form action="#" method="POST">
-							<label>Tài khoản : </label> <input type="text" name="user_name"
-								placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
-								type="password" name="user_password" placeholder="Mật khẩu" /> <input
-								value="Đăng nhập" class="button" type="submit" name="login" />
-						</form>
+				<c:if test="${not empty user}">
+					<div class="title_ok">
+						<a>Xin chào:${user.username}</a>
 					</div>
-				</div>
+					<div class="content_box">
+						<div class="loginpopup" style="">
+							<form action="logout.spms" method="POST">
+								<input value="Đăng xuất" class="button" type="submit"
+									name="logout" />
+							</form>
+						</div>
+					</div>
+				</c:if>
+
+				<c:if test="${empty user}">
+					<div class="title_box">
+						<a>Đăng nhập</a>
+					</div>
+					<!--title_box-->
+					<div class="content_box">
+						<div class="loginpopup" style="">
+							<form action="login.spms" method="POST">
+								<label>Tài khoản : </label> <input type="text" name="user_name"
+									placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
+									type="password" name="user_password" placeholder="Mật khẩu" />
+								<input value="Đăng nhập" class="button" type="submit"
+									name="login" />
+							</form>
+							<label> ${loginFalse} </label>
+						</div>
+					</div>
+				</c:if>
 				<!--end content_box-->
 			</div>
 			<!--box_right-->
 
-			<div class="box_right">
-				<div class="title_box">
-					<a>Chức năng quản lý</a>
-				</div>
-				<!--title_box-->
-				<div class="content_box">
-					<div id="accordion">
-						<ul>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-						</ul>
-					</div>
-					<!--End accordion -->
+			<c:if test="${not empty user}">
 
+				<div class="box_right">
+					<div class="title_box">
+						<a>Chức năng quản lý</a>
+					</div>
+					<!--title_box-->
+					<div class="content_box">
+						<div id="accordion">
+							<ul>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+							</ul>
+						</div>
+						<!--End accordion -->
+
+					</div>
+					<!--end content_box-->
 				</div>
-				<!--end content_box-->
-			</div>
-			<!--box_right-->
+				<!--box_right-->
+			</c:if>
 
 			<div class="box_right">
 				<div class="title_box">

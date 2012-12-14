@@ -35,7 +35,7 @@ public class CapuyHome {
 	public void persist(Capuy transientInstance) {
 		log.debug("persisting Capuy instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class CapuyHome {
 	public void attachDirty(Capuy instance) {
 		log.debug("attaching dirty Capuy instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class CapuyHome {
 	public void attachClean(Capuy instance) {
 		log.debug("attaching clean Capuy instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class CapuyHome {
 	public void delete(Capuy persistentInstance) {
 		log.debug("deleting Capuy instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class CapuyHome {
 	public Capuy merge(Capuy detachedInstance) {
 		log.debug("merging Capuy instance");
 		try {
-			Capuy result = (Capuy) sessionFactory.getCurrentSession().merge(
+			Capuy result = (Capuy) sessionFactory.openSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class CapuyHome {
 	public Capuy findById(java.lang.Integer id) {
 		log.debug("getting Capuy instance with id: " + id);
 		try {
-			Capuy instance = (Capuy) sessionFactory.getCurrentSession().get(
+			Capuy instance = (Capuy) sessionFactory.openSession().get(
 					"edu.hust.k54.persistence.Capuy", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

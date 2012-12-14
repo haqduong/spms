@@ -35,7 +35,7 @@ public class BaocaoHome {
 	public void persist(Baocao transientInstance) {
 		log.debug("persisting Baocao instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class BaocaoHome {
 	public void attachDirty(Baocao instance) {
 		log.debug("attaching dirty Baocao instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class BaocaoHome {
 	public void attachClean(Baocao instance) {
 		log.debug("attaching clean Baocao instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class BaocaoHome {
 	public void delete(Baocao persistentInstance) {
 		log.debug("deleting Baocao instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class BaocaoHome {
 	public Baocao merge(Baocao detachedInstance) {
 		log.debug("merging Baocao instance");
 		try {
-			Baocao result = (Baocao) sessionFactory.getCurrentSession().merge(
+			Baocao result = (Baocao) sessionFactory.openSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class BaocaoHome {
 	public Baocao findById(char id) {
 		log.debug("getting Baocao instance with id: " + id);
 		try {
-			Baocao instance = (Baocao) sessionFactory.getCurrentSession().get(
+			Baocao instance = (Baocao) sessionFactory.openSession().get(
 					"edu.hust.k54.persistence.Baocao", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

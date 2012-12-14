@@ -1,11 +1,15 @@
 package edu.hust.k54.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import edu.hust.k54.persistence.Donviquanly;
+import edu.hust.k54.persistence.DonviquanlyHome;
 import edu.hust.k54.persistence.Taikhoandangnhap;
 
 public class GuestController  implements Controller {
@@ -26,25 +30,36 @@ public class GuestController  implements Controller {
 					modelAndView = new ModelAndView("timkiem");
 					//TODO
 				}else if(uri.contains("info")){
-					//TODO
+					modelAndView = new ModelAndView("info");
 				}else if(uri.contains("contact")){
-					//TODO
+					modelAndView = new ModelAndView("contact");
 				}
 			}
 		}else{
 			String uri = arg0.getRequestURI();
 			if(uri.contains("search")){
-				modelAndView = new ModelAndView("baocaochuyencongtac");
-				//TODO
+				modelAndView = new ModelAndView("timkiem");
+				Guest guestController = new Guest();
+				List< Donviquanly> donviquanly = guestController.TimDVQL(null, null, null);
+				modelAndView.addObject("donviquanly", donviquanly);
+				modelAndView = setLink(modelAndView);
 			}else if(uri.contains("info")){
-				//TODO
+				modelAndView = new ModelAndView("info");
+				modelAndView = setLink(modelAndView);
 			}else if(uri.contains("contact")){
-				//TODO
+				modelAndView = new ModelAndView("contact");
+				modelAndView = setLink(modelAndView);
 			}
 		}
 		
 		return modelAndView;
 	}
 	
-
+	private ModelAndView setLink(ModelAndView view){
+		view.addObject("homePage", "/k54/home.spms");
+		view.addObject("search", "search.spms");
+		view.addObject("info", "info.spms");
+		view.addObject("contact", "contact.spms");
+		return view;
+	}
 }
