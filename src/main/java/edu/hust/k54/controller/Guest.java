@@ -154,6 +154,49 @@ public class Guest {
 		}
 	}
 	
+	public List TimCB(String tenDV, String tenPB, String tenCB) {
+		SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
+		Soyeulylich soyeulylich = new Soyeulylich();
+		soyeulylich.setHoten(tenCB);
+		List<Soyeulylich> result = soyeulylichHome.findByExample(soyeulylich);
+		int limit = result.size();
+		System.out.println(limit);
+		if (limit == 0) {
+			return null;
+		} else {
+			for (int i = 0; i < limit; i++) {
+				boolean test = false;
+				Soyeulylich soyeulylichTemp = result.get(i);
+				if (tenPB != null) {
+					test = true;
+					if (soyeulylichTemp.getPhongban().getTen().equals(tenPB)) {
+						test = false;
+					}
+					if (test == true) {
+						result.remove(soyeulylichTemp);
+						i--;
+						limit--;
+					}
+				}
+				if (test == false) {
+					if (tenDV != null) {
+						if (soyeulylichTemp.getDonviquanly().getTen()
+								.equals(tenDV)) {
+							test = true;
+						}
+						if (test == false) {
+							result.remove(soyeulylichTemp);
+							i--;
+							limit--;
+						}
+					}
+				}
+
+			}
+			System.out.println(limit);
+			return result;
+		}
+	}
 	public List TimCB(String hoten){
 		SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
 		Soyeulylich soyeulylich = new Soyeulylich();

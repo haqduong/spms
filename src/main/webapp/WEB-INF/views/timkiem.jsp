@@ -1,3 +1,7 @@
+<%@page import="edu.hust.k54.persistence.Phongban"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.List"%>
+<%@page import="edu.hust.k54.persistence.Donviquanly"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -35,54 +39,22 @@
 							</ul></li>
 						<li><a>Đơn vị</a>
 							<ul>
-								<li><a href="#">Viện toán học</a>
-									<ul>
-										<li><a href="#">Giới thiệu chung</a></li>
-										<li><a href="#">Danh mục cán bộ</a></li>
-										<li><a href="#">Các phòng ban</a></li>
-										<li><a href="#">Các nghiên cứu</a></li>
-										<li><a href="#">Công trình Khoa học</a></li>
-									</ul></li>
-								<li><a href="#">Viện CNTT</a>
-									<ul>
-										<li><a href="#">Giới thiệu chung</a></li>
-										<li><a href="#">Danh mục cán bộ</a></li>
-										<li><a href="#">Các phòng ban</a></li>
-										<li><a href="#">Các nghiên cứu</a></li>
-										<li><a href="#">Công trình Khoa học</a></li>
-									</ul></li>
-								<li><a href="#">Viện hóa học</a>
-									<ul>
-										<li><a href="#">Giới thiệu chung</a></li>
-										<li><a href="#">Danh mục cán bộ</a></li>
-										<li><a href="#">Các phòng ban</a></li>
-										<li><a href="#">Các nghiên cứu</a></li>
-										<li><a href="#">Công trình Khoa học</a></li>
-									</ul></li>
-								<li><a href="#">Viện CN sinh học</a>
-									<ul>
-										<li><a href="#">Giới thiệu chung</a></li>
-										<li><a href="#">Danh mục cán bộ</a></li>
-										<li><a href="#">Các phòng ban</a></li>
-										<li><a href="#">Các nghiên cứu</a></li>
-										<li><a href="#">Công trình Khoa học</a></li>
-									</ul></li>
-								<li><a href="#">Viện hải dương học</a>
-									<ul>
-										<li><a href="#">Giới thiệu chung</a></li>
-										<li><a href="#">Danh mục cán bộ</a></li>
-										<li><a href="#">Các phòng ban</a></li>
-										<li><a href="#">Các nghiên cứu</a></li>
-										<li><a href="#">Công trình Khoa học</a></li>
-									</ul></li>
-								<li><a href="#">Viện công nghệ vũ trụ</a>
-									<ul>
-										<li><a href="#">Giới thiệu chung</a></li>
-										<li><a href="#">Danh mục cán bộ</a></li>
-										<li><a href="#">Các phòng ban</a></li>
-										<li><a href="#">Các nghiên cứu</a></li>
-										<li><a href="#">Công trình Khoa học</a></li>
-									</ul></li>
+								<c:forEach items="${donviquanly}" var="donviquanly">
+									<li><a href="#">${donviquanly.ten}</a>
+										<ul>
+											<li><a href="#">Giới thiệu chung</a></li>
+											<li><a href="#">Danh mục cán bộ</a></li>
+											<li><a href="#">Các phòng ban</a> 
+<%-- 											<c:forEach items="${donviquanly.phongbans}" var="phongban">
+													
+													<li><a href="#">${phongban.ten}n</a> 
+													
+												</c:forEach></li> --%>
+											<li><a href="#">Các nghiên cứu</a></li>
+											<li><a href="#">Công trình Khoa học</a></li>
+										</ul></li>
+								</c:forEach>
+
 							</ul></li>
 						<li></li>
 						<li><a
@@ -112,15 +84,13 @@
 			</div>
 			<br /> <br />
 			<div class="find_box">
-
-
-				<form action="#" method="POST" class="find_form">
-
+				<form name="selectSearch" action="search.spms" method="POST"
+					class="find_form">
 					<table>
 						<tr style="">
 							<td style="width: 150px"><label>Tên cán bộ : </label></td>
 							<td><input type="text" name="tenCanBo"
-								placeholder="tên cán bộ" width="400px" /></td>
+								placeholder="Tên cán bộ" width="400px" /></td>
 						</tr>
 						<tr>
 							<td><br /></td>
@@ -128,7 +98,9 @@
 						</tr>
 						<tr>
 							<td><label>Viện : </label></td>
-							<td><select name="vien" id="find_vien">
+							<td><select name="vien" id="find_vien"
+								onchange="chageDonViState()">
+									<option value="" selected>Tất cả</option>
 									<c:forEach items="${donviquanly}" var="donviquanly">
 										<option value="${donviquanly.ten}" id="normal_vien">${donviquanly.ten}</option>
 									</c:forEach>
@@ -142,12 +114,7 @@
 						<tr>
 							<td><label>Phòng ban : </label></td>
 							<td><select name="phongban">
-									<option value="0" selected>Phòng ban</option>
-									<option value="1">Phòng ban 1</option>
-									<option value="2">Phòng ban 2</option>
-									<option value="3">Phòng ban 3</option>
-									<option value="4">Phòng ban 4</option>
-									<option value="5">Phòng ban 5</option>
+									<option value="" selected>Tất cả</option>
 							</select> <!--End select --></td>
 						</tr>
 						<tr>
@@ -157,22 +124,16 @@
 
 						<tr>
 							<td><label>Phân loại cán bộ : </label></td>
-							<td><select name="vien">
-									<option value="0" selected>Cán bộ thường</option>
+							<td><select name="loaicanbo">
+									<option value="" selected>Tất cả</option>
+									<option value="0">Cán bộ thường</option>
 									<option value="1">Cán bộ nghiên cứu</option>
-									<option value="2">Cán bộ 1</option>
-									<option value="3">Cán bộ 2</option>
-									<option value="4">Cán bộ 3</option>
-									<option value="5">Cán bộ 4</option>
 							</select> <!--End select --></td>
 						</tr>
 						<tr>
 							<td><br /></td>
 							<td></td>
 						</tr>
-
-
-
 
 						<tr>
 							<td></td>
@@ -187,7 +148,6 @@
 				<div class="title_home">
 					<h2>Kết quả Tìm kiếm</h2>
 				</div>
-
 				<div class="list_data">
 					<div class="title_table">
 						<a> Danh sách cán bộ </a>
@@ -199,6 +159,7 @@
 									<tr class="tieu_de">
 										<td style="width: 5%">STT</td>
 										<td style="width: 20%">Họ và tên</td>
+										<td style="width: 15%">Đơn vị</td>
 										<td style="width: 15%">Phòng ban</td>
 										<td style="width: 10%">Chức vụ</td>
 										<td style="width: 15%">SĐT</td>
@@ -212,133 +173,20 @@
 							<td>
 								<div class="description">
 									<table cellspacing="0" cellpadding="1" style="width: 715px">
+									<c:if test="${not empty result}">
+										<c:forEach items="${result}" var="canbo">
 										<tr class="row_1">
 											<td style="width: 5%">1</td>
-											<td style="width: 20%">Phạm Minh Đạt</td>
+											<td style="width: 20%">${canbo.hoten}</td>
 											<td style="width: 15%">Viện toán học</td>
+											<td style="width: 15%">Phòng vớ vẩn</td>
 											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">012346789</td>
-											<td style="width: 15%">abc@gamil.com</td>
+											<td style="width: 15%">${canbo.sodienthoai}</td>
+											<td style="width: 15%">${canbo.sodienthoai}</td>
 											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
 										</tr>
-										<tr class="row_2">
-											<td>1</td>
-											<td>Phạm Minh Đạt</td>
-											<td>Viện toán học</td>
-											<td>Trưởng viện</td>
-											<td>012346789</td>
-											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_1">
-											<td style="width: 5%">1</td>
-											<td style="width: 20%">Phạm Minh Đạt</td>
-											<td style="width: 15%">Viện toán học</td>
-											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">012346789</td>
-											<td style="width: 15%">abc@gamil.com</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_2">
-											<td>1</td>
-											<td>Phạm Minh Đạt</td>
-											<td>Viện toán học</td>
-											<td>Trưởng viện</td>
-											<td>012346789</td>
-											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_1">
-											<td style="width: 5%">1</td>
-											<td style="width: 20%">Phạm Minh Đạt</td>
-											<td style="width: 15%">Viện toán học</td>
-											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">012346789</td>
-											<td style="width: 15%">abc@gamil.com</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_2">
-											<td>1</td>
-											<td>Phạm Minh Đạt</td>
-											<td>Viện toán học</td>
-											<td>Trưởng viện</td>
-											<td>012346789</td>
-											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_1">
-											<td style="width: 5%">1</td>
-											<td style="width: 20%">Phạm Minh Đạt</td>
-											<td style="width: 15%">Viện toán học</td>
-											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">012346789</td>
-											<td style="width: 15%">abc@gamil.com</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_2">
-											<td>1</td>
-											<td>Phạm Minh Đạt</td>
-											<td>Viện toán học</td>
-											<td>Trưởng viện</td>
-											<td>012346789</td>
-											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_1">
-											<td style="width: 5%">1</td>
-											<td style="width: 20%">Phạm Minh Đạt</td>
-											<td style="width: 15%">Viện toán học</td>
-											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">012346789</td>
-											<td style="width: 15%">abc@gamil.com</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_2">
-											<td>1</td>
-											<td>Phạm Minh Đạt</td>
-											<td>Viện toán học</td>
-											<td>Trưởng viện</td>
-											<td>012346789</td>
-											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_1">
-											<td style="width: 5%">1</td>
-											<td style="width: 20%">Phạm Minh Đạt</td>
-											<td style="width: 15%">Viện toán học</td>
-											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">012346789</td>
-											<td style="width: 15%">abc@gamil.com</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_2">
-											<td>1</td>
-											<td>Phạm Minh Đạt</td>
-											<td>Viện toán học</td>
-											<td>Trưởng viện</td>
-											<td>012346789</td>
-											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_1">
-											<td style="width: 5%">1</td>
-											<td style="width: 20%">Phạm Minh Đạt</td>
-											<td style="width: 15%">Viện toán học</td>
-											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">012346789</td>
-											<td style="width: 15%">abc@gamil.com</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_2">
-											<td>1</td>
-											<td>Phạm Minh Đạt</td>
-											<td>Viện toán học</td>
-											<td>Trưởng viện</td>
-											<td>012346789</td>
-											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
-										</tr>
-
+										</c:forEach>
+									</c:if>
 									</table>
 								</div>
 							</td>
@@ -346,14 +194,7 @@
 					</table>
 				</div>
 				<!--End list_data-->
-
 			</div>
-
-
-
-
-
-
 		</div>
 		<!--End wrap_main-->
 		<div id="wrap_right">
@@ -433,5 +274,46 @@
 		<!--End wrap_footer-->
 	</div>
 	<!--End wrapper -->
+
+
+	<script type="text/javascript">
+	function chageDonViState() {
+		removePBOption();
+		<%String dsPhongBan = new String();
+		List listDonviquanly = (List) request.getAttribute("donviquanly");
+		if (listDonviquanly != null) {
+			for(int i = 0; i < listDonviquanly.size(); i++){
+				Donviquanly donviquanly = (Donviquanly)listDonviquanly.get(i);
+				Set<Phongban> phongban = donviquanly.getPhongbans();
+				for(Phongban pb: phongban){
+					dsPhongBan += (i+2) + "@" + pb.getTen() +"|";	
+				}
+			}
+			
+		}%>
+		var dir = ("<%=dsPhongBan%>");
+			var allType = dir.split("|");
+			var i;
+			var count = 0;
+			document.selectSearch.phongban.options[count] = new Option(
+					"Tất cả", "");
+			var selectDir = document.getElementById("find_vien");
+			var dirIndex = selectDir.selectedIndex + 1;
+			for (i = 0; i < eval(allType).length; i++) {
+				var dirType = eval(allType)[i].split("@");
+				if (eval(dirType)[0] == dirIndex) {
+					document.selectSearch.phongban.options[count++] = new Option(
+							eval(dirType)[1], eval(dirType)[1]);
+				}
+			}
+		}
+
+		function removePBOption() {
+			var i;
+			for (i = 0; i < document.selectSearch.phongban.options.length; i++) {
+				document.selectSearch.phongban.remove(i);
+			}
+		}
+	</script>
 </body>
 </html>
