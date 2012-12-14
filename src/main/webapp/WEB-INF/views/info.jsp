@@ -22,7 +22,10 @@
 			<div id="nav_menu">
 				<div class="header-row-1">
 					<ul>
-						<li><a href="#">Trang chủ</a></li>
+						<li><a
+							href="<c:if test="${not empty homePage}"> ${homePage} </c:if>
+							<c:if test="${empty homePage}"> /k54/home.spms</c:if>">Trang
+								chủ</a></li>
 						<li><a href="#">Tin tức - thông báo</a>
 							<ul>
 								<li><a href="#">Hoạt động</a></li>
@@ -81,10 +84,18 @@
 										<li><a href="#">Công trình Khoa học</a></li>
 									</ul></li>
 							</ul></li>
-						<li></li>
-						<li><a href="#">Tìm kiếm</a></li>
-						<li><a href="#">Giới thiệu</a></li>
-						<li><a href="#">Liên hệ</a></li>
+						<li><a
+							href="<c:if test="${not empty search}"> ${search} </c:if>
+							<c:if test="${empty search}"> guest/search.spms</c:if>">Tìm
+								kiếm</a></li>
+						<li><a
+							href="<c:if test="${not empty info}"> ${info} </c:if>
+							<c:if test="${empty info}"> guest/info.spms</c:if>">Giới
+								thiệu</a></li>
+						<li><a
+							href="<c:if test="${not empty contact}"> ${contact} </c:if>
+							<c:if test="${empty contact}"> guest/contact.spms</c:if>">Liên
+								hệ</a></li>
 					</ul>
 				</div>
 				<!--End header-row-1-->
@@ -98,7 +109,8 @@
 				<h2>Viện khoa học và công nghệ Việt Nam</h2>
 			</div>
 			<div class="images">
-				<img src="../images/public/nhadieuhanh.jpg" width="730" height="240" />
+				<img src="/resources/images/public/nhadieuhanh.jpg" width="730"
+					height="240" />
 			</div>
 			<div class="content_text">
 
@@ -441,46 +453,67 @@
 		<!--End wrap_main-->
 		<div id="wrap_right">
 			<div class="box_right">
-				<div class="title_box">
-					<a>Đăng nhập</a>
-				</div>
-				<!--title_box-->
-				<div class="content_box">
-					<div class="loginpopup" style="">
-						<form action="#" method="POST">
-							<label>Tài khoản : </label> <input type="text" name="user_name"
-								placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
-								type="password" name="user_password" placeholder="Mật khẩu" /> <input
-								value="Đăng nhập" class="button" type="submit" name="login" />
-						</form>
+				<c:if test="${not empty user}">
+					<div class="title_ok">
+						<a>Xin chào:${user.username}</a>
 					</div>
-				</div>
+					<div class="content_box">
+						<div class="loginpopup" style="">
+							<form action="logout.spms" method="POST">
+								<input value="Đăng xuất" class="button" type="submit"
+									name="logout" />
+							</form>
+						</div>
+					</div>
+				</c:if>
+
+				<c:if test="${empty user}">
+					<div class="title_box">
+						<a>Đăng nhập</a>
+					</div>
+					<!--title_box-->
+					<div class="content_box">
+						<div class="loginpopup" style="">
+							<form action="login.spms" method="POST">
+								<label>Tài khoản : </label> <input type="text" name="user_name"
+									placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
+									type="password" name="user_password" placeholder="Mật khẩu" />
+								<input value="Đăng nhập" class="button" type="submit"
+									name="login" />
+							</form>
+							<label> ${loginFalse} </label>
+						</div>
+					</div>
+				</c:if>
 				<!--end content_box-->
 			</div>
 			<!--box_right-->
 
-			<div class="box_right">
-				<div class="title_box">
-					<a>Chức năng quản lý</a>
-				</div>
-				<!--title_box-->
-				<div class="content_box">
-					<div id="accordion">
-						<ul>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-						</ul>
-					</div>
-					<!--End accordion -->
+			<c:if test="${not empty user}">
 
+				<div class="box_right">
+					<div class="title_box">
+						<a>Chức năng quản lý</a>
+					</div>
+					<!--title_box-->
+					<div class="content_box">
+						<div id="accordion">
+							<ul>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+							</ul>
+						</div>
+						<!--End accordion -->
+
+					</div>
+					<!--end content_box-->
 				</div>
-				<!--end content_box-->
-			</div>
-			<!--box_right-->
+				<!--box_right-->
+			</c:if>
 
 			<div class="box_right">
 				<div class="title_box">

@@ -35,7 +35,7 @@ public class DanhhieuHome {
 	public void persist(Danhhieu transientInstance) {
 		log.debug("persisting Danhhieu instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class DanhhieuHome {
 	public void attachDirty(Danhhieu instance) {
 		log.debug("attaching dirty Danhhieu instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class DanhhieuHome {
 	public void attachClean(Danhhieu instance) {
 		log.debug("attaching clean Danhhieu instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class DanhhieuHome {
 	public void delete(Danhhieu persistentInstance) {
 		log.debug("deleting Danhhieu instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class DanhhieuHome {
 	public Danhhieu merge(Danhhieu detachedInstance) {
 		log.debug("merging Danhhieu instance");
 		try {
-			Danhhieu result = (Danhhieu) sessionFactory.getCurrentSession()
+			Danhhieu result = (Danhhieu) sessionFactory.openSession()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class DanhhieuHome {
 	public Danhhieu findById(java.lang.Integer id) {
 		log.debug("getting Danhhieu instance with id: " + id);
 		try {
-			Danhhieu instance = (Danhhieu) sessionFactory.getCurrentSession()
+			Danhhieu instance = (Danhhieu) sessionFactory.openSession()
 					.get("edu.hust.k54.persistence.Danhhieu", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

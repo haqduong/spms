@@ -364,8 +364,7 @@
 											size="60" height="25" /></td>
 									</tr>
 								</table>
-								<br />
-								<br />
+								<br /> <br />
 
 								<table border="0" bgcolor="#fff" align="center" id="info">
 									<tr>
@@ -397,8 +396,7 @@
 									</tr>
 								</table>
 
-								<br />
-								<br />
+								<br /> <br />
 
 
 							</form>

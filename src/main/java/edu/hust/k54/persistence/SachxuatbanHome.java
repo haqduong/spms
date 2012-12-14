@@ -35,7 +35,7 @@ public class SachxuatbanHome {
 	public void persist(Sachxuatban transientInstance) {
 		log.debug("persisting Sachxuatban instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class SachxuatbanHome {
 	public void attachDirty(Sachxuatban instance) {
 		log.debug("attaching dirty Sachxuatban instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class SachxuatbanHome {
 	public void attachClean(Sachxuatban instance) {
 		log.debug("attaching clean Sachxuatban instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class SachxuatbanHome {
 	public void delete(Sachxuatban persistentInstance) {
 		log.debug("deleting Sachxuatban instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -80,7 +80,7 @@ public class SachxuatbanHome {
 		log.debug("merging Sachxuatban instance");
 		try {
 			Sachxuatban result = (Sachxuatban) sessionFactory
-					.getCurrentSession().merge(detachedInstance);
+					.openSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -93,7 +93,7 @@ public class SachxuatbanHome {
 		log.debug("getting Sachxuatban instance with id: " + id);
 		try {
 			Sachxuatban instance = (Sachxuatban) sessionFactory
-					.getCurrentSession().get(
+					.openSession().get(
 							"edu.hust.k54.persistence.Sachxuatban", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

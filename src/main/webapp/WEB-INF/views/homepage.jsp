@@ -22,7 +22,12 @@
 			<div id="nav_menu">
 				<div class="header-row-1">
 					<ul>
-						<li><a href="#">Trang chủ</a></li>
+						<li><a
+							href="<c:if test="${not empty homePage}"> ${homePage} </c:if>
+							<c:if test="${empty homePage}"> home.spms</c:if>">Trang
+								chủ</a></li>
+
+
 						<li><a href="#">Tin tức - thông báo</a>
 							<ul>
 								<li><a href="#">Hoạt động</a></li>
@@ -30,6 +35,8 @@
 								<li><a href="#">Tin KH quốc tế</a></li>
 								<li><a href="#">Thông báo</a></li>
 							</ul></li>
+
+
 						<li><a href="#">Đơn vị</a>
 							<ul>
 								<li><a href="#">Viện toán học</a>
@@ -82,15 +89,7 @@
 									</ul></li>
 							</ul></li>
 						<li></li>
-						<li><a href="#">Tìm kiếm</a></li>
-						<li><a href="#">Giới thiệu</a></li>
-						<li><a href="#">Liên hệ</a></li>
 
-
-						<li><a
-							href="<c:if test="${not empty homePage}"> ${homePage} </c:if>
-							<c:if test="${empty homePage}"> home.spms</c:if>">Trang
-								chủ</a></li>
 						<li><a
 							href="<c:if test="${not empty search}"> ${search} </c:if>
 							<c:if test="${empty search}"> guest/search.spms</c:if>">Tìm
@@ -122,8 +121,8 @@
 								địa động lực Biển Đông”</b></li>
 						<li><a style="color: #8d8a8a; font-size: 11px;">12/12/2012
 								17:22</a></li>
-						<li><img src="../images/news/biendong2.jpg" width="400"
-							height="200" /></li>
+						<li><img src="/resources/images/news/biendong2.jpg"
+							width="400" height="200" /></li>
 						<li><br /> <a>Ngày 23 và sáng ngày 24/11/2012, tại Đồ
 								Sơn, TP. Hải Phòng đã diễn ra Hội thảo khoa học quốc tế đề tài
 								KC.09.02/11-15 với chủ đề “Tiến hóa kiến tạo và địa động lực
@@ -146,7 +145,8 @@
 					<ul>
 						<li>
 							<div class="sub_left">
-								<img src="../images/news/new_1.jpg" width="100" height="100" />
+								<img src="/resources/images/news/new_1.jpg" width="100"
+									height="100" />
 							</div>
 							<div class="sub_right">
 								<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy điện
@@ -159,7 +159,8 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="../images/news/new_2.jpg" width="100" height="100" />
+								<img src="/resources/images/news/new_2.jpg" width="100"
+									height="100" />
 							</div>
 							<div class="sub_right">
 								<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy điện
@@ -172,7 +173,8 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="../images/news/new_1.jpg" width="100" height="100" />
+								<img src="/resources/images/news/new_1.jpg" width="100"
+									height="100" />
 							</div>
 							<div class="sub_right">
 								<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy điện
@@ -185,7 +187,8 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="../images/news/new_2.jpg" width="100" height="100" />
+								<img src="/resources/images/news/new_2.jpg" width="100"
+									height="100" />
 							</div>
 							<div class="sub_right">
 								<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy điện
@@ -198,7 +201,8 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="../images/news/new_1.jpg" width="100" height="100" />
+								<img src="/resources/images/news/new_1.jpg" width="100"
+									height="100" />
 							</div>
 							<div class="sub_right">
 								<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy điện
@@ -226,7 +230,8 @@
 							<ul>
 								<li>
 									<div class="sub_left">
-										<img src="../images/news/new_1.jpg" width="100" height="100" />
+										<img src="/resources/images/news/new_1.jpg" width="100"
+											height="100" />
 									</div>
 									<div class="sub_right">
 										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
@@ -242,7 +247,8 @@
 								</li>
 								<li>
 									<div class="sub_left">
-										<img src="../images/news/new_2.jpg" width="100" height="100" />
+										<img src="/resources/images/news/new_2.jpg" width="100"
+											height="100" />
 									</div>
 									<div class="sub_right">
 										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
@@ -258,7 +264,8 @@
 								</li>
 								<li>
 									<div class="sub_left">
-										<img src="../images/news/new_2.jpg" width="100" height="100" />
+										<img src="/resources/images/news/new_2.jpg" width="100"
+											height="100" />
 									</div>
 									<div class="sub_right">
 										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
@@ -306,7 +313,8 @@
 							<ul>
 								<li>
 									<div class="sub_left">
-										<img src="../images/news/new_1.jpg" width="100" height="100" />
+										<img src="/resources/images/news/new_1.jpg" width="100"
+											height="100" />
 									</div>
 									<div class="sub_right">
 										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
@@ -322,7 +330,8 @@
 								</li>
 								<li>
 									<div class="sub_left">
-										<img src="../images/news/new_2.jpg" width="100" height="100" />
+										<img src="/resources/images/news/new_2.jpg" width="100"
+											height="100" />
 									</div>
 									<div class="sub_right">
 										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
@@ -338,7 +347,8 @@
 								</li>
 								<li>
 									<div class="sub_left">
-										<img src="../images/news/new_1.jpg" width="100" height="100" />
+										<img src="/resources/images/news/new_1.jpg" width="100"
+											height="100" />
 									</div>
 									<div class="sub_right">
 										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
@@ -354,7 +364,8 @@
 								</li>
 								<li>
 									<div class="sub_left">
-										<img src="../images/news/new_2.jpg" width="100" height="100" />
+										<img src="/resources/images/news/new_2.jpg" width="100"
+											height="100" />
 									</div>
 									<div class="sub_right">
 										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
@@ -385,7 +396,8 @@
 							<ul>
 								<li>
 									<div class="sub_left">
-										<img src="../images/news/new_1.jpg" width="100" height="100" />
+										<img src="/resources/images/news/new_1.jpg" width="100"
+											height="100" />
 									</div>
 									<div class="sub_right">
 										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
@@ -401,7 +413,8 @@
 								</li>
 								<li>
 									<div class="sub_left">
-										<img src="../images/news/new_2.jpg" width="100" height="100" />
+										<img src="/resources/images/news/new_2.jpg" width="100"
+											height="100" />
 									</div>
 									<div class="sub_right">
 										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
@@ -417,7 +430,8 @@
 								</li>
 								<li>
 									<div class="sub_left">
-										<img src="../images/news/new_2.jpg" width="100" height="100" />
+										<img src="/resources/images/news/new_2.jpg" width="100"
+											height="100" />
 									</div>
 									<div class="sub_right">
 										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
@@ -433,7 +447,8 @@
 								</li>
 								<li>
 									<div class="sub_left">
-										<img src="../images/news/new_1.jpg" width="100" height="100" />
+										<img src="/resources/images/news/new_1.jpg" width="100"
+											height="100" />
 									</div>
 									<div class="sub_right">
 										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
@@ -464,6 +479,40 @@
 							<ul>
 								<li>
 									<div class="sub_left">
+										<img src="/resources/images/news/new_1.jpg" width="100"
+											height="100" />
+									</div>
+									<div class="sub_right">
+										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
+											điện Sông Tranh 2</b>
+										<p>
+											<a style="color: #8d8a8a">03-12-2012 15:56</a>
+										</p>
+										<p>Một nhóm chuyên gia về kỹ thuật nano tại LAAS1 đã phát
+											triển một hệ thống có thể giám sát sự hao mòn và hỏng hóc của
+											cánh quạt máy...</p>
+									</div>
+									<div class="clear"></div>
+								</li>
+								<li>
+									<div class="sub_left">
+										<img src="/resources/images/news/new_2.jpg" width="100"
+											height="100" />
+									</div>
+									<div class="sub_right">
+										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
+											điện Sông Tranh 2</b>
+										<p>
+											<a style="color: #8d8a8a">03-12-2012 15:56</a>
+										</p>
+										<p>Một nhóm chuyên gia về kỹ thuật nano tại LAAS1 đã phát
+											triển một hệ thống có thể giám sát sự hao mòn và hỏng hóc của
+											cánh quạt máy...</p>
+									</div>
+									<div class="clear"></div>
+								</li>
+								<li>
+									<div class="sub_left">
 										<img src="../images/news/new_1.jpg" width="100" height="100" />
 									</div>
 									<div class="sub_right">
@@ -480,39 +529,8 @@
 								</li>
 								<li>
 									<div class="sub_left">
-										<img src="../images/news/new_2.jpg" width="100" height="100" />
-									</div>
-									<div class="sub_right">
-										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
-											điện Sông Tranh 2</b>
-										<p>
-											<a style="color: #8d8a8a">03-12-2012 15:56</a>
-										</p>
-										<p>Một nhóm chuyên gia về kỹ thuật nano tại LAAS1 đã phát
-											triển một hệ thống có thể giám sát sự hao mòn và hỏng hóc của
-											cánh quạt máy...</p>
-									</div>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<div class="sub_left">
-										<img src="../images/news/new_1.jpg" width="100" height="100" />
-									</div>
-									<div class="sub_right">
-										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
-											điện Sông Tranh 2</b>
-										<p>
-											<a style="color: #8d8a8a">03-12-2012 15:56</a>
-										</p>
-										<p>Một nhóm chuyên gia về kỹ thuật nano tại LAAS1 đã phát
-											triển một hệ thống có thể giám sát sự hao mòn và hỏng hóc của
-											cánh quạt máy...</p>
-									</div>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<div class="sub_left">
-										<img src="../images/news/new_2.jpg" width="100" height="100" />
+										<img src="/resources/images/news/new_2.jpg" width="100"
+											height="100" />
 									</div>
 									<div class="sub_right">
 										<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy
@@ -539,46 +557,68 @@
 		<!--End wrap_main-->
 		<div id="wrap_right">
 			<div class="box_right">
-				<div class="title_box">
-					<a>Đăng nhập</a>
-				</div>
-				<!--title_box-->
-				<div class="content_box">
-					<div class="loginpopup" style="">
-						<form action="#" method="POST">
-							<label>Tài khoản : </label> <input type="text" name="user_name"
-								placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
-								type="password" name="user_password" placeholder="Mật khẩu" /> <input
-								value="Đăng nhập" class="button" type="submit" name="login" />
-						</form>
+				<c:if test="${not empty user}">
+					<div class="title_ok">
+						<a>Xin chào:${user.username}</a>
 					</div>
-				</div>
+					<div class="content_box">
+						<div class="loginpopup" style="">
+							<form action="logout.spms" method="POST">
+								<input value="Đăng xuất" class="button" type="submit"
+									name="logout" />
+							</form>
+						</div>
+					</div>
+				</c:if>
+
+				<c:if test="${empty user}">
+					<div class="title_box">
+						<a>Đăng nhập</a>
+					</div>
+					<!--title_box-->
+					<div class="content_box">
+						<div class="loginpopup" style="">
+							<form action="login.spms" method="POST">
+								<label>Tài khoản : </label> <input type="text" name="user_name"
+									placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
+									type="password" name="user_password" placeholder="Mật khẩu" />
+								<input value="Đăng nhập" class="button" type="submit"
+									name="login" />
+							</form>
+							<label> ${loginFalse} </label>
+						</div>
+					</div>
+				</c:if>
 				<!--end content_box-->
 			</div>
 			<!--box_right-->
 
-			<div class="box_right">
-				<div class="title_box">
-					<a>Chức năng quản lý</a>
-				</div>
-				<!--title_box-->
-				<div class="content_box">
-					<div id="accordion">
-						<ul>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-						</ul>
-					</div>
-					<!--End accordion -->
+			<c:if test="${not empty user}">
 
+				<div class="box_right">
+					<div class="title_box">
+						<a>Chức năng quản lý</a>
+					</div>
+					<!--title_box-->
+					<div class="content_box">
+						<div id="accordion">
+							<ul>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+							</ul>
+						</div>
+						<!--End accordion -->
+
+					</div>
+					<!--end content_box-->
 				</div>
-				<!--end content_box-->
-			</div>
-			<!--box_right-->
+				<!--box_right-->
+			</c:if>
+
 
 			<div class="box_right">
 				<div class="title_box">

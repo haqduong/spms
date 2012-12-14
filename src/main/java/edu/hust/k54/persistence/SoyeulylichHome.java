@@ -35,7 +35,7 @@ public class SoyeulylichHome {
 	public void persist(Soyeulylich transientInstance) {
 		log.debug("persisting Soyeulylich instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class SoyeulylichHome {
 	public void attachDirty(Soyeulylich instance) {
 		log.debug("attaching dirty Soyeulylich instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class SoyeulylichHome {
 	public void attachClean(Soyeulylich instance) {
 		log.debug("attaching clean Soyeulylich instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class SoyeulylichHome {
 	public void delete(Soyeulylich persistentInstance) {
 		log.debug("deleting Soyeulylich instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -80,7 +80,7 @@ public class SoyeulylichHome {
 		log.debug("merging Soyeulylich instance");
 		try {
 			Soyeulylich result = (Soyeulylich) sessionFactory
-					.getCurrentSession().merge(detachedInstance);
+					.openSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -93,7 +93,7 @@ public class SoyeulylichHome {
 		log.debug("getting Soyeulylich instance with id: " + id);
 		try {
 			Soyeulylich instance = (Soyeulylich) sessionFactory
-					.getCurrentSession().get(
+					.openSession().get(
 							"edu.hust.k54.persistence.Soyeulylich", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

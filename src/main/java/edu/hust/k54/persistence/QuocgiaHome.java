@@ -35,7 +35,7 @@ public class QuocgiaHome {
 	public void persist(Quocgia transientInstance) {
 		log.debug("persisting Quocgia instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class QuocgiaHome {
 	public void attachDirty(Quocgia instance) {
 		log.debug("attaching dirty Quocgia instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class QuocgiaHome {
 	public void attachClean(Quocgia instance) {
 		log.debug("attaching clean Quocgia instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class QuocgiaHome {
 	public void delete(Quocgia persistentInstance) {
 		log.debug("deleting Quocgia instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class QuocgiaHome {
 	public Quocgia merge(Quocgia detachedInstance) {
 		log.debug("merging Quocgia instance");
 		try {
-			Quocgia result = (Quocgia) sessionFactory.getCurrentSession()
+			Quocgia result = (Quocgia) sessionFactory.openSession()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class QuocgiaHome {
 	public Quocgia findById(java.lang.Integer id) {
 		log.debug("getting Quocgia instance with id: " + id);
 		try {
-			Quocgia instance = (Quocgia) sessionFactory.getCurrentSession()
+			Quocgia instance = (Quocgia) sessionFactory.openSession()
 					.get("edu.hust.k54.persistence.Quocgia", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

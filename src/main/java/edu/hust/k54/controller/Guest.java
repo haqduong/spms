@@ -53,13 +53,14 @@ public class Guest {
 		Taikhoandangnhap taikhoandangnhap = new Taikhoandangnhap();
 		taikhoandangnhap.setUsername(username);
 		taikhoandangnhap.setPass(pass);
-		List result = taikhoandangnhaphome.findByExample(taikhoandangnhap);
+		List<Taikhoandangnhap> result = taikhoandangnhaphome.findByExample(taikhoandangnhap);
 		if (result.size() == 0){
 			return false;
 		}
 		else {
-			taikhoandangnhap.setPass(newPass);
-			taikhoandangnhaphome.attachDirty(taikhoandangnhap);
+			Taikhoandangnhap taikhoandangnhapTemp = result.get(0);
+			taikhoandangnhapTemp.setPass(newPass);
+			taikhoandangnhaphome.attachDirty(taikhoandangnhapTemp);
 			return true;
 		}
 	}
@@ -75,28 +76,31 @@ public class Guest {
 		DonviquanlyHome donviquanlyHome = new DonviquanlyHome();
 		Donviquanly donviquanly = new Donviquanly();
 		donviquanly.setTen(tenDV);
-		List result = donviquanlyHome.findByExample(donviquanly);
-		if (result.size() == 0) {
+		List<Donviquanly> result = donviquanlyHome.findByExample(donviquanly);
+		int limit = result.size();
+		if (limit == 0) {
 			return null;
 		}
 		else {
-			for (Object object : result){
+			for (int i = 0; i < limit; i++){
 				boolean test = false;
-				Donviquanly donviquanlyTemp = (Donviquanly) object;
+				Donviquanly donviquanlyTemp = result.get(i);
 				if (tenPB != null){
+					test = true;
 					Set phongbans = donviquanlyTemp.getPhongbans();
 					for (Object phongban : phongbans){
 						if (((Phongban) phongban).getTen().equals(tenPB)){
-							test = true;
+							test = false;
 							break;
 						}
 					}
+					if (test == true){
+						result.remove(donviquanlyTemp);
+						i--;
+						limit--;
+					}
 				}
-				if (test == false){
-					result.remove(object);
-				}
-				else {
-					test = false;
+				if (test == false) {
 					if (tenCB != null){
 						Set canbos = donviquanlyTemp.getSoyeulyliches();
 						for (Object canbo : canbos){
@@ -106,7 +110,9 @@ public class Guest {
 							}
 						}
 						if (test == false) {
-							result.remove(object);
+							result.remove(donviquanlyTemp);
+							i--;
+							limit--;
 						}
 					}
 				}
@@ -120,23 +126,28 @@ public class Guest {
 		PhongbanHome phongbanHome = new PhongbanHome();
 		Phongban phongban = new Phongban();
 		phongban.setTen(tenPB);
-		List result = phongbanHome.findByExample(phongban);
-		if (result.size() == 0){
+		List<Phongban> result = phongbanHome.findByExample(phongban);
+		int limit = result.size();
+		if (limit == 0){
 			return null;
 		}
 		else {
-			for (Object object : result){
+			for (int i = 0; i < limit; i++){
 				boolean test = false;
-				phongban = (Phongban) object;
+				Phongban phongbanTemp = result.get(i);
 				Set canbos = phongban.getSoyeulyliches();
-				for (Object canbo : canbos){
-					if (((Soyeulylich) canbo).getHoten().equals(tenCB)){
-						test = true;
-						break;
+				if (tenCB != null){
+					for (Object canbo : canbos){
+						if (((Soyeulylich) canbo).getHoten().equals(tenCB)){
+							test = true;
+							break;
+						}
 					}
-				}
-				if (test == false){
-					result.remove(phongban);
+					if (test == false){
+						result.remove(phongban);
+						i--;
+						limit--;
+					}
 				}
 			}
 			return result;
@@ -160,9 +171,10 @@ public class Guest {
 	}
 	
 	
-	public List xemThongTinDonVi(){
+	public List xemThongTinDonVi(String tenDV){
 		DonviquanlyHome donviquanlyHome = new DonviquanlyHome();
 		Donviquanly donviquanly = new Donviquanly();
+		donviquanly.setTen(tenDV);
 		return donviquanlyHome.findByExample(donviquanly);
 	}
 	
