@@ -15,22 +15,33 @@ public class GuestController  implements Controller {
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView modelAndView = null;
 		Taikhoandangnhap taikhoandangnhap = (Taikhoandangnhap) arg0.getSession().getAttribute("user");
-		if((taikhoandangnhap == null) || taikhoandangnhap.getPermission() < PERMISSION){
-			modelAndView = new ModelAndView("errorPage");
-			return modelAndView;
+		
+		if(taikhoandangnhap != null){
+			if(taikhoandangnhap.getPermission() < PERMISSION){
+				modelAndView = new ModelAndView("errorPage");
+				return modelAndView;
+			}else{
+				String uri = arg0.getRequestURI();
+				if(uri.contains("search")){
+					modelAndView = new ModelAndView("timkiem");
+					//TODO
+				}else if(uri.contains("info")){
+					//TODO
+				}else if(uri.contains("contact")){
+					//TODO
+				}
+			}
 		}else{
 			String uri = arg0.getRequestURI();
 			if(uri.contains("search")){
-				modelAndView = new ModelAndView("timkiem");
+				modelAndView = new ModelAndView("baocaochuyencongtac");
 				//TODO
 			}else if(uri.contains("info")){
 				//TODO
 			}else if(uri.contains("contact")){
 				//TODO
 			}
-			
 		}
-		
 		
 		return modelAndView;
 	}

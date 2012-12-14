@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home page</title>
+<title>Báo cáo chuyển công tác</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet" type="text/css"
@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/jsDatePick_ltr.min.css"/>">
 <script type="text/javascript"
-	src="<c:url value = "/resource/js/jsDatePick.jquery.min.1.3.js"/>"></script>
+	src="<c:url value = "/resources/js/jsDatePick.jquery.min.1.3.js"/>"></script>
 </head>
 <body>
 	<div id="wrapper">

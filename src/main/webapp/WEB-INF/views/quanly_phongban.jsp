@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Kỷ luật</title>
+<title>Quản lý phòng ban</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
@@ -99,60 +99,109 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>Thêm kỉ luật</h2>
+				<h2>Quản lý phòng ban</h2>
 			</div>
-			<script type="text/javascript">
-                    window.onload = function(){
-                        new JsDatePick({
-                            useMode:2,
-                            target:"inputField",
-                            dateFormat:"%d-%M-%Y"
-                        });
-                    };
-                </script>
-			<div class="add_bonus">
-				<form>
-					<table style="width: 100%">
-						<tr>
-							<td style="width: 30%"><label>Cán bộ bị kỷ luật</label></td>
-							<td>
-								<ul>
-									<li><label>Acount</label> <input name="user_name_bonus"
-										type="text" placeholder="Acount" /></li>
-									<li><label>Họ tên: </label> <b>Phạm Minh Đạt</b></li>
-									<li><label>Đơn vị: </label> <b>Viện công nghệ thông
-											tin</b></li>
-								</ul>
-							</td>
-						</tr>
-						<tr>
-							<td><label>Ngày bị kỉ luật</label></td>
-							<td><input name="thoigian" type="text" id="inputField" /></td>
-						</tr>
-						<tr>
-							<td><label>Mức kỉ luật</label></td>
-							<td><select>
-									<option value="0" selected>Phòng chống cảnh sát</option>
-									<option value="1">Phòng chống cảnh sát</option>
-									<option value="2">Phòng chống cảnh sát</option>
-									<option value="3">Phòng chống cảnh sát</option>
-									<option value="4">Phòng chống cảnh sát</option>
-									<option value="5">Phòng chống cảnh sát</option>
-									<option value="6">Phòng chống cảnh sát</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td><label>Hình thức kỉ luật</label></td>
-							<td><textarea></textarea></td>
-						</tr>
-					</table>
-					<div style="text-align: center; margin-top: 20px;">
-						<input type="submit" class="button" value="Cập nhật" />
-					</div>
-				</form>
+			<div class="tranfer_work">
+				<div class="filter_date">
+					<label>Đơn vị: </label> <select name="donvi">
+						<option value="0">Viện CNTT</option>
+						<option value="0">Viện Toán học</option>
+						<option value="0">Viện CNTT</option>
+						<option value="0">Viàện CNfTT</option>
+						<option value="0">Viện fCNTT</option>
+						<option value="0">Viàệàn àfCNTT</option>
+						<option value="0">Viàện CNTT</option>
+					</select>
 
+				</div>
+
+
+				<table style="width: 100%;">
+					<tr class="head_tb_tranfer_work">
+						<td style="width: 5%">STT</td>
+						<td style="width: 30%">Tên phòng</td>
+						<td style="width: 30%">Trưởng phòng</td>
+						<td style="width: 10%">SĐT</td>
+						<td style="width:"></td>
+						<td style="width:"></td>
+						<td></td>
+					</tr>
+					<tr class="row_1">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phòng 1</td>
+						<td class="tranfer_work_old">PHạm thần kinh</td>
+						<td class="tranfer_work_new">0987654321</td>
+						<td class=""><a href="#">Sửa</a></td>
+						<td class=""><a href="#">Chi tiết</a></td>
+						<td class=""><a href="#">Xóa</a></td>
+					</tr>
+					<tr class="row_2">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phòng 1</td>
+						<td class="tranfer_work_old">PHạm thần kinh</td>
+						<td class="tranfer_work_new">0987654321</td>
+						<td class=""><a href="#">Sửa</a></td>
+						<td class=""><a href="#">Chi tiết</a></td>
+						<td class=""><a href="#">Xóa</a></td>
+					</tr>
+					<tr class="row_1">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phòng 1</td>
+						<td class="tranfer_work_old">PHạm thần kinh</td>
+						<td class="tranfer_work_new">0987654321</td>
+						<td class=""><a href="#">Sửa</a></td>
+						<td class=""><a href="#">Chi tiết</a></td>
+						<td class=""><a href="#">Xóa</a></td>
+					</tr>
+					<tr class="row_2">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phòng 1</td>
+						<td class="tranfer_work_old">PHạm thần kinh</td>
+						<td class="tranfer_work_new">0987654321</td>
+						<td class=""><a href="#">Sửa</a></td>
+						<td class=""><a href="#">Chi tiết</a></td>
+						<td class=""><a href="#">Xóa</a></td>
+					</tr>
+					<tr class="row_1">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phòng 1</td>
+						<td class="tranfer_work_old">PHạm thần kinh</td>
+						<td class="tranfer_work_new">0987654321</td>
+						<td class=""><a href="#">Sửa</a></td>
+						<td class=""><a href="#">Chi tiết</a></td>
+						<td class=""><a href="#">Xóa</a></td>
+					</tr>
+					<tr class="row_2">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phòng 1</td>
+						<td class="tranfer_work_old">PHạm thần kinh</td>
+						<td class="tranfer_work_new">0987654321</td>
+						<td class=""><a href="#">Sửa</a></td>
+						<td class=""><a href="#">Chi tiết</a></td>
+						<td class=""><a href="#">Xóa</a></td>
+					</tr>
+					<tr class="row_1">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phòng 1</td>
+						<td class="tranfer_work_old">PHạm thần kinh</td>
+						<td class="tranfer_work_new">0987654321</td>
+						<td class=""><a href="#">Sửa</a></td>
+						<td class=""><a href="#">Chi tiết</a></td>
+						<td class=""><a href="#">Xóa</a></td>
+					</tr>
+					<tr class="row_2 end_tb_tranfer_work">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phòng 1</td>
+						<td class="tranfer_work_old">PHạm thần kinh</td>
+						<td class="tranfer_work_new">0987654321</td>
+						<td class=""><a href="#">Sửa</a></td>
+						<td class=""><a href="#">Chi tiết</a></td>
+						<td class=""><a href="#">Xóa</a></td>
+					</tr>
+
+				</table>
 			</div>
-			<!--End add_bonus -->
+			<!--End tranfer_work -->
 
 
 		</div>

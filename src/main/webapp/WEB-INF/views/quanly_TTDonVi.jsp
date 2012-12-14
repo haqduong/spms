@@ -4,16 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Kỷ luật</title>
+<title>Quản lý thông tin đơn vị</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
 <script type="text/javascript"
 	src="<c:url value = "/resources/js/jquery.js"/>"></script>
-<link rel="stylesheet" type="text/css"
-	href="<c:url value = "/resources/css/jsDatePick_ltr.min.css"/>">
-<script type="text/javascript"
-	src="<c:url value = "/resources/js/jsDatePick.jquery.min.1.3.js"/>"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -99,64 +95,84 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>Thêm kỉ luật</h2>
+				<h2>Quản lý thông tin đơn vị</h2>
 			</div>
-			<script type="text/javascript">
-                    window.onload = function(){
-                        new JsDatePick({
-                            useMode:2,
-                            target:"inputField",
-                            dateFormat:"%d-%M-%Y"
-                        });
-                    };
-                </script>
-			<div class="add_bonus">
-				<form>
-					<table style="width: 100%">
+			<div class="clear"></div>
+			<div class="infomation_staff">
+				<form name="edit_staff" action="#" method="POST">
+
+					<table border="0" bgcolor="#fff" align="center" id="info"
+						style="width: 100%">
 						<tr>
-							<td style="width: 30%"><label>Cán bộ bị kỷ luật</label></td>
-							<td>
-								<ul>
-									<li><label>Acount</label> <input name="user_name_bonus"
-										type="text" placeholder="Acount" /></li>
-									<li><label>Họ tên: </label> <b>Phạm Minh Đạt</b></li>
-									<li><label>Đơn vị: </label> <b>Viện công nghệ thông
-											tin</b></li>
-								</ul>
+							<td class="list">Tên đơn vị</td>
+							<td class="list_ret" width="70%"><input type="text"
+								name="user_name" size="60" height="25" /></td>
+						</tr>
+						<tr>
+							<td class="list">Nhiệm vụ</td>
+							<td class="list_ret"><textarea name="nhiemvu"></textarea></td>
+						</tr>
+						<tr>
+							<td class="list">Chức năng</td>
+							<td class="list_ret"><textarea name="chucnang"></textarea></td>
+						</tr>
+						<tr>
+							<td class="list">Hoạt động thường xuyên</td>
+							<td class="list_ret"><textarea name="hoatdongthuongxuyen"></textarea>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="list">Thành tựu</td>
+							<td class="list_ret"><textarea name="thanhtuu"></textarea></td>
+						</tr>
+						<tr>
+							<td class="list">Thông tin khác</td>
+							<td class="list_ret"><textarea name="thongtinkhac"></textarea>
 							</td>
 						</tr>
 						<tr>
-							<td><label>Ngày bị kỉ luật</label></td>
-							<td><input name="thoigian" type="text" id="inputField" /></td>
+							<td class="list">Địa chỉ trụ sở</td>
+							<td class="list_ret"><input name="diachitruso" type="text" /></td>
 						</tr>
 						<tr>
-							<td><label>Mức kỉ luật</label></td>
-							<td><select>
-									<option value="0" selected>Phòng chống cảnh sát</option>
-									<option value="1">Phòng chống cảnh sát</option>
-									<option value="2">Phòng chống cảnh sát</option>
-									<option value="3">Phòng chống cảnh sát</option>
-									<option value="4">Phòng chống cảnh sát</option>
-									<option value="5">Phòng chống cảnh sát</option>
-									<option value="6">Phòng chống cảnh sát</option>
-							</select></td>
+							<td class="list">Điện thoại</td>
+							<td class="list_ret"><input name="diachitruso" type="tel" /></td>
 						</tr>
 						<tr>
-							<td><label>Hình thức kỉ luật</label></td>
-							<td><textarea></textarea></td>
+							<td class="list">Email</td>
+							<td class="list_ret"><input name="email" type="email" /></td>
+						</tr>
+						<tr>
+							<td class="list">Fax</td>
+							<td class="list_ret"><input name="fax" type="text" /></td>
+						</tr>
+						<tr>
+							<td class="list">Thư điện tử</td>
+							<td class="list_ret"><input name="thudientu" type="email" /></td>
+						</tr>
+						<tr>
+							<td class="list">Avatar</td>
+							<td class="list_ret"><img width="96" height="50"
+								src="../images/public/vientoanhoc.jpg" /> <br /> <input
+								type="button" name="upload" value="upload" /></td>
 						</tr>
 					</table>
 					<div style="text-align: center; margin-top: 20px;">
 						<input type="submit" class="button" value="Cập nhật" />
 					</div>
 				</form>
-
 			</div>
-			<!--End add_bonus -->
-
+			<!--End infomation -->
 
 		</div>
 		<!--End wrap_main-->
+
+
+
+
+
+
 
 		<div id="wrap_right">
 			<div class="box_right">
