@@ -35,7 +35,7 @@ public class HesoluongHome {
 	public void persist(Hesoluong transientInstance) {
 		log.debug("persisting Hesoluong instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class HesoluongHome {
 	public void attachDirty(Hesoluong instance) {
 		log.debug("attaching dirty Hesoluong instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class HesoluongHome {
 	public void attachClean(Hesoluong instance) {
 		log.debug("attaching clean Hesoluong instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class HesoluongHome {
 	public void delete(Hesoluong persistentInstance) {
 		log.debug("deleting Hesoluong instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class HesoluongHome {
 	public Hesoluong merge(Hesoluong detachedInstance) {
 		log.debug("merging Hesoluong instance");
 		try {
-			Hesoluong result = (Hesoluong) sessionFactory.getCurrentSession()
+			Hesoluong result = (Hesoluong) sessionFactory.openSession()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class HesoluongHome {
 	public Hesoluong findById(java.lang.Integer id) {
 		log.debug("getting Hesoluong instance with id: " + id);
 		try {
-			Hesoluong instance = (Hesoluong) sessionFactory.getCurrentSession()
+			Hesoluong instance = (Hesoluong) sessionFactory.openSession()
 					.get("edu.hust.k54.persistence.Hesoluong", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

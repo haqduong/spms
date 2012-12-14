@@ -35,7 +35,7 @@ public class TongiaoHome {
 	public void persist(Tongiao transientInstance) {
 		log.debug("persisting Tongiao instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class TongiaoHome {
 	public void attachDirty(Tongiao instance) {
 		log.debug("attaching dirty Tongiao instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class TongiaoHome {
 	public void attachClean(Tongiao instance) {
 		log.debug("attaching clean Tongiao instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class TongiaoHome {
 	public void delete(Tongiao persistentInstance) {
 		log.debug("deleting Tongiao instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class TongiaoHome {
 	public Tongiao merge(Tongiao detachedInstance) {
 		log.debug("merging Tongiao instance");
 		try {
-			Tongiao result = (Tongiao) sessionFactory.getCurrentSession()
+			Tongiao result = (Tongiao) sessionFactory.openSession()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class TongiaoHome {
 	public Tongiao findById(java.lang.Integer id) {
 		log.debug("getting Tongiao instance with id: " + id);
 		try {
-			Tongiao instance = (Tongiao) sessionFactory.getCurrentSession()
+			Tongiao instance = (Tongiao) sessionFactory.openSession()
 					.get("edu.hust.k54.persistence.Tongiao", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

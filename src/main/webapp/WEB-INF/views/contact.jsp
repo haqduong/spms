@@ -16,76 +16,86 @@
 
 		<div id="wrap_header">
 			<div id="banner_header">
-				<h1 class="stitle_web">Viá»n khoa há»c vÃ  cÃ´ng nghá»
-					Viá»t Nam</h1>
+				<h1 class="stitle_web">Viện khoa học và công nghệ Việt Nam</h1>
 			</div>
 			<!--End banner_header -->
 			<div id="nav_menu">
 				<div class="header-row-1">
 					<ul>
-						<li><a href="#">Trang chá»§</a></li>
-						<li><a href="#">Tin tá»©c - thÃ´ng bÃ¡o</a>
+						<li><a
+							href="<c:if test="${not empty homePage}"> ${homePage} </c:if>
+							<c:if test="${empty homePage}">/k54/home.spms</c:if>">Trang
+								chủ</a></li>
+						<li><a href="#">Tin tức - thông báo</a>
 							<ul>
-								<li><a href="#">Hoáº¡t Äá»ng</a></li>
-								<li><a href="#">Tin KH trong nÆ°á»c</a></li>
-								<li><a href="#">Tin KH quá»c táº¿</a></li>
-								<li><a href="#">ThÃ´ng bÃ¡o</a></li>
+								<li><a href="#">Hoạt động</a></li>
+								<li><a href="#">Tin KH trong nước</a></li>
+								<li><a href="#">Tin KH quốc tế</a></li>
+								<li><a href="#">Thông báo</a></li>
 							</ul></li>
-						<li><a href="#">ÄÆ¡n vá»</a>
+						<li><a href="#">Đơn vị</a>
 							<ul>
-								<li><a href="#">Viá»n toÃ¡n há»c</a>
+								<li><a href="#">Viện toán học</a>
 									<ul>
-										<li><a href="#">Giá»i thiá»u chung</a></li>
-										<li><a href="#">Danh má»¥c cÃ¡n bá»</a></li>
-										<li><a href="#">CÃ¡c phÃ²ng ban</a></li>
-										<li><a href="#">CÃ¡c nghiÃªn cá»©u</a></li>
-										<li><a href="#">CÃ´ng trÃ¬nh Khoa há»c</a></li>
+										<li><a href="#">Giới thiệu chung</a></li>
+										<li><a href="#">Danh mục cán bộ</a></li>
+										<li><a href="#">Các phòng ban</a></li>
+										<li><a href="#">Các nghiên cứu</a></li>
+										<li><a href="#">Công trình Khoa học</a></li>
 									</ul></li>
-								<li><a href="#">Viá»n CNTT</a>
+								<li><a href="#">Viện CNTT</a>
 									<ul>
-										<li><a href="#">Giá»i thiá»u chung</a></li>
-										<li><a href="#">Danh má»¥c cÃ¡n bá»</a></li>
-										<li><a href="#">CÃ¡c phÃ²ng ban</a></li>
-										<li><a href="#">CÃ¡c nghiÃªn cá»©u</a></li>
-										<li><a href="#">CÃ´ng trÃ¬nh Khoa há»c</a></li>
+										<li><a href="#">Giới thiệu chung</a></li>
+										<li><a href="#">Danh mục cán bộ</a></li>
+										<li><a href="#">Các phòng ban</a></li>
+										<li><a href="#">Các nghiên cứu</a></li>
+										<li><a href="#">Công trình Khoa học</a></li>
 									</ul></li>
-								<li><a href="#">Viá»n hÃ³a há»c</a>
+								<li><a href="#">Viện hóa học</a>
 									<ul>
-										<li><a href="#">Giá»i thiá»u chung</a></li>
-										<li><a href="#">Danh má»¥c cÃ¡n bá»</a></li>
-										<li><a href="#">CÃ¡c phÃ²ng ban</a></li>
-										<li><a href="#">CÃ¡c nghiÃªn cá»©u</a></li>
-										<li><a href="#">CÃ´ng trÃ¬nh Khoa há»c</a></li>
+										<li><a href="#">Giới thiệu chung</a></li>
+										<li><a href="#">Danh mục cán bộ</a></li>
+										<li><a href="#">Các phòng ban</a></li>
+										<li><a href="#">Các nghiên cứu</a></li>
+										<li><a href="#">Công trình Khoa học</a></li>
 									</ul></li>
-								<li><a href="#">Viá»n CN sinh há»c</a>
+								<li><a href="#">Viện CN sinh học</a>
 									<ul>
-										<li><a href="#">Giá»i thiá»u chung</a></li>
-										<li><a href="#">Danh má»¥c cÃ¡n bá»</a></li>
-										<li><a href="#">CÃ¡c phÃ²ng ban</a></li>
-										<li><a href="#">CÃ¡c nghiÃªn cá»©u</a></li>
-										<li><a href="#">CÃ´ng trÃ¬nh Khoa há»c</a></li>
+										<li><a href="#">Giới thiệu chung</a></li>
+										<li><a href="#">Danh mục cán bộ</a></li>
+										<li><a href="#">Các phòng ban</a></li>
+										<li><a href="#">Các nghiên cứu</a></li>
+										<li><a href="#">Công trình Khoa học</a></li>
 									</ul></li>
-								<li><a href="#">Viá»n háº£i dÆ°Æ¡ng há»c</a>
+								<li><a href="#">Viện hải dương học</a>
 									<ul>
-										<li><a href="#">Giá»i thiá»u chung</a></li>
-										<li><a href="#">Danh má»¥c cÃ¡n bá»</a></li>
-										<li><a href="#">CÃ¡c phÃ²ng ban</a></li>
-										<li><a href="#">CÃ¡c nghiÃªn cá»©u</a></li>
-										<li><a href="#">CÃ´ng trÃ¬nh Khoa há»c</a></li>
+										<li><a href="#">Giới thiệu chung</a></li>
+										<li><a href="#">Danh mục cán bộ</a></li>
+										<li><a href="#">Các phòng ban</a></li>
+										<li><a href="#">Các nghiên cứu</a></li>
+										<li><a href="#">Công trình Khoa học</a></li>
 									</ul></li>
-								<li><a href="#">Viá»n cÃ´ng nghá» vÅ© trá»¥</a>
+								<li><a href="#">Viện công nghệ vũ trụ</a>
 									<ul>
-										<li><a href="#">Giá»i thiá»u chung</a></li>
-										<li><a href="#">Danh má»¥c cÃ¡n bá»</a></li>
-										<li><a href="#">CÃ¡c phÃ²ng ban</a></li>
-										<li><a href="#">CÃ¡c nghiÃªn cá»©u</a></li>
-										<li><a href="#">CÃ´ng trÃ¬nh Khoa há»c</a></li>
+										<li><a href="#">Giới thiệu chung</a></li>
+										<li><a href="#">Danh mục cán bộ</a></li>
+										<li><a href="#">Các phòng ban</a></li>
+										<li><a href="#">Các nghiên cứu</a></li>
+										<li><a href="#">Công trình Khoa học</a></li>
 									</ul></li>
 							</ul></li>
-						<li></li>
-						<li><a href="#">TÃ¬m kiáº¿m</a></li>
-						<li><a href="#">Giá»i thiá»u</a></li>
-						<li><a href="#">LiÃªn há»</a></li>
+						<li><a
+							href="<c:if test="${not empty search}"> ${search} </c:if>
+							<c:if test="${empty search}"> guest/search.spms</c:if>">Tìm
+								kiếm</a></li>
+						<li><a
+							href="<c:if test="${not empty info}"> ${info} </c:if>
+							<c:if test="${empty info}"> guest/info.spms</c:if>">Giới
+								thiệu</a></li>
+						<li><a
+							href="<c:if test="${not empty contact}"> ${contact} </c:if>
+							<c:if test="${empty contact}"> guest/contact.spms</c:if>">Liên
+								hệ</a></li>
 					</ul>
 				</div>
 				<!--End header-row-1-->
@@ -97,7 +107,7 @@
 		<div id="wrap_main">
 
 			<div class="title_home">
-				<h2>LiÃªn há»</h2>
+				<h2>Liên hệ</h2>
 			</div>
 			<div class="contact">
 				<form name="lienhe" action="#" method="POST">
@@ -113,8 +123,8 @@
 														cellpadding="5" cellspacing="2">
 														<tbody>
 															<tr>
-																<td width="17%" align="right" class="content">TÃªn
-																	quÃ½ khÃ¡ch:</td>
+																<td width="17%" align="right" class="content">Tên
+																	quý khách:</td>
 																<td width="83%" style="padding: 5px;"><input
 																	name="ctl00$ContentPlaceHolder1$name" type="text"
 																	id="ctl00_ContentPlaceHolder1_name"
@@ -122,8 +132,7 @@
 																	(*)</td>
 															</tr>
 															<tr>
-																<td align="right" class="content">Äá»a chá»
-																	mail:</td>
+																<td align="right" class="content">Địa chỉ mail:</td>
 																<td style="padding: 5px;"><input
 																	name="ctl00$ContentPlaceHolder1$email" type="text"
 																	id="ctl00_ContentPlaceHolder1_email"
@@ -131,8 +140,7 @@
 																	(*)</td>
 															</tr>
 															<tr>
-																<td align="right" class="content">&nbsp;Äiá»n
-																	thoáº¡i:</td>
+																<td align="right" class="content">&nbsp;Điện thoại:</td>
 																<td style="padding: 5px;"><input
 																	name="ctl00$ContentPlaceHolder1$phone" type="text"
 																	id="ctl00_ContentPlaceHolder1_phone"
@@ -141,8 +149,7 @@
 															</tr>
 
 															<tr>
-																<td align="right" class="content">&nbsp;TiÃªu
-																	Äá»:</td>
+																<td align="right" class="content">&nbsp;Tiêu đề:</td>
 																<td style="padding: 5px;"><input
 																	name="ctl00$ContentPlaceHolder1$title" type="text"
 																	id="ctl00_ContentPlaceHolder1_title"
@@ -151,7 +158,7 @@
 															</tr>
 															<tr>
 																<td align="right" class="content"><span
-																	class="labe_form">MÃ£ báº£o vá»:</span></td>
+																	class="labe_form">Mã bảo vệ:</span></td>
 																<td align="left">
 																	<table cellpadding="0" cellspacing="0" border="0"
 																		width="100%">
@@ -161,7 +168,7 @@
 																				<td style="padding-left: 6px; width: 100px;"><b>abcdef</b>
 																				</td>
 																				<td><input name="mabaove" type="text"
-																					placeholder="(MÃ£ báº£o vá»)" /></td>
+																					placeholder="(Mã bảo vệ)" /></td>
 																			</tr>
 																		</tbody>
 																	</table>
@@ -169,8 +176,8 @@
 															</tr>
 
 															<tr>
-																<td align="right" class="content">ThÃ´ng tin nháº¯n
-																	gá»­i:</td>
+																<td align="right" class="content">Thông tin nhắn
+																	gửi:</td>
 																<td style="padding: 3px 0 0 5px; width: 500px"><textarea
 																		name="ctl00$ContentPlaceHolder1$txtContent" rows="10"
 																		cols="70" id="ctl00_ContentPlaceHolder1_txtContent"></textarea>
@@ -190,7 +197,7 @@
 															<tr>
 																<td width="86%" align="center"><input
 																	class="button" type="submit" name="guidi"
-																	value="Gá»­i Äi">
+																	value="Gửi đi">
 															</tr>
 														</tbody>
 													</table>
@@ -216,51 +223,73 @@
 		<!--End wrap_main-->
 		<div id="wrap_right">
 			<div class="box_right">
-				<div class="title_box">
-					<a>ÄÄng nháº­p</a>
-				</div>
-				<!--title_box-->
-				<div class="content_box">
-					<div class="loginpopup" style="">
-						<form action="#" method="POST">
-							<label>TÃ i khoáº£n : </label> <input type="text"
-								name="user_name" placeholder="TÃ i khoáº£n" /> <label>Máº­t
-								kháº©u : </label> <input type="password" name="user_password"
-								placeholder="Máº­t kháº©u" /> <input value="ÄÄng nháº­p"
-								class="button" type="submit" name="login" />
-						</form>
+				<c:if test="${not empty user}">
+					<div class="title_ok">
+						<a>Xin chào:${user.username}</a>
 					</div>
-				</div>
+					<div class="content_box">
+						<div class="loginpopup" style="">
+							<form action="logout.spms" method="POST">
+								<input value="Đăng xuất" class="button" type="submit"
+									name="logout" />
+							</form>
+						</div>
+					</div>
+				</c:if>
+
+				<c:if test="${empty user}">
+					<div class="title_box">
+						<a>Đăng nhập</a>
+					</div>
+					<!--title_box-->
+					<div class="content_box">
+						<div class="loginpopup" style="">
+							<form action="login.spms" method="POST">
+								<label>Tài khoản : </label> <input type="text" name="user_name"
+									placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
+									type="password" name="user_password" placeholder="Mật khẩu" />
+								<input value="Đăng nhập" class="button" type="submit"
+									name="login" />
+							</form>
+							<label> ${loginFalse} </label>
+						</div>
+					</div>
+				</c:if>
 				<!--end content_box-->
 			</div>
 			<!--box_right-->
 
-			<div class="box_right">
-				<div class="title_box">
-					<a>Chá»©c nÄng quáº£n lÃ½</a>
-				</div>
-				<!--title_box-->
-				<div class="content_box">
-					<div id="accordion">
-						<ul>
-							<li><a href="#">Quáº£n lÃ½ cÃ¡n bá»</a></li>
-							<li><a href="#">Quáº£n lÃ½ cÃ¡n bá»</a></li>
-							<li><a href="#">Quáº£n lÃ½ cÃ¡n bá»</a></li>
-							<li><a href="#">Quáº£n lÃ½ cÃ¡n bá»</a></li>
-							<li><a href="#">Quáº£n lÃ½ cÃ¡n bá»</a></li>
-							<li><a href="#">Quáº£n lÃ½ cÃ¡n bá»</a></li>
-						</ul>
+			<c:if test="${not empty user}">
+
+				<div class="box_right">
+					<div class="title_box">
+						<a>Chức năng quản lý</a>
 					</div>
-					<!--End accordion -->
+					<!--title_box-->
+					<div class="content_box">
+						<div id="accordion">
+							<ul>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+								<li><a href="#">Quản lý cán bộ</a></li>
+							</ul>
+						</div>
+						<!--End accordion -->
 
+					</div>
+					<!--end content_box-->
 				</div>
-				<!--end content_box-->
-			</div>
-			<!--box_right-->
+				<!--box_right-->
+			</c:if>
+
+
 
 			<div class="box_right">
 				<div class="title_box">
-					<a>ThÃ´ng tin</a>
+					<a>Thông tin</a>
 				</div>
 				<!--title_box-->
 				<div class="content_box"></div>

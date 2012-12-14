@@ -35,7 +35,7 @@ public class PhucapHome {
 	public void persist(Phucap transientInstance) {
 		log.debug("persisting Phucap instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class PhucapHome {
 	public void attachDirty(Phucap instance) {
 		log.debug("attaching dirty Phucap instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class PhucapHome {
 	public void attachClean(Phucap instance) {
 		log.debug("attaching clean Phucap instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class PhucapHome {
 	public void delete(Phucap persistentInstance) {
 		log.debug("deleting Phucap instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class PhucapHome {
 	public Phucap merge(Phucap detachedInstance) {
 		log.debug("merging Phucap instance");
 		try {
-			Phucap result = (Phucap) sessionFactory.getCurrentSession().merge(
+			Phucap result = (Phucap) sessionFactory.openSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class PhucapHome {
 	public Phucap findById(java.lang.Integer id) {
 		log.debug("getting Phucap instance with id: " + id);
 		try {
-			Phucap instance = (Phucap) sessionFactory.getCurrentSession().get(
+			Phucap instance = (Phucap) sessionFactory.openSession().get(
 					"edu.hust.k54.persistence.Phucap", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");

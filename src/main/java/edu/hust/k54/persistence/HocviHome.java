@@ -35,7 +35,7 @@ public class HocviHome {
 	public void persist(Hocvi transientInstance) {
 		log.debug("persisting Hocvi instance");
 		try {
-			sessionFactory.getCurrentSession().persist(transientInstance);
+			sessionFactory.openSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class HocviHome {
 	public void attachDirty(Hocvi instance) {
 		log.debug("attaching dirty Hocvi instance");
 		try {
-			sessionFactory.getCurrentSession().saveOrUpdate(instance);
+			sessionFactory.openSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class HocviHome {
 	public void attachClean(Hocvi instance) {
 		log.debug("attaching clean Hocvi instance");
 		try {
-			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
+			sessionFactory.openSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class HocviHome {
 	public void delete(Hocvi persistentInstance) {
 		log.debug("deleting Hocvi instance");
 		try {
-			sessionFactory.getCurrentSession().delete(persistentInstance);
+			sessionFactory.openSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class HocviHome {
 	public Hocvi merge(Hocvi detachedInstance) {
 		log.debug("merging Hocvi instance");
 		try {
-			Hocvi result = (Hocvi) sessionFactory.getCurrentSession().merge(
+			Hocvi result = (Hocvi) sessionFactory.openSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class HocviHome {
 	public Hocvi findById(java.lang.Integer id) {
 		log.debug("getting Hocvi instance with id: " + id);
 		try {
-			Hocvi instance = (Hocvi) sessionFactory.getCurrentSession().get(
+			Hocvi instance = (Hocvi) sessionFactory.openSession().get(
 					"edu.hust.k54.persistence.Hocvi", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
