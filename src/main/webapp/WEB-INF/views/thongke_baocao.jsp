@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Tìm kiếm</title>
+<title>Thống kê báo cáo</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
@@ -30,7 +30,7 @@
 								<li><a href="#">Tin KH quốc tế</a></li>
 								<li><a href="#">Thông báo</a></li>
 							</ul></li>
-						<li><a>Đơn vị</a>
+						<li><a href="#">Đơn vị</a>
 							<ul>
 								<li><a href="#">Viện toán học</a>
 									<ul>
@@ -96,7 +96,7 @@
 		<div id="wrap_main">
 
 			<div class="title_home">
-				<h2>Tìm kiếm</h2>
+				<h2>Danh sách báo cáo</h2>
 			</div>
 			<br /> <br />
 			<div class="find_box">
@@ -106,27 +106,21 @@
 
 					<table>
 						<tr style="">
-							<td style="width: 150px"><label>Tên cán bộ : </label></td>
-							<td><input type="text" name="user_name"
-								placeholder="tên cán bộ" width="400px" /></td>
+							<td style="width: 200px"><label>Thông tin cán bộ lập
+									báo cáo </label></td>
+							<td>
+								<ul>
+									<li><label>Acount</label> <input name="user_name_bonus"
+										type="text" placeholder="Acount" /></li>
+									<br />
+									<li><label>Họ tên: </label> <b>Phạm Minh Đạt</b> <!--Chỗ này dùng ajax để hiển thị tên, khi người dùng nhập acount cán bộ -->
+									</li>
+									<br />
+									<li><label>Đơn vị: </label> <b>Viện công nghệ thông
+											tin</b></li>
+								</ul>
+							</td>
 						</tr>
-						<tr>
-							<td><br /></td>
-							<td></td>
-						</tr>
-						<tr>
-							<td><label>Viện : </label></td>
-							<td><select name="vien" id="find_vien">
-									<option value="0" id="normal_vien">Viện</option>
-									<option value="1">Viện toán học</option>
-									<option value="2">Viện công nghệ thông tin</option>
-									<option value="3">Viện hóa học</option>
-									<option value="4">Viện công nghệ sinh học</option>
-									<option value="5">Viện công nghệ vũ trụ</option>
-							</select>
-							<!--End select --></td>
-						</tr>
-
 						<tr>
 							<td><br /></td>
 							<td></td>
@@ -147,45 +141,17 @@
 							<td><br /></td>
 							<td></td>
 						</tr>
+						<tr>
 
-						<tr>
-							<td><label>Phân loại cán bộ : </label></td>
-							<td><select name="vien">
-									<option value="0" selected>Cán bộ thường</option>
-									<option value="1">Cán bộ nghiên cứu</option>
-									<option value="2">Cán bộ 1</option>
-									<option value="3">Cán bộ 2</option>
-									<option value="4">Cán bộ 3</option>
-									<option value="5">Cán bộ 4</option>
-							</select>
-							<!--End select --></td>
-						</tr>
-						<tr>
-							<td><br /></td>
+							<td><input value="Xem danh sách báo cáo" name="xembaocao"
+								class="button" type="submit" name="find" /></td>
 							<td></td>
-						</tr>
-
-
-
-
-						<tr>
-							<td></td>
-							<td><input value="Tìm kiếm" class="button" type="submit"
-								name="find" /></td>
-
 						</tr>
 					</table>
 				</form>
 			</div>
 			<div class="result_find">
-				<div class="title_home">
-					<h2>Kết quả Tìm kiếm</h2>
-				</div>
-
 				<div class="list_data">
-					<div class="title_table">
-						<a> Danh sách cán bộ </a>
-					</div>
 					<table cellspacing="0" cellpadding="0" width="100%">
 						<tr>
 							<td>

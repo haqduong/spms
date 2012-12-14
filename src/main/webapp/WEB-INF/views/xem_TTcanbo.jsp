@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home page</title>
+<title>Thông tin cán bộ</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
@@ -21,90 +21,79 @@
 			<!--End banner_header -->
 			<div id="nav_menu">
 				<div class="header-row-1">
-					<ul class="header-menu">
+					<ul>
 						<li><a href="#">Trang chủ</a></li>
+						<li><a href="#">Tin tức - thông báo</a>
+							<ul>
+								<li><a href="#">Hoạt động</a></li>
+								<li><a href="#">Tin KH trong nước</a></li>
+								<li><a href="#">Tin KH quốc tế</a></li>
+								<li><a href="#">Thông báo</a></li>
+							</ul></li>
+						<li><a href="#">Đơn vị</a>
+							<ul>
+								<li><a href="#">Viện toán học</a>
+									<ul>
+										<li><a href="#">Giới thiệu chung</a></li>
+										<li><a href="#">Danh mục cán bộ</a></li>
+										<li><a href="#">Các phòng ban</a></li>
+										<li><a href="#">Các nghiên cứu</a></li>
+										<li><a href="#">Công trình Khoa học</a></li>
+									</ul></li>
+								<li><a href="#">Viện CNTT</a>
+									<ul>
+										<li><a href="#">Giới thiệu chung</a></li>
+										<li><a href="#">Danh mục cán bộ</a></li>
+										<li><a href="#">Các phòng ban</a></li>
+										<li><a href="#">Các nghiên cứu</a></li>
+										<li><a href="#">Công trình Khoa học</a></li>
+									</ul></li>
+								<li><a href="#">Viện hóa học</a>
+									<ul>
+										<li><a href="#">Giới thiệu chung</a></li>
+										<li><a href="#">Danh mục cán bộ</a></li>
+										<li><a href="#">Các phòng ban</a></li>
+										<li><a href="#">Các nghiên cứu</a></li>
+										<li><a href="#">Công trình Khoa học</a></li>
+									</ul></li>
+								<li><a href="#">Viện CN sinh học</a>
+									<ul>
+										<li><a href="#">Giới thiệu chung</a></li>
+										<li><a href="#">Danh mục cán bộ</a></li>
+										<li><a href="#">Các phòng ban</a></li>
+										<li><a href="#">Các nghiên cứu</a></li>
+										<li><a href="#">Công trình Khoa học</a></li>
+									</ul></li>
+								<li><a href="#">Viện hải dương học</a>
+									<ul>
+										<li><a href="#">Giới thiệu chung</a></li>
+										<li><a href="#">Danh mục cán bộ</a></li>
+										<li><a href="#">Các phòng ban</a></li>
+										<li><a href="#">Các nghiên cứu</a></li>
+										<li><a href="#">Công trình Khoa học</a></li>
+									</ul></li>
+								<li><a href="#">Viện công nghệ vũ trụ</a>
+									<ul>
+										<li><a href="#">Giới thiệu chung</a></li>
+										<li><a href="#">Danh mục cán bộ</a></li>
+										<li><a href="#">Các phòng ban</a></li>
+										<li><a href="#">Các nghiên cứu</a></li>
+										<li><a href="#">Công trình Khoa học</a></li>
+									</ul></li>
+							</ul></li>
+						<li></li>
 						<li><a href="#">Tìm kiếm</a></li>
 						<li><a href="#">Giới thiệu</a></li>
 						<li><a href="#">Liên hệ</a></li>
 					</ul>
 				</div>
+				<!--End header-row-1-->
 			</div>
 			<!-- end nav_menu -->
 		</div>
 		<!--End wrap_header -->
 
 		<div id="wrap_main">
-			<div class="title_home">
-				<h2>Quản lý cán bộ</h2>
-			</div>
-			<div class="images">
-				<div class="button">
-					<a>Thêm cán bộ</a>
-				</div>
-
-			</div>
-			<!--End images-->
-			<div class="clear"></div>
-			<div class="manager_staff">
-				<form>
-
-					<table border="0" bgcolor="#fff" align="center" id="info"
-						style="width: 100%">
-						<tr class="title_table">
-							<td style="width: 30%">Họ và tên</td>
-							<td style="width: 30%">Phòng ban</td>
-							<td style="width: 20%">Học hàm học vị</td>
-							<td style="width: 5%"></td>
-							<td style="width: 10%"></td>
-							<td style="width: 5%"></td>
-
-						</tr>
-						<tr>
-							<td>Nguyễn văn A</td>
-							<td>Viện toán học</td>
-							<td>phó giáo sư</td>
-							<td>Sửa</td>
-							<td>Chi tiết</td>
-							<td>Xóa</td>
-
-						</tr>
-						<tr>
-							<td>Nguyễn văn A</td>
-							<td>Viện toán học</td>
-							<td>phó giáo sư</td>
-							<td>Sửa</td>
-							<td>Chi tiết</td>
-							<td>Xóa</td>
-
-						</tr>
-						<tr>
-							<td>Nguyễn văn A</td>
-							<td>Viện toán học</td>
-							<td>phó giáo sư</td>
-							<td>Sửa</td>
-							<td>Chi tiết</td>
-							<td>Xóa</td>
-
-						</tr>
-						<tr>
-							<td>Nguyễn văn A</td>
-							<td>Viện toán học</td>
-							<td>phó giáo sư</td>
-							<td>Sửa</td>
-							<td>Chi tiết</td>
-							<td>Xóa</td>
-
-						</tr>
-
-					</table>
-
-					<br />
-					<br />
-
-
-				</form>
-			</div>
-			<!--End infomation -->
 			<div class="title_home">
 				<h2>Thông tin sơ yếu lý lịch</h2>
 			</div>
@@ -148,14 +137,14 @@
 				<div>
 
 					<!--                        <div align="left" class="detail_info"><b>Viện trưởng: </b> Phạm Minh Đạt</sdivong></div>
-                        <div align="left" class="detail_info"><b>Phó viện trưởng:</b></div>
-                            <div align="left" class="detail_info_sub">
-                                    
-                            <a>&nbsp;Kỹ sư&nbsp;Nguyễn Tuấn Vinh</a> <br>
-                                            
-                            <a>&nbsp;Kỹ sư&nbsp;Nguyễn Duy Hưởng</a> <br>
-                                            
-                        </div>-->
+                                                <div align="left" class="detail_info"><b>Phó viện trưởng:</b></div>
+                                                    <div align="left" class="detail_info_sub">
+                                                            
+                                                    <a>&nbsp;Kỹ sư&nbsp;Nguyễn Tuấn Vinh</a> <br>
+                                                                    
+                                                    <a>&nbsp;Kỹ sư&nbsp;Nguyễn Duy Hưởng</a> <br>
+                                                                    
+                                                </div>-->
 				</div>
 			</div>
 			<!--End contact_us-->
@@ -310,6 +299,34 @@
 						</tr>
 					</table>
 
+					<table border="0" bgcolor="#fff" align="center" id="info">
+						<tr>
+							<td class="title" colspan=2 align="center" height="50">Công
+								trình Khoa học</td>
+						</tr>
+						<tr>
+							<td colspan="2" align="">
+								<table>
+									<thead>
+										<tr>
+											<th>Công trình</th>
+											<th>Thời gian</th>
+										</tr>
+									</thead>
+
+									<tbody>
+
+										<tr>
+											<td class="list">Xử lý ngôn ngữ tự nhiên</td>
+											<td class="list_ret">2012</td>
+										</tr>
+
+									</tbody>
+								</table>
+							</td>
+						</tr>
+					</table>
+
 					<br />
 					<br />
 
@@ -344,26 +361,22 @@
 
 			<div class="box_right">
 				<div class="title_box">
-					<a>Danh sách viện</a>
+					<a>Chức năng quản lý</a>
 				</div>
 				<!--title_box-->
 				<div class="content_box">
-					<ul id="accordion">
-						<li>Viện Nghiên Cứu</li>
+					<div id="accordion">
 						<ul>
-							<li><a href="#">Viện toán học</a></li>
-							<li><a href="#">Viện công nghệ thông tin</a></li>
-							<li><a href="#">Viện hóa học</a></li>
-							<li><a href="#">Viện công nghệ sinh học</a></li>
-							<li><a href="#">Viện hải dương học</a></li>
-							<li><a href="#">Viện công nghệ vũ trụ</a></li>
+							<li><a href="#">Quản lý cán bộ</a></li>
+							<li><a href="#">Quản lý cán bộ</a></li>
+							<li><a href="#">Quản lý cán bộ</a></li>
+							<li><a href="#">Quản lý cán bộ</a></li>
+							<li><a href="#">Quản lý cán bộ</a></li>
+							<li><a href="#">Quản lý cán bộ</a></li>
 						</ul>
-						<li>Đơn Vị Hành Chính</li>
-						<ul>
-							<li><a href="#">Phòng nhân sự</a></li>
-							<li><a href="#">Phòng kế toán</a></li>
-						</ul>
-					</ul>
+					</div>
+					<!--End accordion -->
+
 				</div>
 				<!--end content_box-->
 			</div>

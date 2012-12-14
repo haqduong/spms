@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home page</title>
+<title>Báo cáo chuyển công tác</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet" type="text/css"
@@ -168,9 +168,8 @@
 						<form action="#" method="POST">
 							<label>Tài khoản : </label> <input type="text" name="user_name"
 								placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
-								type="password" name="user_password" placeholder="Mật khẩu" />
-							<input value="Đăng nhập" class="button" type="submit"
-								name="login" />
+								type="password" name="user_password" placeholder="Mật khẩu" /> <input
+								value="Đăng nhập" class="button" type="submit" name="login" />
 						</form>
 					</div>
 				</div>

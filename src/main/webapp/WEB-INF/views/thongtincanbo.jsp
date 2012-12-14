@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Home page</title>
+<title>Thông tin cán bộ</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
@@ -210,7 +210,8 @@
 							<td class="list_ret">${soyeu.danhhieu.ten}</td>
 						</tr>
 					</table>
-					<br /> <br />
+					<br />
+					<br />
 
 					<table border="0" bgcolor="#fff" align="center" id="info">
 						<tr>
@@ -268,7 +269,8 @@
 						</tr>
 					</table>
 
-					<br /> <br />
+					<br />
+					<br />
 
 
 				</form>
@@ -290,9 +292,8 @@
 						<form action="#" method="POST">
 							<label>Tài khoản : </label> <input type="text" name="user_name"
 								placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
-								type="password" name="user_password" placeholder="Mật khẩu" />
-							<input value="Đăng nhập" class="button" type="submit"
-								name="login" />
+								type="password" name="user_password" placeholder="Mật khẩu" /> <input
+								value="Đăng nhập" class="button" type="submit" name="login" />
 						</form>
 					</div>
 				</div>
