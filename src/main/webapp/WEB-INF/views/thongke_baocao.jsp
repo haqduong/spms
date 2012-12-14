@@ -323,7 +323,7 @@
 					</div>
 					<div class="content_box">
 						<div class="loginpopup" style="">
-							<form action="logout.spms" method="POST">
+							<form action="/k54/logout.spms" method="POST">
 								<input value="Đăng xuất" class="button" type="submit"
 									name="logout" />
 							</form>
@@ -338,7 +338,7 @@
 					<!--title_box-->
 					<div class="content_box">
 						<div class="loginpopup" style="">
-							<form action="login.spms" method="POST">
+							<form action="/k54/login.spms" method="POST">
 								<label>Tài khoản : </label> <input type="text" name="user_name"
 									placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
 									type="password" name="user_password" placeholder="Mật khẩu" />
