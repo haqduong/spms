@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.Controller;
 
 import edu.hust.k54.persistence.Donviquanly;
 import edu.hust.k54.persistence.DonviquanlyHome;
+import edu.hust.k54.persistence.Soyeulylich;
 import edu.hust.k54.persistence.Taikhoandangnhap;
 
 public class GuestController  implements Controller {
@@ -42,6 +43,19 @@ public class GuestController  implements Controller {
 				Guest guestController = new Guest();
 				List< Donviquanly> donviquanly = guestController.TimDVQL(null, null, null);
 				modelAndView.addObject("donviquanly", donviquanly);
+				String tenVien = arg0.getParameter("vien");
+				String tenPhongBan = arg0.getParameter("phongban");
+				String tenCb = arg0.getParameter("tenCanBo");
+				
+				if((tenCb != "") || (tenVien != "")||(tenPhongBan != "")){
+					List<Soyeulylich> danhsachcanbo = guestController.TimCB(((tenVien == "" )? null: tenVien) , ((tenPhongBan == "" )? null: tenPhongBan), ((tenCb == "" )? null: tenCb));
+					modelAndView.addObject("result", danhsachcanbo);
+				}
+				System.out.println("dkm" + tenCb + tenPhongBan + tenVien);
+				if(tenVien == null){
+					
+					System.out.println("dkm" + tenCb + tenPhongBan + tenVien);
+				}
 				modelAndView = setLink(modelAndView);
 			}else if(uri.contains("info")){
 				modelAndView = new ModelAndView("info");
