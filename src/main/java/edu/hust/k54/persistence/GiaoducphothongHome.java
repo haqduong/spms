@@ -35,7 +35,7 @@ public class GiaoducphothongHome {
 	public void persist(Giaoducphothong transientInstance) {
 		log.debug("persisting Giaoducphothong instance");
 		try {
-			sessionFactory.openSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class GiaoducphothongHome {
 	public void attachDirty(Giaoducphothong instance) {
 		log.debug("attaching dirty Giaoducphothong instance");
 		try {
-			sessionFactory.openSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class GiaoducphothongHome {
 	public void attachClean(Giaoducphothong instance) {
 		log.debug("attaching clean Giaoducphothong instance");
 		try {
-			sessionFactory.openSession().lock(instance, LockMode.NONE);
+			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class GiaoducphothongHome {
 	public void delete(Giaoducphothong persistentInstance) {
 		log.debug("deleting Giaoducphothong instance");
 		try {
-			sessionFactory.openSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -80,7 +80,7 @@ public class GiaoducphothongHome {
 		log.debug("merging Giaoducphothong instance");
 		try {
 			Giaoducphothong result = (Giaoducphothong) sessionFactory
-					.openSession().merge(detachedInstance);
+					.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -93,7 +93,7 @@ public class GiaoducphothongHome {
 		log.debug("getting Giaoducphothong instance with id: " + id);
 		try {
 			Giaoducphothong instance = (Giaoducphothong) sessionFactory
-					.openSession().get(
+					.getCurrentSession().get(
 							"edu.hust.k54.persistence.Giaoducphothong", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -110,7 +110,7 @@ public class GiaoducphothongHome {
 	public List findByExample(Giaoducphothong instance) {
 		log.debug("finding Giaoducphothong instance by example");
 		try {
-			List results = sessionFactory.openSession()
+			List results = sessionFactory.getCurrentSession()
 					.createCriteria("edu.hust.k54.persistence.Giaoducphothong")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

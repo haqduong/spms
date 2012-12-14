@@ -35,7 +35,7 @@ public class KhoidonviquanlyHome {
 	public void persist(Khoidonviquanly transientInstance) {
 		log.debug("persisting Khoidonviquanly instance");
 		try {
-			sessionFactory.openSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class KhoidonviquanlyHome {
 	public void attachDirty(Khoidonviquanly instance) {
 		log.debug("attaching dirty Khoidonviquanly instance");
 		try {
-			sessionFactory.openSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class KhoidonviquanlyHome {
 	public void attachClean(Khoidonviquanly instance) {
 		log.debug("attaching clean Khoidonviquanly instance");
 		try {
-			sessionFactory.openSession().lock(instance, LockMode.NONE);
+			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class KhoidonviquanlyHome {
 	public void delete(Khoidonviquanly persistentInstance) {
 		log.debug("deleting Khoidonviquanly instance");
 		try {
-			sessionFactory.openSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -80,7 +80,7 @@ public class KhoidonviquanlyHome {
 		log.debug("merging Khoidonviquanly instance");
 		try {
 			Khoidonviquanly result = (Khoidonviquanly) sessionFactory
-					.openSession().merge(detachedInstance);
+					.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -93,7 +93,7 @@ public class KhoidonviquanlyHome {
 		log.debug("getting Khoidonviquanly instance with id: " + id);
 		try {
 			Khoidonviquanly instance = (Khoidonviquanly) sessionFactory
-					.openSession().get(
+					.getCurrentSession().get(
 							"edu.hust.k54.persistence.Khoidonviquanly", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -110,7 +110,7 @@ public class KhoidonviquanlyHome {
 	public List findByExample(Khoidonviquanly instance) {
 		log.debug("finding Khoidonviquanly instance by example");
 		try {
-			List results = sessionFactory.openSession()
+			List results = sessionFactory.getCurrentSession()
 					.createCriteria("edu.hust.k54.persistence.Khoidonviquanly")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

@@ -35,7 +35,7 @@ public class MuckyluatHome {
 	public void persist(Muckyluat transientInstance) {
 		log.debug("persisting Muckyluat instance");
 		try {
-			sessionFactory.openSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class MuckyluatHome {
 	public void attachDirty(Muckyluat instance) {
 		log.debug("attaching dirty Muckyluat instance");
 		try {
-			sessionFactory.openSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class MuckyluatHome {
 	public void attachClean(Muckyluat instance) {
 		log.debug("attaching clean Muckyluat instance");
 		try {
-			sessionFactory.openSession().lock(instance, LockMode.NONE);
+			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class MuckyluatHome {
 	public void delete(Muckyluat persistentInstance) {
 		log.debug("deleting Muckyluat instance");
 		try {
-			sessionFactory.openSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class MuckyluatHome {
 	public Muckyluat merge(Muckyluat detachedInstance) {
 		log.debug("merging Muckyluat instance");
 		try {
-			Muckyluat result = (Muckyluat) sessionFactory.openSession()
+			Muckyluat result = (Muckyluat) sessionFactory.getCurrentSession()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class MuckyluatHome {
 	public Muckyluat findById(java.lang.Integer id) {
 		log.debug("getting Muckyluat instance with id: " + id);
 		try {
-			Muckyluat instance = (Muckyluat) sessionFactory.openSession()
+			Muckyluat instance = (Muckyluat) sessionFactory.getCurrentSession()
 					.get("edu.hust.k54.persistence.Muckyluat", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -109,7 +109,7 @@ public class MuckyluatHome {
 	public List findByExample(Muckyluat instance) {
 		log.debug("finding Muckyluat instance by example");
 		try {
-			List results = sessionFactory.openSession()
+			List results = sessionFactory.getCurrentSession()
 					.createCriteria("edu.hust.k54.persistence.Muckyluat")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
