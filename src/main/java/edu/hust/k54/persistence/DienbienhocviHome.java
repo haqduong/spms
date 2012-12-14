@@ -35,7 +35,7 @@ public class DienbienhocviHome {
 	public void persist(Dienbienhocvi transientInstance) {
 		log.debug("persisting Dienbienhocvi instance");
 		try {
-			sessionFactory.openSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class DienbienhocviHome {
 	public void attachDirty(Dienbienhocvi instance) {
 		log.debug("attaching dirty Dienbienhocvi instance");
 		try {
-			sessionFactory.openSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class DienbienhocviHome {
 	public void attachClean(Dienbienhocvi instance) {
 		log.debug("attaching clean Dienbienhocvi instance");
 		try {
-			sessionFactory.openSession().lock(instance, LockMode.NONE);
+			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class DienbienhocviHome {
 	public void delete(Dienbienhocvi persistentInstance) {
 		log.debug("deleting Dienbienhocvi instance");
 		try {
-			sessionFactory.openSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -80,7 +80,7 @@ public class DienbienhocviHome {
 		log.debug("merging Dienbienhocvi instance");
 		try {
 			Dienbienhocvi result = (Dienbienhocvi) sessionFactory
-					.openSession().merge(detachedInstance);
+					.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -93,7 +93,7 @@ public class DienbienhocviHome {
 		log.debug("getting Dienbienhocvi instance with id: " + id);
 		try {
 			Dienbienhocvi instance = (Dienbienhocvi) sessionFactory
-					.openSession().get(
+					.getCurrentSession().get(
 							"edu.hust.k54.persistence.Dienbienhocvi", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -110,7 +110,7 @@ public class DienbienhocviHome {
 	public List findByExample(Dienbienhocvi instance) {
 		log.debug("finding Dienbienhocvi instance by example");
 		try {
-			List results = sessionFactory.openSession()
+			List results = sessionFactory.getCurrentSession()
 					.createCriteria("edu.hust.k54.persistence.Dienbienhocvi")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

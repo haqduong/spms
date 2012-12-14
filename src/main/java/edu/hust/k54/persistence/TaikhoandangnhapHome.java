@@ -36,7 +36,7 @@ public class TaikhoandangnhapHome {
 	public void persist(Taikhoandangnhap transientInstance) {
 		log.debug("persisting Taikhoandangnhap instance");
 		try {
-			sessionFactory.openSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -47,7 +47,7 @@ public class TaikhoandangnhapHome {
 	public void attachDirty(Taikhoandangnhap instance) {
 		log.debug("attaching dirty Taikhoandangnhap instance");
 		try {
-			sessionFactory.openSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -58,7 +58,7 @@ public class TaikhoandangnhapHome {
 	public void attachClean(Taikhoandangnhap instance) {
 		log.debug("attaching clean Taikhoandangnhap instance");
 		try {
-			sessionFactory.openSession().lock(instance, LockMode.NONE);
+			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -69,7 +69,7 @@ public class TaikhoandangnhapHome {
 	public void delete(Taikhoandangnhap persistentInstance) {
 		log.debug("deleting Taikhoandangnhap instance");
 		try {
-			sessionFactory.openSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -81,7 +81,7 @@ public class TaikhoandangnhapHome {
 		log.debug("merging Taikhoandangnhap instance");
 		try {
 			Taikhoandangnhap result = (Taikhoandangnhap) sessionFactory
-					.openSession().merge(detachedInstance);
+					.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -94,7 +94,7 @@ public class TaikhoandangnhapHome {
 		log.debug("getting Taikhoandangnhap instance with id: " + id);
 		try {
 			Taikhoandangnhap instance = (Taikhoandangnhap) sessionFactory
-					.openSession().get(
+					.getCurrentSession().get(
 							"edu.hust.k54.persistence.Taikhoandangnhap", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -112,7 +112,7 @@ public class TaikhoandangnhapHome {
 		log.debug("finding Taikhoandangnhap instance by example");
 		try {
 			List results = sessionFactory
-					.openSession()
+					.getCurrentSession()
 					.createCriteria("edu.hust.k54.persistence.Taikhoandangnhap")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

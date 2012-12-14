@@ -35,7 +35,7 @@ public class HochamHome {
 	public void persist(Hocham transientInstance) {
 		log.debug("persisting Hocham instance");
 		try {
-			sessionFactory.openSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class HochamHome {
 	public void attachDirty(Hocham instance) {
 		log.debug("attaching dirty Hocham instance");
 		try {
-			sessionFactory.openSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class HochamHome {
 	public void attachClean(Hocham instance) {
 		log.debug("attaching clean Hocham instance");
 		try {
-			sessionFactory.openSession().lock(instance, LockMode.NONE);
+			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class HochamHome {
 	public void delete(Hocham persistentInstance) {
 		log.debug("deleting Hocham instance");
 		try {
-			sessionFactory.openSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class HochamHome {
 	public Hocham merge(Hocham detachedInstance) {
 		log.debug("merging Hocham instance");
 		try {
-			Hocham result = (Hocham) sessionFactory.openSession().merge(
+			Hocham result = (Hocham) sessionFactory.getCurrentSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class HochamHome {
 	public Hocham findById(java.lang.Integer id) {
 		log.debug("getting Hocham instance with id: " + id);
 		try {
-			Hocham instance = (Hocham) sessionFactory.openSession().get(
+			Hocham instance = (Hocham) sessionFactory.getCurrentSession().get(
 					"edu.hust.k54.persistence.Hocham", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -109,7 +109,7 @@ public class HochamHome {
 	public List findByExample(Hocham instance) {
 		log.debug("finding Hocham instance by example");
 		try {
-			List results = sessionFactory.openSession()
+			List results = sessionFactory.getCurrentSession()
 					.createCriteria("edu.hust.k54.persistence.Hocham")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

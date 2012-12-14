@@ -35,7 +35,7 @@ public class KyluatHome {
 	public void persist(Kyluat transientInstance) {
 		log.debug("persisting Kyluat instance");
 		try {
-			sessionFactory.openSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class KyluatHome {
 	public void attachDirty(Kyluat instance) {
 		log.debug("attaching dirty Kyluat instance");
 		try {
-			sessionFactory.openSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class KyluatHome {
 	public void attachClean(Kyluat instance) {
 		log.debug("attaching clean Kyluat instance");
 		try {
-			sessionFactory.openSession().lock(instance, LockMode.NONE);
+			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class KyluatHome {
 	public void delete(Kyluat persistentInstance) {
 		log.debug("deleting Kyluat instance");
 		try {
-			sessionFactory.openSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class KyluatHome {
 	public Kyluat merge(Kyluat detachedInstance) {
 		log.debug("merging Kyluat instance");
 		try {
-			Kyluat result = (Kyluat) sessionFactory.openSession().merge(
+			Kyluat result = (Kyluat) sessionFactory.getCurrentSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class KyluatHome {
 	public Kyluat findById(java.lang.Integer id) {
 		log.debug("getting Kyluat instance with id: " + id);
 		try {
-			Kyluat instance = (Kyluat) sessionFactory.openSession().get(
+			Kyluat instance = (Kyluat) sessionFactory.getCurrentSession().get(
 					"edu.hust.k54.persistence.Kyluat", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -109,7 +109,7 @@ public class KyluatHome {
 	public List findByExample(Kyluat instance) {
 		log.debug("finding Kyluat instance by example");
 		try {
-			List results = sessionFactory.openSession()
+			List results = sessionFactory.getCurrentSession()
 					.createCriteria("edu.hust.k54.persistence.Kyluat")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

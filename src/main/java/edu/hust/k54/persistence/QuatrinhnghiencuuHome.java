@@ -36,7 +36,7 @@ public class QuatrinhnghiencuuHome {
 	public void persist(Quatrinhnghiencuu transientInstance) {
 		log.debug("persisting Quatrinhnghiencuu instance");
 		try {
-			sessionFactory.openSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -47,7 +47,7 @@ public class QuatrinhnghiencuuHome {
 	public void attachDirty(Quatrinhnghiencuu instance) {
 		log.debug("attaching dirty Quatrinhnghiencuu instance");
 		try {
-			sessionFactory.openSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -58,7 +58,7 @@ public class QuatrinhnghiencuuHome {
 	public void attachClean(Quatrinhnghiencuu instance) {
 		log.debug("attaching clean Quatrinhnghiencuu instance");
 		try {
-			sessionFactory.openSession().lock(instance, LockMode.NONE);
+			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -69,7 +69,7 @@ public class QuatrinhnghiencuuHome {
 	public void delete(Quatrinhnghiencuu persistentInstance) {
 		log.debug("deleting Quatrinhnghiencuu instance");
 		try {
-			sessionFactory.openSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -81,7 +81,7 @@ public class QuatrinhnghiencuuHome {
 		log.debug("merging Quatrinhnghiencuu instance");
 		try {
 			Quatrinhnghiencuu result = (Quatrinhnghiencuu) sessionFactory
-					.openSession().merge(detachedInstance);
+					.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -94,7 +94,7 @@ public class QuatrinhnghiencuuHome {
 		log.debug("getting Quatrinhnghiencuu instance with id: " + id);
 		try {
 			Quatrinhnghiencuu instance = (Quatrinhnghiencuu) sessionFactory
-					.openSession().get(
+					.getCurrentSession().get(
 							"edu.hust.k54.persistence.Quatrinhnghiencuu", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -112,7 +112,7 @@ public class QuatrinhnghiencuuHome {
 		log.debug("finding Quatrinhnghiencuu instance by example");
 		try {
 			List results = sessionFactory
-					.openSession()
+					.getCurrentSession()
 					.createCriteria(
 							"edu.hust.k54.persistence.Quatrinhnghiencuu")
 					.add(Example.create(instance)).list();

@@ -86,15 +86,15 @@
 							</ul></li>
 						<li><a
 							href="<c:if test="${not empty search}"> ${search} </c:if>
-							<c:if test="${empty search}"> guest/search.spms</c:if>">Tìm
+							<c:if test="${empty search}">/guest/search.spms</c:if>">Tìm
 								kiếm</a></li>
 						<li><a
 							href="<c:if test="${not empty info}"> ${info} </c:if>
-							<c:if test="${empty info}"> guest/info.spms</c:if>">Giới
+							<c:if test="${empty info}">/guest/info.spms</c:if>">Giới
 								thiệu</a></li>
 						<li><a
 							href="<c:if test="${not empty contact}"> ${contact} </c:if>
-							<c:if test="${empty contact}"> guest/contact.spms</c:if>">Liên
+							<c:if test="${empty contact}">/guest/contact.spms</c:if>">Liên
 								hệ</a></li>
 					</ul>
 				</div>
