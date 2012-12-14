@@ -26,6 +26,12 @@ public class StaffController implements Controller {
 				//TODO
 			}else if(uri.contains("info")){
 				//TODO
+			}else if(uri.contains("research")){
+				//TODO
+			}else if(uri.contains("notification")){
+				//TODO
+			}else if(uri.contains("info")){
+				//TODO
 			}else if(uri.contains("contact")){
 				//TODO
 			}

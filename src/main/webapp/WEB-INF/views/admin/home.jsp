@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Quản lý cán bộ</title>
+<title>Admin Home Page</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
@@ -70,7 +70,8 @@
 										<td style="width: 10%">Chức vụ</td>
 										<td style="width: 15%">SĐT</td>
 										<td style="width: 15%">Email</td>
-										<td style="width: 10%">Thông tin</td>
+										<td style="width: 5%"></td>
+										<td style="width: 5%"></td>
 									</tr>
 								</table>
 							</td>
@@ -86,7 +87,8 @@
 											<td style="width: 10%">Trưởng viện</td>
 											<td style="width: 15%">012346789</td>
 											<td style="width: 15%">abc@gamil.com</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
+											<td style="width: 5%"><a href="#">Xem</a></td>
+											<td style="width: 5%"><a href="#">Xóa</a></td>
 										</tr>
 										<tr class="row_2">
 											<td>1</td>
@@ -95,16 +97,18 @@
 											<td>Trưởng viện</td>
 											<td>012346789</td>
 											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
+											<td><a href="#">Xem</a></td>
+											<td><a href="#">Xóa</a></td>
 										</tr>
 										<tr class="row_1">
-											<td style="width: 5%">1</td>
-											<td style="width: 20%">Phạm Minh Đạt</td>
-											<td style="width: 15%">Viện toán học</td>
-											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">012346789</td>
-											<td style="width: 15%">abc@gamil.com</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
+											<td>1</td>
+											<td>Phạm Minh Đạt</td>
+											<td>Viện toán học</td>
+											<td>Trưởng viện</td>
+											<td>012346789</td>
+											<td>abc@gamil.com</td>
+											<td><a href="#">Xem</a></td>
+											<td><a href="#">Xóa</a></td>
 										</tr>
 										<tr class="row_2">
 											<td>1</td>
@@ -113,16 +117,18 @@
 											<td>Trưởng viện</td>
 											<td>012346789</td>
 											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
+											<td><a href="#">Xem</a></td>
+											<td><a href="#">Xóa</a></td>
 										</tr>
 										<tr class="row_1">
-											<td style="width: 5%">1</td>
-											<td style="width: 20%">Phạm Minh Đạt</td>
-											<td style="width: 15%">Viện toán học</td>
-											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">012346789</td>
-											<td style="width: 15%">abc@gamil.com</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
+											<td>1</td>
+											<td>Phạm Minh Đạt</td>
+											<td>Viện toán học</td>
+											<td>Trưởng viện</td>
+											<td>012346789</td>
+											<td>abc@gamil.com</td>
+											<td><a href="#">Xem</a></td>
+											<td><a href="#">Xóa</a></td>
 										</tr>
 										<tr class="row_2">
 											<td>1</td>
@@ -131,16 +137,18 @@
 											<td>Trưởng viện</td>
 											<td>012346789</td>
 											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
+											<td><a href="#">Xem</a></td>
+											<td><a href="#">Xóa</a></td>
 										</tr>
 										<tr class="row_1">
-											<td style="width: 5%">1</td>
-											<td style="width: 20%">Phạm Minh Đạt</td>
-											<td style="width: 15%">Viện toán học</td>
-											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">012346789</td>
-											<td style="width: 15%">abc@gamil.com</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
+											<td>1</td>
+											<td>Phạm Minh Đạt</td>
+											<td>Viện toán học</td>
+											<td>Trưởng viện</td>
+											<td>012346789</td>
+											<td>abc@gamil.com</td>
+											<td><a href="#">Xem</a></td>
+											<td><a href="#">Xóa</a></td>
 										</tr>
 										<tr class="row_2">
 											<td>1</td>
@@ -149,16 +157,18 @@
 											<td>Trưởng viện</td>
 											<td>012346789</td>
 											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
+											<td><a href="#">Xem</a></td>
+											<td><a href="#">Xóa</a></td>
 										</tr>
 										<tr class="row_1">
-											<td style="width: 5%">1</td>
-											<td style="width: 20%">Phạm Minh Đạt</td>
-											<td style="width: 15%">Viện toán học</td>
-											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">012346789</td>
-											<td style="width: 15%">abc@gamil.com</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
+											<td>1</td>
+											<td>Phạm Minh Đạt</td>
+											<td>Viện toán học</td>
+											<td>Trưởng viện</td>
+											<td>012346789</td>
+											<td>abc@gamil.com</td>
+											<td><a href="#">Xem</a></td>
+											<td><a href="#">Xóa</a></td>
 										</tr>
 										<tr class="row_2">
 											<td>1</td>
@@ -167,43 +177,28 @@
 											<td>Trưởng viện</td>
 											<td>012346789</td>
 											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
+											<td><a href="#">Xem</a></td>
+											<td><a href="#">Xóa</a></td>
 										</tr>
 										<tr class="row_1">
-											<td style="width: 5%">1</td>
-											<td style="width: 20%">Phạm Minh Đạt</td>
-											<td style="width: 15%">Viện toán học</td>
-											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">012346789</td>
-											<td style="width: 15%">abc@gamil.com</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_2">
 											<td>1</td>
 											<td>Phạm Minh Đạt</td>
 											<td>Viện toán học</td>
 											<td>Trưởng viện</td>
 											<td>012346789</td>
 											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
+											<td><a href="#">Xem</a></td>
+											<td><a href="#">Xóa</a></td>
 										</tr>
 										<tr class="row_1">
-											<td style="width: 5%">1</td>
-											<td style="width: 20%">Phạm Minh Đạt</td>
-											<td style="width: 15%">Viện toán học</td>
-											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">012346789</td>
-											<td style="width: 15%">abc@gamil.com</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-										</tr>
-										<tr class="row_2">
 											<td>1</td>
 											<td>Phạm Minh Đạt</td>
 											<td>Viện toán học</td>
 											<td>Trưởng viện</td>
 											<td>012346789</td>
 											<td>abc@gamil.com</td>
-											<td><a href="#">Xem chi tiết</a></td>
+											<td><a href="#">Xem</a></td>
+											<td><a href="#">Xóa</a></td>
 										</tr>
 
 									</table>
