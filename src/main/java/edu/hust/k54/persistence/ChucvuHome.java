@@ -35,7 +35,7 @@ public class ChucvuHome {
 	public void persist(Chucvu transientInstance) {
 		log.debug("persisting Chucvu instance");
 		try {
-			sessionFactory.openSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class ChucvuHome {
 	public void attachDirty(Chucvu instance) {
 		log.debug("attaching dirty Chucvu instance");
 		try {
-			sessionFactory.openSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class ChucvuHome {
 	public void attachClean(Chucvu instance) {
 		log.debug("attaching clean Chucvu instance");
 		try {
-			sessionFactory.openSession().lock(instance, LockMode.NONE);
+			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class ChucvuHome {
 	public void delete(Chucvu persistentInstance) {
 		log.debug("deleting Chucvu instance");
 		try {
-			sessionFactory.openSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class ChucvuHome {
 	public Chucvu merge(Chucvu detachedInstance) {
 		log.debug("merging Chucvu instance");
 		try {
-			Chucvu result = (Chucvu) sessionFactory.openSession().merge(
+			Chucvu result = (Chucvu) sessionFactory.getCurrentSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class ChucvuHome {
 	public Chucvu findById(java.lang.Integer id) {
 		log.debug("getting Chucvu instance with id: " + id);
 		try {
-			Chucvu instance = (Chucvu) sessionFactory.openSession().get(
+			Chucvu instance = (Chucvu) sessionFactory.getCurrentSession().get(
 					"edu.hust.k54.persistence.Chucvu", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -109,7 +109,7 @@ public class ChucvuHome {
 	public List findByExample(Chucvu instance) {
 		log.debug("finding Chucvu instance by example");
 		try {
-			List results = sessionFactory.openSession()
+			List results = sessionFactory.getCurrentSession()
 					.createCriteria("edu.hust.k54.persistence.Chucvu")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

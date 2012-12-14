@@ -35,7 +35,7 @@ public class PhongbanHome {
 	public void persist(Phongban transientInstance) {
 		log.debug("persisting Phongban instance");
 		try {
-			sessionFactory.openSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class PhongbanHome {
 	public void attachDirty(Phongban instance) {
 		log.debug("attaching dirty Phongban instance");
 		try {
-			sessionFactory.openSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class PhongbanHome {
 	public void attachClean(Phongban instance) {
 		log.debug("attaching clean Phongban instance");
 		try {
-			sessionFactory.openSession().lock(instance, LockMode.NONE);
+			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class PhongbanHome {
 	public void delete(Phongban persistentInstance) {
 		log.debug("deleting Phongban instance");
 		try {
-			sessionFactory.openSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class PhongbanHome {
 	public Phongban merge(Phongban detachedInstance) {
 		log.debug("merging Phongban instance");
 		try {
-			Phongban result = (Phongban) sessionFactory.openSession()
+			Phongban result = (Phongban) sessionFactory.getCurrentSession()
 					.merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class PhongbanHome {
 	public Phongban findById(java.lang.Integer id) {
 		log.debug("getting Phongban instance with id: " + id);
 		try {
-			Phongban instance = (Phongban) sessionFactory.openSession()
+			Phongban instance = (Phongban) sessionFactory.getCurrentSession()
 					.get("edu.hust.k54.persistence.Phongban", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -109,7 +109,7 @@ public class PhongbanHome {
 	public List findByExample(Phongban instance) {
 		log.debug("finding Phongban instance by example");
 		try {
-			List results = sessionFactory.openSession()
+			List results = sessionFactory.getCurrentSession()
 					.createCriteria("edu.hust.k54.persistence.Phongban")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

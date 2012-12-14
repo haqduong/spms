@@ -35,7 +35,7 @@ public class DonviquanlyHome {
 	public void persist(Donviquanly transientInstance) {
 		log.debug("persisting Donviquanly instance");
 		try {
-			sessionFactory.openSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class DonviquanlyHome {
 	public void attachDirty(Donviquanly instance) {
 		log.debug("attaching dirty Donviquanly instance");
 		try {
-			sessionFactory.openSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class DonviquanlyHome {
 	public void attachClean(Donviquanly instance) {
 		log.debug("attaching clean Donviquanly instance");
 		try {
-			sessionFactory.openSession().lock(instance, LockMode.NONE);
+			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class DonviquanlyHome {
 	public void delete(Donviquanly persistentInstance) {
 		log.debug("deleting Donviquanly instance");
 		try {
-			sessionFactory.openSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -80,7 +80,7 @@ public class DonviquanlyHome {
 		log.debug("merging Donviquanly instance");
 		try {
 			Donviquanly result = (Donviquanly) sessionFactory
-					.openSession().merge(detachedInstance);
+					.getCurrentSession().merge(detachedInstance);
 			log.debug("merge successful");
 			return result;
 		} catch (RuntimeException re) {
@@ -93,7 +93,7 @@ public class DonviquanlyHome {
 		log.debug("getting Donviquanly instance with id: " + id);
 		try {
 			Donviquanly instance = (Donviquanly) sessionFactory
-					.openSession().get(
+					.getCurrentSession().get(
 							"edu.hust.k54.persistence.Donviquanly", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -110,7 +110,7 @@ public class DonviquanlyHome {
 	public List findByExample(Donviquanly instance) {
 		log.debug("finding Donviquanly instance by example");
 		try {
-			List results = sessionFactory.openSession()
+			List results = sessionFactory.getCurrentSession()
 					.createCriteria("edu.hust.k54.persistence.Donviquanly")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "

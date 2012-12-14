@@ -35,7 +35,7 @@ public class DantocHome {
 	public void persist(Dantoc transientInstance) {
 		log.debug("persisting Dantoc instance");
 		try {
-			sessionFactory.openSession().persist(transientInstance);
+			sessionFactory.getCurrentSession().persist(transientInstance);
 			log.debug("persist successful");
 		} catch (RuntimeException re) {
 			log.error("persist failed", re);
@@ -46,7 +46,7 @@ public class DantocHome {
 	public void attachDirty(Dantoc instance) {
 		log.debug("attaching dirty Dantoc instance");
 		try {
-			sessionFactory.openSession().saveOrUpdate(instance);
+			sessionFactory.getCurrentSession().saveOrUpdate(instance);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -57,7 +57,7 @@ public class DantocHome {
 	public void attachClean(Dantoc instance) {
 		log.debug("attaching clean Dantoc instance");
 		try {
-			sessionFactory.openSession().lock(instance, LockMode.NONE);
+			sessionFactory.getCurrentSession().lock(instance, LockMode.NONE);
 			log.debug("attach successful");
 		} catch (RuntimeException re) {
 			log.error("attach failed", re);
@@ -68,7 +68,7 @@ public class DantocHome {
 	public void delete(Dantoc persistentInstance) {
 		log.debug("deleting Dantoc instance");
 		try {
-			sessionFactory.openSession().delete(persistentInstance);
+			sessionFactory.getCurrentSession().delete(persistentInstance);
 			log.debug("delete successful");
 		} catch (RuntimeException re) {
 			log.error("delete failed", re);
@@ -79,7 +79,7 @@ public class DantocHome {
 	public Dantoc merge(Dantoc detachedInstance) {
 		log.debug("merging Dantoc instance");
 		try {
-			Dantoc result = (Dantoc) sessionFactory.openSession().merge(
+			Dantoc result = (Dantoc) sessionFactory.getCurrentSession().merge(
 					detachedInstance);
 			log.debug("merge successful");
 			return result;
@@ -92,7 +92,7 @@ public class DantocHome {
 	public Dantoc findById(java.lang.Integer id) {
 		log.debug("getting Dantoc instance with id: " + id);
 		try {
-			Dantoc instance = (Dantoc) sessionFactory.openSession().get(
+			Dantoc instance = (Dantoc) sessionFactory.getCurrentSession().get(
 					"edu.hust.k54.persistence.Dantoc", id);
 			if (instance == null) {
 				log.debug("get successful, no instance found");
@@ -109,7 +109,7 @@ public class DantocHome {
 	public List findByExample(Dantoc instance) {
 		log.debug("finding Dantoc instance by example");
 		try {
-			List results = sessionFactory.openSession()
+			List results = sessionFactory.getCurrentSession()
 					.createCriteria("edu.hust.k54.persistence.Dantoc")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
