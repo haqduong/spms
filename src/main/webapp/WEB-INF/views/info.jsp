@@ -109,8 +109,7 @@
 				<h2>Viện khoa học và công nghệ Việt Nam</h2>
 			</div>
 			<div class="images">
-				<img src="/resources/images/public/nhadieuhanh.jpg" width="730"
-					height="240" />
+			<img src="<c:url value = "/resources/images/public/nhadieuhanh.jpg"/>" width="730" height="240" />
 			</div>
 			<div class="content_text">
 
@@ -459,7 +458,7 @@
 					</div>
 					<div class="content_box">
 						<div class="loginpopup" style="">
-							<form action="logout.spms" method="POST">
+							<form action="/k54/logout.spms" method="POST">
 								<input value="Đăng xuất" class="button" type="submit"
 									name="logout" />
 							</form>
@@ -474,7 +473,7 @@
 					<!--title_box-->
 					<div class="content_box">
 						<div class="loginpopup" style="">
-							<form action="login.spms" method="POST">
+							<form action="/k54/login.spms" method="POST">
 								<label>Tài khoản : </label> <input type="text" name="user_name"
 									placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
 									type="password" name="user_password" placeholder="Mật khẩu" />
