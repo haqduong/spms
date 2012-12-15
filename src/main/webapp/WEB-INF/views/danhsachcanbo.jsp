@@ -21,13 +21,45 @@
 			<!--End banner_header -->
 			<div id="nav_menu">
 				<div class="header-row-1">
-					<ul class="header-menu">
-						<li><a href="#">Trang chủ</a></li>
-						<li><a href="#">Thông báo</a></li>
-						<li><a href="#">Nghiên cứu</a></li>
-						<li><a href="#">Tìm kiếm</a></li>
-						<li><a href="#">Giới thiệu</a></li>
-						<li><a href="#">Liên hệ</a></li>
+										<ul>
+						<li><a
+							href="<c:if test="${not empty homePage}"> ${homePage} </c:if>
+							<c:if test="${empty homePage}">/k54/home.spms</c:if>">Trang
+								chủ</a></li>
+						<li><a href="#">Tin tức - thông báo</a>
+							<ul>
+								<li><a href="#">Hoạt động</a></li>
+								<li><a href="#">Tin KH trong nước</a></li>
+								<li><a href="#">Tin KH quốc tế</a></li>
+								<li><a href="#">Thông báo</a></li>
+							</ul></li>
+						<li><a>Đơn vị</a>
+							<ul>
+								<c:forEach items="${donviquanly}" var="donviquanly">
+									<li><a href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">${donviquanly.ten}</a>
+										<ul>
+											<li><a href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">Giới thiệu chung</a></li>
+											<li><a href="/k54/guest/donviquanly/danhsachcanbo.spms?iddonviquanly=${donviquanly.iddonviquanly}">Danh mục cán bộ</a></li>
+											<li><a href="/k54/guest/donviquanly/danhsachphongban.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các phòng ban</a> 
+											<li><a href="/k54/guest/donviquanly/nghiencuu.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các nghiên cứu</a></li>
+										</ul></li>
+								</c:forEach>
+
+							</ul></li>
+						<li></li>
+
+						<li><a
+							href="<c:if test="${not empty search}"> ${search} </c:if>
+							<c:if test="${empty search}"> /k54/guest/search.spms</c:if>">Tìm
+								kiếm</a></li>
+						<li><a
+							href="<c:if test="${not empty info}"> ${info} </c:if>
+							<c:if test="${empty info}"> /k54/guest/info.spms</c:if>">Giới
+								thiệu</a></li>
+						<li><a
+							href="<c:if test="${not empty contact}"> ${contact} </c:if>
+							<c:if test="${empty contact}"> /k54/guest/contact.spms</c:if>">Liên
+								hệ</a></li>
 					</ul>
 				</div>
 			</div>
@@ -37,25 +69,26 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>Danh sách cán bộ</h2>
+				<h2>DANH SÁCH CÁN BỘ CỦA ${donvi.ten}</h2>
 			</div>
 			<div class="images">
-				<a> Chức năng Nghiên cứu và triển khai các kết quả nghiên cứu về
-					những vấn đề toán học và các giải pháp quan trọng có ý nghĩa quốc
-					gia nhằm nâng cao lĩnh vực Toán học của Việt Nam trên thế giới.
-					Nhiệm vụ Nghiên cứu về lý thuyết ánh xạ đa trị trong các bài toán
-					tối ưu và cân bằng, lý thuyết định tính hệ động lực và điều khiển,
-					lý thuyết tối ưu vectơ và ứng dụng trong kinh tế, lý thuyết
-					Nevanlinna p-adic và ứng dụng của nó, lý thuyết về hệ động lực ngẫu
-					nhiên và ứng dụng </a>
+				<a> Chức năng ${donvi.chucnang} </a>
 
 			</div>
 			<!--End images-->
 			<div class="clear"></div>
+			<%
+				int i = 0;
+			%>
 			<div class="list_staff">
 				<form>
-					<table cellspacing="0" cellpadding="0" border-collapse="10px"
-						width="100%">
+					<table cellspacing="0" cellpadding="0" border-collapse="10px" width="100%">
+						<c:forEach items="${danhsachcanbo}" var="canbo">
+						<%
+							i++;
+						    int div = i/2;
+						%>
+						</c:forEach>
 						<tr style="margin-bottom: 50px;">
 							<td style="width: 50%">
 								<div class="avatar_img">
@@ -106,108 +139,6 @@
 								<div class="clear"></div>
 							</td>
 						</tr>
-
-						<tr style="margin-bottom: 50px;">
-							<td style="width: 50%">
-								<div class="avatar_img">
-									<img src="../images/public/canbo_1.jpg" width="90" height="120" />
-								</div>
-								<div class="content_staff">
-									<p>
-										<a class="name_staff">GS. Châu Văn Minh</a>
-									</p>
-									<p>
-										<a class="postion_staff">Viện trưởng</a>
-									</p>
-									<p>
-										<a>Email : &nbsp;</a><a class="email_staff">cvminh@vast.ac.vn</a>
-									</p>
-									<p>
-										<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff">
-											(+84) 3 868 2595</a>
-									</p>
-									<p class="more_staff">
-										<a href="#">Chi tiết</a>
-									</p>
-								</div>
-								<div class="clear"></div>
-							</td>
-							<td style="width: 50%; padding-left: 20px;">
-								<div class="avatar_img">
-									<img src="../images/public/canbo_1.jpg" width="90" height="120" />
-								</div>
-								<div class="content_staff">
-									<p>
-										<a class="name_staff">GS. Châu Văn Minh</a>
-									</p>
-									<p>
-										<a class="postion_staff">Viện trưởng</a>
-									</p>
-									<p>
-										<a>Email : &nbsp;</a><a class="email_staff">cvminh@vast.ac.vn</a>
-									</p>
-									<p>
-										<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff">
-											(+84) 3 868 2595</a>
-									</p>
-									<p class="more_staff">
-										<a href="#">Chi tiết</a>
-									</p>
-								</div>
-								<div class="clear"></div>
-							</td>
-						</tr>
-						<tr style="margin-bottom: 50px;">
-							<td style="width: 50%">
-								<div class="avatar_img">
-									<img src="../images/public/canbo_1.jpg" width="90" height="120" />
-								</div>
-								<div class="content_staff">
-									<p>
-										<a class="name_staff">GS. Châu Văn Minh</a>
-									</p>
-									<p>
-										<a class="postion_staff">Viện trưởng</a>
-									</p>
-									<p>
-										<a>Email : &nbsp;</a><a class="email_staff">cvminh@vast.ac.vn</a>
-									</p>
-									<p>
-										<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff">
-											(+84) 3 868 2595</a>
-									</p>
-									<p class="more_staff">
-										<a href="#">Chi tiết</a>
-									</p>
-								</div>
-								<div class="clear"></div>
-							</td>
-							<td style="width: 50%; padding-left: 20px;">
-								<div class="avatar_img">
-									<img src="../images/public/canbo_1.jpg" width="90" height="120" />
-								</div>
-								<div class="content_staff">
-									<p>
-										<a class="name_staff">GS. Châu Văn Minh</a>
-									</p>
-									<p>
-										<a class="postion_staff">Viện trưởng</a>
-									</p>
-									<p>
-										<a>Email : &nbsp;</a><a class="email_staff">cvminh@vast.ac.vn</a>
-									</p>
-									<p>
-										<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff">
-											(+84) 3 868 2595</a>
-									</p>
-									<p class="more_staff">
-										<a href="#">Chi tiết</a>
-									</p>
-								</div>
-								<div class="clear"></div>
-							</td>
-						</tr>
-
 
 					</table>
 					<!--End table -->

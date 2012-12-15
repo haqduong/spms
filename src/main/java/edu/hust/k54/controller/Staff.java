@@ -16,11 +16,13 @@ public class Staff extends Guest {
 	
 	public void suaSoYeuLiLich(Soyeulylich soyeulilich){
 		soyeulylichHome.attachDirty(soyeulilich);
+		soyeulylichHome.getSessionFactory().getCurrentSession().flush();
 	}
 	
 	public void suaLiLichKH(Lylichkhoahoc lylichkhoahoc){
 		LylichkhoahocHome lylichkhoahocHome = new LylichkhoahocHome();
 		lylichkhoahocHome.attachDirty(lylichkhoahoc);
+		lylichkhoahocHome.getSessionFactory().getCurrentSession().flush();
 	}
 	
 	public Soyeulylich xemTTCN(Taikhoandangnhap taikhoandangnhap){

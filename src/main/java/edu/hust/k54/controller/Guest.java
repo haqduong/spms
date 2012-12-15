@@ -1,7 +1,5 @@
 package edu.hust.k54.controller;
 
-import java.awt.dnd.DnDConstants;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -36,19 +34,6 @@ public class Guest {
 		return false;
 	}
 	
-	public boolean DangNhap(String username, String pass){
-		Taikhoandangnhap taikhoandangnhap = new Taikhoandangnhap();
-		taikhoandangnhap.setUsername(username);
-		taikhoandangnhap.setPass(pass);
-		List result = taikhoandangnhaphome.findByExample(taikhoandangnhap);
-		if (result.size() == 0){
-			return false;
-		}
-		else {
-			return true;
-		}
-	}
-	
 	public boolean doiMatKhau(String username, String pass, String newPass){
 		Taikhoandangnhap taikhoandangnhap = new Taikhoandangnhap();
 		taikhoandangnhap.setUsername(username);
@@ -72,10 +57,10 @@ public class Guest {
 		return (Taikhoandangnhap) result.get(0);
 	}
 	
-	public List TimDVQL(String tenDV, String tenPB, String tenCB){
+	public List TimDVQL(Integer idDV, Integer idPB, String tenCB){
 		DonviquanlyHome donviquanlyHome = new DonviquanlyHome();
 		Donviquanly donviquanly = new Donviquanly();
-		donviquanly.setTen(tenDV);
+		donviquanly.setIddonviquanly(idDV);
 		List<Donviquanly> result = donviquanlyHome.findByExample(donviquanly);
 		int limit = result.size();
 		if (limit == 0) {
@@ -85,11 +70,11 @@ public class Guest {
 			for (int i = 0; i < limit; i++){
 				boolean test = false;
 				Donviquanly donviquanlyTemp = result.get(i);
-				if (tenPB != null){
+				if (idPB != 0){
 					test = true;
 					Set phongbans = donviquanlyTemp.getPhongbans();
 					for (Object phongban : phongbans){
-						if (((Phongban) phongban).getTen().equals(tenPB)){
+						if (((Phongban) phongban).getIdphongban() == (idPB)){
 							test = false;
 							break;
 						}
@@ -120,6 +105,20 @@ public class Guest {
 			}
 			return result;
 		}
+	}
+	
+	public List timDonVi(Integer idDonVi){
+		DonviquanlyHome donviquanlyHome = new DonviquanlyHome();
+		Donviquanly donviquanly = new Donviquanly();
+		donviquanly.setIddonviquanly(idDonVi);
+		return donviquanlyHome.findByExample(donviquanly);
+	}
+	
+	public Set timPhongBan(Integer idDonVi){
+		DonviquanlyHome donviquanlyHome = new DonviquanlyHome();
+		Donviquanly donviquanly = new Donviquanly();
+		donviquanly.setIddonviquanly(idDonVi);
+		return ((Donviquanly)donviquanlyHome.findByExample(donviquanly).get(0)).getPhongbans();
 	}
 	
 	public List TimPB(String tenPB, String tenCB) {
@@ -154,10 +153,13 @@ public class Guest {
 		}
 	}
 	
-	public List TimCB(String tenDV, String tenPB, String tenCB) {
+	public List TimCB(int maDV, int maPB, String tenCB, int loaiCB) {
 		SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
 		Soyeulylich soyeulylich = new Soyeulylich();
 		soyeulylich.setHoten(tenCB);
+		if (loaiCB != 0) {
+			soyeulylich.setLoaiCb(loaiCB - 1);
+		}
 		List<Soyeulylich> result = soyeulylichHome.findByExample(soyeulylich);
 		int limit = result.size();
 		System.out.println(limit);
@@ -167,9 +169,9 @@ public class Guest {
 			for (int i = 0; i < limit; i++) {
 				boolean test = false;
 				Soyeulylich soyeulylichTemp = result.get(i);
-				if (tenPB != null) {
+				if (maPB != 0) {
 					test = true;
-					if (soyeulylichTemp.getPhongban().getTen().equals(tenPB)) {
+					if (soyeulylichTemp.getPhongban().getIdphongban() == maPB) {
 						test = false;
 					}
 					if (test == true) {
@@ -179,9 +181,8 @@ public class Guest {
 					}
 				}
 				if (test == false) {
-					if (tenDV != null) {
-						if (soyeulylichTemp.getDonviquanly().getTen()
-								.equals(tenDV)) {
+					if (maDV != 0) {
+						if (soyeulylichTemp.getDonviquanly().getIddonviquanly() == maDV) {
 							test = true;
 						}
 						if (test == false) {
@@ -197,10 +198,10 @@ public class Guest {
 			return result;
 		}
 	}
-	public List TimCB(String hoten){
+	public List TimCB(Integer idcanbo){
 		SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
 		Soyeulylich soyeulylich = new Soyeulylich();
-		soyeulylich.setHoten(hoten);
+		soyeulylich.setIdsoyeulylich(idcanbo);
 		List result = soyeulylichHome.findByExample(soyeulylich);
 		return result;
 	}

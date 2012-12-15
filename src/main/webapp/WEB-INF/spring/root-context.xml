@@ -58,6 +58,23 @@
 				<entry key="/logout.spms">
 					<ref bean="sessionController" />
 				</entry>
+				
+				
+				<entry key="/chitietcanbo.spms">
+					<ref bean="guestController" />
+				</entry>
+				<entry key="/guest/donviquanly/gioithieuchung.spms">
+					<ref bean="guestController" />
+				</entry>
+				<entry key="/guest/donviquanly/danhsachcanbo.spms">
+					<ref bean="guestController" />
+				</entry>
+				<entry key="/guest/donviquanly/danhsachphongban.spms">
+					<ref bean="guestController" />
+				</entry>
+				<entry key="/guest/donviquanly/nghiencuu.spms">
+					<ref bean="guestController" />
+				</entry>
 				<entry key="/guest/search.spms">
 					<ref bean="guestController" />
 				</entry>
@@ -67,6 +84,7 @@
 				<entry key="/guest/contact.spms">
 					<ref bean="guestController" />
 				</entry>
+
 
 				<entry key="/staff/search.spms">
 					<ref bean="staffController" />
@@ -88,13 +106,13 @@
 					<ref bean="managerController" />
 				</entry>
 				
-				<entry key="/supperManager/search.spms">
+				<entry key="/superManager/search.spms">
 					<ref bean="superManagerController" />
 				</entry>
-				<entry key="/supperManager/info.spms">
+				<entry key="/superManager/info.spms">
 					<ref bean="superManagerController" />
 				</entry>
-				<entry key="/supperManager/contact.spms">
+				<entry key="/superManager/contact.spms">
 					<ref bean="superManagerController" />
 				</entry>
 

@@ -21,13 +21,45 @@
 			<!--End banner_header -->
 			<div id="nav_menu">
 				<div class="header-row-1">
-					<ul class="header-menu">
-						<li><a href="#">Trang chủ</a></li>
-						<li><a href="#">Thông báo</a></li>
-						<li><a href="#">Nghiên cứu</a></li>
-						<li><a href="#">Tìm kiếm</a></li>
-						<li><a href="#">Giới thiệu</a></li>
-						<li><a href="#">Liên hệ</a></li>
+										<ul>
+						<li><a
+							href="<c:if test="${not empty homePage}"> ${homePage} </c:if>
+							<c:if test="${empty homePage}">/k54/home.spms</c:if>">Trang
+								chủ</a></li>
+						<li><a href="#">Tin tức - thông báo</a>
+							<ul>
+								<li><a href="#">Hoạt động</a></li>
+								<li><a href="#">Tin KH trong nước</a></li>
+								<li><a href="#">Tin KH quốc tế</a></li>
+								<li><a href="#">Thông báo</a></li>
+							</ul></li>
+						<li><a>Đơn vị</a>
+							<ul>
+								<c:forEach items="${donviquanly}" var="donviquanly">
+									<li><a href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">${donviquanly.ten}</a>
+										<ul>
+											<li><a href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">Giới thiệu chung</a></li>
+											<li><a href="/k54/guest/donviquanly/danhsachcanbo.spms?iddonviquanly=${donviquanly.iddonviquanly}">Danh mục cán bộ</a></li>
+											<li><a href="/k54/guest/donviquanly/danhsachphongban.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các phòng ban</a> 
+											<li><a href="/k54/guest/donviquanly/nghiencuu.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các nghiên cứu</a></li>
+										</ul></li>
+								</c:forEach>
+
+							</ul></li>
+						<li></li>
+
+						<li><a
+							href="<c:if test="${not empty search}"> ${search} </c:if>
+							<c:if test="${empty search}"> /k54/guest/search.spms</c:if>">Tìm
+								kiếm</a></li>
+						<li><a
+							href="<c:if test="${not empty info}"> ${info} </c:if>
+							<c:if test="${empty info}"> /k54/guest/info.spms</c:if>">Giới
+								thiệu</a></li>
+						<li><a
+							href="<c:if test="${not empty contact}"> ${contact} </c:if>
+							<c:if test="${empty contact}"> /k54/guest/contact.spms</c:if>">Liên
+								hệ</a></li>
 					</ul>
 				</div>
 			</div>
@@ -37,10 +69,10 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>Viện toán học</h2>
+				<h2>${donvi.ten}</h2>
 			</div>
 			<div class="images">
-				<img src="../images/public/vientoanhoc.jpg" width="300" height="200" />
+				<img src= "${donvi.duongdananh}" width="300" height="200" />
 
 			</div>
 			<!--End images-->
@@ -52,98 +84,37 @@
 					</div>
 
 
-					<div class="detail_info">Nhà A5, số 18 Hoàng Quốc Việt, Cầu
-						Giấy, Hà Nội</div>
+					<div class="detail_info">${donvi.diachitruso}</div>
 
 
-					<div class="detail_info">Điện thoại: (+84)(4) 37563474</div>
+					<div class="detail_info">Điện thoại: ${donvi.dienthoai}</div>
 
 
-					<div class="detail_info">Fax: (+84)(4) 37564303</div>
+					<div class="detail_info">Fax: ${donvi.fax}</div>
 
 
-					<div class="detail_info">Email: toanhoc@vast.com</div>
+					<div class="detail_info">Email: ${donvi.email}</div>
 					<br />
 
-				</div>
-				<div>
-					<div class="title_info">
-						<span><sdivong>BAN LÃNH ĐẠO </sdivong></span>
-					</div>
-				</div>
-				<div>
-
-					<div align="left" class="detail_info">
-						<b>Viện trưởng: </b> Phạm Minh Đạt
-						</sdivong>
-					</div>
-					<div align="left" class="detail_info">
-						<b>Phó viện trưởng:</b>
-					</div>
-					<div align="left" class="detail_info_sub">
-
-						<a>&nbsp;Kỹ sư&nbsp;Nguyễn Tuấn Vinh</a> <br> <a>&nbsp;Kỹ
-							sư&nbsp;Nguyễn Duy Hưởng</a> <br>
-
-					</div>
 				</div>
 			</div>
 			<!--End contact_us-->
 			<div class="clear"></div>
 			<div class="infomation">
-				<div class="title_info">CHỨC NĂNG VÀ NHIỆM VỤ</div>
-				<div class="content_text">Chức năng Nghiên cứu và triển khai
-					các kết quả nghiên cứu về những vấn đề toán học và các giải pháp
-					quan trọng có ý nghĩa quốc gia nhằm nâng cao lĩnh vực Toán học của
-					Việt Nam trên thế giới. Nhiệm vụ Nghiên cứu về lý thuyết ánh xạ đa
-					trị trong các bài toán tối ưu và cân bằng, lý thuyết định tính hệ
-					động lực và điều khiển, lý thuyết tối ưu vectơ và ứng dụng trong
-					kinh tế, lý thuyết Nevanlinna p-adic và ứng dụng của nó, lý thuyết
-					về hệ động lực ngẫu nhiên và ứng dụng. Nghiên cứu các phương pháp
-					định tính và giải số các phương trình vi phân đạo hàm riêng cấp 1
-					và cấp 2, các phương pháp tính toán và tổ hợp trong đại số và hình
-					học đại số, các phương pháp đại số và hình học với ứng dụng vào lý
-					thuyết số. Nghiên cứu Tôpô và hình học của các đa tạp thấp chiều và
-					ứng dụng của nó, nghiên cứu các bài toán của phương trình vật lý
-					toán, nghiên cứu về phương trình elliptic suy biến phi tuyến và ứng
-					dụng. Xây dựng các thuật toán và chương trình giải các bài toán cân
-					bằng. Phối hợp với các cơ quan nghiên cứu khác và các trường giảng
-					dạy trong nước cũng như quốc tế triển khai ứng dụng các kết quả
-					nghiên cứu vào thực tiễn. Đào tạo cán bộ nghiên cứu khoa học công
-					nghệ về toán học. Tổ chức hợp tác quốc tế trong lĩnh vực địa chất.
-					Xây dựng cơ sở vật chất cho việc nghiên cứu khoa học về toán học,
-					triển khai ứng dụng, chuyển giao công nghệ tiên tiến thuộc lĩnh vực
-					nghiên cứu của Việt Nam. Quản lý đội ngũ cán bộ, cơ sở hạ tầng và
-					các tài sản khác của Viện.</div>
+				<div class="title_info">CHỨC NĂNG</div>
+				<div class="content_text">${donvi.chucnang}</div>
+				<!-- content_text -->
+				<div class="title_info">NHIỆM VỤ</div>
+				<div class="content_text">${donvi.nhiemvu}</div>
+				<!-- content_text -->
+				<div class="title_info">HOẠT ĐỘNG THƯỜNG XUYÊN</div>
+				<div class="content_text">${donvi.hoatdongthuongxuyen}</div>
+				<!-- content_text -->
+				<div class="title_info">THÀNH TỰU</div>
+				<div class="content_text">${donvi.thanhtuu}</div>
 				<!-- content_text -->
 			</div>
 			<!--End infomation -->
-
-
-			<div class="infomation">
-				<div class="title_info">CƠ CẤU TỔ CHỨC</div>
-				<div class="content_text">
-					<p>Các phòng chuyên môn</p>
-					<p>Các đơn vị quản lý nghiệp vụ</p>
-					<p>- Phòng Quản lý tổng hợp</p>
-					<p>Trung tâm Đào tạo sau đại học và tính toán hiệu năng cao</p>
-				</div>
-				<!-- content_text -->
-			</div>
-			<!--End infomation -->
-
-			<div class="infomation">
-				<div class="title_info">CƠ CẤU TỔ CHỨC</div>
-				<div class="content_text">
-					<p>Các phòng chuyên môn</p>
-					<p>Các đơn vị quản lý nghiệp vụ</p>
-					<p>- Phòng Quản lý tổng hợp</p>
-					<p>Trung tâm Đào tạo sau đại học và tính toán hiệu năng cao</p>
-				</div>
-				<!-- content_text -->
-			</div>
-			<!--End infomation -->
-
 		</div>
 		<!--End wrap_main-->
 		<div id="wrap_right">
