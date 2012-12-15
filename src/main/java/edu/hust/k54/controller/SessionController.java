@@ -1,11 +1,14 @@
 package edu.hust.k54.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import edu.hust.k54.persistence.Donviquanly;
 import edu.hust.k54.persistence.Taikhoandangnhap;
 import edu.hust.k54.persistence.TaikhoandangnhapHome;
 
@@ -20,6 +23,7 @@ public class SessionController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest arg0,
 			HttpServletResponse arg1) throws Exception {
+		Guest guest = new Guest();
 		if (arg0.getRequestURI().contains("login")) {
 			if (arg0.getSession().getAttribute("user") == null) {
 				ModelAndView modelAndView = new ModelAndView("homepage");
@@ -36,87 +40,90 @@ public class SessionController implements Controller {
 								.findByExample(persion).get(0);
 						int userPermission = user.getPermission();
 						System.out.println(userPermission);
-						modelAndView.addObject("homePage", "home.spms");
+						modelAndView.addObject("homePage", "/k54/home.spms");
 						if (userPermission == GUEST_PERMISSION) {
 							modelAndView.addObject("search",
-									"guest/search.spms");
-							modelAndView.addObject("info", "guest/info.spms");
+									"/k54/guest/search.spms");
+							modelAndView.addObject("info", "/k54/guest/info.spms");
 							modelAndView.addObject("contact",
-									"guest/contact.spms");
+									"/k54/guest/contact.spms");
 						} else if (userPermission == STAFF_PERMISSION) {
 							modelAndView.addObject("search",
-									"staff/search.spms");
-							modelAndView.addObject("info", "staff/info.spms");
+									"/k54/staff/search.spms");
+							modelAndView.addObject("info", "/k54/staff/info.spms");
 							modelAndView.addObject("contact",
-									"staff/contact.spms");
+									"/k54/staff/contact.spms");
 						} else if (userPermission == MANAGER_PERMISSION) {
 							modelAndView.addObject("search",
-									"manager/search.spms");
-							modelAndView.addObject("info", "manager/info.spms");
+									"/k54/manager/search.spms");
+							modelAndView.addObject("info", "/k54/manager/info.spms");
 							modelAndView.addObject("contact",
-									"manager/contact.spms");
+									"/k54/manager/contact.spms");
 						} else if (userPermission == SUPER_MANAGER_PERMISSION) {
 							modelAndView.addObject("search",
-									"supperManager/search.spms");
+									"/k54/supperManager/search.spms");
 							modelAndView.addObject("info",
-									"supperManager/info.spms");
+									"/k54/supperManager/info.spms");
 							modelAndView.addObject("contact",
-									"supperManager/contact.spms");
+									"/k54/supperManager/contact.spms");
 						} else if (userPermission == ADMIN_PERMISSION) {
 							ModelAndView admin = new ModelAndView("admin/home");
 							return admin;
 						}
 						arg0.getSession(true).setAttribute("user", user);
 					} else { // login false
-						modelAndView.addObject("homePage", "home.spms");
-						modelAndView.addObject("search", "guest/search.spms");
-						modelAndView.addObject("info", "guest/info.spms");
-						modelAndView.addObject("contact", "guest/contact.spms");
+						modelAndView.addObject("homePage", "/k54/home.spms");
+						modelAndView.addObject("search", "/k54/guest/search.spms");
+						modelAndView.addObject("info", "/k54/guest/info.spms");
+						modelAndView.addObject("contact", "/k54/guest/contact.spms");
 						modelAndView.addObject("loginFalse", LOGIN_FALSE);
 					}
 				}
+				List< Donviquanly> donviquanly = guest.TimDVQL(0, 0, null);
+				modelAndView.addObject("donviquanly", donviquanly);
 				return modelAndView;
 			}
 
 			if (arg0.getSession().getAttribute("user") != null) {
-				ModelAndView modelAndView = new ModelAndView("homepage");
+				ModelAndView modelAndView = new ModelAndView("/k54/homepage");
 				int userPermission = ((Taikhoandangnhap) arg0
 						.getSession().getAttribute("user")).getPermission();
 				System.out.println(userPermission);
-				modelAndView.addObject("homePage", "home.spms");
+				modelAndView.addObject("homePage", "/k54/home.spms");
 				if (userPermission == GUEST_PERMISSION) {
-					modelAndView.addObject("search", "guest/search.spms");
-					modelAndView.addObject("info", "guest/info.spms");
-					modelAndView.addObject("contact", "guest/contact.spms");
+					modelAndView = addlink(modelAndView, "guest");
 				} else if (userPermission == STAFF_PERMISSION) {
-					modelAndView.addObject("search", "staff/search.spms");
-					modelAndView.addObject("info", "staff/info.spms");
-					modelAndView.addObject("contact", "staff/contact.spms");
+					modelAndView = addlink(modelAndView, "staf");
 				} else if (userPermission == MANAGER_PERMISSION) {
-					modelAndView.addObject("search", "manager/search.spms");
-					modelAndView.addObject("info", "manager/info.spms");
-					modelAndView.addObject("contact", "manager/contact.spms");
+					modelAndView = addlink(modelAndView, "manager");
 				} else if (userPermission == SUPER_MANAGER_PERMISSION) {
-					modelAndView.addObject("search",
-							"supperManager/search.spms");
-					modelAndView.addObject("info", "supperManager/info.spms");
-					modelAndView.addObject("contact",
-							"supperManager/contact.spms");
+					modelAndView = addlink(modelAndView, "supperManager");
 				} else if (userPermission == ADMIN_PERMISSION) {
-					modelAndView.addObject("search", "admin/search.spms");
-					modelAndView.addObject("info", "admin/info.spms");
-					modelAndView.addObject("contact", "admin/contact.spms");
+					modelAndView = addlink(modelAndView, "admin");
 				}
+				List< Donviquanly> donviquanly = guest.TimDVQL(0, 0, null);
+				modelAndView.addObject("donviquanly", donviquanly);
 				return modelAndView;
 			}
 		} else if (arg0.getRequestURI().contains("logout")) {
 			ModelAndView modelAndView = new ModelAndView("homepage");
 			arg0.getSession().removeAttribute("user");
+			List< Donviquanly> donviquanly = guest.TimDVQL(0, 0, null);
+			modelAndView.addObject("donviquanly", donviquanly);
 			return modelAndView;
 		} else{
 			ModelAndView modelAndView = new ModelAndView("homepage");
+			List< Donviquanly> donviquanly = guest.TimDVQL(0, 0, null);
+			modelAndView.addObject("donviquanly", donviquanly);
 			return modelAndView;
 		}
 		return null;
+	}
+	
+	private ModelAndView addlink(ModelAndView input, String link){
+		input.addObject("search", "/k54/"+ link+ "/search.spms");
+		input.addObject("info", "/k54/"+ link+ "/info.spms");
+		input.addObject("contact", "/k54/"+ link+ "/contact.spms");
+		return input;
 	}
 }

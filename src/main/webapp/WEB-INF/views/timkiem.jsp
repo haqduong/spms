@@ -25,10 +25,10 @@
 			<!--End banner_header -->
 			<div id="nav_menu">
 				<div class="header-row-1">
-					<ul>
+						<ul>
 						<li><a
 							href="<c:if test="${not empty homePage}"> ${homePage} </c:if>
-							<c:if test="${empty homePage}"> home.spms</c:if>">Trang
+							<c:if test="${empty homePage}">/k54/home.spms</c:if>">Trang
 								chủ</a></li>
 						<li><a href="#">Tin tức - thông báo</a>
 							<ul>
@@ -40,34 +40,29 @@
 						<li><a>Đơn vị</a>
 							<ul>
 								<c:forEach items="${donviquanly}" var="donviquanly">
-									<li><a href="#">${donviquanly.ten}</a>
+									<li><a href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">${donviquanly.ten}</a>
 										<ul>
-											<li><a href="#">Giới thiệu chung</a></li>
-											<li><a href="#">Danh mục cán bộ</a></li>
-											<li><a href="#">Các phòng ban</a> 
-<%-- 											<c:forEach items="${donviquanly.phongbans}" var="phongban">
-													
-													<li><a href="#">${phongban.ten}n</a> 
-													
-												</c:forEach></li> --%>
-											<li><a href="#">Các nghiên cứu</a></li>
-											<li><a href="#">Công trình Khoa học</a></li>
+											<li><a href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">Giới thiệu chung</a></li>
+											<li><a href="/k54/guest/donviquanly/danhsachcanbo.spms?iddonviquanly=${donviquanly.iddonviquanly}">Danh mục cán bộ</a></li>
+											<li><a href="/k54/guest/donviquanly/danhsachphongban.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các phòng ban</a> 
+											<li><a href="/k54/guest/donviquanly/nghiencuu.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các nghiên cứu</a></li>
 										</ul></li>
 								</c:forEach>
 
 							</ul></li>
 						<li></li>
+
 						<li><a
 							href="<c:if test="${not empty search}"> ${search} </c:if>
-							<c:if test="${empty search}"> guest/search.spms</c:if>">Tìm
+							<c:if test="${empty search}"> /k54/guest/search.spms</c:if>">Tìm
 								kiếm</a></li>
 						<li><a
 							href="<c:if test="${not empty info}"> ${info} </c:if>
-							<c:if test="${empty info}"> guest/info.spms</c:if>">Giới
+							<c:if test="${empty info}"> /k54/guest/info.spms</c:if>">Giới
 								thiệu</a></li>
 						<li><a
 							href="<c:if test="${not empty contact}"> ${contact} </c:if>
-							<c:if test="${empty contact}"> guest/contact.spms</c:if>">Liên
+							<c:if test="${empty contact}"> /k54/guest/contact.spms</c:if>">Liên
 								hệ</a></li>
 					</ul>
 				</div>
@@ -100,9 +95,9 @@
 							<td><label>Viện : </label></td>
 							<td><select name="vien" id="find_vien"
 								onchange="chageDonViState()">
-									<option value="" selected>Tất cả</option>
+									<option value="0" selected>Tất cả</option>
 									<c:forEach items="${donviquanly}" var="donviquanly">
-										<option value="${donviquanly.ten}" id="normal_vien">${donviquanly.ten}</option>
+										<option value="${donviquanly.iddonviquanly}" id="normal_vien">${donviquanly.ten}</option>
 									</c:forEach>
 							</select> <!--End select --></td>
 						</tr>
@@ -114,7 +109,7 @@
 						<tr>
 							<td><label>Phòng ban : </label></td>
 							<td><select name="phongban">
-									<option value="" selected>Tất cả</option>
+									<option value="0" selected>Tất cả</option>
 							</select> <!--End select --></td>
 						</tr>
 						<tr>
@@ -125,7 +120,7 @@
 						<tr>
 							<td><label>Phân loại cán bộ : </label></td>
 							<td><select name="loaicanbo">
-									<option value="" selected>Tất cả</option>
+									<option value="0" selected>Tất cả</option>
 									<option value="0">Cán bộ thường</option>
 									<option value="1">Cán bộ nghiên cứu</option>
 							</select> <!--End select --></td>
@@ -152,6 +147,9 @@
 					<div class="title_table">
 						<a> Danh sách cán bộ </a>
 					</div>
+					<%
+						int count = 1;
+					%>
 					<table cellspacing="0" cellpadding="0" width="100%">
 						<tr>
 							<td>
@@ -173,20 +171,23 @@
 							<td>
 								<div class="description">
 									<table cellspacing="0" cellpadding="1" style="width: 715px">
-									<c:if test="${not empty result}">
-										<c:forEach items="${result}" var="canbo">
-										<tr class="row_1">
-											<td style="width: 5%">1</td>
-											<td style="width: 20%">${canbo.hoten}</td>
-											<td style="width: 15%">Viện toán học</td>
-											<td style="width: 15%">Phòng vớ vẩn</td>
-											<td style="width: 10%">Trưởng viện</td>
-											<td style="width: 15%">${canbo.sodienthoai}</td>
-											<td style="width: 15%">${canbo.sodienthoai}</td>
-											<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-										</tr>
-										</c:forEach>
-									</c:if>
+										<c:if test="${not empty result}">
+											<c:forEach items="${result}" var="canbo">
+												<tr class="row_1">
+													<td style="width: 5%"><%=count++%></td>
+													<td style="width: 20%">${canbo.hoten}</td>
+													<td style="width: 15%">${canbo.phongban.donviquanly.ten}</td>
+													<td style="width: 15%">${canbo.phongban.ten}</td>
+													<td style="width: 10%">${canbo.chucvu.ten}</td>
+													<td style="width: 15%">${canbo.sodienthoai}</td>
+													<c:forEach items="${canbo.taikhoandangnhaps}"
+														var="taikhoan">
+														<td style="width: 15%">${taikhoan.email}</td>
+													</c:forEach>
+													<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
+												</tr>
+											</c:forEach>
+										</c:if>
 									</table>
 								</div>
 							</td>
@@ -286,7 +287,7 @@
 				Donviquanly donviquanly = (Donviquanly)listDonviquanly.get(i);
 				Set<Phongban> phongban = donviquanly.getPhongbans();
 				for(Phongban pb: phongban){
-					dsPhongBan += (i+2) + "@" + pb.getTen() +"|";	
+					dsPhongBan += (i+2) + "@" + pb.getIdphongban() + "@" + pb.getTen() +"|";	
 				}
 			}
 			
@@ -296,14 +297,14 @@
 			var i;
 			var count = 0;
 			document.selectSearch.phongban.options[count] = new Option(
-					"Tất cả", "");
+					"Tất cả", "0");
 			var selectDir = document.getElementById("find_vien");
 			var dirIndex = selectDir.selectedIndex + 1;
 			for (i = 0; i < eval(allType).length; i++) {
 				var dirType = eval(allType)[i].split("@");
 				if (eval(dirType)[0] == dirIndex) {
 					document.selectSearch.phongban.options[count++] = new Option(
-							eval(dirType)[1], eval(dirType)[1]);
+							eval(dirType)[2], eval(dirType)[1]);
 				}
 			}
 		}

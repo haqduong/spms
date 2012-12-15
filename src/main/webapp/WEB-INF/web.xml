@@ -66,7 +66,7 @@ org.springframework.orm.hibernate4.support.OpenSessionInViewFilter
 		<url-pattern>*.spms</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
-		<welcome-file>/WEB-INF/views/homepage.jsp</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
 </web-app>

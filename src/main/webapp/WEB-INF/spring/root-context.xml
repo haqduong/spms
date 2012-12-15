@@ -58,6 +58,19 @@
 				<entry key="/logout.spms">
 					<ref bean="sessionController" />
 				</entry>
+				
+				<entry key="/guest/donviquanly/gioithieuchung.spms">
+					<ref bean="guestController" />
+				</entry>
+				<entry key="/guest/donviquanly/danhsachcanbo.spms">
+					<ref bean="guestController" />
+				</entry>
+				<entry key="/guest/donviquanly/danhsachphongban.spms">
+					<ref bean="guestController" />
+				</entry>
+				<entry key="/guest/donviquanly/nghiencuu.spms">
+					<ref bean="guestController" />
+				</entry>
 				<entry key="/guest/search.spms">
 					<ref bean="guestController" />
 				</entry>
@@ -67,6 +80,9 @@
 				<entry key="/guest/contact.spms">
 					<ref bean="guestController" />
 				</entry>
+
+
+
 
 				<entry key="/staff/search.spms">
 					<ref bean="staffController" />

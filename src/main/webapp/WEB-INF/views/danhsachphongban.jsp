@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Danh sách đề tài</title>
+<title>Danh sách đơn vị</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
@@ -69,33 +69,38 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>DANH SÁCH ĐỀ TÀI NGHIÊN CỨU CỦA ${donvi.ten}</h2>
+				<h2>DANH SÁCH ĐƠN VỊ CỦA ${donvi.ten}</h2>
 			</div>
-			<%int i = 1; %>
-			<div class="list_research">
-				<table style="width: 100%;">
-					<tr class="title_tr">
-						<td style="width: 5%"><b> STT</b></td>
-						<td style="width: 30%"><b> Tên đề tài</b></td>
-						<td style="width: 20%"><b> Thời gian</b></td>
-						<td style="width: 30%"><b> Cơ quan chủ trì</b></td>
-						<td style="width: 20%"><b> Ngày nghiệm thu</b></td>
-					</tr>
-					<c:forEach items="${canbonghiencuu}" var="canbo">
-					<c:forEach items="${canbo.quatrinhnghiencuus}" var="detai">
-					<tr class="row_1">
-						<td><b><%=i++%></b></td>
-						<td><a>${detai.tendetai}</a></td>
-						<td><a>Từ ngày&nbsp;${detai.tungay}&nbsp;đến ngày&nbsp;${detai.denngay} </a></td>
-						<td><a>${detai.coquanchutri} </a></td>
-						<td><a>${detai.ngaynhiemthu} </a></td>
-					</tr>
-					</c:forEach>
-					</c:forEach>
-					
-				</table>
+			<div class="list_dv">
+			<c:forEach items="${danhsachphongban }" var="phongban">
+			
+				<div class="row_dv">
+					<div class="avatar_dv">
+						<img src="${phongban.hinhanh}" width="200"
+							height="150" />
+					</div>
+					<div class="content_dv">
+						<p class="name_dv">
+							<a>${phongban.ten}</a>
+						</p>
+						<p class="addr_dv">
+							<a><b> Trụ sở &nbsp:</b> ${donvi.diachitruso}</a>
+						</p>
+						<p class="addr_dv">
+							<a><b> Điện thoại &nbsp:</b> ${donvi.dienthoai}</a>
+						</p>
+						<p class="addr_dv">
+							<a> <b>Fax &nbsp:</b> ${donvi.fax}</a>
+						</p>
+						<p class="more_dv">
+							<a>Xem chi tiết</a>
+						</p>
+					</div>
+					<div class="clear"></div>
+				</div>
+				<!--End row_dv -->
+				</c:forEach>
 			</div>
-			<!--End list_research -->
 
 
 		</div>
@@ -138,6 +143,7 @@
 				<!--end content_box-->
 			</div>
 			<!--box_right-->
+
 			<div class="box_right">
 				<div class="title_box">
 					<a>Danh sách viện</a>
