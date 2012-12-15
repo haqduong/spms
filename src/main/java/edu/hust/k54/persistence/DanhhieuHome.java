@@ -1,6 +1,5 @@
 package edu.hust.k54.persistence;
 
-// Generated Nov 26, 2012 7:17:42 PM by Hibernate Tools 4.0.0
 
 import java.util.List;
 import javax.naming.InitialContext;
@@ -10,18 +9,13 @@ import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
-/**
- * Home object for domain model class Danhhieu.
- * @see edu.hust.k54.persistence.Danhhieu
- * @author Hibernate Tools
- */
 public class DanhhieuHome {
 
 	private static final Log log = LogFactory.getLog(DanhhieuHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
-	protected SessionFactory getSessionFactory() {
+	public SessionFactory getSessionFactory() {
 		try {
 			return (SessionFactory) new InitialContext()
 					.lookup("SessionFactory");

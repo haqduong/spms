@@ -1,7 +1,5 @@
 package edu.hust.k54.persistence;
 
-// Generated Nov 26, 2012 7:17:42 PM by Hibernate Tools 4.0.0
-
 import java.util.List;
 import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
@@ -10,18 +8,13 @@ import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
-/**
- * Home object for domain model class Baocao.
- * @see edu.hust.k54.persistence.Baocao
- * @author Hibernate Tools
- */
 public class BaocaoHome {
 
 	private static final Log log = LogFactory.getLog(BaocaoHome.class);
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
-	protected SessionFactory getSessionFactory() {
+	public SessionFactory getSessionFactory() {
 		try {
 			return (SessionFactory) new InitialContext()
 					.lookup("SessionFactory");

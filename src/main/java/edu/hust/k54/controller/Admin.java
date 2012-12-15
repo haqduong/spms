@@ -12,11 +12,19 @@ public class Admin {
 	public void phanQuyen(Taikhoandangnhap taikhoandangnhap){
 		TaikhoandangnhapHome taikhoandangnhapHome = new TaikhoandangnhapHome();
 		taikhoandangnhapHome.attachDirty(taikhoandangnhap);
+		taikhoandangnhapHome.getSessionFactory().getCurrentSession().flush();
 	}
 	
 	public void taoTKCB(Taikhoandangnhap taikhoandangnhap){
 		TaikhoandangnhapHome taikhoandangnhapHome = new TaikhoandangnhapHome();
 		taikhoandangnhapHome.attachDirty(taikhoandangnhap);
+		taikhoandangnhapHome.getSessionFactory().getCurrentSession().flush();
+	}
+	
+	public void xoaTKCB(Taikhoandangnhap taikhoandangnhap){
+		TaikhoandangnhapHome taikhoandangnhapHome = new TaikhoandangnhapHome();
+		taikhoandangnhapHome.delete(taikhoandangnhap);
+		taikhoandangnhapHome.getSessionFactory().getCurrentSession().flush();
 	}
 	
 	public List xemNkHt(){

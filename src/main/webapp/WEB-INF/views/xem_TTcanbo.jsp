@@ -22,7 +22,10 @@
 			<div id="nav_menu">
 				<div class="header-row-1">
 					<ul>
-						<li><a href="#">Trang chủ</a></li>
+						<li><a
+							href="<c:if test="${not empty homePage}"> ${homePage} </c:if>
+							<c:if test="${empty homePage}">/k54/home.spms</c:if>">Trang
+								chủ</a></li>
 						<li><a href="#">Tin tức - thông báo</a>
 							<ul>
 								<li><a href="#">Hoạt động</a></li>
@@ -30,61 +33,42 @@
 								<li><a href="#">Tin KH quốc tế</a></li>
 								<li><a href="#">Thông báo</a></li>
 							</ul></li>
-						<li><a href="#">Đơn vị</a>
+						<li><a>Đơn vị</a>
 							<ul>
-								<li><a href="#">Viện toán học</a>
-									<ul>
-										<li><a href="#">Giới thiệu chung</a></li>
-										<li><a href="#">Danh mục cán bộ</a></li>
-										<li><a href="#">Các phòng ban</a></li>
-										<li><a href="#">Các nghiên cứu</a></li>
-										<li><a href="#">Công trình Khoa học</a></li>
-									</ul></li>
-								<li><a href="#">Viện CNTT</a>
-									<ul>
-										<li><a href="#">Giới thiệu chung</a></li>
-										<li><a href="#">Danh mục cán bộ</a></li>
-										<li><a href="#">Các phòng ban</a></li>
-										<li><a href="#">Các nghiên cứu</a></li>
-										<li><a href="#">Công trình Khoa học</a></li>
-									</ul></li>
-								<li><a href="#">Viện hóa học</a>
-									<ul>
-										<li><a href="#">Giới thiệu chung</a></li>
-										<li><a href="#">Danh mục cán bộ</a></li>
-										<li><a href="#">Các phòng ban</a></li>
-										<li><a href="#">Các nghiên cứu</a></li>
-										<li><a href="#">Công trình Khoa học</a></li>
-									</ul></li>
-								<li><a href="#">Viện CN sinh học</a>
-									<ul>
-										<li><a href="#">Giới thiệu chung</a></li>
-										<li><a href="#">Danh mục cán bộ</a></li>
-										<li><a href="#">Các phòng ban</a></li>
-										<li><a href="#">Các nghiên cứu</a></li>
-										<li><a href="#">Công trình Khoa học</a></li>
-									</ul></li>
-								<li><a href="#">Viện hải dương học</a>
-									<ul>
-										<li><a href="#">Giới thiệu chung</a></li>
-										<li><a href="#">Danh mục cán bộ</a></li>
-										<li><a href="#">Các phòng ban</a></li>
-										<li><a href="#">Các nghiên cứu</a></li>
-										<li><a href="#">Công trình Khoa học</a></li>
-									</ul></li>
-								<li><a href="#">Viện công nghệ vũ trụ</a>
-									<ul>
-										<li><a href="#">Giới thiệu chung</a></li>
-										<li><a href="#">Danh mục cán bộ</a></li>
-										<li><a href="#">Các phòng ban</a></li>
-										<li><a href="#">Các nghiên cứu</a></li>
-										<li><a href="#">Công trình Khoa học</a></li>
-									</ul></li>
+								<c:forEach items="${donviquanly}" var="donviquanly">
+									<li><a
+										href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">${donviquanly.ten}</a>
+										<ul>
+											<li><a
+												href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">Giới
+													thiệu chung</a></li>
+											<li><a
+												href="/k54/guest/donviquanly/danhsachcanbo.spms?iddonviquanly=${donviquanly.iddonviquanly}">Danh
+													mục cán bộ</a></li>
+											<li><a
+												href="/k54/guest/donviquanly/danhsachphongban.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các
+													phòng ban</a>
+											<li><a
+												href="/k54/guest/donviquanly/nghiencuu.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các
+													nghiên cứu</a></li>
+										</ul></li>
+								</c:forEach>
+
 							</ul></li>
 						<li></li>
-						<li><a href="#">Tìm kiếm</a></li>
-						<li><a href="#">Giới thiệu</a></li>
-						<li><a href="#">Liên hệ</a></li>
+
+						<li><a
+							href="<c:if test="${not empty search}"> ${search} </c:if>
+							<c:if test="${empty search}"> /k54/guest/search.spms</c:if>">Tìm
+								kiếm</a></li>
+						<li><a
+							href="<c:if test="${not empty info}"> ${info} </c:if>
+							<c:if test="${empty info}"> /k54/guest/info.spms</c:if>">Giới
+								thiệu</a></li>
+						<li><a
+							href="<c:if test="${not empty contact}"> ${contact} </c:if>
+							<c:if test="${empty contact}"> /k54/guest/contact.spms</c:if>">Liên
+								hệ</a></li>
 					</ul>
 				</div>
 				<!--End header-row-1-->
@@ -98,7 +82,7 @@
 				<h2>Thông tin sơ yếu lý lịch</h2>
 			</div>
 			<div class="images">
-				<img style="margin-left: 30px;" src="../images/public/mainh.jpg"
+				<img style="margin-left: 30px;" src="${canbo.duongdananh}"
 					width="100" height="150" />
 
 			</div>
@@ -109,43 +93,27 @@
 				<div>
 
 					<div class="title_info">
-						<a>Họ tên:&nbsp&nbsp</a><span style="text-transform: uppercase">Phạm
-							Minh Đạt</span>
+						<a>Họ tên:&nbsp&nbsp</a><span style="text-transform: uppercase">${canbo.hoten}</span>
 					</div>
 
 
-					<div class="detail_info">Nhà A5, số 18 Hoàng Quốc Việt, Cầu
-						Giấy, Hà Nội</div>
+					<div class="detail_info">Địa chỉ: ${canbo.noiohiennay}</div>
 
 
-					<div class="detail_info">Điện thoại: (+84)(4) 37563474</div>
+					<div class="detail_info">Điện thoại: ${canbo.sodienthoai}</div>
 
-
-					<div class="detail_info">Fax: (+84)(4) 37564303</div>
-
-
-					<div class="detail_info">Email: toanhoc@vast.com</div>
+					<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
+						<div class="detail_info">Email: ${taikhoan.email}</div>
+					</c:forEach>
 					<br />
 
 				</div>
 				<div>
 					<div class="title_info">
-						<a>Chức vụ:&nbsp&nbsp</a><span style="text-transform: uppercase;">Viện
-							trưởng</span>
+						<a>Chức vụ:&nbsp&nbsp</a><span style="text-transform: uppercase;">${canbo.chucvu.ten}</span>
 					</div>
 				</div>
-				<div>
-
-					<!--                        <div align="left" class="detail_info"><b>Viện trưởng: </b> Phạm Minh Đạt</sdivong></div>
-                                                <div align="left" class="detail_info"><b>Phó viện trưởng:</b></div>
-                                                    <div align="left" class="detail_info_sub">
-                                                            
-                                                    <a>&nbsp;Kỹ sư&nbsp;Nguyễn Tuấn Vinh</a> <br>
-                                                                    
-                                                    <a>&nbsp;Kỹ sư&nbsp;Nguyễn Duy Hưởng</a> <br>
-                                                                    
-                                                </div>-->
-				</div>
+				<div></div>
 			</div>
 			<!--End contact_us-->
 			<div class="clear"></div>
@@ -160,112 +128,112 @@
 						</tr>
 						<tr>
 							<td class="list">Họ và tên</td>
-							<td class="list_ret" width="500">${soyeu.hoten}</td>
+							<td class="list_ret" width="500">${canbo.hoten}</td>
 						</tr>
 						<tr>
 							<td class="list">Đơn vị quản lý</td>
-							<td class="list_ret">${soyeu.donviquanly.ten}</td>
+							<td class="list_ret">${canbo.donviquanly.ten}</td>
 						</tr>
 						<tr>
 							<td class="list">Phòng ban</td>
-							<td class="list_ret">${soyeu.phongban.ten}</td>
+							<td class="list_ret">${canbo.phongban.ten}</td>
 						</tr>
 						<tr>
 							<td class="list">Số hiệu công chức</td>
-							<td class="list_ret">${soyeu.sohieucongchuc}</td>
+							<td class="list_ret">${canbo.sohieucongchuc}</td>
 						</tr>
 
 						<tr>
 							<td class="list">Giới tính</td>
-							<td class="list_ret">${soyeu.gioitinh}</td>
+							<td class="list_ret">${canbo.gioitinh}</td>
 						</tr>
 						<tr>
 							<td class="list">Số chứng minh thư nhân dân</td>
-							<td class="list_ret">${soyeu.chungminhnhandan}</td>
+							<td class="list_ret">${canbo.chungminhnhandan}</td>
 						</tr>
 						<tr>
 							<td class="list">Tên thường dùng khác</td>
-							<td class="list_ret">${soyeu.tenthuongdung}</td>
+							<td class="list_ret">${canbo.tenthuongdung}</td>
 						</tr>
 						<tr>
 							<td class="list">Ngày tháng năm sinh</td>
-							<td class="list_ret">${sNgaySinh}</td>
+							<td class="list_ret">${canbo.ngaysinh}</td>
 						</tr>
 						<tr>
 							<td class="list">Nơi sinh</td>
-							<td class="list_ret">${soyeu.noisinh}</td>
+							<td class="list_ret">${canbo.noisinh}</td>
 						</tr>
 						<tr>
 							<td class="list">Quê quán</td>
-							<td class="list_ret">${soyeu.quequan}</td>
+							<td class="list_ret">${canbo.quequan}</td>
 						</tr>
 						<tr>
 							<td class="list">Nơi ở hiện nay</td>
-							<td class="list_ret">${soyeu.noiohiennay}</td>
+							<td class="list_ret">${canbo.noiohiennay}</td>
 						</tr>
 						<tr>
 							<td class="list">Gia đình xuất thân</td>
-							<td class="list_ret">${soyeu.xuatthan.ten}</td>
+							<td class="list_ret">${canbo.xuatthan.ten}</td>
 						</tr>
 						<tr>
 							<td class="list">Dân tộc</td>
-							<td class="list_ret">${soyeu.dantoc.ten}</td>
+							<td class="list_ret">${canbo.dantoc.ten}</td>
 						</tr>
 						<tr>
 							<td class="list">Tôn giáo</td>
-							<td class="list_ret">${soyeu.tongiao.ten}</td>
+							<td class="list_ret">${canbo.tongiao.ten}</td>
 						</tr>
 						<tr>
-							<td class="list">Ngày vào Đảng dự bị</td>
-							<td class="list_ret">${soyeu.ngayvaodangdubi}</td>
+							<td class="list">Ngày vào Đảng</td>
+							<td class="list_ret">${canbo.ngayvaodangchinhthuc}</td>
 						</tr>
 						<tr>
-							<td class="list">Ngày vào Đảng chính thức</td>
-							<td class="list_ret">${soyeu.ngayvaodangchinhthuc}</td>
-						</tr>
-						<tr>
-							<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
-							<td class="list_ret">${soyeu.tencntn1}</td>
-						</tr>
-						<tr>
-							<td class="list">Năm tốt nghiệp</td>
-							<td class="list_ret">${soyeu.namtn1}</td>
+							<td class="list">Ngôn ngữ biết</td>
+							<td class="list_ret">${canbo.ngonngubiet}</td>
 						</tr>
 						<tr>
 							<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
-							<td class="list_ret">${soyeu.tencntn2}</td>
+							<td class="list_ret">${canbo.tencntn1}</td>
 						</tr>
 						<tr>
 							<td class="list">Năm tốt nghiệp</td>
-							<td class="list_ret">${soyeu.namtn2}</td>
+							<td class="list_ret">${canbo.namtn1}</td>
 						</tr>
 						<tr>
 							<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
-							<td class="list_ret">${soyeu.tencntn3}</td>
+							<td class="list_ret">${canbo.tencntn2}</td>
 						</tr>
 						<tr>
 							<td class="list">Năm tốt nghiệp</td>
-							<td class="list_ret">${soyeu.namtn3}</td>
+							<td class="list_ret">${canbo.namtn2}</td>
+						</tr>
+						<tr>
+							<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+							<td class="list_ret">${canbo.tencntn3}</td>
+						</tr>
+						<tr>
+							<td class="list">Năm tốt nghiệp</td>
+							<td class="list_ret">${canbo.namtn3}</td>
 						</tr>
 						<tr>
 							<td class="list">Học vị</td>
-							<td class="list_ret">${soyeu.hocvi.ten}</td>
+							<td class="list_ret">${canbo.hocvi.ten}</td>
 						</tr>
 						<tr>
 							<td class="list">Học hàm</td>
-							<td class="list_ret">${soyeu.hocham.ten}</td>
+							<td class="list_ret">${canbo.hocham.ten}</td>
 						</tr>
 						<tr>
 							<td class="list">Hệ số lương</td>
-							<td class="list_ret">${soyeu.hesoluong.heso}</td>
+							<td class="list_ret">${canbo.hesoluong.heso}</td>
 						</tr>
 						<tr>
 							<td class="list">Cấp ủy Đảng</td>
-							<td class="list_ret">${soyeu.capuy.ten}</td>
+							<td class="list_ret">${canbo.capuy.ten}</td>
 						</tr>
 						<tr>
 							<td class="list">Danh hiệu được Nhà nước phong</td>
-							<td class="list_ret">${soyeu.danhhieu.ten}</td>
+							<td class="list_ret">${canbo.danhhieu.ten}</td>
 						</tr>
 					</table>
 					<br /> <br />
@@ -277,22 +245,26 @@
 						</tr>
 						<tr>
 							<td colspan="2" align="">
-								<table>
-									<thead>
+								<table cellspacing="0" style="width: 715px">
+									<tr class="tieu_de">
+										<td style="width: 3%">STT</td>
+										<td style="width: 40%">Tên sách</td>
+										<td style="width: 7%">Năm XB</td>
+										<td style="width: 10%">Số trang</td>
+										<td style="width: 15%">Thể loại</td>
+										<td style="width: 15%">Cơ quan xuất bản</td>
+									</tr>
+									<%int i = 1; %>
+									<c:forEach items="${canbo.sachxuatbans}" var="sach">
 										<tr>
-											<th>Tên sách</th>
-											<th>Năm xuất bản</th>
+											<td style="width: 3%"><%=i++%></td>
+											<td style="width: 40%">${sach.ten}</td>
+											<td style="width: 7%">${sach.namxuatban}</td>
+											<td style="width: 10%">${sach.sotrang}</td>
+											<td style="width: 15%">${sach.theloai}</td>
+											<td style="width: 15%">${sach.coquanxuatban}</td>
 										</tr>
-									</thead>
-
-									<tbody>
-
-										<tr>
-											<td class="list">${sxb.ten}</td>
-											<td class="list_ret">${sxb.namxuatban}</td>
-										</tr>
-
-									</tbody>
+									</c:forEach>
 								</table>
 							</td>
 						</tr>
