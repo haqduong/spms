@@ -37,7 +37,6 @@ public class HomeController {
 		if (dk){
 			System.out.println("dk duoc");
 		}
-		System.out.println(guest.DangNhap("dam", "ngo"));
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		

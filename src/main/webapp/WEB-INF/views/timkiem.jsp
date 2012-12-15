@@ -25,7 +25,7 @@
 			<!--End banner_header -->
 			<div id="nav_menu">
 				<div class="header-row-1">
-						<ul>
+					<ul>
 						<li><a
 							href="<c:if test="${not empty homePage}"> ${homePage} </c:if>
 							<c:if test="${empty homePage}">/k54/home.spms</c:if>">Trang
@@ -40,12 +40,21 @@
 						<li><a>Đơn vị</a>
 							<ul>
 								<c:forEach items="${donviquanly}" var="donviquanly">
-									<li><a href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">${donviquanly.ten}</a>
+									<li><a
+										href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">${donviquanly.ten}</a>
 										<ul>
-											<li><a href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">Giới thiệu chung</a></li>
-											<li><a href="/k54/guest/donviquanly/danhsachcanbo.spms?iddonviquanly=${donviquanly.iddonviquanly}">Danh mục cán bộ</a></li>
-											<li><a href="/k54/guest/donviquanly/danhsachphongban.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các phòng ban</a> 
-											<li><a href="/k54/guest/donviquanly/nghiencuu.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các nghiên cứu</a></li>
+											<li><a
+												href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">Giới
+													thiệu chung</a></li>
+											<li><a
+												href="/k54/guest/donviquanly/danhsachcanbo.spms?iddonviquanly=${donviquanly.iddonviquanly}">Danh
+													mục cán bộ</a></li>
+											<li><a
+												href="/k54/guest/donviquanly/danhsachphongban.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các
+													phòng ban</a>
+											<li><a
+												href="/k54/guest/donviquanly/nghiencuu.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các
+													nghiên cứu</a></li>
 										</ul></li>
 								</c:forEach>
 
@@ -121,8 +130,8 @@
 							<td><label>Phân loại cán bộ : </label></td>
 							<td><select name="loaicanbo">
 									<option value="0" selected>Tất cả</option>
-									<option value="0">Cán bộ thường</option>
-									<option value="1">Cán bộ nghiên cứu</option>
+									<option value="1">Cán bộ thường</option>
+									<option value="2">Cán bộ nghiên cứu</option>
 							</select> <!--End select --></td>
 						</tr>
 						<tr>
@@ -156,13 +165,17 @@
 								<table cellspacing="0" cellpadding="1" style="width: 715px">
 									<tr class="tieu_de">
 										<td style="width: 5%">STT</td>
-										<td style="width: 20%">Họ và tên</td>
+										<td style="width: 15%">Họ và tên</td>
 										<td style="width: 15%">Đơn vị</td>
 										<td style="width: 15%">Phòng ban</td>
 										<td style="width: 10%">Chức vụ</td>
 										<td style="width: 15%">SĐT</td>
 										<td style="width: 15%">Email</td>
-										<td style="width: 10%">Thông tin</td>
+										<c:if test="${ not empty user}">
+											<c:if test="${user.permission >= 1}">
+												<td style="width: 10%">Thông tin</td>
+											</c:if>
+										</c:if>
 									</tr>
 								</table>
 							</td>
@@ -175,7 +188,7 @@
 											<c:forEach items="${result}" var="canbo">
 												<tr class="row_1">
 													<td style="width: 5%"><%=count++%></td>
-													<td style="width: 20%">${canbo.hoten}</td>
+													<td style="width: 15%">${canbo.hoten}</td>
 													<td style="width: 15%">${canbo.phongban.donviquanly.ten}</td>
 													<td style="width: 15%">${canbo.phongban.ten}</td>
 													<td style="width: 10%">${canbo.chucvu.ten}</td>
@@ -184,7 +197,12 @@
 														var="taikhoan">
 														<td style="width: 15%">${taikhoan.email}</td>
 													</c:forEach>
-													<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
+													<c:if test="${ not empty user}">
+														<c:if test="${user.permission >= 1}">
+															<td style="width: 10%"><a href="/k54/chitietcanbo.spms?idcanbo=${canbo.idsoyeulylich}">Chi tiết</a></td>
+														</c:if>
+													</c:if>
+
 												</tr>
 											</c:forEach>
 										</c:if>
@@ -292,7 +310,8 @@
 			}
 			
 		}%>
-		var dir = ("<%=dsPhongBan%>");
+		var dir = ("<%=dsPhongBan%>
+		");
 			var allType = dir.split("|");
 			var i;
 			var count = 0;

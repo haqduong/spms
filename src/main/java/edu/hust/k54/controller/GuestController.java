@@ -34,9 +34,10 @@ public class GuestController implements Controller {
 					modelAndView.addObject("donviquanly", donviquanly);
 					String Vien = arg0.getParameter("vien");
 					String PhongBan = arg0.getParameter("phongban");
+					String LoaiCB = arg0.getParameter("loaicanbo");
 					String tenCb = arg0.getParameter("tenCanBo");
-					if ((tenCb != null) || (Vien != null) || (PhongBan != null)) {
-						Integer idVien, idPhongBan;
+					if ((tenCb != "") || (Vien != null) || (PhongBan != null)) {
+						Integer idVien, idPhongBan, loaiCB;
 						if (Vien == null) {
 							idVien = 0;
 						} else {
@@ -49,35 +50,78 @@ public class GuestController implements Controller {
 							idPhongBan = Integer.parseInt(PhongBan);
 						}
 
+						if (LoaiCB == null) {
+							loaiCB = 0;
+						} else {
+							loaiCB = Integer.parseInt(LoaiCB);
+						}
+						System.out.println("id vien = " + idVien
+								+ "id phong ban = " + idPhongBan
+								+ "tencanbo = " + tenCb);
 						List<Soyeulylich> danhsachcanbo = guestController
-								.TimCB(idVien, idPhongBan, tenCb);
+								.TimCB(idVien, idPhongBan,
+										((tenCb == "") ? null : tenCb), loaiCB);
 						modelAndView.addObject("result", danhsachcanbo);
 					}
 					modelAndView = setLink(modelAndView);
+				}else if (uri.contains("chitietcanbo")) {
+					modelAndView = new ModelAndView("xem_TTcanbo");
+					Integer idcanbo = Integer.parseInt(arg0
+							.getParameter("idcanbo"));
+					modelAndView.addObject("canbo", guestController.TimCB(idcanbo).get(0));
+					modelAndView = setLink(modelAndView);
+					
 				} else if (uri.contains("info")) {
 					modelAndView = new ModelAndView("info");
 				} else if (uri.contains("contact")) {
 					modelAndView = new ModelAndView("contact");
 				} else if (uri.contains("donviquanly")) {
 					if (uri.contains("gioithieuchung")) {
+						modelAndView = new ModelAndView("vienkhoahoc");
+						List<Donviquanly> donviquanly = guestController
+								.TimDVQL(0, 0, null);
+						modelAndView.addObject("donviquanly", donviquanly);
 						Integer iddonviquanly = Integer.parseInt(arg0
 								.getParameter("iddonviquanly"));
-						modelAndView = new ModelAndView("vienkhoahoc");
-						// TODO
+						modelAndView.addObject("donvi", guestController
+								.timDonVi(iddonviquanly).get(0));
 					} else if (uri.contains("danhsachcanbo")) {
 						Integer iddonviquanly = Integer.parseInt(arg0
 								.getParameter("iddonviquanly"));
 						modelAndView = new ModelAndView("danhsachcanbo");
-						// TODO
+						List<Donviquanly> donviquanly = guestController
+								.TimDVQL(0, 0, null);
+						modelAndView.addObject("donviquanly", donviquanly);
+						modelAndView.addObject("donvi", guestController
+								.timDonVi(iddonviquanly).get(0));
+						modelAndView.addObject("danhsachcanbo", guestController
+								.TimCB(iddonviquanly, 0, null, 0));
 					} else if (uri.contains("danhsachphongban")) {
 						Integer iddonviquanly = Integer.parseInt(arg0
 								.getParameter("iddonviquanly"));
 						modelAndView = new ModelAndView("danhsachphongban");
-						// TODO
+						List<Donviquanly> donviquanly = guestController
+								.TimDVQL(0, 0, null);
+						modelAndView.addObject("donviquanly", donviquanly);
+						modelAndView.addObject("donvi", guestController
+								.timDonVi(iddonviquanly).get(0));
+						modelAndView.addObject("danhsachphongban",
+								guestController.timPhongBan(iddonviquanly));
 					} else if (uri.contains("nghiencuu")) {
 						Integer iddonviquanly = Integer.parseInt(arg0
 								.getParameter("iddonviquanly"));
 						modelAndView = new ModelAndView("danhsachdetai");
+						List<Donviquanly> donviquanly = guestController
+								.TimDVQL(0, 0, null);
+						modelAndView.addObject("donviquanly", donviquanly);
+						modelAndView.addObject("donvi", guestController
+								.timDonVi(iddonviquanly).get(0));
+						List<Soyeulylich> canbonghiencuu = guestController
+								.TimCB(iddonviquanly, 0, null, 0);
+						System.out.println("danh sach can bo"
+								+ canbonghiencuu.size());
+						modelAndView
+								.addObject("canbonghiencuu", canbonghiencuu);
 					}
 				}
 			}
@@ -90,9 +134,10 @@ public class GuestController implements Controller {
 				modelAndView.addObject("donviquanly", donviquanly);
 				String Vien = arg0.getParameter("vien");
 				String PhongBan = arg0.getParameter("phongban");
+				String LoaiCB = arg0.getParameter("loaiCB");
 				String tenCb = arg0.getParameter("tenCanBo");
 				if ((tenCb != "") || (Vien != null) || (PhongBan != null)) {
-					Integer idVien, idPhongBan;
+					Integer idVien, idPhongBan, loaiCB;
 					if (Vien == null) {
 						idVien = 0;
 					} else {
@@ -104,24 +149,39 @@ public class GuestController implements Controller {
 					} else {
 						idPhongBan = Integer.parseInt(PhongBan);
 					}
+
+					if (LoaiCB == null) {
+						loaiCB = 0;
+					} else {
+						loaiCB = Integer.parseInt(LoaiCB);
+					}
 					System.out.println("id vien = " + idVien
 							+ "id phong ban = " + idPhongBan + "tencanbo = "
 							+ tenCb);
 					List<Soyeulylich> danhsachcanbo = guestController.TimCB(
-							idVien, idPhongBan, ((tenCb == "") ? null : tenCb));
+							idVien, idPhongBan, ((tenCb == "") ? null : tenCb),
+							loaiCB);
 					modelAndView.addObject("result", danhsachcanbo);
 				}
 				modelAndView = setLink(modelAndView);
 			} else if (uri.contains("info")) {
 				modelAndView = new ModelAndView("info");
 				modelAndView = setLink(modelAndView);
-			} else if (uri.contains("contact")) {
-				modelAndView = new ModelAndView("xem_danhsachdetai");
+			} else if (uri.contains("chitietcanbo")) {
+				modelAndView = new ModelAndView("xem_TTcanbo");
+				Integer idcanbo = Integer.parseInt(arg0
+						.getParameter("idcanbo"));
+				modelAndView.addObject("canbo", guestController.TimCB(idcanbo).get(0));
+				modelAndView = setLink(modelAndView);
+				
+			}else if (uri.contains("contact")) {
+				modelAndView = new ModelAndView("contact");
 				modelAndView = setLink(modelAndView);
 			} else if (uri.contains("donviquanly")) {
 				if (uri.contains("gioithieuchung")) {
 					modelAndView = new ModelAndView("vienkhoahoc");
-					List< Donviquanly> donviquanly = guestController.TimDVQL(0, 0, null);
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
+							0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
 					Integer iddonviquanly = Integer.parseInt(arg0
 							.getParameter("iddonviquanly"));
@@ -131,18 +191,19 @@ public class GuestController implements Controller {
 					Integer iddonviquanly = Integer.parseInt(arg0
 							.getParameter("iddonviquanly"));
 					modelAndView = new ModelAndView("danhsachcanbo");
-					List< Donviquanly> donviquanly = guestController.TimDVQL(0, 0, null);
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
+							0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("donvi",
 							guestController.timDonVi(iddonviquanly).get(0));
 					modelAndView.addObject("danhsachcanbo",
-							guestController.TimCB(iddonviquanly, 0, null));
-					// TODO
+							guestController.TimCB(iddonviquanly, 0, null, 0));
 				} else if (uri.contains("danhsachphongban")) {
 					Integer iddonviquanly = Integer.parseInt(arg0
 							.getParameter("iddonviquanly"));
 					modelAndView = new ModelAndView("danhsachphongban");
-					List< Donviquanly> donviquanly = guestController.TimDVQL(0, 0, null);
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
+							0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("donvi",
 							guestController.timDonVi(iddonviquanly).get(0));
@@ -152,13 +213,16 @@ public class GuestController implements Controller {
 					Integer iddonviquanly = Integer.parseInt(arg0
 							.getParameter("iddonviquanly"));
 					modelAndView = new ModelAndView("danhsachdetai");
-					List< Donviquanly> donviquanly = guestController.TimDVQL(0, 0, null);
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
+							0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("donvi",
 							guestController.timDonVi(iddonviquanly).get(0));
-					List<Soyeulylich> canbonghiencuu = guestController.TimCB(iddonviquanly, 0, null);
-					System.out.println("danh sach can bo"+canbonghiencuu.size());
-					modelAndView.addObject("canbonghiencuu",canbonghiencuu);
+					List<Soyeulylich> canbonghiencuu = guestController.TimCB(
+							iddonviquanly, 0, null, 0);
+					System.out.println("danh sach can bo"
+							+ canbonghiencuu.size());
+					modelAndView.addObject("canbonghiencuu", canbonghiencuu);
 				}
 			}
 		}
@@ -167,9 +231,9 @@ public class GuestController implements Controller {
 
 	private ModelAndView setLink(ModelAndView view) {
 		view.addObject("homePage", "/k54/home.spms");
-		view.addObject("search", "search.spms");
-		view.addObject("info", "info.spms");
-		view.addObject("contact", "contact.spms");
+		view.addObject("search", "/k54/guest/search.spms");
+		view.addObject("info", "/k54/guest/info.spms");
+		view.addObject("contact", "/k54/guest/contact.spms");
 		return view;
 	}
 }

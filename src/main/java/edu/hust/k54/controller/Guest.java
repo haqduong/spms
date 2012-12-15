@@ -34,19 +34,6 @@ public class Guest {
 		return false;
 	}
 	
-	public boolean DangNhap(String username, String pass){
-		Taikhoandangnhap taikhoandangnhap = new Taikhoandangnhap();
-		taikhoandangnhap.setUsername(username);
-		taikhoandangnhap.setPass(pass);
-		List result = taikhoandangnhaphome.findByExample(taikhoandangnhap);
-		if (result.size() == 0){
-			return false;
-		}
-		else {
-			return true;
-		}
-	}
-	
 	public boolean doiMatKhau(String username, String pass, String newPass){
 		Taikhoandangnhap taikhoandangnhap = new Taikhoandangnhap();
 		taikhoandangnhap.setUsername(username);
@@ -166,10 +153,13 @@ public class Guest {
 		}
 	}
 	
-	public List TimCB(int maDV, int maPB, String tenCB) {
+	public List TimCB(int maDV, int maPB, String tenCB, int loaiCB) {
 		SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
 		Soyeulylich soyeulylich = new Soyeulylich();
 		soyeulylich.setHoten(tenCB);
+		if (loaiCB != 0) {
+			soyeulylich.setLoaiCb(loaiCB - 1);
+		}
 		List<Soyeulylich> result = soyeulylichHome.findByExample(soyeulylich);
 		int limit = result.size();
 		System.out.println(limit);
@@ -181,7 +171,7 @@ public class Guest {
 				Soyeulylich soyeulylichTemp = result.get(i);
 				if (maPB != 0) {
 					test = true;
-					if (soyeulylichTemp.getPhongban().getIdphongban() == (maPB)) {
+					if (soyeulylichTemp.getPhongban().getIdphongban() == maPB) {
 						test = false;
 					}
 					if (test == true) {
@@ -192,7 +182,7 @@ public class Guest {
 				}
 				if (test == false) {
 					if (maDV != 0) {
-						if (soyeulylichTemp.getDonviquanly().getIddonviquanly() == (maDV)) {
+						if (soyeulylichTemp.getDonviquanly().getIddonviquanly() == maDV) {
 							test = true;
 						}
 						if (test == false) {
@@ -208,10 +198,10 @@ public class Guest {
 			return result;
 		}
 	}
-	public List TimCB(String hoten){
+	public List TimCB(Integer idcanbo){
 		SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
 		Soyeulylich soyeulylich = new Soyeulylich();
-		soyeulylich.setHoten(hoten);
+		soyeulylich.setIdsoyeulylich(idcanbo);
 		List result = soyeulylichHome.findByExample(soyeulylich);
 		return result;
 	}
