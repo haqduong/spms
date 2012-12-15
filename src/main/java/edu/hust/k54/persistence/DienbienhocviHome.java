@@ -1,6 +1,5 @@
 package edu.hust.k54.persistence;
 
-// Generated Nov 26, 2012 7:17:42 PM by Hibernate Tools 4.0.0
 
 import java.util.List;
 import javax.naming.InitialContext;
@@ -10,11 +9,6 @@ import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 
-/**
- * Home object for domain model class Dienbienhocvi.
- * @see edu.hust.k54.persistence.Dienbienhocvi
- * @author Hibernate Tools
- */
 public class DienbienhocviHome {
 
 	private static final Log log = LogFactory.getLog(DienbienhocviHome.class);
