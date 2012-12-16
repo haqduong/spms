@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.Controller;
 
 import edu.hust.k54.persistence.Donviquanly;
 import edu.hust.k54.persistence.Soyeulylich;
+import edu.hust.k54.persistence.SoyeulylichHome;
 import edu.hust.k54.persistence.Taikhoandangnhap;
 
 public class StaffController implements Controller {
@@ -20,31 +21,55 @@ public class StaffController implements Controller {
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView modelAndView = null;
 		Guest guestController = new Guest();
+		Staff staffController = new Staff();
 		Taikhoandangnhap taikhoandangnhap = (Taikhoandangnhap) arg0.getSession().getAttribute("user");
 		if((taikhoandangnhap == null) || taikhoandangnhap.getPermission() < PERMISSION){
 			modelAndView = new ModelAndView("errorPage");
 			return modelAndView;
 		}else{
 			String uri = arg0.getRequestURI();
-			
-			if(uri.contains("capnhat/thongtincanhan")){
+			Integer idcanbo = null;
+			if(arg0.getParameter("idcanbo") != null){
+				idcanbo = Integer.parseInt(arg0.getParameter("idcanbo"));				
+			}
+			SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
+			Taikhoandangnhap curentUser = (Taikhoandangnhap)soyeulylichHome.findById(idcanbo).getTaikhoandangnhaps().toArray()[0]; 
+			if((taikhoandangnhap.getSoyeulylich().getIdsoyeulylich() != idcanbo) && (taikhoandangnhap.getPermission() < curentUser.getPermission())){
+				modelAndView = new ModelAndView("errorPage");
+				return modelAndView;
+			}else if(uri.contains("capnhat/thongtincanhan")){
 				//TODO
 			}else if(uri.contains("capnhat/lylichkhoahoc")){
 				//TODO
 			}else if(uri.contains("capnhat/taikhoan")){
 				//TODO
 			}else if(uri.contains("thongtin/soyeulylich")){
-				//TODO
+				modelAndView = new ModelAndView("xem_TTcanbo");
+				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,null);
+				modelAndView.addObject("donviquanly", donviquanly);
+				modelAndView.addObject("canbo", guestController.TimCB(idcanbo));
 			}else if(uri.contains("thongtin/lylichkhoahoc")){
-				//TODO
+				modelAndView = new ModelAndView("lylichKH");
+				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,null);
+				modelAndView.addObject("donviquanly", donviquanly);
+				modelAndView.addObject("canbo", guestController.TimCB(idcanbo));
 			}else if(uri.contains("thongtin/quatrinhcongtac")){
 				//TODO
 			}else if(uri.contains("thongtin/dienbienluong")){
-				//TODO
+				modelAndView = new ModelAndView("dienbienluong");
+				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,null);
+				modelAndView.addObject("donviquanly", donviquanly);
+				modelAndView.addObject("canbo", guestController.TimCB(idcanbo));
 			}else if(uri.contains("thongtin/khenthuong")){
-				//TODO
+				modelAndView = new ModelAndView("khenthuong");
+				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,null);
+				modelAndView.addObject("donviquanly", donviquanly);
+				modelAndView.addObject("canbo", guestController.TimCB(idcanbo));
 			}else if(uri.contains("thongtin/kyluat")){
-				//TODO
+				modelAndView = new ModelAndView("kyluat");
+				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,null);
+				modelAndView.addObject("donviquanly", donviquanly);
+				modelAndView.addObject("canbo", guestController.TimCB(idcanbo));
 			}else if (uri.contains("search")) {
 				modelAndView = new ModelAndView("timkiem");
 				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,null);
