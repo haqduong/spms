@@ -75,8 +75,14 @@ public class GuestController implements Controller {
 
 				} else if (uri.contains("info")) {
 					modelAndView = new ModelAndView("info");
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,
+							null);
+					modelAndView.addObject("donviquanly", donviquanly);
 				} else if (uri.contains("contact")) {
 					modelAndView = new ModelAndView("contact");
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,
+							null);
+					modelAndView.addObject("donviquanly", donviquanly);
 				} else if (uri.contains("donviquanly")) {
 					if (uri.contains("gioithieuchung")) {
 						modelAndView = new ModelAndView("vienkhoahoc");
@@ -168,6 +174,9 @@ public class GuestController implements Controller {
 				modelAndView = setLink(modelAndView);
 			} else if (uri.contains("info")) {
 				modelAndView = new ModelAndView("info");
+				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,
+						null);
+				modelAndView.addObject("donviquanly", donviquanly);
 				modelAndView = setLink(modelAndView);
 			} else if (uri.contains("chitietcanbo")) {
 				modelAndView = new ModelAndView("xem_TTcanbo");
@@ -178,6 +187,9 @@ public class GuestController implements Controller {
 
 			} else if (uri.contains("contact")) {
 				modelAndView = new ModelAndView("contact");
+				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,
+						null);
+				modelAndView.addObject("donviquanly", donviquanly);
 				modelAndView = setLink(modelAndView);
 			} else if (uri.contains("donviquanly")) {
 				if (uri.contains("gioithieuchung")) {

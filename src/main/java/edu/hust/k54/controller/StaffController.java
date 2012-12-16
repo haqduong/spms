@@ -83,9 +83,15 @@ public class StaffController implements Controller {
 				modelAndView = setLink(modelAndView);
 			} else if (uri.contains("info")) {
 				modelAndView = new ModelAndView("info");
+				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,
+						null);
+				modelAndView.addObject("donviquanly", donviquanly);
 				modelAndView = setLink(modelAndView);
 			}else if (uri.contains("contact")) {
 				modelAndView = new ModelAndView("contact");
+				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,
+						null);
+				modelAndView.addObject("donviquanly", donviquanly);
 				modelAndView = setLink(modelAndView);
 			}
 			
