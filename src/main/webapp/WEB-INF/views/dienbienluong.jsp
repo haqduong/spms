@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Thống kê kỷ luật</title>
+<title>Thống kê diễn biến lương</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
@@ -83,113 +83,36 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>Thống kê kỉ luật </h2>
+				<h2>Thống kê diễn biến lương của ${canbo.hoten}</h2>
 			</div>
 			<div class="tranfer_work">
-				<div class="filter_date">
-					<b>Thời gian:</b> <a>Khoảng từ</a> <input name="start_date"
-						type="text" size="12" id="inputField_start" /><a>Đến hết</a> <input
-						name="end_date" type="text" size="12" id="inputField_end" />
-					<p>
-						<a class="button">Xem thống kê</a>
-					</p>
-
-				</div>
-				<script type="text/javascript">
-                        window.onload = function(){
-                            new JsDatePick({
-                                useMode:2,
-                                target:"inputField_start",
-                                dateFormat:"%d-%M-%Y"
-                            });
-                            new JsDatePick({
-                                useMode:2,
-                                target:"inputField_end",
-                                dateFormat:"%d-%M-%Y"
-                            });
-                        };
-                        
-                    </script>
-
 				<table style="width: 100%;">
 					<tr class="head_tb_tranfer_work">
 						<td style="width: 5%">STT</td>
-						<td style="width: 15%">Tên cán bộ</td>
-						<td style="width: 30%">Mức kỉ luật</td>
-						<td style="width: 35%">Hình thức kỉ luật</td>
-						<td>Ngày kỉ luật</td>
+						<td style="width: 20%">Ngạch lương</td>
+						<td style="width: 10%">Bậc lương</td>
+						<td style="width: 10%">Hệ số lương</td>
+						<td style="width: 20%">Từ ngày</td>
+						<td style="width: 20%">Đến ngày</td>
 					</tr>
-					<tr class="row_1">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phạm Minh Đạt</td>
-						<td class="tranfer_work_old">CHống tham nhũng</td>
-						<td class="tranfer_work_new">Huy chương vàng Olynpic</td>
-						<td class="tranfer_date">17/12/2012</td>
-					</tr>
-					<tr class="row_2">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phạm Minh Đạt</td>
-						<td class="tranfer_work_old">CHống tham nhũng</td>
-						<td class="tranfer_work_new">Huy chương vàng Olynpic</td>
-						<td class="tranfer_date">17/12/2012</td>
-					</tr>
-					<tr class="row_1">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phạm Minh Đạt</td>
-						<td class="tranfer_work_old">CHống tham nhũng</td>
-						<td class="tranfer_work_new">Huy chương vàng Olynpic</td>
-						<td class="tranfer_date">17/12/2012</td>
-					</tr>
-					<tr class="row_2">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phạm Minh Đạt</td>
-						<td class="tranfer_work_old">CHống tham nhũng</td>
-						<td class="tranfer_work_new">Huy chương vàng Olynpic</td>
-						<td class="tranfer_date">17/12/2012</td>
-					<tr class="row_1">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phạm Minh Đạt</td>
-						<td class="tranfer_work_old">CHống tham nhũng</td>
-						<td class="tranfer_work_new">Huy chương vàng Olynpic</td>
-						<td class="tranfer_date">17/12/2012</td>
-					</tr>
-					<tr class="row_2">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phạm Minh Đạt</td>
-						<td class="tranfer_work_old">CHống tham nhũng</td>
-						<td class="tranfer_work_new">Huy chương vàng Olynpic</td>
-						<td class="tranfer_date">17/12/2012</td>
-					<tr class="row_1">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phạm Minh Đạt</td>
-						<td class="tranfer_work_old">CHống tham nhũng</td>
-						<td class="tranfer_work_new">Huy chương vàng Olynpic</td>
-						<td class="tranfer_date">17/12/2012</td>
-					</tr>
-					<tr class="row_2">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phạm Minh Đạt</td>
-						<td class="tranfer_work_old">CHống tham nhũng</td>
-						<td class="tranfer_work_new">Huy chương vàng Olynpic</td>
-						<td class="tranfer_date">17/12/2012</td>
-					<tr class="row_1">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phạm Minh Đạt</td>
-						<td class="tranfer_work_old">CHống tham nhũng</td>
-						<td class="tranfer_work_new">Huy chương vàng Olynpic</td>
-						<td class="tranfer_date">17/12/2012</td>
-					</tr>
-					<tr class="row_2 end_tb_tranfer_work">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phạm Minh Đạt</td>
-						<td class="tranfer_work_old">CHống tham nhũng</td>
-						<td class="tranfer_work_new">Huy chương vàng Olynpic</td>
-						<td class="tranfer_date">17/12/2012</td>
+					<%
+						int i = 1;
+					%>
+					<c:forEach items="${canbo.dienbienluongs}" var="dienbienluong">
+						<tr class="row_1">
+							<td class="tranfer_STT">
+								<%=i++%>
+							</td>
+							<td class="tranfer_name">${dienbienluong.hesoluong.ngachluong.ten}</td>
+							<td class="tranfer_name">${dienbienluong.hesoluong.bacluong}</td>
+							<td class="tranfer_name">${dienbienluong.hesoluong.heso}</td>
+							<td class="tranfer_name">${dienbienluong.tungay}</td>
+							<td class="tranfer_name">${dienbienluong.denngay}</td>
+						</tr>
+					</c:forEach>
 				</table>
 			</div>
 			<!--End tranfer_work -->
-
-
 		</div>
 		<!--End wrap_main-->
 
@@ -441,4 +364,3 @@
 	<!--End wrapper -->
 </body>
 </html>
-
