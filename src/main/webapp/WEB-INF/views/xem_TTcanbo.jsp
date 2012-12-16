@@ -120,122 +120,856 @@
 
 			<div class="infomation_staff">
 				<form>
+					<c:if test="${empty user}">
+						<!-- guest -->
+						<table border="0" bgcolor="#fff" align="center" id="info">
+							<tr>
+								<td class="title" colspan=2 align="center" height="50">Thông
+									tin cá nhân</td>
+							</tr>
+							<tr>
+								<td class="list">Họ và tên</td>
+								<td class="list_ret" width="500">${canbo.hoten}</td>
+							</tr>
+							<tr>
+								<td class="list">Đơn vị quản lý</td>
+								<td class="list_ret">${canbo.donviquanly.ten}</td>
+							</tr>
+							<tr>
+								<td class="list">Phòng ban</td>
+								<td class="list_ret">${canbo.phongban.ten}</td>
+							</tr>
+							<tr>
+								<td class="list">Giới tính</td>
+								<td class="list_ret">${canbo.gioitinh}</td>
+							</tr>
+							<tr>
+								<td class="list">Dân tộc</td>
+								<td class="list_ret">${canbo.dantoc.ten}</td>
+							</tr>
+							<tr>
+								<td class="list">Tôn giáo</td>
+								<td class="list_ret">${canbo.tongiao.ten}</td>
+							</tr>
+							<tr>
+								<td class="list">Ngôn ngữ biết</td>
+								<td class="list_ret">${canbo.ngonngubiet}</td>
+							</tr>
+							<tr>
+								<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+								<td class="list_ret">${canbo.tencntn1}</td>
+							</tr>
+							<tr>
+								<td class="list">Năm tốt nghiệp</td>
+								<td class="list_ret">${canbo.namtn1}</td>
+							</tr>
+							<tr>
+								<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+								<td class="list_ret">${canbo.tencntn2}</td>
+							</tr>
+							<tr>
+								<td class="list">Năm tốt nghiệp</td>
+								<td class="list_ret">${canbo.namtn2}</td>
+							</tr>
+							<tr>
+								<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+								<td class="list_ret">${canbo.tencntn3}</td>
+							</tr>
+							<tr>
+								<td class="list">Năm tốt nghiệp</td>
+								<td class="list_ret">${canbo.namtn3}</td>
+							</tr>
+							<tr>
+								<td class="list">Học vị</td>
+								<td class="list_ret">${canbo.hocvi.ten}</td>
+							</tr>
+							<tr>
+								<td class="list">Học hàm</td>
+								<td class="list_ret">${canbo.hocham.ten}</td>
+							</tr>
+							<tr>
+								<td class="list">Danh hiệu được Nhà nước phong</td>
+								<td class="list_ret">${canbo.danhhieu.ten}</td>
+							</tr>
+						</table>
+					</c:if>
+					<c:if test="${not empty user}">
+						<c:if test="${user.permission == 0}">
+							<!-- guest -->
+							<table border="0" bgcolor="#fff" align="center" id="info">
+								<tr>
+									<td class="title" colspan=2 align="center" height="50">Thông
+										tin cá nhân</td>
+								</tr>
+								<tr>
+									<td class="list">Họ và tên</td>
+									<td class="list_ret" width="500">${canbo.hoten}</td>
+								</tr>
+								<tr>
+									<td class="list">Đơn vị quản lý</td>
+									<td class="list_ret">${canbo.donviquanly.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Phòng ban</td>
+									<td class="list_ret">${canbo.phongban.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Giới tính</td>
+									<td class="list_ret">${canbo.gioitinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Dân tộc</td>
+									<td class="list_ret">${canbo.dantoc.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Tôn giáo</td>
+									<td class="list_ret">${canbo.tongiao.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngôn ngữ biết</td>
+									<td class="list_ret">${canbo.ngonngubiet}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Học vị</td>
+									<td class="list_ret">${canbo.hocvi.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Học hàm</td>
+									<td class="list_ret">${canbo.hocham.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Danh hiệu được Nhà nước phong</td>
+									<td class="list_ret">${canbo.danhhieu.ten}</td>
+								</tr>
+							</table>
+						</c:if>
 
-					<table border="0" bgcolor="#fff" align="center" id="info">
-						<tr>
-							<td class="title" colspan=2 align="center" height="50">Thông
-								tin cá nhân</td>
-						</tr>
-						<tr>
-							<td class="list">Họ và tên</td>
-							<td class="list_ret" width="500">${canbo.hoten}</td>
-						</tr>
-						<tr>
-							<td class="list">Đơn vị quản lý</td>
-							<td class="list_ret">${canbo.donviquanly.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Phòng ban</td>
-							<td class="list_ret">${canbo.phongban.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Số hiệu công chức</td>
-							<td class="list_ret">${canbo.sohieucongchuc}</td>
-						</tr>
+						<c:if
+							test="${user.permission == 1 && user.soyeulylich.idsoyeulylich == canbo.idsoyeulylich}">
+							<!-- staff self -->
+							<table border="0" bgcolor="#fff" align="center" id="info">
+								<tr>
+									<td class="title" colspan=2 align="center" height="50">Thông
+										tin cá nhân</td>
+								</tr>
+								<tr>
+									<td class="list">Họ và tên</td>
+									<td class="list_ret" width="500">${canbo.hoten}</td>
+								</tr>
+								<tr>
+									<td class="list">Đơn vị quản lý</td>
+									<td class="list_ret">${canbo.donviquanly.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Phòng ban</td>
+									<td class="list_ret">${canbo.phongban.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Số hiệu công chức</td>
+									<td class="list_ret">${canbo.sohieucongchuc}</td>
+								</tr>
 
-						<tr>
-							<td class="list">Giới tính</td>
-							<td class="list_ret">${canbo.gioitinh}</td>
-						</tr>
-						<tr>
-							<td class="list">Số chứng minh thư nhân dân</td>
-							<td class="list_ret">${canbo.chungminhnhandan}</td>
-						</tr>
-						<tr>
-							<td class="list">Tên thường dùng khác</td>
-							<td class="list_ret">${canbo.tenthuongdung}</td>
-						</tr>
-						<tr>
-							<td class="list">Ngày tháng năm sinh</td>
-							<td class="list_ret">${canbo.ngaysinh}</td>
-						</tr>
-						<tr>
-							<td class="list">Nơi sinh</td>
-							<td class="list_ret">${canbo.noisinh}</td>
-						</tr>
-						<tr>
-							<td class="list">Quê quán</td>
-							<td class="list_ret">${canbo.quequan}</td>
-						</tr>
-						<tr>
-							<td class="list">Nơi ở hiện nay</td>
-							<td class="list_ret">${canbo.noiohiennay}</td>
-						</tr>
-						<tr>
-							<td class="list">Gia đình xuất thân</td>
-							<td class="list_ret">${canbo.xuatthan.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Dân tộc</td>
-							<td class="list_ret">${canbo.dantoc.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Tôn giáo</td>
-							<td class="list_ret">${canbo.tongiao.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Ngày vào Đảng</td>
-							<td class="list_ret">${canbo.ngayvaodangchinhthuc}</td>
-						</tr>
-						<tr>
-							<td class="list">Ngôn ngữ biết</td>
-							<td class="list_ret">${canbo.ngonngubiet}</td>
-						</tr>
-						<tr>
-							<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
-							<td class="list_ret">${canbo.tencntn1}</td>
-						</tr>
-						<tr>
-							<td class="list">Năm tốt nghiệp</td>
-							<td class="list_ret">${canbo.namtn1}</td>
-						</tr>
-						<tr>
-							<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
-							<td class="list_ret">${canbo.tencntn2}</td>
-						</tr>
-						<tr>
-							<td class="list">Năm tốt nghiệp</td>
-							<td class="list_ret">${canbo.namtn2}</td>
-						</tr>
-						<tr>
-							<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
-							<td class="list_ret">${canbo.tencntn3}</td>
-						</tr>
-						<tr>
-							<td class="list">Năm tốt nghiệp</td>
-							<td class="list_ret">${canbo.namtn3}</td>
-						</tr>
-						<tr>
-							<td class="list">Học vị</td>
-							<td class="list_ret">${canbo.hocvi.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Học hàm</td>
-							<td class="list_ret">${canbo.hocham.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Hệ số lương</td>
-							<td class="list_ret">${canbo.hesoluong.heso}</td>
-						</tr>
-						<tr>
-							<td class="list">Cấp ủy Đảng</td>
-							<td class="list_ret">${canbo.capuy.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Danh hiệu được Nhà nước phong</td>
-							<td class="list_ret">${canbo.danhhieu.ten}</td>
-						</tr>
-					</table>
+								<tr>
+									<td class="list">Giới tính</td>
+									<td class="list_ret">${canbo.gioitinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Số chứng minh thư nhân dân</td>
+									<td class="list_ret">${canbo.chungminhnhandan}</td>
+								</tr>
+								<tr>
+									<td class="list">Tên thường dùng khác</td>
+									<td class="list_ret">${canbo.tenthuongdung}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngày tháng năm sinh</td>
+									<td class="list_ret">${canbo.ngaysinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Nơi sinh</td>
+									<td class="list_ret">${canbo.noisinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Quê quán</td>
+									<td class="list_ret">${canbo.quequan}</td>
+								</tr>
+								<tr>
+									<td class="list">Nơi ở hiện nay</td>
+									<td class="list_ret">${canbo.noiohiennay}</td>
+								</tr>
+								<tr>
+									<td class="list">Gia đình xuất thân</td>
+									<td class="list_ret">${canbo.xuatthan.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Dân tộc</td>
+									<td class="list_ret">${canbo.dantoc.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Tôn giáo</td>
+									<td class="list_ret">${canbo.tongiao.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngày vào Đảng</td>
+									<td class="list_ret">${canbo.ngayvaodangchinhthuc}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngôn ngữ biết</td>
+									<td class="list_ret">${canbo.ngonngubiet}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Học vị</td>
+									<td class="list_ret">${canbo.hocvi.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Học hàm</td>
+									<td class="list_ret">${canbo.hocham.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Hệ số lương</td>
+									<td class="list_ret">${canbo.hesoluong.heso}</td>
+								</tr>
+								<tr>
+									<td class="list">Cấp ủy Đảng</td>
+									<td class="list_ret">${canbo.capuy.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Danh hiệu được Nhà nước phong</td>
+									<td class="list_ret">${canbo.danhhieu.ten}</td>
+								</tr>
+							</table>
+						</c:if>
+
+						<c:if
+							test="${user.permission == 1 && user.soyeulylich.idsoyeulylich != canbo.idsoyeulylich}">
+							<!-- staff -->
+							<table border="0" bgcolor="#fff" align="center" id="info">
+								<tr>
+									<td class="title" colspan=2 align="center" height="50">Thông
+										tin cá nhân</td>
+								</tr>
+								<tr>
+									<td class="list">Họ và tên</td>
+									<td class="list_ret" width="500">${canbo.hoten}</td>
+								</tr>
+								<tr>
+									<td class="list">Đơn vị quản lý</td>
+									<td class="list_ret">${canbo.donviquanly.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Phòng ban</td>
+									<td class="list_ret">${canbo.phongban.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Giới tính</td>
+									<td class="list_ret">${canbo.gioitinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Dân tộc</td>
+									<td class="list_ret">${canbo.dantoc.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Tôn giáo</td>
+									<td class="list_ret">${canbo.tongiao.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngôn ngữ biết</td>
+									<td class="list_ret">${canbo.ngonngubiet}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Học vị</td>
+									<td class="list_ret">${canbo.hocvi.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Học hàm</td>
+									<td class="list_ret">${canbo.hocham.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Danh hiệu được Nhà nước phong</td>
+									<td class="list_ret">${canbo.danhhieu.ten}</td>
+								</tr>
+							</table>
+						</c:if>
+						<c:if
+							test="${user.permission == 2 && user.soyeulylich.phongban.idphongban == canbo.phongban.idphongban}">
+							<!-- manager -->
+							<table border="0" bgcolor="#fff" align="center" id="info">
+								<tr>
+									<td class="title" colspan=2 align="center" height="50">Thông
+										tin cá nhân</td>
+								</tr>
+								<tr>
+									<td class="list">Họ và tên</td>
+									<td class="list_ret" width="500">${canbo.hoten}</td>
+								</tr>
+								<tr>
+									<td class="list">Đơn vị quản lý</td>
+									<td class="list_ret">${canbo.donviquanly.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Phòng ban</td>
+									<td class="list_ret">${canbo.phongban.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Số hiệu công chức</td>
+									<td class="list_ret">${canbo.sohieucongchuc}</td>
+								</tr>
+
+								<tr>
+									<td class="list">Giới tính</td>
+									<td class="list_ret">${canbo.gioitinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Số chứng minh thư nhân dân</td>
+									<td class="list_ret">${canbo.chungminhnhandan}</td>
+								</tr>
+								<tr>
+									<td class="list">Tên thường dùng khác</td>
+									<td class="list_ret">${canbo.tenthuongdung}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngày tháng năm sinh</td>
+									<td class="list_ret">${canbo.ngaysinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Nơi sinh</td>
+									<td class="list_ret">${canbo.noisinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Quê quán</td>
+									<td class="list_ret">${canbo.quequan}</td>
+								</tr>
+								<tr>
+									<td class="list">Nơi ở hiện nay</td>
+									<td class="list_ret">${canbo.noiohiennay}</td>
+								</tr>
+								<tr>
+									<td class="list">Gia đình xuất thân</td>
+									<td class="list_ret">${canbo.xuatthan.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Dân tộc</td>
+									<td class="list_ret">${canbo.dantoc.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Tôn giáo</td>
+									<td class="list_ret">${canbo.tongiao.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngày vào Đảng</td>
+									<td class="list_ret">${canbo.ngayvaodangchinhthuc}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngôn ngữ biết</td>
+									<td class="list_ret">${canbo.ngonngubiet}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Học vị</td>
+									<td class="list_ret">${canbo.hocvi.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Học hàm</td>
+									<td class="list_ret">${canbo.hocham.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Hệ số lương</td>
+									<td class="list_ret">${canbo.hesoluong.heso}</td>
+								</tr>
+								<tr>
+									<td class="list">Cấp ủy Đảng</td>
+									<td class="list_ret">${canbo.capuy.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Danh hiệu được Nhà nước phong</td>
+									<td class="list_ret">${canbo.danhhieu.ten}</td>
+								</tr>
+							</table>
+						</c:if>
+
+						<c:if
+							test="${user.permission == 2 && user.soyeulylich.phongban.idphongban != canbo.phongban.idphongban}">
+							<!-- manager -->
+							<table border="0" bgcolor="#fff" align="center" id="info">
+								<tr>
+									<td class="title" colspan=2 align="center" height="50">Thông
+										tin cá nhân</td>
+								</tr>
+								<tr>
+									<td class="list">Họ và tên</td>
+									<td class="list_ret" width="500">${canbo.hoten}</td>
+								</tr>
+								<tr>
+									<td class="list">Đơn vị quản lý</td>
+									<td class="list_ret">${canbo.donviquanly.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Phòng ban</td>
+									<td class="list_ret">${canbo.phongban.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Giới tính</td>
+									<td class="list_ret">${canbo.gioitinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Dân tộc</td>
+									<td class="list_ret">${canbo.dantoc.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Tôn giáo</td>
+									<td class="list_ret">${canbo.tongiao.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngôn ngữ biết</td>
+									<td class="list_ret">${canbo.ngonngubiet}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Học vị</td>
+									<td class="list_ret">${canbo.hocvi.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Học hàm</td>
+									<td class="list_ret">${canbo.hocham.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Danh hiệu được Nhà nước phong</td>
+									<td class="list_ret">${canbo.danhhieu.ten}</td>
+								</tr>
+							</table>
+						</c:if>
+						<c:if
+							test="${user.permission == 3 && user.soyeulylich.donviquanly.iddonviquanly == canbo.donviquanly.iddonviquanly}">
+							<!-- super manager seeee-->
+							<table border="0" bgcolor="#fff" align="center" id="info">
+								<tr>
+									<td class="title" colspan=2 align="center" height="50">Thông
+										tin cá nhân</td>
+								</tr>
+								<tr>
+									<td class="list">Họ và tên</td>
+									<td class="list_ret" width="500">${canbo.hoten}</td>
+								</tr>
+								<tr>
+									<td class="list">Đơn vị quản lý</td>
+									<td class="list_ret">${canbo.donviquanly.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Phòng ban</td>
+									<td class="list_ret">${canbo.phongban.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Số hiệu công chức</td>
+									<td class="list_ret">${canbo.sohieucongchuc}</td>
+								</tr>
+
+								<tr>
+									<td class="list">Giới tính</td>
+									<td class="list_ret">${canbo.gioitinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Số chứng minh thư nhân dân</td>
+									<td class="list_ret">${canbo.chungminhnhandan}</td>
+								</tr>
+								<tr>
+									<td class="list">Tên thường dùng khác</td>
+									<td class="list_ret">${canbo.tenthuongdung}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngày tháng năm sinh</td>
+									<td class="list_ret">${canbo.ngaysinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Nơi sinh</td>
+									<td class="list_ret">${canbo.noisinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Quê quán</td>
+									<td class="list_ret">${canbo.quequan}</td>
+								</tr>
+								<tr>
+									<td class="list">Nơi ở hiện nay</td>
+									<td class="list_ret">${canbo.noiohiennay}</td>
+								</tr>
+								<tr>
+									<td class="list">Gia đình xuất thân</td>
+									<td class="list_ret">${canbo.xuatthan.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Dân tộc</td>
+									<td class="list_ret">${canbo.dantoc.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Tôn giáo</td>
+									<td class="list_ret">${canbo.tongiao.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngày vào Đảng</td>
+									<td class="list_ret">${canbo.ngayvaodangchinhthuc}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngôn ngữ biết</td>
+									<td class="list_ret">${canbo.ngonngubiet}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Học vị</td>
+									<td class="list_ret">${canbo.hocvi.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Học hàm</td>
+									<td class="list_ret">${canbo.hocham.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Hệ số lương</td>
+									<td class="list_ret">${canbo.hesoluong.heso}</td>
+								</tr>
+								<tr>
+									<td class="list">Cấp ủy Đảng</td>
+									<td class="list_ret">${canbo.capuy.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Danh hiệu được Nhà nước phong</td>
+									<td class="list_ret">${canbo.danhhieu.ten}</td>
+								</tr>
+							</table>
+						</c:if>
+
+						<c:if
+							test="${user.permission == 3 && user.soyeulylich.donviquanly.iddonviquanly != canbo.donviquanly.iddonviquanly}">
+							<!-- super manager seeee-->
+							<table border="0" bgcolor="#fff" align="center" id="info">
+								<tr>
+									<td class="title" colspan=2 align="center" height="50">Thông
+										tin cá nhân</td>
+								</tr>
+								<tr>
+									<td class="list">Họ và tên</td>
+									<td class="list_ret" width="500">${canbo.hoten}</td>
+								</tr>
+								<tr>
+									<td class="list">Đơn vị quản lý</td>
+									<td class="list_ret">${canbo.donviquanly.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Phòng ban</td>
+									<td class="list_ret">${canbo.phongban.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Giới tính</td>
+									<td class="list_ret">${canbo.gioitinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Dân tộc</td>
+									<td class="list_ret">${canbo.dantoc.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Tôn giáo</td>
+									<td class="list_ret">${canbo.tongiao.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngôn ngữ biết</td>
+									<td class="list_ret">${canbo.ngonngubiet}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Học vị</td>
+									<td class="list_ret">${canbo.hocvi.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Học hàm</td>
+									<td class="list_ret">${canbo.hocham.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Danh hiệu được Nhà nước phong</td>
+									<td class="list_ret">${canbo.danhhieu.ten}</td>
+								</tr>
+							</table>
+						</c:if>
+
+						<c:if test="${user.permission == 4}">
+							<!-- admin -->
+							<table border="0" bgcolor="#fff" align="center" id="info">
+								<tr>
+									<td class="title" colspan=2 align="center" height="50">Thông
+										tin cá nhân</td>
+								</tr>
+								<tr>
+									<td class="list">Họ và tên</td>
+									<td class="list_ret" width="500">${canbo.hoten}</td>
+								</tr>
+								<tr>
+									<td class="list">Đơn vị quản lý</td>
+									<td class="list_ret">${canbo.donviquanly.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Phòng ban</td>
+									<td class="list_ret">${canbo.phongban.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Số hiệu công chức</td>
+									<td class="list_ret">${canbo.sohieucongchuc}</td>
+								</tr>
+
+								<tr>
+									<td class="list">Giới tính</td>
+									<td class="list_ret">${canbo.gioitinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Số chứng minh thư nhân dân</td>
+									<td class="list_ret">${canbo.chungminhnhandan}</td>
+								</tr>
+								<tr>
+									<td class="list">Tên thường dùng khác</td>
+									<td class="list_ret">${canbo.tenthuongdung}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngày tháng năm sinh</td>
+									<td class="list_ret">${canbo.ngaysinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Nơi sinh</td>
+									<td class="list_ret">${canbo.noisinh}</td>
+								</tr>
+								<tr>
+									<td class="list">Quê quán</td>
+									<td class="list_ret">${canbo.quequan}</td>
+								</tr>
+								<tr>
+									<td class="list">Nơi ở hiện nay</td>
+									<td class="list_ret">${canbo.noiohiennay}</td>
+								</tr>
+								<tr>
+									<td class="list">Gia đình xuất thân</td>
+									<td class="list_ret">${canbo.xuatthan.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Dân tộc</td>
+									<td class="list_ret">${canbo.dantoc.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Tôn giáo</td>
+									<td class="list_ret">${canbo.tongiao.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngày vào Đảng</td>
+									<td class="list_ret">${canbo.ngayvaodangchinhthuc}</td>
+								</tr>
+								<tr>
+									<td class="list">Ngôn ngữ biết</td>
+									<td class="list_ret">${canbo.ngonngubiet}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn1}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn2}</td>
+								</tr>
+								<tr>
+									<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
+									<td class="list_ret">${canbo.tencntn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Năm tốt nghiệp</td>
+									<td class="list_ret">${canbo.namtn3}</td>
+								</tr>
+								<tr>
+									<td class="list">Học vị</td>
+									<td class="list_ret">${canbo.hocvi.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Học hàm</td>
+									<td class="list_ret">${canbo.hocham.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Hệ số lương</td>
+									<td class="list_ret">${canbo.hesoluong.heso}</td>
+								</tr>
+								<tr>
+									<td class="list">Cấp ủy Đảng</td>
+									<td class="list_ret">${canbo.capuy.ten}</td>
+								</tr>
+								<tr>
+									<td class="list">Danh hiệu được Nhà nước phong</td>
+									<td class="list_ret">${canbo.danhhieu.ten}</td>
+								</tr>
+							</table>
+						</c:if>
+					</c:if>
 					<br /> <br />
 
 					<table border="0" bgcolor="#fff" align="center" id="info">
@@ -254,7 +988,9 @@
 										<td style="width: 15%">Thể loại</td>
 										<td style="width: 15%">Cơ quan xuất bản</td>
 									</tr>
-									<%int i = 1; %>
+									<%
+										int i = 1;
+									%>
 									<c:forEach items="${canbo.sachxuatbans}" var="sach">
 										<tr>
 											<td style="width: 3%"><%=i++%></td>
@@ -277,22 +1013,28 @@
 						</tr>
 						<tr>
 							<td colspan="2" align="">
-								<table>
-									<thead>
+								<table cellspacing="0" style="width: 715px">
+									<tr class="tieu_de">
+										<td style="width: 3%">STT</td>
+										<td style="width: 40%">Tên đề tài</td>
+										<td style="width: 7%">Từ ngày</td>
+										<td style="width: 10%">Đến ngày</td>
+										<td style="width: 15%">Cơ quan chủ trì</td>
+										<td style="width: 15%">Ngày nghiệm thu</td>
+									</tr>
+									<%
+										int j = 1;
+									%>
+									<c:forEach items="${canbo.quatrinhnghiencuus}" var="nghiencuu">
 										<tr>
-											<th>Công trình</th>
-											<th>Thời gian</th>
+											<td style="width: 3%"><%=j++%></td>
+											<td style="width: 40%">${nghiencuu.tendetai}</td>
+											<td style="width: 7%">${nghiencuu.tungay}</td>
+											<td style="width: 10%">${nghiencuu.denngay}</td>
+											<td style="width: 15%">${nghiencuu.coquanchutri}</td>
+											<td style="width: 15%">${nghiencuu.ngaynhiemthu}</td>
 										</tr>
-									</thead>
-
-									<tbody>
-
-										<tr>
-											<td class="list">Xử lý ngôn ngữ tự nhiên</td>
-											<td class="list_ret">2012</td>
-										</tr>
-
-									</tbody>
+									</c:forEach>
 								</table>
 							</td>
 						</tr>
@@ -347,38 +1089,207 @@
 			</div>
 			<!--box_right-->
 
-			<div class="box_right">
-				<div class="title_box">
-					<a>Chức năng quản lý</a>
-				</div>
-				<!--title_box-->
-				<div class="content_box">
-					<div id="accordion">
-						<ul>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-							<li><a href="#">Quản lý cán bộ</a></li>
-						</ul>
+			<c:if test="${not empty user}">
+				<c:if test="${user.permission == 1}">
+					<div class="box_right">
+						<div class="title_box">
+							<a>Cập nhật</a>
+						</div>
+						<!--title_box-->
+						<div class="content_box">
+							<div id="accordion">
+								<ul>
+									<li><a
+										href="/k54/staff/capnhat/thongtincanhan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+											nhật thông tin cá nhân</a></li>
+									<li><a
+										href="/k54/staff/capnhat/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+											nhật lý lịch khoa học</a></li>
+									<li><a
+										href="/k54/staff/capnhat/taikhoan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+											nhật tài khoản</a></li>
+								</ul>
+							</div>
+							<!--End accordion -->
+						</div>
+						<!--end content_box-->
 					</div>
-					<!--End accordion -->
+					<!--box_right-->
+					<div class="box_right">
+						<div class="title_box">
+							<a>Thông tin cá nhân</a>
+						</div>
+						<!--title_box-->
+						<div class="content_box">
+							<div id="accordion">
+								<ul>
+									<li><a
+										href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ
+											yếu lý lịch</a></li>
+									<li><a
+										href="/k54/staff/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý
+											lịch khoa học</a></li>
+									<li><a
+										href="/k54/staff/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá
+											trình công tác</a></li>
+									<li><a
+										href="/k54/staff/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn
+											biến lương</a></li>
+									<li><a
+										href="/k54/staff/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen
+											thưởng</a></li>
+									<li><a
+										href="/k54/staff/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ
+											luật</a></li>
+								</ul>
+							</div>
+							<!--End accordion -->
 
-				</div>
-				<!--end content_box-->
-			</div>
-			<!--box_right-->
+						</div>
+						<!--end content_box-->
+					</div>
+					<!--box_right-->
+				</c:if>
 
-			<div class="box_right">
-				<div class="title_box">
-					<a>Thông tin</a>
-				</div>
-				<!--title_box-->
-				<div class="content_box"></div>
-				<!--end content_box-->
-			</div>
-			<!--box_right-->
+				<c:if test="${user.permission == 2}">
+					<div class="box_right">
+						<div class="title_box">
+							<a>Chức năng quản lý</a>
+						</div>
+						<!--title_box-->
+						<div class="content_box">
+							<div id="accordion">
+								<ul>
+									<li><a
+										href="/k54/manager/quanly/phongban.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản
+											lý phòng ban</a></li>
+									<li><a
+										href="/k54/manager/quanly/hosocanbo.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản
+											lý hồ sơ cán bộ</a></li>
+									<li><a
+										href="/k54/manager/quanly/khenthuong.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản
+											lý khen thưởng</a></li>
+									<li><a
+										href="/k54/manager/quanly/kyluat.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản
+											lý kỷ luật</a></li>
+									<li><a
+										href="/k54/manager/quanly/baocao.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Báo
+											cáo</a></li>
+									<li><a
+										href="/k54/manager/quanly/thongke.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Thống
+											kê</a></li>
+								</ul>
+							</div>
+							<!--End accordion -->
+						</div>
+						<!--end content_box-->
+					</div>
+					<!--box_right-->
+					<div class="box_right">
+						<div class="title_box">
+							<a>Thông tin cá nhân</a>
+						</div>
+						<!--title_box-->
+						<div class="content_box">
+							<div id="accordion">
+								<ul>
+									<li><a
+										href="/k54/manager/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ
+											yếu lý lịch</a></li>
+									<li><a
+										href="/k54/manager/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý
+											lịch khoa học</a></li>
+									<li><a
+										href="/k54/manager/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá
+											trình công tác</a></li>
+									<li><a
+										href="/k54/manager/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn
+											biến lương</a></li>
+									<li><a
+										href="/k54/manager/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen
+											thưởng</a></li>
+									<li><a
+										href="/k54/manager/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ
+											luật</a></li>
+								</ul>
+							</div>
+							<!--End accordion -->
+
+						</div>
+						<!--end content_box-->
+					</div>
+					<!--box_right-->
+				</c:if>
+
+
+
+				<c:if test="${user.permission == 3}">
+					<div class="box_right">
+						<div class="title_box">
+							<a>Chức năng quản lý</a>
+						</div>
+						<!--title_box-->
+						<div class="content_box">
+							<div id="accordion">
+								<ul>
+									<li><a
+										href="/superManager/quanly/donvi.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản
+											lý đơn vị</a></li>
+									<li><a
+										href="/superManager/quanly/phongban.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản
+											lý phòng ban</a></li>
+									<li><a
+										href="/superManager/quanly/thongtincanbo.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản
+											lý thông tin cán bộ</a></li>
+									<li><a
+										href="/superManager/quanly/baocao.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Báo
+											cáo</a></li>
+									<li><a
+										href="/superManager/quanly/thongke.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Thống
+											kê</a></li>
+								</ul>
+							</div>
+							<!--End accordion -->
+						</div>
+						<!--end content_box-->
+					</div>
+					<!--box_right-->
+					<div class="box_right">
+						<div class="title_box">
+							<a>Thông tin cá nhân</a>
+						</div>
+						<!--title_box-->
+						<div class="content_box">
+							<div id="accordion">
+								<ul>
+									<li><a
+										href="/k54/superManager/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ
+											yếu lý lịch</a></li>
+									<li><a
+										href="/k54/superManager/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý
+											lịch khoa học</a></li>
+									<li><a
+										href="/k54/superManager/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá
+											trình công tác</a></li>
+									<li><a
+										href="/k54/superManager/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn
+											biến lương</a></li>
+									<li><a
+										href="/k54/superManager/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen
+											thưởng</a></li>
+									<li><a
+										href="/k54/superManager/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ
+											luật</a></li>
+								</ul>
+							</div>
+							<!--End accordion -->
+
+						</div>
+						<!--end content_box-->
+					</div>
+					<!--box_right-->
+				</c:if>
+			</c:if>
 		</div>
 		<!--End wrap_right-->
 		<div class="clear"></div>
@@ -388,3 +1299,4 @@
 	<!--End wrapper -->
 </body>
 </html>
+

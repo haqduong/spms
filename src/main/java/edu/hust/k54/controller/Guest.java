@@ -183,6 +183,9 @@ public class Guest {
 				if (test == false) {
 					if (maDV != 0) {
 						if (soyeulylichTemp.getDonviquanly().getIddonviquanly() == maDV) {
+							System.out.println(soyeulylichTemp.getDonviquanly().getIddonviquanly());
+							System.out.println(soyeulylichTemp.getHoten());
+							System.out.println(soyeulylichTemp.getPhongban().getTen());
 							test = true;
 						}
 						if (test == false) {
@@ -198,12 +201,9 @@ public class Guest {
 			return result;
 		}
 	}
-	public List TimCB(Integer idcanbo){
+	public Soyeulylich TimCB(Integer idcanbo){
 		SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
-		Soyeulylich soyeulylich = new Soyeulylich();
-		soyeulylich.setIdsoyeulylich(idcanbo);
-		List result = soyeulylichHome.findByExample(soyeulylich);
-		return result;
+		return soyeulylichHome.findById(idcanbo);
 	}
 	
 	public List timPhanLoaiCB(int loaiCB){
