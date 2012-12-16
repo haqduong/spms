@@ -32,7 +32,8 @@
 
 		<div id="wrap_main">
 			<div class="title_home" align="center">
-				<h1>Truy cập không hợp lệ, bạn không có quyền truy cập trang này!</h1>
+				<h1>Truy cập không hợp lệ, bạn không có quyền truy cập trang
+					này!</h1>
 			</div>
 			<div class="images" align="center">
 				<img src="<c:url value = "/resources/images/public/403.jpg"/>"

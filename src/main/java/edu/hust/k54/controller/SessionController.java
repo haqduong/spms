@@ -39,7 +39,6 @@ public class SessionController implements Controller {
 						Taikhoandangnhap user = (Taikhoandangnhap) checkLogin
 								.findByExample(persion).get(0);
 						int userPermission = user.getPermission();
-						System.out.println(userPermission);
 						modelAndView.addObject("homePage", "/k54/home.spms");
 						if (userPermission == GUEST_PERMISSION) {
 							modelAndView.addObject("search",

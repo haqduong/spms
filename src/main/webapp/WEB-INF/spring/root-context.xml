@@ -58,8 +58,10 @@
 				<entry key="/logout.spms">
 					<ref bean="sessionController" />
 				</entry>
-				
-				
+
+
+
+
 				<entry key="/chitietcanbo.spms">
 					<ref bean="guestController" />
 				</entry>
@@ -86,6 +88,33 @@
 				</entry>
 
 
+				<entry key="/staff/capnhat/thongtincanhan.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/staff/capnhat/lylichkhoahoc.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/staff/capnhat/taikhoan.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/staff/thongtin/soyeulylich.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/staff/thongtin/lylichkhoahoc.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/staff/thongtin/quatrinhcongtac.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/staff/thongtin/dienbienluong.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/staff/thongtin/khenthuong.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/staff/thongtin/kyluat.spms">
+					<ref bean="staffController" />
+				</entry>
 				<entry key="/staff/search.spms">
 					<ref bean="staffController" />
 				</entry>
@@ -96,6 +125,46 @@
 					<ref bean="staffController" />
 				</entry>
 
+
+
+
+
+				<entry key="/manager/quanly/phongban.spms">
+					<ref bean="managerController" />
+				</entry>
+				<entry key="/manager/quanly/hosocanbo.spms">
+					<ref bean="managerController" />
+				</entry>
+				<entry key="/manager/quanly/khenthuong.spms">
+					<ref bean="managerController" />
+				</entry>
+				<entry key="/manager/quanly/kyluat.spms">
+					<ref bean="managerController" />
+				</entry>
+				<entry key="/manager/quanly/baocao.spms">
+					<ref bean="managerController" />
+				</entry>
+				<entry key="/manager/quanly/thongke.spms">
+					<ref bean="managerController" />
+				</entry>
+				<entry key="/manager/thongtin/soyeulylich.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/manager/thongtin/lylichkhoahoc.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/manager/thongtin/quatrinhcongtac.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/manager/thongtin/dienbienluong.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/manager/thongtin/khenthuong.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/manager/thongtin/kyluat.spms">
+					<ref bean="staffController" />
+				</entry>
 				<entry key="/manager/search.spms">
 					<ref bean="managerController" />
 				</entry>
@@ -105,7 +174,45 @@
 				<entry key="/manager/contact.spms">
 					<ref bean="managerController" />
 				</entry>
-				
+
+
+
+
+
+
+				<entry key="/superManager/quanly/donvi.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/superManager/quanly/phongban.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/superManager/quanly/thongtincanbo.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/superManager/quanly/baocao.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/superManager/quanly/thongke.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/superManager/thongtin/soyeulylich.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/superManager/thongtin/lylichkhoahoc.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/superManager/thongtin/quatrinhcongtac.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/superManager/thongtin/dienbienluong.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/superManager/thongtin/khenthuong.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/superManager/thongtin/kyluat.spms">
+					<ref bean="staffController" />
+				</entry>
 				<entry key="/superManager/search.spms">
 					<ref bean="superManagerController" />
 				</entry>
@@ -116,6 +223,7 @@
 					<ref bean="superManagerController" />
 				</entry>
 
+
 				<entry key="/admin/search.spms">
 					<ref bean="adminController" />
 				</entry>
@@ -125,6 +233,9 @@
 				<entry key="/admin/contact.spms">
 					<ref bean="adminController" />
 				</entry>
+				
+				
+				
 			</map>
 		</property>
 	</bean>
