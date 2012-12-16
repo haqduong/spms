@@ -189,7 +189,7 @@
 												<tr class="row_1">
 													<td style="width: 5%"><%=count++%></td>
 													<td style="width: 15%">${canbo.hoten}</td>
-													<td style="width: 15%">${canbo.phongban.donviquanly.ten}</td>
+													<td style="width: 15%">${canbo.donviquanly.ten}</td>
 													<td style="width: 15%">${canbo.phongban.ten}</td>
 													<td style="width: 10%">${canbo.chucvu.ten}</td>
 													<td style="width: 15%">${canbo.sodienthoai}</td>
@@ -310,12 +310,11 @@
 			}
 			
 		}%>
-		var dir = ("<%=dsPhongBan%>
-		");
+		var dir = ("<%=dsPhongBan%>");
 			var allType = dir.split("|");
 			var i;
 			var count = 0;
-			document.selectSearch.phongban.options[count] = new Option(
+			document.selectSearch.phongban.options[count++] = new Option(
 					"Tất cả", "0");
 			var selectDir = document.getElementById("find_vien");
 			var dirIndex = selectDir.selectedIndex + 1;

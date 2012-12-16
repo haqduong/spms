@@ -64,13 +64,15 @@ public class GuestController implements Controller {
 						modelAndView.addObject("result", danhsachcanbo);
 					}
 					modelAndView = setLink(modelAndView);
-				}else if (uri.contains("chitietcanbo")) {
+				} else if (uri.contains("chitietcanbo")) {
 					modelAndView = new ModelAndView("xem_TTcanbo");
 					Integer idcanbo = Integer.parseInt(arg0
 							.getParameter("idcanbo"));
-					modelAndView.addObject("canbo", guestController.TimCB(idcanbo).get(0));
+					System.out.println("id can bo: " + idcanbo);
+					modelAndView.addObject("canbo",
+							guestController.TimCB(idcanbo));
 					modelAndView = setLink(modelAndView);
-					
+
 				} else if (uri.contains("info")) {
 					modelAndView = new ModelAndView("info");
 				} else if (uri.contains("contact")) {
@@ -169,12 +171,12 @@ public class GuestController implements Controller {
 				modelAndView = setLink(modelAndView);
 			} else if (uri.contains("chitietcanbo")) {
 				modelAndView = new ModelAndView("xem_TTcanbo");
-				Integer idcanbo = Integer.parseInt(arg0
-						.getParameter("idcanbo"));
-				modelAndView.addObject("canbo", guestController.TimCB(idcanbo).get(0));
+				Integer idcanbo = Integer
+						.parseInt(arg0.getParameter("idcanbo"));
+				modelAndView.addObject("canbo", guestController.TimCB(idcanbo));
 				modelAndView = setLink(modelAndView);
-				
-			}else if (uri.contains("contact")) {
+
+			} else if (uri.contains("contact")) {
 				modelAndView = new ModelAndView("contact");
 				modelAndView = setLink(modelAndView);
 			} else if (uri.contains("donviquanly")) {

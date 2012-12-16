@@ -95,7 +95,7 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>Quản lý đơn vị</h2>
+				<h2>Quản lý lý lịch khoa học</h2>
 			</div>
 			<div class="images">
 				<div class="button">
