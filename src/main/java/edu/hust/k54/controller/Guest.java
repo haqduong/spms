@@ -46,6 +46,7 @@ public class Guest {
 			Taikhoandangnhap taikhoandangnhapTemp = result.get(0);
 			taikhoandangnhapTemp.setPass(newPass);
 			taikhoandangnhaphome.attachDirty(taikhoandangnhapTemp);
+			taikhoandangnhaphome.getSessionFactory().getCurrentSession().flush();
 			return true;
 		}
 	}
@@ -107,11 +108,9 @@ public class Guest {
 		}
 	}
 	
-	public List timDonVi(Integer idDonVi){
+	public Donviquanly timDonVi(Integer idDonVi){
 		DonviquanlyHome donviquanlyHome = new DonviquanlyHome();
-		Donviquanly donviquanly = new Donviquanly();
-		donviquanly.setIddonviquanly(idDonVi);
-		return donviquanlyHome.findByExample(donviquanly);
+		return donviquanlyHome.findById(idDonVi);
 	}
 	
 	public Set timPhongBan(Integer idDonVi){
