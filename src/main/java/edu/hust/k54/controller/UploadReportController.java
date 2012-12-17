@@ -28,6 +28,7 @@ public class UploadReportController {
 				.getAttribute("user");
 
 		model.addAttribute(new UploadItem());
+		model.addAttribute("form_type", "Report");
 
 		if (account != null) {
 			model.addAttribute("loggedIn", true);
@@ -43,6 +44,7 @@ public class UploadReportController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String create(UploadItem uploadItem, BindingResult result,
 			HttpServletRequest request, Model model) {
+		model.addAttribute("form_type", "Report");
 		if (result.hasErrors()) {
 			for (ObjectError error : result.getAllErrors()) {
 				System.err.println("Error: " + error.getCode() + " - "

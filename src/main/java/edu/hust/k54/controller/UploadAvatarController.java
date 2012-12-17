@@ -28,6 +28,7 @@ public class UploadAvatarController {
 				.getAttribute("user");
 
 		model.addAttribute(new UploadItem());
+		model.addAttribute("form_type", "Avatar");
 
 		if (account != null) {
 			model.addAttribute("loggedIn", true);
@@ -50,6 +51,8 @@ public class UploadAvatarController {
 			}
 			return "upload/uploadForm";
 		}
+		
+		model.addAttribute("form_type", "Avatar");
 
 		InputStream sIn = null;
 		OutputStream sOut = null;

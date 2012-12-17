@@ -33,17 +33,19 @@
 		<put-attribute name="main_content"
 			value="/WEB-INF/views/tiles/main_content/danhsachphongban.jsp" />
 	</definition>
-
-	<definition name="uploadAvatar.spms" extends="base.spms">
-		<put-attribute name="title" value="Upload avatar" />
+	
+	<definition name="uploadForm.spms" extends="base.spms">
+		<put-attribute name="title" value="Upload" />
 		<put-attribute name="main_content"
 			value="/WEB-INF/views/tiles/main_content/uploadForm.jsp" />
 	</definition>
 
-	<definition name="uploadReport.spms" extends="base.spms">
+	<definition name="uploadAvatar.spms" extends="uploadForm.spms">
+		<put-attribute name="title" value="Upload avatar" />
+	</definition>
+
+	<definition name="uploadReport.spms" extends="uploadForm.spms">
 		<put-attribute name="title" value="Upload report" />
-		<put-attribute name="main_content"
-			value="/WEB-INF/views/tiles/main_content/uploadForm.jsp" />
 	</definition>
 
 	<!-- <definition name="contact" extends="base.definition"> -->
