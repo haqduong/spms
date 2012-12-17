@@ -15,16 +15,26 @@
 
 	<definition name="base.spms" template="/WEB-INF/views/tiles/frontend_layout.jsp">
 		<put-attribute name="title" value="" />
-		<put-attribute name="css_js" value="/WEB-INF/views/tiles/global_css_js.jsp" />
-		<put-attribute name="css_js" value="/WEB-INF/views/tiles/global_css_js.jsp" />
+		<put-attribute name="css_js"
+			value="/WEB-INF/views/tiles/global_css_js.jsp" />
 		<put-attribute name="body" value="" />
-		<put-attribute name="session_info" value="/WEB-INF/views/tiles/session_info.jsp" />
+		<put-attribute name="session_info"
+			value="/WEB-INF/views/tiles/session_info.jsp" />
 		<put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
+		<put-attribute name="main_content" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
 	</definition>
-	
+
 	<definition name="homepage.spms" extends="base.spms">
 		<put-attribute name="title" value="Homepage" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/homepage.jsp" />
+	</definition>
+
+	<definition name="danhsachphongban.spms" extends="base.spms">
+		<put-attribute name="title" value="Danh sách đơn vị" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/danhsachphongban.jsp" />
 	</definition>
 
 	<!-- <definition name="contact" extends="base.definition"> -->
