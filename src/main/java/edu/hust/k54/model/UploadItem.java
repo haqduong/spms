@@ -2,7 +2,7 @@ package edu.hust.k54.model;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-public class UploadAvatar {
+public class UploadItem {
 	private String name;
 	private CommonsMultipartFile fileData;
 
