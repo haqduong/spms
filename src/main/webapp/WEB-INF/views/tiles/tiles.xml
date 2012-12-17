@@ -21,7 +21,7 @@
 		<put-attribute name="main_content"
 			value="/WEB-INF/views/tiles/main_content/homepage.jsp" />
 	</definition>
-	
+
 	<definition name="danhsachcanbo.spms" extends="base.spms">
 		<put-attribute name="title" value="Danh sách cán bộ" />
 		<put-attribute name="main_content"
@@ -33,9 +33,15 @@
 		<put-attribute name="main_content"
 			value="/WEB-INF/views/tiles/main_content/danhsachphongban.jsp" />
 	</definition>
-	
+
 	<definition name="uploadAvatar.spms" extends="base.spms">
 		<put-attribute name="title" value="Upload avatar" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/uploadForm.jsp" />
+	</definition>
+
+	<definition name="uploadReport.spms" extends="base.spms">
+		<put-attribute name="title" value="Upload report" />
 		<put-attribute name="main_content"
 			value="/WEB-INF/views/tiles/main_content/uploadForm.jsp" />
 	</definition>
