@@ -4,4 +4,4 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 
-<tiles:insertDefinition name="uploadAvatar.spms" />
+<tiles:insertDefinition name="upload${form_type}.spms" />

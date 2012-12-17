@@ -20,15 +20,15 @@ import edu.hust.k54.model.UploadItem;
 import edu.hust.k54.persistence.Taikhoandangnhap;
 
 @Controller
-@RequestMapping(value = "/uploadavatar.spms")
-public class UploadAvatarController {
+@RequestMapping(value = "/uploadreport.spms")
+public class UploadReportController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String getUploadForm(HttpServletRequest request, Model model) {
 		Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
 				.getAttribute("user");
 
 		model.addAttribute(new UploadItem());
-		model.addAttribute("form_type", "Avatar");
+		model.addAttribute("form_type", "Report");
 
 		if (account != null) {
 			model.addAttribute("loggedIn", true);
@@ -44,6 +44,7 @@ public class UploadAvatarController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String create(UploadItem uploadItem, BindingResult result,
 			HttpServletRequest request, Model model) {
+		model.addAttribute("form_type", "Report");
 		if (result.hasErrors()) {
 			for (ObjectError error : result.getAllErrors()) {
 				System.err.println("Error: " + error.getCode() + " - "
@@ -51,8 +52,6 @@ public class UploadAvatarController {
 			}
 			return "upload/uploadForm";
 		}
-		
-		model.addAttribute("form_type", "Avatar");
 
 		InputStream sIn = null;
 		OutputStream sOut = null;
@@ -75,14 +74,12 @@ public class UploadAvatarController {
 				sIn = file.getInputStream();
 				System.out.println("Size: " + file.getSize());
 				Date now = new Date();
-				fileName = request.getRealPath("") + "/uploadContent/avatar/"
+				fileName = request.getRealPath("") + "/uploadContent/reports/"
 						+ now.getTime() + "-" + file.getOriginalFilename();
 				System.err.println(fileName);
 				System.err.println(file.getContentType());
 				String type = file.getContentType();
-				if (!type.startsWith("image")) {
-					model.addAttribute("err", "You must upload an image");
-				}
+
 				sOut = new FileOutputStream(fileName);
 				System.out.println("fileName:" + file.getOriginalFilename());
 
