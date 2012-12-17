@@ -92,7 +92,7 @@ public class GuestController implements Controller {
 						Integer iddonviquanly = Integer.parseInt(arg0
 								.getParameter("iddonviquanly"));
 						modelAndView.addObject("donvi", guestController
-								.timDonVi(iddonviquanly).get(0));
+								.timDonVi(iddonviquanly));
 					} else if (uri.contains("danhsachcanbo")) {
 						Integer iddonviquanly = Integer.parseInt(arg0
 								.getParameter("iddonviquanly"));
@@ -101,18 +101,16 @@ public class GuestController implements Controller {
 								.TimDVQL(0, 0, null);
 						modelAndView.addObject("donviquanly", donviquanly);
 						modelAndView.addObject("donvi", guestController
-								.timDonVi(iddonviquanly).get(0));
+								.timDonVi(iddonviquanly));
 						modelAndView.addObject("danhsachcanbo", guestController
 								.TimCB(iddonviquanly, 0, null, 0));
 					} else if (uri.contains("danhsachphongban")) {
 						Integer iddonviquanly = Integer.parseInt(arg0
 								.getParameter("iddonviquanly"));
 						modelAndView = new ModelAndView("danhsachphongban");
-						List<Donviquanly> donviquanly = guestController
-								.TimDVQL(0, 0, null);
+						List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0, null);
 						modelAndView.addObject("donviquanly", donviquanly);
-						modelAndView.addObject("donvi", guestController
-								.timDonVi(iddonviquanly).get(0));
+						modelAndView.addObject("donvi", guestController.timDonVi(iddonviquanly));
 						modelAndView.addObject("danhsachphongban",
 								guestController.timPhongBan(iddonviquanly));
 					} else if (uri.contains("nghiencuu")) {
@@ -123,7 +121,7 @@ public class GuestController implements Controller {
 								.TimDVQL(0, 0, null);
 						modelAndView.addObject("donviquanly", donviquanly);
 						modelAndView.addObject("donvi", guestController
-								.timDonVi(iddonviquanly).get(0));
+								.timDonVi(iddonviquanly));
 						List<Soyeulylich> canbonghiencuu = guestController
 								.TimCB(iddonviquanly, 0, null, 0);
 						System.out.println("danh sach can bo"
@@ -200,16 +198,15 @@ public class GuestController implements Controller {
 					Integer iddonviquanly = Integer.parseInt(arg0
 							.getParameter("iddonviquanly"));
 					modelAndView.addObject("donvi",
-							guestController.timDonVi(iddonviquanly).get(0));
+							guestController.timDonVi(iddonviquanly));
 				} else if (uri.contains("danhsachcanbo")) {
 					Integer iddonviquanly = Integer.parseInt(arg0
 							.getParameter("iddonviquanly"));
 					modelAndView = new ModelAndView("danhsachcanbo");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
-							0, null);
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("donvi",
-							guestController.timDonVi(iddonviquanly).get(0));
+							guestController.timDonVi(iddonviquanly));
 					modelAndView.addObject("danhsachcanbo",
 							guestController.TimCB(iddonviquanly, 0, null, 0));
 				} else if (uri.contains("danhsachphongban")) {
@@ -220,7 +217,7 @@ public class GuestController implements Controller {
 							0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("donvi",
-							guestController.timDonVi(iddonviquanly).get(0));
+							guestController.timDonVi(iddonviquanly));
 					modelAndView.addObject("danhsachphongban",
 							guestController.timPhongBan(iddonviquanly));
 				} else if (uri.contains("nghiencuu")) {
@@ -231,7 +228,7 @@ public class GuestController implements Controller {
 							0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("donvi",
-							guestController.timDonVi(iddonviquanly).get(0));
+							guestController.timDonVi(iddonviquanly));
 					List<Soyeulylich> canbonghiencuu = guestController.TimCB(
 							iddonviquanly, 0, null, 0);
 					System.out.println("danh sach can bo"
