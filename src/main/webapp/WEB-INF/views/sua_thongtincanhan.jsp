@@ -1,3 +1,7 @@
+<%@page import="edu.hust.k54.persistence.Phongban"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.List"%>
+<%@page import="edu.hust.k54.persistence.Donviquanly"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -19,7 +23,7 @@
 				<h1 class="stitle_web">Viện khoa học và công nghệ Việt Nam</h1>
 			</div>
 			<!--End banner_header -->
-<div id="nav_menu">
+			<div id="nav_menu">
 				<div class="header-row-1">
 					<ul>
 						<li><a
@@ -79,7 +83,7 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>Thông tin sơ yếu lý lịch</h2>
+				<h2>Cập nhât thông tin sơ yếu lý lịch của ${canbo.hoten}</h2>
 			</div>
 			<div class="images">
 				<img src="../images/public/mainh.jpg" width="100" height="150" /> <input
@@ -103,189 +107,236 @@
 						<tr>
 							<td class="list">Họ và tên</td>
 							<td class="list_ret" width="70%"><input type="text"
-								name="name" size="60" height="25" /></td>
+								name="name" size="60" height="25" value="${canbo.hoten}" /></td>
 						</tr>
 						<tr>
 							<td class="list">Đơn vị quản lý</td>
-							<td class="list_ret"><select name="donviquanly">
-									<option value="0">Viện toán học</option>
-									<option value="1">Viện sfsfc</option>
-									<option value="2">Viện sfsfion</option>
-									<option value="3">Viện afsfaftoán học</option>
+							<td class="list_ret"><select name="choiceDonviquanly" style="width: 392px;"
+								id="find_vien" onchange="chageDonViState()">
+									<c:forEach items="${donviquanly}" var="donviquanly">
+										<option value="${donviquanly.iddonviquanly}">${donviquanly.ten}</option>
+									</c:forEach>
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Phòng ban</td>
-							<td class="list_ret"><select name="donviquanly">
-									<option value="0">phòng 1</option>
-									<option value="1">phòng 2</option>
-									<option value="2">fasfaf</option>
-									<option value="3">Viện afsfaftoán học</option>
+							<td class="list_ret"><select style="width: 392px;" id="phongban" name="phongban">
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Học vị</td>
-							<td class="list_ret"><select name="hocvi">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
+							<td class="list_ret"><select style="width: 392px;" name="hocvi">
+									<c:forEach items="${hocvi}" var="hocvi">
+										<c:if test="${canbo.hocvi.idhocvi == hocvi.idhocvi}">
+											<option selected="selected" value="${hocvi.idhocvi}">${hocvi.ten}&nbsp;${hocvi.mota}</option>
+										</c:if>
+										<c:if test="${canbo.hocvi.idhocvi != hocvi.idhocvi}">
+											<option value="${hocvi.idhocvi}">${hocvi.ten}&nbsp;${hocvi.mota}</option>
+										</c:if>
+									</c:forEach>
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Chức vụ</td>
-							<td class="list_ret"><select name="chucvu">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
+							<td class="list_ret"><select style="width: 392px;" name="chucvu">
+									<c:forEach items="${chucvu}" var="chucvu">
+										<c:if test="${canbo.chucvu.idchucvu == chucvu.idchucvu}">
+											<option selected="selected" value="${chucvu.idchucvu}">${chucvu.ten}</option>
+										</c:if>
+										<c:if test="${canbo.chucvu.idchucvu != chucvu.idchucvu}">
+											<option value="${chucvu.idchucvu}">${chucvu.ten}</option>
+										</c:if>
+									</c:forEach>
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Học hàm</td>
-							<td class="list_ret"><select name="hocham">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
+							<td class="list_ret"><select style="width: 392px;" name="hocham">
+									<c:forEach items="${hocham}" var="hocham">
+										<c:if test="${canbo.hocham.idhocham == hocham.idhocham}">
+											<option selected="selected" value="${hocham.idhocham}">${hocham.ten}&nbsp;${hocham.mota}</option>
+										</c:if>
+										<c:if test="${canbo.hocham.idhocham != hocham.idhocham}">
+											<option value="${hocham.idhocham}">${hocham.ten}&nbsp;${hocham.mota}</option>
+										</c:if>
+									</c:forEach>
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Cấp ủy</td>
-							<td class="list_ret"><select name="hocvi">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
+							<td class="list_ret"><select style="width: 392px;" name="capuy">
+									<c:forEach items="${capuy}" var="capuy">
+										<c:if test="${canbo.capuy.idcapuy == capuy.idcapuy}">
+											<option selected="selected" value="${capuy.idcapuy}">${capuy.ten}</option>
+										</c:if>
+										<c:if test="${canbo.capuy.idcapuy != capuy.idcapuy}">
+											<option value="${capuy.idcapuy}">${capuy.ten}</option>
+										</c:if>
+									</c:forEach>
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Giáo dục phổ thông</td>
-							<td class="list_ret"><select name="giaoducphothong">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
+							<td class="list_ret"><select style="width: 392px;" name="giaoducphothong">
+									<c:forEach items="${giaoducphothong}" var="giaoducphothong">
+										<c:if
+											test="${canbo.giaoducphothong.idgiaoducphothong == giaoducphothong.idgiaoducphothong}">
+											<option selected="selected"
+												value="${giaoducphothong.idgiaoducphothong}">${giaoducphothong.ten}</option>
+										</c:if>
+										<c:if
+											test="${canbo.giaoducphothong.idgiaoducphothong != giaoducphothong.idgiaoducphothong}">
+											<option value="${giaoducphothong.idgiaoducphothong }">${giaoducphothong.ten}}</option>
+										</c:if>
+									</c:forEach>
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Danh hiệu</td>
-							<td class="list_ret"><select name="đanhhieu">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
+							<td class="list_ret"><select style="width: 392px;" name="danhhieu">
+									<c:forEach items="${danhhieu}" var="danhhieu">
+										<c:if
+											test="${canbo.danhhieu.iddanhhieu == danhhieu.iddanhhieu}">
+											<option selected="selected" value="${danhhieu.iddanhhieu}">${danhhieu.ten}</option>
+										</c:if>
+										<c:if
+											test="${canbo.danhhieu.iddanhhieu != danhhieu.iddanhhieu}">
+											<option value="${danhhieu.iddanhhieu}">${danhhieu.ten}</option>
+										</c:if>
+									</c:forEach>
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Xuất thân</td>
-							<td class="list_ret"><select name="xuatthan">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
+							<td class="list_ret"><select style="width: 392px;" name="xuatthan">
+									<c:forEach items="${xuatthan}" var="xuatthan">
+										<c:if
+											test="${canbo.xuatthan.idxuatthan == xuatthan.idxuatthan}">
+											<option selected="selected" value="${xuatthan.idxuatthan}">${xuatthan.ten}
+												&nbsp;${xuatthan.mota}</option>
+										</c:if>
+										<c:if
+											test="${canbo.xuatthan.idxuatthan != xuatthan.idxuatthan}">
+											<option value="${xuatthan.idxuatthan}">${xuatthan.ten}
+												&nbsp;${xuatthan.mota}</option>
+										</c:if>
+									</c:forEach>
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Quốc gia</td>
-							<td class="list_ret"><select name="quocgia">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
+							<td class="list_ret"><select style="width: 392px;" name="quocgia">
+									<c:forEach items="${quocgia}" var="quocgia">
+										<c:if test="${canbo.quocgia.idquocgia == quocgia.idquocgia}">
+											<option selected="selected" value="${quocgia.idquocgia}">${quocgia.ten}</option>
+										</c:if>
+										<c:if test="${canbo.quocgia.idquocgia != quocgia.idquocgia}">
+											<option value="${quocgia.idquocgia}">${quocgia.ten}</option>
+										</c:if>
+									</c:forEach>
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Loại cán bộ</td>
-							<td class="list_ret"><select name="loaicanbo">
+							<td class="list_ret"><select style="width: 392px;" name="loaicanbo">
 									<option value="0">Cán bộ thường</option>
-									<option value="1">Cán bộ nghiên cứu</option>
+									<option value="1">Cán nghiên cứu</option>
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Số hiệu công chức</td>
-							<td class="list_ret"><input type="text"
-								name="sohieucongchuc" size="60" height="25" /></td>
+							<td class="list_ret"><input onkeyup="checkSHCC()" type="text" id= "sohieucongchuc"
+								name="sohieucongchuc" size="60" height="25"
+								value="${canbo.sohieucongchuc}" /></td>
 						</tr>
 						<tr>
 							<td class="list">Số chứng minh nhân dân</td>
-							<td class="list_ret"><input type="number"
-								name="chungminhnhandan" size="60" height="25" /></td>
+							<td class="list_ret"><input type="text" onkeyup="checkCMTND()" id = "chungminhnhandan"
+								name="chungminhnhandan" size="60" height="25"
+								value="${canbo.chungminhnhandan}" /></td>
 						</tr>
 						<tr>
 							<td class="list">Giới tính</td>
-							<td class="list_ret"><select name="gioitinh">
-									<option value="0">Nam</option>
-									<option value="1">Nữ</option>
+							<td class="list_ret"><select style="width: 392px;" name="gioitinh">
+									<option selected="selected" value="Nam">Nam</option>
+									<option selected="selected" value="Nữ">Nữ</option>
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Tên thường dùng khác</td>
 							<td class="list_ret"><input type="text" name="tenthuongdung"
-								size="60" height="25" /></td>
+								size="60" height="25" value="${canbo.tenthuongdung}" /></td>
 						</tr>
 						<tr>
 							<td class="list">Ngày tháng năm sinh</td>
 							<td class="list_ret"><input type="date" name="ngaysinh"
-								size="60" height="25" /></td>
+								size="60" height="25" value="${canbo.ngaysinh}" /></td>
 						</tr>
 						<tr>
 							<td class="list">Nơi sinh</td>
 							<td class="list_ret"><input type="text" name="noisinh"
-								size="60" height="25" /></td>
+								size="60" height="25" value="${canbo.noisinh}" /></td>
 						</tr>
 						<tr>
 							<td class="list">Quê quán</td>
 							<td class="list_ret"><input type="text" name="quequan"
-								size="60" height="25" /></td>
+								size="60" height="25" value ="${canbo.quequan}" /></td>
 						</tr>
 						<tr>
 							<td class="list">Nơi ở hiện nay</td>
 							<td class="list_ret"><input type="text" name="noiohiennay"
-								size="60" height="25" /></td>
+								size="60" height="25" value="${canbo.noiohiennay }" /></td>
 						</tr>
 						<tr>
 							<td class="list">Số điện thoại</td>
-							<td class="list_ret"><input type="tel" name="sodienthoai"
-								size="60" height="25" /></td>
+							<td class="list_ret"><input type="tel" onkeyup="checkPhone()" name="sodienthoai" id = "sodienthoai"
+								size="60" height="25" value="${canbo.sodienthoai }"/></td>
 						</tr>
 						<tr>
 							<td class="list">Ngày vào đảng chính thức</td>
 							<td class="list_ret"><input type="date"
-								name="ngayvaodangchinhthuc" size="60" height="25" /></td>
+								name="ngayvaodangchinhthuc" size="60" height="25" value="${canbo.ngayvaodangchinhthuc}" /></td>
 						</tr>
 						<tr>
 							<td class="list">Ngày cập nhật</td>
 							<td class="list_ret"><input type="date" name="ngaycapnhat"
-								size="60" height="25" /></td>
+								size="60" height="25" value="${canbo.ngaycapnhat}"/></td>
 						</tr>
 						<tr>
 							<td class="list">Dân tộc</td>
-							<td class="list_ret"><select name="dantoc">
-									<option value="0">Kinh</option>
-									<option value="1">Mường</option>
-									<option value="2">Dao</option>
-									<option value="3">Mán</option>
+							<td class="list_ret"><select style="width: 392px;" name="dantoc">
+									<c:forEach items="${dantoc}" var="dantoc">
+										<c:if test="${canbo.dantoc.iddantoc == dantoc.iddantoc}">
+											<option selected="selected" value="${dantoc.iddantoc}">${dantoc.ten}</option>
+										</c:if>
+										<c:if test="${canbo.dantoc.iddantoc != dantoc.iddantoc}">
+											<option value="${dantoc.iddantoc}">${dantoc.ten}</option>
+										</c:if>
+									</c:forEach>
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Tôn giáo</td>
-							<td class="list_ret"><select name="tongiao">
-									<option value="0">Kinh</option>
-									<option value="1">Mường</option>
-									<option value="2">Dao</option>
-									<option value="3">Mán</option>
+							<td class="list_ret"><select style="width: 392px;" name="tongiao">
+									<c:forEach items="${tongiao}" var="tongiao">
+										<c:if test="${canbo.tongiao.idtongiao == tongiao.idtongiao}">
+											<option selected="selected" value="${tongiao.idtongiao}">${tongiao.ten}</option>
+										</c:if>
+										<c:if test="${canbo.tongiao.idtongiao != tongiao.idtongiao}">
+											<option value="${tongiao.idtongiao}">${tongiao.ten}</option>
+										</c:if>
+									</c:forEach>
 							</select></td>
 						</tr>
 						<tr>
 							<td class="list">Sức khỏe</td>
 							<td class="list_ret"><input type="text" name="suckhoe"
-								size="60" height="25" /></td>
+								size="60" height="25" value="${canbo.suckhoe}"/></td>
 						</tr>
 						<tr>
 							<td class="list">Ngôn ngữ biết</td>
 							<td class="list_ret"><input type="text" name="ngonngubiet"
-								size="60" height="25" /></td>
+								size="60" height="25" value="${canbo.ngonngubiet }" /></td>
 						</tr>
 
 					</table>
@@ -298,47 +349,36 @@
 						</tr>
 						<tr>
 							<td colspan="2" align="">
-								<table>
-									<thead>
+								<table cellspacing="0" style="width: 715px">
+									<tr class="tieu_de">
+										<td style="width: 3%">STT</td>
+										<td style="width: 40%">Tên sách</td>
+										<td style="width: 7%">Năm XB</td>
+										<td style="width: 10%">Số trang</td>
+										<td style="width: 15%">Thể loại</td>
+										<td style="width: 15%">Cơ quan xuất bản</td>
+									</tr>
+									<%
+										int k = 1;
+									%>
+									<c:forEach items="${canbo.sachxuatbans}" var="sach">
 										<tr>
-											<th>Tên sách</th>
-											<th>Năm xuất bản</th>
+											<td style="width: 3%"><%=k++%></td>
+											<td style="width: 40%">${sach.ten}</td>
+											<td style="width: 7%">${sach.namxuatban}</td>
+											<td style="width: 10%">${sach.sotrang}</td>
+											<td style="width: 15%">${sach.theloai}</td>
+											<td style="width: 15%">${sach.coquanxuatban}</td>
 										</tr>
-									</thead>
-
-									<tbody>
-
-										<tr>
-											<td class="list"><input type="text" name="user_name"
-												height="25" /></td>
-											<td class="list_ret"><input type="text" name="user_name"
-												size="60" height="25" /></td>
-										</tr>
-
-									</tbody>
+									</c:forEach>
 								</table>
 							</td>
 						</tr>
 					</table>
 
-					<table border="0" bgcolor="#fff" align="center" id="info"
-						style="width: 100%">
-						<tr>
-							<td class="title" colspan=2 align="center" height="50">Lý
-								lịch khoa học ??????</td>
-						</tr>
-						<tr>
-							<td class="list">Họ và tên</td>
-							<td class="list_ret" width="70%"><input type="text"
-								name="name" size="60" height="25" /></td>
-						</tr>
-
-
-					</table>
-
 					<br /> <br />
 					<div style="text-align: center; margin-top: 20px;">
-						<input type="submit" class="button" value="Cập nhật" />
+						<input type="submit" class="button" name="update" value="Cập nhật" />
 					</div>
 
 				</form>
@@ -347,12 +387,6 @@
 
 		</div>
 		<!--End wrap_main-->
-
-
-
-
-
-
 
 
 
@@ -406,9 +440,15 @@
 						<div class="content_box">
 							<div id="accordion">
 								<ul>
-									<li><a href="/k54/staff/capnhat/thongtincanhan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập nhật thông tin cá nhân</a></li>
-									<li><a href="/k54/staff/capnhat/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập nhật lý lịch khoa học</a></li>
-									<li><a href="/k54/staff/capnhat/taikhoan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập nhật tài khoản</a></li>
+									<li><a
+										href="/k54/staff/capnhat/thongtincanhan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+											nhật thông tin cá nhân</a></li>
+									<li><a
+										href="/k54/staff/capnhat/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+											nhật lý lịch khoa học</a></li>
+									<li><a
+										href="/k54/staff/capnhat/taikhoan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+											nhật tài khoản</a></li>
 								</ul>
 							</div>
 							<!--End accordion -->
@@ -424,12 +464,24 @@
 						<div class="content_box">
 							<div id="accordion">
 								<ul>
-									<li><a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ yếu lý lịch</a></li>
-									<li><a href="/k54/staff/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý lịch khoa học</a></li>
-									<li><a href="/k54/staff/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá trình công tác</a></li>
-									<li><a href="/k54/staff/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn biến lương</a></li>
-									<li><a href="/k54/staff/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen thưởng</a></li>
-									<li><a href="/k54/staff/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ luật</a></li>
+									<li><a
+										href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ
+											yếu lý lịch</a></li>
+									<li><a
+										href="/k54/staff/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý
+											lịch khoa học</a></li>
+									<li><a
+										href="/k54/staff/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá
+											trình công tác</a></li>
+									<li><a
+										href="/k54/staff/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn
+											biến lương</a></li>
+									<li><a
+										href="/k54/staff/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen
+											thưởng</a></li>
+									<li><a
+										href="/k54/staff/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ
+											luật</a></li>
 								</ul>
 							</div>
 							<!--End accordion -->
@@ -449,12 +501,24 @@
 						<div class="content_box">
 							<div id="accordion">
 								<ul>
-									<li><a href="/k54/manager/quanly/phongban.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản lý phòng ban</a></li>
-									<li><a href="/k54/manager/quanly/hosocanbo.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản lý hồ sơ cán bộ</a></li>
-									<li><a href="/k54/manager/quanly/khenthuong.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản lý khen thưởng</a></li>
-									<li><a href="/k54/manager/quanly/kyluat.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản lý kỷ luật</a></li>
-									<li><a href="/k54/manager/quanly/baocao.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Báo cáo</a></li>
-									<li><a href="/k54/manager/quanly/thongke.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Thống kê</a></li>
+									<li><a
+										href="/k54/manager/quanly/phongban.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản
+											lý phòng ban</a></li>
+									<li><a
+										href="/k54/manager/quanly/hosocanbo.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản
+											lý hồ sơ cán bộ</a></li>
+									<li><a
+										href="/k54/manager/quanly/khenthuong.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản
+											lý khen thưởng</a></li>
+									<li><a
+										href="/k54/manager/quanly/kyluat.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản
+											lý kỷ luật</a></li>
+									<li><a
+										href="/k54/manager/quanly/baocao.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Báo
+											cáo</a></li>
+									<li><a
+										href="/k54/manager/quanly/thongke.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Thống
+											kê</a></li>
 								</ul>
 							</div>
 							<!--End accordion -->
@@ -470,12 +534,24 @@
 						<div class="content_box">
 							<div id="accordion">
 								<ul>
-									<li><a href="/k54/manager/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ yếu lý lịch</a></li>
-									<li><a href="/k54/manager/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý lịch khoa học</a></li>
-									<li><a href="/k54/manager/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá trình công tác</a></li>
-									<li><a href="/k54/manager/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn biến lương</a></li>
-									<li><a href="/k54/manager/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen thưởng</a></li>
-									<li><a href="/k54/manager/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ luật</a></li>
+									<li><a
+										href="/k54/manager/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ
+											yếu lý lịch</a></li>
+									<li><a
+										href="/k54/manager/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý
+											lịch khoa học</a></li>
+									<li><a
+										href="/k54/manager/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá
+											trình công tác</a></li>
+									<li><a
+										href="/k54/manager/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn
+											biến lương</a></li>
+									<li><a
+										href="/k54/manager/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen
+											thưởng</a></li>
+									<li><a
+										href="/k54/manager/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ
+											luật</a></li>
 								</ul>
 							</div>
 							<!--End accordion -->
@@ -497,11 +573,21 @@
 						<div class="content_box">
 							<div id="accordion">
 								<ul>
-									<li><a href="/superManager/quanly/donvi.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản lý đơn vị</a></li>
-									<li><a href="/superManager/quanly/phongban.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản lý phòng ban</a></li>
-									<li><a href="/superManager/quanly/thongtincanbo.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản lý thông tin cán bộ</a></li>
-									<li><a href="/superManager/quanly/baocao.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Báo cáo</a></li>
-									<li><a href="/superManager/quanly/thongke.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Thống kê</a></li>
+									<li><a
+										href="/superManager/quanly/donvi.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản
+											lý đơn vị</a></li>
+									<li><a
+										href="/superManager/quanly/phongban.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản
+											lý phòng ban</a></li>
+									<li><a
+										href="/superManager/quanly/thongtincanbo.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản
+											lý thông tin cán bộ</a></li>
+									<li><a
+										href="/superManager/quanly/baocao.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Báo
+											cáo</a></li>
+									<li><a
+										href="/superManager/quanly/thongke.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Thống
+											kê</a></li>
 								</ul>
 							</div>
 							<!--End accordion -->
@@ -517,12 +603,24 @@
 						<div class="content_box">
 							<div id="accordion">
 								<ul>
-									<li><a href="/k54/superManager/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ yếu lý lịch</a></li>
-									<li><a href="/k54/superManager/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý lịch khoa học</a></li>
-									<li><a href="/k54/superManager/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá trình công tác</a></li>
-									<li><a href="/k54/superManager/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn biến lương</a></li>
-									<li><a href="/k54/superManager/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen thưởng</a></li>
-									<li><a href="/k54/superManager/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ luật</a></li>
+									<li><a
+										href="/k54/superManager/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ
+											yếu lý lịch</a></li>
+									<li><a
+										href="/k54/superManager/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý
+											lịch khoa học</a></li>
+									<li><a
+										href="/k54/superManager/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá
+											trình công tác</a></li>
+									<li><a
+										href="/k54/superManager/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn
+											biến lương</a></li>
+									<li><a
+										href="/k54/superManager/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen
+											thưởng</a></li>
+									<li><a
+										href="/k54/superManager/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ
+											luật</a></li>
 								</ul>
 							</div>
 							<!--End accordion -->
@@ -540,5 +638,82 @@
 		<!--End wrap_footer-->
 	</div>
 	<!--End wrapper -->
+
+
+	<script type="text/javascript">
+	function chageDonViState() {
+		removePBOption();
+		<%String dsPhongBan = new String();
+		List listDonviquanly = (List) request.getAttribute("donviquanly");
+		if (listDonviquanly != null) {
+			for(int i = 0; i < listDonviquanly.size(); i++){
+				Donviquanly donviquanly = (Donviquanly)listDonviquanly.get(i);
+				Set<Phongban> phongban = donviquanly.getPhongbans();
+				for(Phongban pb: phongban){
+					dsPhongBan += i + "@" + pb.getIdphongban() + "@" + pb.getTen() +"|";	
+				}
+			}
+			
+		}%>
+		var dir = ("<%=dsPhongBan%>");
+			var allType = dir.split("|");
+			var i;
+			var count = 0;
+			var selectDir = document.getElementById("find_vien");
+			var dirIndex = selectDir.selectedIndex;
+			for (i = 0; i < eval(allType).length - 1; i++) {
+				var dirType = eval(allType)[i].split("@");
+				if (eval(dirType)[0] == dirIndex) {
+					document.edit_staff.phongban.options[count++] = new Option(
+							eval(dirType)[2], eval(dirType)[1]);
+				}
+			}
+		}
+
+		function removePBOption() {
+			var x = document.getElementById("phongban");
+			while (x.options.length > 0) {
+				x.remove(0);
+			}
+		}
+		
+		function checkSHCC() {
+			var digits="0123456789";
+			var sohieucongchuc = document.getElementById("sohieucongchuc").value;
+			for (var i = 0; i < sohieucongchuc.length ; i++){
+			    temp = sohieucongchuc.substring(i,i+1);
+			    if (digits.indexOf(temp)==-1){
+			    	alert("Số hiệu công chức không hợp lệ, số hiệu công chức chỉ bao gồm chữ số");
+			    	document.getElementById("sohieucongchuc").value = "";	
+			    }
+			}
+		}
+		
+		function checkCMTND() {
+			var digits="0123456789";
+			var sohieucongchuc = document.getElementById("chungminhnhandan").value;
+			for (var i = 0; i < sohieucongchuc.length ; i++){
+			    temp = sohieucongchuc.substring(i,i+1);
+			    if (digits.indexOf(temp)==-1){
+			    	alert("Số hiệu công chức không hợp lệ, số chứng minh thư nhân dân chỉ bao gồm chữ số");
+			    	document.getElementById("chungminhnhandan").value = "";	
+			    }
+			}
+		}
+		
+		function checkPhone() {
+			var digits="0123456789.)(+";
+			var sohieucongchuc = document.getElementById("sodienthoai").value;
+			for (var i = 0; i < sohieucongchuc.length ; i++){
+			    temp = sohieucongchuc.substring(i,i+1);
+			    if (digits.indexOf(temp)==-1){
+			    	alert("Số hiệu công chức không hợp lệ, số điện thoại chỉ bao gồm chữ số hoặc mã vùng, mã quốc gia (+84)..");
+			    	document.getElementById("sodienthoai").value = "";	
+			    }
+			}
+		}
+		
+		
+	</script>
 </body>
 </html>

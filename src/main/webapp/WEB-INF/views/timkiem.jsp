@@ -117,7 +117,7 @@
 						</tr>
 						<tr>
 							<td><label>Phòng ban : </label></td>
-							<td><select name="phongban">
+							<td><select id = "phongban" name="phongban">
 									<option value="0" selected>Tất cả</option>
 							</select> <!--End select --></td>
 						</tr>
@@ -406,11 +406,12 @@
 		<%String dsPhongBan = new String();
 		List listDonviquanly = (List) request.getAttribute("donviquanly");
 		if (listDonviquanly != null) {
+			System.out.println(listDonviquanly.size());
 			for(int i = 0; i < listDonviquanly.size(); i++){
 				Donviquanly donviquanly = (Donviquanly)listDonviquanly.get(i);
 				Set<Phongban> phongban = donviquanly.getPhongbans();
 				for(Phongban pb: phongban){
-					dsPhongBan += (i+2) + "@" + pb.getIdphongban() + "@" + pb.getTen() +"|";	
+					dsPhongBan += (i+1) + "@" + pb.getIdphongban() + "@" + pb.getTen() +"|";	
 				}
 			}
 			
@@ -419,23 +420,23 @@
 			var allType = dir.split("|");
 			var i;
 			var count = 0;
-			document.selectSearch.phongban.options[count++] = new Option(
-					"Tất cả", "0");
 			var selectDir = document.getElementById("find_vien");
-			var dirIndex = selectDir.selectedIndex + 1;
-			for (i = 0; i < eval(allType).length; i++) {
+			var dirIndex = selectDir.selectedIndex;
+			document.selectSearch.phongban.options[count++] = new Option("Tất cả", "0");
+			for (i = 0; i < eval(allType).length - 1; i++) {
 				var dirType = eval(allType)[i].split("@");
-				if (eval(dirType)[0] == dirIndex) {
-					document.selectSearch.phongban.options[count++] = new Option(
-							eval(dirType)[2], eval(dirType)[1]);
+				if(dirIndex == 0){
+					document.selectSearch.phongban.options[count++] = new Option(eval(dirType)[2], eval(dirType)[1]);
+				}else if (eval(dirType)[0] == dirIndex) {
+					document.selectSearch.phongban.options[count++] = new Option(eval(dirType)[2], eval(dirType)[1]);
 				}
 			}
 		}
 
 		function removePBOption() {
-			var i;
-			for (i = 0; i < document.selectSearch.phongban.options.length; i++) {
-				document.selectSearch.phongban.remove(i);
+			var x = document.getElementById("phongban");
+			while(x.options.length >0){
+				x.remove(0);
 			}
 		}
 	</script>
