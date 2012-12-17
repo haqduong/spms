@@ -1,19 +1,19 @@
-<%@page import="edu.hust.k54.persistence.Phongban"%>
-<%@page import="java.util.Set"%>
-<%@page import="java.util.List"%>
-<%@page import="edu.hust.k54.persistence.Donviquanly"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sửa thông tin cá nhân</title>
+<title>Thông kê chuyển công tác</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
 <script type="text/javascript"
 	src="<c:url value = "/resources/js/jquery.js"/>"></script>
+<link rel="stylesheet" type="text/css"
+	href="<c:url value = "/resources/css/jsDatePick_ltr.min.css"/>">
+<script type="text/javascript"
+	src="<c:url value = "/resources/js/jsDatePick.jquery.min.1.3.js"/>"></script>
 </head>
 <body>
 	<div id="wrapper">
@@ -83,280 +83,120 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>Cập nhât thông tin sơ yếu lý lịch của ${canbo.hoten}</h2>
+				<h2>Thống kê điều chuyển công tác</h2>
 			</div>
-			<div class="images">
-				<img src="../images/public/mainh.jpg" width="100" height="150" /> <input
-					name="duongdananh" type="text"
-					placeholder="Chỗ này là đường dẫn ảnh" />
-				<p>
-					<input type="button" value="Upload" class="button" />
-				</p>
+			<div class="tranfer_work">
+				<div class="filter_date">
+					<b>Thời gian:</b> <a>Khoảng từ</a> <input name="start_date"
+						type="text" size="12" id="inputField_start" /><a>Đến hết</a> <input
+						name="end_date" type="text" size="12" id="inputField_end" />
+					<p>
+						<a class="button">Xem thống kê</a>
+					</p>
+
+				</div>
+				<script type="text/javascript">
+                        window.onload = function(){
+                            new JsDatePick({
+                                useMode:2,
+                                target:"inputField_start",
+                                dateFormat:"%d-%M-%Y"
+                                /*selectedDate:{				This is an example of what the full configuration offers.
+                                day:5,						For full documentation about these settings please see the full version of the code.
+                                month:9,
+                                year:2006
+                        },
+                        yearsRange:[1978,2020],
+                        limitToToday:false,
+                        cellColorScheme:"beige",
+                        dateFormat:"%m-%d-%Y",
+                        imgPath:"img/",
+                        weekStartDay:1*/
+                            });
+                            new JsDatePick({
+                                useMode:2,
+                                target:"inputField_end",
+                                dateFormat:"%d-%M-%Y"
+                                /*selectedDate:{				This is an example of what the full configuration offers.
+                                day:5,						For full documentation about these settings please see the full version of the code.
+                                month:9,
+                                year:2006
+                        },
+                        yearsRange:[1978,2020],
+                        limitToToday:false,
+                        cellColorScheme:"beige",
+                        dateFormat:"%m-%d-%Y",
+                        imgPath:"img/",
+                        weekStartDay:1*/
+                            });
+                        };
+                        
+                    </script>
+
+				<table style="width: 100%;">
+					<tr class="head_tb_tranfer_work">
+						<td style="width: 5%">STT</td>
+						<td style="width: 20%">Tên cán bộ</td>
+						<td style="width: 30%">Đơn vị cũ</td>
+						<td style="width: 30%">Đơn vị mới</td>
+						<td>Ngày chuyển</td>
+					</tr>
+					<tr class="row_1">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phạm Minh Đạt</td>
+						<td class="tranfer_work_old">Viện toán học</td>
+						<td class="tranfer_work_new">Viện công nghệ thông tin</td>
+						<td class="tranfer_date">17/12/2012</td>
+					</tr>
+					<tr class="row_2">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phạm Minh Đạt</td>
+						<td class="tranfer_work_old">Viện toán học</td>
+						<td class="tranfer_work_new">Viện công nghệ thông tin</td>
+						<td class="tranfer_date">17/12/2012</td>
+					</tr>
+					<tr class="row_1">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phạm Minh Đạt</td>
+						<td class="tranfer_work_old">Viện toán học</td>
+						<td class="tranfer_work_new">Viện công nghệ thông tin</td>
+						<td class="tranfer_date">17/12/2012</td>
+					</tr>
+					<tr class="row_2">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phạm Minh Đạt</td>
+						<td class="tranfer_work_old">Viện toán học</td>
+						<td class="tranfer_work_new">Viện công nghệ thông tin</td>
+						<td class="tranfer_date">17/12/2012</td>
+					</tr>
+					<tr class="row_1">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phạm Minh Đạt</td>
+						<td class="tranfer_work_old">Viện toán học</td>
+						<td class="tranfer_work_new">Viện công nghệ thông tin</td>
+						<td class="tranfer_date">17/12/2012</td>
+					</tr>
+					<tr class="row_2">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phạm Minh Đạt</td>
+						<td class="tranfer_work_old">Viện toán học</td>
+						<td class="tranfer_work_new">Viện công nghệ thông tin</td>
+						<td class="tranfer_date">17/12/2012</td>
+					</tr>
+					<tr class="end_tb_tranfer_work row_1">
+						<td class="tranfer_STT">1</td>
+						<td class="tranfer_name">Phạm Minh Đạt</td>
+						<td class="tranfer_work_old">Viện toán học</td>
+						<td class="tranfer_work_new">Viện công nghệ thông tin</td>
+						<td class="tranfer_date">17/12/2012</td>
+					</tr>
+				</table>
 			</div>
-			<!--End images-->
-			<div class="clear"></div>
-			<div class="infomation_staff">
-				<form name="edit_staff" action="#" method="POST">
+			<!--End tranfer_work -->
 
-					<table border="0" bgcolor="#fff" align="center" id="info"
-						style="width: 100%">
-						<tr>
-							<td class="title" colspan=2 align="center" height="50">Thông
-								tin cá nhân</td>
-						</tr>
-						<tr>
-							<td class="list">Họ và tên</td>
-							<td class="list_ret" width="70%"><input type="text"
-								name="name" size="60" height="25" value="${canbo.hoten}" /></td>
-						</tr>
-						<tr>
-							<td class="list">Đơn vị quản lý</td>
-							<td class="list_ret"><select name="choiceDonviquanly"
-								id="find_vien" onchange="chageDonViState()">
-									<c:forEach items="${donviquanly}" var="donviquanly">
-										<option value="${donviquanly.iddonviquanly}">${donviquanly.ten}</option>
-									</c:forEach>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Phòng ban</td>
-							<td class="list_ret"><select id = "phongban" name="phongban">
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Học vị</td>
-							<td class="list_ret"><select name="hocvi">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Chức vụ</td>
-							<td class="list_ret"><select name="chucvu">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Học hàm</td>
-							<td class="list_ret"><select name="hocham">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Cấp ủy</td>
-							<td class="list_ret"><select name="hocvi">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Giáo dục phổ thông</td>
-							<td class="list_ret"><select name="giaoducphothong">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Danh hiệu</td>
-							<td class="list_ret"><select name="đanhhieu">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Xuất thân</td>
-							<td class="list_ret"><select name="xuatthan">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Quốc gia</td>
-							<td class="list_ret"><select name="quocgia">
-									<option value="0">học vị 1</option>
-									<option value="1">học vị 2</option>
-									<option value="2">học vị 3</option>
-									<option value="3">Học vị 4</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Loại cán bộ</td>
-							<td class="list_ret"><select name="loaicanbo">
-									<option value="0">Cán bộ thường</option>
-									<option value="1">Cán bộ nghiên cứu</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Số hiệu công chức</td>
-							<td class="list_ret"><input type="text"
-								name="sohieucongchuc" size="60" height="25" /></td>
-						</tr>
-						<tr>
-							<td class="list">Số chứng minh nhân dân</td>
-							<td class="list_ret"><input type="number"
-								name="chungminhnhandan" size="60" height="25" /></td>
-						</tr>
-						<tr>
-							<td class="list">Giới tính</td>
-							<td class="list_ret"><select name="gioitinh">
-									<option value="0">Nam</option>
-									<option value="1">Nữ</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Tên thường dùng khác</td>
-							<td class="list_ret"><input type="text" name="tenthuongdung"
-								size="60" height="25" /></td>
-						</tr>
-						<tr>
-							<td class="list">Ngày tháng năm sinh</td>
-							<td class="list_ret"><input type="date" name="ngaysinh"
-								size="60" height="25" /></td>
-						</tr>
-						<tr>
-							<td class="list">Nơi sinh</td>
-							<td class="list_ret"><input type="text" name="noisinh"
-								size="60" height="25" /></td>
-						</tr>
-						<tr>
-							<td class="list">Quê quán</td>
-							<td class="list_ret"><input type="text" name="quequan"
-								size="60" height="25" /></td>
-						</tr>
-						<tr>
-							<td class="list">Nơi ở hiện nay</td>
-							<td class="list_ret"><input type="text" name="noiohiennay"
-								size="60" height="25" /></td>
-						</tr>
-						<tr>
-							<td class="list">Số điện thoại</td>
-							<td class="list_ret"><input type="tel" name="sodienthoai"
-								size="60" height="25" /></td>
-						</tr>
-						<tr>
-							<td class="list">Ngày vào đảng chính thức</td>
-							<td class="list_ret"><input type="date"
-								name="ngayvaodangchinhthuc" size="60" height="25" /></td>
-						</tr>
-						<tr>
-							<td class="list">Ngày cập nhật</td>
-							<td class="list_ret"><input type="date" name="ngaycapnhat"
-								size="60" height="25" /></td>
-						</tr>
-						<tr>
-							<td class="list">Dân tộc</td>
-							<td class="list_ret"><select name="dantoc">
-									<option value="0">Kinh</option>
-									<option value="1">Mường</option>
-									<option value="2">Dao</option>
-									<option value="3">Mán</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Tôn giáo</td>
-							<td class="list_ret"><select name="tongiao">
-									<option value="0">Kinh</option>
-									<option value="1">Mường</option>
-									<option value="2">Dao</option>
-									<option value="3">Mán</option>
-							</select></td>
-						</tr>
-						<tr>
-							<td class="list">Sức khỏe</td>
-							<td class="list_ret"><input type="text" name="suckhoe"
-								size="60" height="25" /></td>
-						</tr>
-						<tr>
-							<td class="list">Ngôn ngữ biết</td>
-							<td class="list_ret"><input type="text" name="ngonngubiet"
-								size="60" height="25" /></td>
-						</tr>
-
-					</table>
-					<br /> <br />
-
-					<table border="0" bgcolor="#fff" align="center" id="info">
-						<tr>
-							<td class="title" colspan=2 align="center" height="50">Sách
-								xuất bản</td>
-						</tr>
-						<tr>
-							<td colspan="2" align="">
-								<table>
-									<thead>
-										<tr>
-											<th>Tên sách</th>
-											<th>Năm xuất bản</th>
-										</tr>
-									</thead>
-
-									<tbody>
-
-										<tr>
-											<td class="list"><input type="text" name="user_name"
-												height="25" /></td>
-											<td class="list_ret"><input type="text" name="user_name"
-												size="60" height="25" /></td>
-										</tr>
-
-									</tbody>
-								</table>
-							</td>
-						</tr>
-					</table>
-
-					<table border="0" bgcolor="#fff" align="center" id="info"
-						style="width: 100%">
-						<tr>
-							<td class="title" colspan=2 align="center" height="50">Lý
-								lịch khoa học ??????</td>
-						</tr>
-						<tr>
-							<td class="list">Họ và tên</td>
-							<td class="list_ret" width="70%"><input type="text"
-								name="name" size="60" height="25" /></td>
-						</tr>
-
-
-					</table>
-
-					<br /> <br />
-					<div style="text-align: center; margin-top: 20px;">
-						<input type="submit" class="button" value="Cập nhật" />
-					</div>
-
-				</form>
-			</div>
-			<!--End infomation -->
 
 		</div>
 		<!--End wrap_main-->
-
-
-
-
-
-
-
-
-
-
 
 		<div id="wrap_right">
 			<div class="box_right">
@@ -604,45 +444,5 @@
 		<!--End wrap_footer-->
 	</div>
 	<!--End wrapper -->
-
-
-	<script type="text/javascript">
-	function chageDonViState() {
-		removePBOption();
-		<%String dsPhongBan = new String();
-		List listDonviquanly = (List) request.getAttribute("donviquanly");
-		if (listDonviquanly != null) {
-			for(int i = 0; i < listDonviquanly.size(); i++){
-				Donviquanly donviquanly = (Donviquanly)listDonviquanly.get(i);
-				Set<Phongban> phongban = donviquanly.getPhongbans();
-				for(Phongban pb: phongban){
-					dsPhongBan += i + "@" + pb.getIdphongban() + "@" + pb.getTen() +"|";	
-				}
-			}
-			
-		}%>
-		var dir = ("<%=dsPhongBan%>");
-		alert(dir);
-			var allType = dir.split("|");
-			var i;
-			var count = 0;
-			var selectDir = document.getElementById("find_vien");
-			var dirIndex = selectDir.selectedIndex;
-			for (i = 0; i < eval(allType).length - 1; i++) {
-				var dirType = eval(allType)[i].split("@");
-				if (eval(dirType)[0] == dirIndex) {
-					document.edit_staff.phongban.options[count++] = new Option(
-							eval(dirType)[2], eval(dirType)[1]);
-				}
-			}
-		}
-
-	function removePBOption() {
-		var x = document.getElementById("phongban");
-		while(x.options.length >0){
-			x.remove(0);
-		}
-	}
-	</script>
 </body>
 </html>
