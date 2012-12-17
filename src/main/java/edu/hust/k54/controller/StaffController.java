@@ -1,5 +1,6 @@
 package edu.hust.k54.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -9,10 +10,31 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import edu.hust.k54.persistence.Capuy;
+import edu.hust.k54.persistence.CapuyHome;
+import edu.hust.k54.persistence.Chucvu;
+import edu.hust.k54.persistence.ChucvuHome;
+import edu.hust.k54.persistence.Danhhieu;
+import edu.hust.k54.persistence.DanhhieuHome;
+import edu.hust.k54.persistence.Dantoc;
+import edu.hust.k54.persistence.DantocHome;
 import edu.hust.k54.persistence.Donviquanly;
+import edu.hust.k54.persistence.Giaoducphothong;
+import edu.hust.k54.persistence.GiaoducphothongHome;
+import edu.hust.k54.persistence.Hocham;
+import edu.hust.k54.persistence.HochamHome;
+import edu.hust.k54.persistence.Hocvi;
+import edu.hust.k54.persistence.HocviHome;
+import edu.hust.k54.persistence.Quocgia;
+import edu.hust.k54.persistence.QuocgiaHome;
+import edu.hust.k54.persistence.SachxuatbanHome;
 import edu.hust.k54.persistence.Soyeulylich;
 import edu.hust.k54.persistence.SoyeulylichHome;
 import edu.hust.k54.persistence.Taikhoandangnhap;
+import edu.hust.k54.persistence.Tongiao;
+import edu.hust.k54.persistence.TongiaoHome;
+import edu.hust.k54.persistence.Xuatthan;
+import edu.hust.k54.persistence.XuatthanHome;
 
 public class StaffController implements Controller {
 
@@ -49,8 +71,60 @@ public class StaffController implements Controller {
 				modelAndView = new ModelAndView("sua_thongtincanhan");
 				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,
 						null);
+				Map parameter = arg0.getParameterMap();
+				if(parameter.containsKey("update")){
+					String newName = arg0.getParameter("name");
+					Integer newIdDonVi = Integer.parseInt(arg0.getParameter("choiceDonviquanly"));
+					Integer newIdPhongBan = Integer.parseInt(arg0.getParameter("phongban"));
+					Integer newIdHocVi = Integer.parseInt(arg0.getParameter("hocvi"));
+					Integer newIdChucVu = Integer.parseInt(arg0.getParameter("chucvu"));
+					Integer newIdHocHam = Integer.parseInt(arg0.getParameter("hocham"));
+					Integer newIdCapUy = Integer.parseInt(arg0.getParameter("capuy"));
+					Integer newIdGiaoDucPhoThong = Integer.parseInt(arg0.getParameter("giaoducphothong"));
+					Integer newIdDanhHieu = Integer.parseInt(arg0.getParameter("danhhieu"));
+					Integer newIdXuatThan = Integer.parseInt(arg0.getParameter("xuatthan"));
+					Integer newIdQuocGia = Integer.parseInt(arg0.getParameter("quocgia"));
+					Integer newIdDanToc = Integer.parseInt(arg0.getParameter("dantoc"));
+					Integer newIdTonGiao = Integer.parseInt(arg0.getParameter("tongiao"));
+					String newLoaiCanBo = arg0.getParameter("loaicanbo");
+					Integer newSoHieuCongChuc = Integer.parseInt(arg0.getParameter("sohieucongchuc"));
+					String newSoCMT = arg0.getParameter("chungminhnhandan");
+					String newGioiTinh = arg0.getParameter("gioitinh");
+					String newTenThuongDung = arg0.getParameter("tenthuongdung");
+					Date newNgaySinh = new Date(arg0.getParameter("ngaysinh"));
+					String newNoiSinh = arg0.getParameter("noisinh");
+					String newQueQuan = arg0.getParameter("quequan");
+					String newNoiO = arg0.getParameter("noiohiennay");
+					String newSoDT = arg0.getParameter("sodienthoai");
+					String newNgayVaoDang = arg0.getParameter("ngayvaodangchinhthuc");
+					Date newNgayCapNhat = new Date(arg0.getParameter("ngaycapnhat"));
+					String newSucKhoe = arg0.getParameter("suckhoe");
+					String newNgonNguBiet = arg0.getParameter("ngonngubiet");
+					
+				}
 				modelAndView.addObject("donviquanly", donviquanly);
 				modelAndView.addObject("canbo", guestController.TimCB(idcanbo));
+				HochamHome hochamHome = new HochamHome();
+				modelAndView.addObject("hocham", hochamHome.findByExample(new Hocham()));
+				HocviHome hocviHome = new HocviHome();
+				modelAndView.addObject("hocvi", hocviHome.findByExample(new Hocvi()));
+				ChucvuHome chucvuHome = new ChucvuHome();
+				modelAndView.addObject("chucvu", chucvuHome.findByExample(new Chucvu()));
+				CapuyHome capuyHome = new CapuyHome();
+				modelAndView.addObject("capuy", capuyHome.findByExample(new Capuy()));
+				GiaoducphothongHome giaoducphothongHome = new GiaoducphothongHome();
+				modelAndView.addObject("giaoducphothong", giaoducphothongHome.findByExample(new Giaoducphothong()));
+				DanhhieuHome danhhieuHome = new DanhhieuHome();
+				modelAndView.addObject("danhhieu", danhhieuHome.findByExample(new Danhhieu()));
+				XuatthanHome xuatthanHome = new XuatthanHome();
+				modelAndView.addObject("xuatthan", xuatthanHome.findByExample(new Xuatthan()));
+				QuocgiaHome quocgiaHome = new QuocgiaHome();
+				modelAndView.addObject("quocgia", quocgiaHome.findByExample(new Quocgia()));
+				DantocHome dantocHome = new DantocHome();
+				modelAndView.addObject("dantoc", dantocHome.findByExample(new Dantoc()));
+				TongiaoHome tongiaoHome = new TongiaoHome();
+				modelAndView.addObject("tongiao", tongiaoHome.findByExample(new Tongiao()));
+				
 			} else if (uri.contains("capnhat/lylichkhoahoc")) {
 				modelAndView = new ModelAndView("lylichKH");
 				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,
@@ -65,7 +139,6 @@ public class StaffController implements Controller {
 				Map parameter = arg0.getParameterMap();
 				if (parameter.containsKey("updateInfo")) {
 					String newEmail = arg0.getParameter("email");
-					System.out.println("new mail: " + newEmail);
 					if (newEmail != null) {
 						Taikhoandangnhap newUser = staffController.doiEmail(
 								taikhoandangnhap.getIduser(), newEmail);
