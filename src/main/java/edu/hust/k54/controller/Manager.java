@@ -1,4 +1,5 @@
 package edu.hust.k54.controller;
+import java.util.ArrayList;
 import java.util.Set;
 
 import edu.hust.k54.persistence.Donviquanly;
@@ -22,8 +23,8 @@ public class Manager {
 	private static final Integer MANAGER_PERMISSION = 2;
 	private static final Integer SUPER_MANAGER_PERMISSION = 3;
 	
-	public Set<Soyeulylich> getLowerPermission(Integer idcanbo){
-		Set<Soyeulylich> output = null;
+	public ArrayList<Soyeulylich> getLowerPermission(Integer idcanbo){
+		ArrayList<Soyeulylich> output = new ArrayList<Soyeulylich>();
 		SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
 		Soyeulylich soyeulylich =  soyeulylichHome.findById(idcanbo);
 		if(soyeulylich != null){
