@@ -21,9 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
-
 import edu.hust.k54.persistence.Baocao;
 import edu.hust.k54.persistence.BaocaoHome;
 import edu.hust.k54.persistence.Soyeulylich;
@@ -31,23 +28,46 @@ import edu.hust.k54.persistence.Taikhoandangnhap;
 
 @Controller
 public class ReportController {
+	private static String NOT_ENOUGH_PERMISSION = "Không đủ quyền xem file này";
+	private static String NOT_ENOUGH_PERMISSION_TO_VIEW = "Không đủ quyền xem trang này";
+	
 	@RequestMapping(value = "/showreport.spms", method = RequestMethod.GET)
-	public String getReport(@RequestParam("id") int id, HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+	public String getReport(@RequestParam("id") int id,  HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+		Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
+				.getAttribute("user");
+		if (account == null) {
+			model.addAttribute("err", NOT_ENOUGH_PERMISSION);
+			return "report";
+		}
+		
 		BaocaoHome ds = new BaocaoHome();
 		Baocao report = ds.findById(id);
+		
+		if (report == null) {
+			model.addAttribute("err", "File được yêu cầu không tồn tại");
+			return "report";
+		}
+		
+		if (!report.getSoyeulylich().equals(account.getSoyeulylich())) {
+			Manager man = new Manager();
+			ArrayList<Soyeulylich> list = man.getLowerPermission(account.getSoyeulylich().getIdsoyeulylich());
+			if (!list.contains(report.getSoyeulylich())) {
+				model.addAttribute("err", "File được yêu cầu không tồn tại");
+				return "report";
+			}
+		}
 		
 		try {
 			FileInputStream is = new FileInputStream(request.getRealPath("") + report.getNoidung());
 			OutputStream os = response.getOutputStream();
 			IOUtils.copy(is, os);
 			response.flushBuffer();
+			return "report";
 		} catch (IOException ex) {
 			model.addAttribute("err", "File được yêu cầu không tồn tại");
-			throw ex;
+			return "report";
 		}
 		
-		System.err.println(report);
-		return "redirect:/report.spms";
 	}
 	
 	@RequestMapping(value = "/report.spms", method = RequestMethod.GET)
@@ -55,6 +75,10 @@ public class ReportController {
 		Manager man = new Manager();
 		Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
 				.getAttribute("user");
+		if (account == null) {
+			model.addAttribute("err", NOT_ENOUGH_PERMISSION_TO_VIEW);
+			return "report";
+		}
 		Integer idcanbo = account.getIduser();
 		System.err.println("idcanbo: " + idcanbo);
 		ArrayList<Soyeulylich> list = man.getLowerPermission(idcanbo);
@@ -63,7 +87,7 @@ public class ReportController {
 		list.add(account.getSoyeulylich());
 
 		BaocaoHome ds = new BaocaoHome();
-		List reportList = ds.findBySoyeulylichs(list);
+		List<Soyeulylich> reportList = ds.findBySoyeulylichs(list);
 		model.addAttribute("report_list", reportList);
 		System.err.println("list: " + reportList);
 		
