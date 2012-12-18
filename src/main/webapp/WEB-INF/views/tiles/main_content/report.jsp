@@ -21,7 +21,10 @@
 					<td class="name">${report.getTenbaocao()}</td>
 					<td class="ngaylap">${report.getNgaylap()}</td>
 					<td class="details"><a
-						href="showreport.spms?id=${report.getIdbaocao() }" target="_blank">Show</a></td>
+						href="showreport.spms?id=${report.getIdbaocao() }" target="_blank">Xem</a></td>
+					<td class="delete"><a
+						href="deletereport.spms?id=${report.getIdbaocao() }"
+						target="_blank">Xóa</a></td>
 				</tr>
 			</c:forEach>
 		</table>
