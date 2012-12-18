@@ -76,9 +76,9 @@ public class UploadReportController {
 				sIn = file.getInputStream();
 				System.out.println("Size: " + file.getSize());
 				Date now = new Date();
-				fileName = "/uploadContent/reports/" + now.getTime() + "-"
-						+ file.getOriginalFilename();
-				storageLink = request.getRealPath("") + fileName;
+				fileName = now.getTime() + "-" + file.getOriginalFilename();
+				storageLink = request.getRealPath("")
+						+ "/uploadContent/reports/" + fileName;
 				System.err.println(fileName);
 				System.err.println(file.getContentType());
 				String type = file.getContentType();
@@ -107,6 +107,6 @@ public class UploadReportController {
 
 		model.addAttribute("flash", "Upload successfully");
 
-		return "upload/uploadForm";
+		return "report";
 	}
 }

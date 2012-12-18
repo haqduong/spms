@@ -30,46 +30,55 @@ import edu.hust.k54.persistence.Taikhoandangnhap;
 public class ReportController {
 	private static String NOT_ENOUGH_PERMISSION = "Không đủ quyền xem file này";
 	private static String NOT_ENOUGH_PERMISSION_TO_VIEW = "Không đủ quyền xem trang này";
-	
+
 	@RequestMapping(value = "/showreport.spms", method = RequestMethod.GET)
-	public String getReport(@RequestParam("id") int id,  HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+	public String getReport(@RequestParam("id") int id,
+			HttpServletRequest request, HttpServletResponse response,
+			Model model) throws IOException {
 		Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
 				.getAttribute("user");
 		if (account == null) {
 			model.addAttribute("err", NOT_ENOUGH_PERMISSION);
 			return "report";
 		}
-		
+
 		BaocaoHome ds = new BaocaoHome();
 		Baocao report = ds.findById(id);
-		
+
 		if (report == null) {
 			model.addAttribute("err", "File được yêu cầu không tồn tại");
 			return "report";
 		}
-		
-		if (!report.getSoyeulylich().equals(account.getSoyeulylich())) {
+
+		if (!report.getSoyeulylich().getIdsoyeulylich()
+				.equals(account.getSoyeulylich().getIdsoyeulylich())) {
 			Manager man = new Manager();
-			ArrayList<Soyeulylich> list = man.getLowerPermission(account.getSoyeulylich().getIdsoyeulylich());
+			ArrayList<Soyeulylich> list = man.getLowerPermission(account
+					.getSoyeulylich().getIdsoyeulylich());
 			if (!list.contains(report.getSoyeulylich())) {
-				model.addAttribute("err", "File được yêu cầu không tồn tại");
+				model.addAttribute("err", NOT_ENOUGH_PERMISSION_TO_VIEW);
 				return "report";
 			}
 		}
-		
+
 		try {
-			FileInputStream is = new FileInputStream(request.getRealPath("") + report.getNoidung());
+			String file_path = request.getRealPath("")
+					+ "/uploadContent/reports/" + report.getNoidung();
+			System.err.println(file_path);
+			FileInputStream is = new FileInputStream(file_path);
+
 			OutputStream os = response.getOutputStream();
+			response.addHeader("Content-Disposition", "attachment; filename=\"" + report.getNoidung() + "\"");
 			IOUtils.copy(is, os);
 			response.flushBuffer();
-			return "report";
+			return null;
 		} catch (IOException ex) {
 			model.addAttribute("err", "File được yêu cầu không tồn tại");
 			return "report";
 		}
-		
+
 	}
-	
+
 	@RequestMapping(value = "/report.spms", method = RequestMethod.GET)
 	public String getAllReadableReport(HttpServletRequest request, Model model) {
 		Manager man = new Manager();
@@ -83,15 +92,15 @@ public class ReportController {
 		System.err.println("idcanbo: " + idcanbo);
 		ArrayList<Soyeulylich> list = man.getLowerPermission(idcanbo);
 		if (list == null)
-			list = new ArrayList<Soyeulylich> ();
+			list = new ArrayList<Soyeulylich>();
 		list.add(account.getSoyeulylich());
 
 		BaocaoHome ds = new BaocaoHome();
 		List<Soyeulylich> reportList = ds.findBySoyeulylichs(list);
 		model.addAttribute("report_list", reportList);
 		System.err.println("list: " + reportList);
-		
+
 		return "report";
 	}
-	
+
 }
