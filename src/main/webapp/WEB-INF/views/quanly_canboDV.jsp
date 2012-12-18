@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Quản lý thông tin đơn vị</title>
+<title>Quản lý cán bộ</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
@@ -19,7 +19,7 @@
 				<h1 class="stitle_web">Viện khoa học và công nghệ Việt Nam</h1>
 			</div>
 			<!--End banner_header -->
-<div id="nav_menu">
+			<div id="nav_menu">
 				<div class="header-row-1">
 					<ul>
 						<li><a
@@ -79,81 +79,68 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>Quản lý thông tin đơn vị - ${donvi.ten}</h2>
+				<h2>Quản lý cán bộ</h2>
 			</div>
+			<div class="images">
+				<div class="button">
+					<a>Thêm cán bộ</a>
+				</div>
+
+			</div>
+			<!--End images-->
 			<div class="clear"></div>
-			<div class="infomation_staff">
-				<form name="edit_staff" action="#" method="POST">
+			<div class="manager_staff">
+				<form>
 
-					<table border="0" bgcolor="#fff" align="center" id="info"
-						style="width: 100%">
-						<tr>
-							<td class="list">Tên đơn vị</td>
-							<td class="list_ret" width="70%"><input type="text"
-								name="tendonvi" id="tendonvi" size="60" height="25" value="${donvi.ten}" />(*)</td>
-						</tr>
-						<tr>
-							<td class="list">Nhiệm vụ</td>
-							<td class="list_ret"><textarea id ="nhiemvu" name="nhiemvu">${donvi.nhiemvu}</textarea></td>
-						</tr>
-						<tr>
-							<td class="list">Chức năng</td>
-							<td class="list_ret"><textarea id ="chucnang" name="chucnang">${donvi.chucnang}</textarea></td>
-						</tr>
-						<tr>
-							<td class="list">Hoạt động thường xuyên</td>
-							<td class="list_ret"><textarea id= "hoatdongthuongquyen" name="hoatdongthuongxuyen">${donvi.hoatdongthuongxuyen}</textarea>
-							</td>
-						</tr>
-
-						<tr>
-							<td class="list">Thành tựu</td>
-							<td class="list_ret"><textarea id ="thanhtuu" name="thanhtuu">${donvi.thanhtuu}</textarea></td>
-						</tr>
-						<tr>
-							<td class="list">Thông tin khác</td>
-							<td class="list_ret"><textarea id = "thongtinkhac" name="thongtinkhac">${donvi.thongtinkhac}</textarea>
-							</td>
-						</tr>
-						<tr>
-							<td class="list">Địa chỉ trụ sở</td>
-							<td class="list_ret"><input id = "diachitruso" name="diachitruso" type="text" value="${donvi.diachitruso}" />(*)</td>
-						</tr>
-						<tr>
-							<td class="list">Điện thoại</td>
-							<td class="list_ret"><input onkeydown="checkPhone()" id="dienthoai" name="dienthoai" type="tel" value="${donvi.dienthoai}" />(*)</td>
-						</tr>
-						<tr>
-							<td class="list">Email</td>
-							<td class="list_ret"><input id ="email" name="email" type="email" value="${donvi.email}" />(*)</td>
-						</tr>
-						<tr>
-							<td class="list">Fax</td>
-							<td class="list_ret"><input onkeydown="checkFax()" id = "fax" name="fax" type="text" value="${donvi.fax}" />(*)</td>
-						</tr>
-						<tr>
-							<td class="list">Avatar</td>
-							<td class="list_ret"><img width="96" height="50"
-								src="${donvi.duongdananh}" /> <br /> <input
-								type="button" name="upload" value="upload" /></td>
-						</tr>
-					</table>
-					<h3>${result}</h3>
-					<div style="text-align: center; margin-top: 20px;">
-						<input onclick="checkSubmit()" class="button" name="update" value="Cập nhật" />
+					<div class="list_data">
+						<div class="title_table">
+							<a> Danh sách cán bộ của đơn vị: ${donvi.ten} </a>
+						</div>
+						<table cellspacing="0" cellpadding="0" width="100%">
+							<tr>
+								<td>
+									<table cellspacing="0" cellpadding="1" style="width: 715px">
+										<tr class="tieu_de">
+											<td style="width: 5%">STT</td>
+											<td style="width: 20%">Họ và tên</td>
+											<td style="width: 10%">Chức vụ</td>
+											<td style="width: 15%">Điện thoại</td>
+											<td style="width: 15%">Phòng Ban</td>
+											<td style="width: 10%">Chỉnh sửa</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+							<%int i = 0; %>
+								<td>
+									<div class="description">
+										<table cellspacing="0" cellpadding="1" style="width: 715px">
+										<c:forEach items="${donvi.phongbans}" var ="phongban">
+											<c:forEach items="${phongban.soyeulyliches}" var="canbo"> 
+											<tr class="row_1">
+												<td style="width: 5%"><%=++i%></td>
+												<td style="width: 20%">${canbo.hoten}</td>
+												<td style="width: 10%">${canbo.chucvu.ten}</td>
+												<td style="width: 15%">${canbo.sodienthoai}</td>
+												<td style="width: 15%">${canbo.phongban.ten}</td>
+												<td style="width: 10%"><a href="/k54/staff/capnhat/thongtincanhan.spms?idcanbo=${canbo.idsoyeulylich}">Cập nhật</a></td>
+											</tr>
+											</c:forEach>
+											</c:forEach>
+										</table>
+									</div>
+								</td>
+							</tr>
+						</table>
 					</div>
+					<!--End list_data-->
+					<br /> <br />
 				</form>
 			</div>
 			<!--End infomation -->
-
 		</div>
 		<!--End wrap_main-->
-
-
-
-
-
-
 
 		<div id="wrap_right">
 			<div class="box_right">
@@ -313,11 +300,11 @@
 						<div class="content_box">
 							<div id="accordion">
 								<ul>
-									<li><a href="/superManager/quanly/donvi.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản lý đơn vị</a></li>
-									<li><a href="/superManager/quanly/phongban.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản lý phòng ban</a></li>
-									<li><a href="/superManager/quanly/thongtincanbo.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản lý thông tin cán bộ</a></li>
-									<li><a href="/superManager/quanly/baocao.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Báo cáo</a></li>
-									<li><a href="/superManager/quanly/thongke.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Thống kê</a></li>
+									<li><a href="/k54/superManager/quanly/donvi.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản lý đơn vị</a></li>
+									<li><a href="/k54/superManager/quanly/phongban.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản lý phòng ban</a></li>
+									<li><a href="/k54/superManager/quanly/thongtincanbo.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản lý thông tin cán bộ</a></li>
+									<li><a href="/k54/superManager/quanly/baocao.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Báo cáo</a></li>
+									<li><a href="/k54/superManager/quanly/thongke.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Thống kê</a></li>
 								</ul>
 							</div>
 							<!--End accordion -->
@@ -375,44 +362,5 @@
 		<!--End wrap_footer-->
 	</div>
 	<!--End wrapper -->
-	
-		<script type="text/javascript">
-		function checkPhone() {
-			var digits = "0123456789.)(+";
-			var sohieucongchuc = document.getElementById("dienthoai").value;
-			for ( var i = 0; i < sohieucongchuc.length; i++) {
-				temp = sohieucongchuc.substring(i, i + 1);
-				if (digits.indexOf(temp) == -1) {
-					alert("Số điện thoại không hợp lệ, số điện thoại chỉ bao gồm chữ số hoặc mã vùng, mã quốc gia (+84)..");
-					document.getElementById("dienthoai").value = "";
-				}
-			}
-		}
-
-		function checkSubmit() {
-			var tendonvi =document.getElementById("tendonvi").value;
-			var diachitruso = document.getElementById("diachitruso").value;
-			var dienthoai = document.getElementById("dienthoai").value;
-			var email = document.getElementById("email").value;
-			var fax = document.getElementById("fax").value;
-			if (tendonvi == "" || dienthoai == "" || email =="" ||diachitruso==""||fax=="") {
-				alert("Không được để trống các mục bắt buộc (*), xin kiểm tra lại");
-			} else {
-				document.forms["edit_staff"].submit();
-			}
-		}
-		
-		function checkFax() {
-			var digits = "0123456789.)(+";
-			var sohieucongchuc = document.getElementById("fax").value;
-			for ( var i = 0; i < sohieucongchuc.length; i++) {
-				temp = sohieucongchuc.substring(i, i + 1);
-				if (digits.indexOf(temp) == -1) {
-					alert("Số fax không hợp lệ, số fax chỉ bao gồm chữ số hoặc mã vùng, mã quốc gia (+84)..");
-					document.getElementById("fax").value = "";
-				}
-			}
-		}
-	</script>
 </body>
 </html>
