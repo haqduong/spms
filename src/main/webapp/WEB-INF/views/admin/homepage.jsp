@@ -22,18 +22,18 @@
                 <div id="wrap_left">
                     <div class="menu_left">
                         <ul>
-                            <li ><a href="#">Nhật ký hệ thống</a></li>
-                            <li ><a href="#">Cập nhật danh mục</a>
+                            <li ><a href="/k54/admin/logsystem.spms">Nhật ký hệ thống</a></li>
+                            <li ><a>Cập nhật danh mục</a>
                                 <ul>
-                                    <li><a href="#">Ngạch lương</a></li>
-                                    <li><a href="#">Chức vụ</a></li>
-                                    <li><a href="#">Học hàm</a></li>
-                                    <li><a href="#">Học vị</a></li>
+                                    <li><a href="/k54/admin/updatesalary.spms">Ngạch lương</a></li>
+                                    <li><a href="/k54/admin/updatechucvu.spms">Chức vụ</a></li>
+                                    <li><a href="/k54/admin/updatehocham.spms">Học hàm</a></li>
+                                    <li><a href="/k54/admin/updatehocvi.spms">Học vị</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Phân quyền</a></li>
-                            <li><a href="#">Tạo tài khoản</a></li>
-                            <li><a href="#">Duyệt tài khoản khách</a></li>
+                            <li><a href="/k54/admin/phanquyen.spms">Phân quyền</a></li>
+                            <li><a href="/k54/admin/taotaikhoan.spms">Tạo tài khoản</a></li>
+                            <li><a href="/k54/admin/duyettaikhoan.spms">Duyệt tài khoản khách</a></li>
                         </ul>
                     </div>
                 </div> <!--End wrap_left-->

@@ -22,18 +22,18 @@
                 <div id="wrap_left">
                     <div class="menu_left">
                         <ul>
-                            <li ><a href="#">Nhật ký hệ thống</a></li>
-                            <li ><a href="#">Cập nhật danh mục</a>
+                            <li ><a href="/k54/admin/logsystem.spms">Nhật ký hệ thống</a></li>
+                            <li ><a>Cập nhật danh mục</a>
                                 <ul>
-                                    <li><a href="#">Ngạch lương</a></li>
-                                    <li><a href="#">Chức vụ</a></li>
-                                    <li><a href="#">Học hàm</a></li>
-                                    <li><a href="#">Học vị</a></li>
+                                    <li><a href="/k54/admin/updatesalary.spms">Ngạch lương</a></li>
+                                    <li><a href="/k54/admin/updatechucvu.spms">Chức vụ</a></li>
+                                    <li><a href="/k54/admin/updatehocham.spms">Học hàm</a></li>
+                                    <li><a href="/k54/admin/updatehocvi.spms">Học vị</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Phân quyền</a></li>
-                            <li><a href="#">Tạo tài khoản</a></li>
-                            <li><a href="#">Duyệt tài khoản khách</a></li>
+                            <li><a href="/k54/admin/phanquyen.spms">Phân quyền</a></li>
+                            <li><a href="/k54/admin/taotaikhoan.spms">Tạo tài khoản</a></li>
+                            <li><a href="/k54/admin/duyettaikhoan.spms">Duyệt tài khoản khách</a></li>
                         </ul>
                     </div>
                 </div> <!--End wrap_left-->
@@ -41,7 +41,7 @@
                     <div class="title_home"><a>Danh sách học hàm</a></div>
                     <div class="list_data">
                         <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;" >
-                            <a href="#" class="button">Thêm học hàm</a>
+                            <a href="/k54/admin/updatehocham.spms?manager=taomoi" class="button">Thêm học hàm</a>
                                 
                         </div>
 
@@ -52,7 +52,7 @@
                                         <tr class="tieu_de">
                                             <td style="width:5%">STT</td>
                                             <td style="width: 20%">Tên</td>
-                                            <td style="">Mô Tả</td>
+                                            <td style="">Mô tả</td>
                                         </tr>
                                     </table>
                                 </td>
@@ -61,86 +61,14 @@
                                 <td>
                                     <div class="description">
                                         <table cellspacing="0" cellpadding="1" style="width: 782px" >
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
+                                        <%int count = 0; %>
+                                        <c:forEach items="${hochams}" var="hocham">
+                                        	<tr>
+                                                <td style="width:5%"><%=count++ %></td>
+                                                <td style="width: 20%"><a href="/k54/admin/updatehocham.spms?idhocham=${hocham.idhocham}">${hocham.ten }</a></td>
+                                                <td style="">${hocham.mota }</td>
                                             </tr>
-                                            <tr class="row_2">
-                                               <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                               <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                               <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                               <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                               <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                               <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                               <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                               <td style="width:5%">1</td>
-                                                <td style="width: 20%"><a href="#">Giáo sư</a></td>
-                                                <td style="">Phòng chống cảnh sát</td>
-                                            </tr>
+                                        </c:forEach>
 
                                         </table>  
                                     </div>

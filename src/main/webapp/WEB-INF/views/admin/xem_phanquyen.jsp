@@ -22,18 +22,18 @@
                 <div id="wrap_left">
                     <div class="menu_left">
                         <ul>
-                            <li ><a href="#">Nhật ký hệ thống</a></li>
-                            <li ><a href="#">Cập nhật danh mục</a>
+                            <li ><a href="/k54/admin/logsystem.spms">Nhật ký hệ thống</a></li>
+                            <li ><a>Cập nhật danh mục</a>
                                 <ul>
-                                    <li><a href="#">Ngạch lương</a></li>
-                                    <li><a href="#">Chức vụ</a></li>
-                                    <li><a href="#">Học hàm</a></li>
-                                    <li><a href="#">Học vị</a></li>
+                                    <li><a href="/k54/admin/updatesalary.spms">Ngạch lương</a></li>
+                                    <li><a href="/k54/admin/updatechucvu.spms">Chức vụ</a></li>
+                                    <li><a href="/k54/admin/updatehocham.spms">Học hàm</a></li>
+                                    <li><a href="/k54/admin/updatehocvi.spms">Học vị</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Phân quyền</a></li>
-                            <li><a href="#">Tạo tài khoản</a></li>
-                            <li><a href="#">Duyệt tài khoản khách</a></li>
+                            <li><a href="/k54/admin/phanquyen.spms">Phân quyền</a></li>
+                            <li><a href="/k54/admin/taotaikhoan.spms">Tạo tài khoản</a></li>
+                            <li><a href="/k54/admin/duyettaikhoan.spms">Duyệt tài khoản khách</a></li>
                         </ul>
                     </div>
                 </div> <!--End wrap_left-->
@@ -97,135 +97,23 @@
                                 <td>
                                     <div class="description">
                                         <table cellspacing="0" cellpadding="1" style="width: 782px" >
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_1">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            <tr class="row_2">
-                                                <td style="width:5%">1</td>
-                                                <td style="width: 15%">datpm</td>
-                                                <td style="width: 15%">Phạm Minh Đạt</td>
-                                                <td style="width: 15%">Viện toán học</td>
-                                                <td style="width: 20%">Phòng phát triển</td>
-                                                <td style="">Cán bộ</td>
-                                            </tr>
-                                            
+                                        <%int count = 0; %>
+                                        <c:forEach items="${phanquyens }" var="phanquyen">
+	                                        <tr>
+	                                                <td style="width:5%"><%=++count %></td>
+	                                                <td style="width: 15%; font-weight: bold;"><a href="/k54/admin/phanquyen.spms?iduser=${phanquyen.iduser}">${phanquyen.username }</a></td>
+	                                                <td style="width: 15%">${phanquyen.soyeulylich.hoten }</td>
+	                                                <td style="width: 15%">${phanquyen.soyeulylich.donviquanly.ten }</td>
+	                                                <td style="width: 20%">${phanquyen.soyeulylich.phongban.ten }</td>
+	                                                <td style="">
+	                                                	<c:if test="${phanquyen.permission == 0}">Khách</c:if>
+														<c:if test="${phanquyen.permission == 1}">Cán bộ</c:if>
+														<c:if test="${phanquyen.permission == 2}">Quản lý phòng ban</c:if>
+														<c:if test="${phanquyen.permission == 3}">Quản lý viện</c:if>
+														<c:if test="${phanquyen.permission == 4}">Quản trị hệ thống</c:if>
+	                                                </td>
+	                                        </tr>
+                                        </c:forEach>
                                             
 
                                         </table>  

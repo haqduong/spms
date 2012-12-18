@@ -22,25 +22,25 @@
                 <div id="wrap_left">
                     <div class="menu_left">
                         <ul>
-                            <li ><a href="#">Nhật ký hệ thống</a></li>
-                            <li ><a href="#">Cập nhật danh mục</a>
+                            <li ><a href="/k54/admin/logsystem.spms">Nhật ký hệ thống</a></li>
+                            <li ><a>Cập nhật danh mục</a>
                                 <ul>
-                                    <li><a href="#">Ngạch lương</a></li>
-                                    <li><a href="#">Chức vụ</a></li>
-                                    <li><a href="#">Học hàm</a></li>
-                                    <li><a href="#">Học vị</a></li>
+                                    <li><a href="/k54/admin/updatesalary.spms">Ngạch lương</a></li>
+                                    <li><a href="/k54/admin/updatechucvu.spms">Chức vụ</a></li>
+                                    <li><a href="/k54/admin/updatehocham.spms">Học hàm</a></li>
+                                    <li><a href="/k54/admin/updatehocvi.spms">Học vị</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Phân quyền</a></li>
-                            <li><a href="#">Tạo tài khoản</a></li>
-                            <li><a href="#">Duyệt tài khoản khách</a></li>
+                            <li><a href="/k54/admin/phanquyen.spms">Phân quyền</a></li>
+                            <li><a href="/k54/admin/taotaikhoan.spms">Tạo tài khoản</a></li>
+                            <li><a href="/k54/admin/duyettaikhoan.spms">Duyệt tài khoản khách</a></li>
                         </ul>
                     </div>
                 </div> <!--End wrap_left-->
                 <div id="wrap_center">
                     <div class="title_home"><a>Tạo tài khoản cán bộ</a></div>
                     <div class="list_data">
-                        <form name="edit_hocvi" action="#" method="POST">
+                        <form name="edit_hocvi" action="/k54/admin/taotaikhoan.spms?manager=taomoi" method="POST">
                             <table  class="boloc" cellspacing="0" cellpadding="1" style="width: 700px">
                                 <tr>
                                     <td style="width: 20%;"><label>Username</label></td>
@@ -61,7 +61,7 @@
                                 <tr>
                                     <td><label>Phân quyền</label></td>
                                     <td>
-                                        <select>
+                                        <select name="permission">
                                             <option value="0">Khách</option>
                                             <option value="1">Cán bộ</option>
                                             <option value="2">Quản lý phòng ban</option>
@@ -77,28 +77,26 @@
                                 <tr>
                                 <td class="list">Họ và tên </td>
                                 <td class="list_ret" width="70%" >
-                                    <input type="text" name="name" size="60" height="25"/>
+                                    <input type="text" name="hoten" size="60" height="25"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="list" >Đơn vị quản lý </td>
                                 <td class="list_ret">
                                     <select name="donviquanly">
-                                        <option value="0">Viện toán học</option>
-                                        <option value="1">Viện sfsfc</option>
-                                        <option value="2">Viện sfsfion </option>
-                                        <option value="3">Viện afsfaftoán học</option>
+	                                    <c:forEach items="${donviquanlies}" var="donviquanly">
+	                                    	<option value="${donviquanly.iddonviquanly }">${donviquanly.ten}</option>
+	                                    </c:forEach>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="list" >Phòng ban </td>
                                 <td class="list_ret">
-                                    <select name="donviquanly">
-                                        <option value="0">phòng 1</option>
-                                        <option value="1">phòng 2</option>
-                                        <option value="2">fasfaf</option>
-                                        <option value="3">Viện afsfaftoán học</option>
+                                    <select name="phongban">
+                                       <c:forEach items="${phongbans}" var="phongban">
+	                                    	<option value="${phongban.idphongban }">${phongban.ten}</option>
+	                                    </c:forEach> 
                                     </select>
                                 </td>
                             </tr>
@@ -106,10 +104,9 @@
                                 <td class="list" >Học vị </td>
                                 <td class="list_ret">
                                     <select name="hocvi">
-                                        <option value="0">học vị 1</option>
-                                        <option value="1">học vị 2</option>
-                                        <option value="2">học vị 3</option>
-                                        <option value="3">Học vị 4</option>
+                                        <c:forEach items="${hocvis }" var="hocvi">
+                                        	<option value="${hocvi.idhocvi }">${hocvi.ten}</option>
+                                        </c:forEach>
                                     </select>
                                 </td>
                             </tr>
@@ -117,10 +114,9 @@
                                 <td class="list" >Chức vụ </td>
                                 <td class="list_ret">
                                     <select name="chucvu">
-                                        <option value="0">học vị 1</option>
-                                        <option value="1">học vị 2</option>
-                                        <option value="2">học vị 3</option>
-                                        <option value="3">Học vị 4</option>
+                                        <c:forEach items="${chucvus }" var="chucvu">
+                                        	<option value="${chucvu.idchucvu }">${chucvu.ten}</option>
+                                        </c:forEach>
                                     </select>
                                 </td>
                             </tr>
@@ -128,21 +124,19 @@
                                 <td class="list" >Học hàm </td>
                                 <td class="list_ret">
                                     <select name="hocham">
-                                        <option value="0">học vị 1</option>
-                                        <option value="1">học vị 2</option>
-                                        <option value="2">học vị 3</option>
-                                        <option value="3">Học vị 4</option>
+                                        <c:forEach items="${hochams }" var="hocham">
+                                        	<option value="${hocham.idhocham }">${hocham.ten}</option>
+                                        </c:forEach>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="list" >Cấp ủy </td>
                                 <td class="list_ret">
-                                    <select name="hocvi">
-                                        <option value="0">học vị 1</option>
-                                        <option value="1">học vị 2</option>
-                                        <option value="2">học vị 3</option>
-                                        <option value="3">Học vị 4</option>
+                                    <select name="capuy">
+                                        <c:forEach items="${capuys }" var="capuy">
+                                        	<option value="${capuy.idcapuy }">${capuy.ten}</option>
+                                        </c:forEach>
                                     </select>
                                 </td>
                             </tr>
@@ -150,21 +144,19 @@
                                 <td class="list" >Giáo dục phổ thông </td>
                                 <td class="list_ret">
                                     <select name="giaoducphothong">
-                                        <option value="0">học vị 1</option>
-                                        <option value="1">học vị 2</option>
-                                        <option value="2">học vị 3</option>
-                                        <option value="3">Học vị 4</option>
+                                        <c:forEach items="${giaoducphothongs }" var="giaoducphothong">
+                                        	<option value="${giaoducphothong.idgiaoducphothong }">${giaoducphothong.ten}</option>
+                                        </c:forEach>
                                     </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="list" >Danh hiệu</td>
                                 <td class="list_ret">
-                                    <select name="đanhhieu">
-                                        <option value="0">học vị 1</option>
-                                        <option value="1">học vị 2</option>
-                                        <option value="2">học vị 3</option>
-                                        <option value="3">Học vị 4</option>
+                                    <select name="danhhieu">
+                                        <c:forEach items="${danhhieus }" var="danhhieu">
+                                        	<option value="${danhhieu.iddanhhieu }">${danhhieu.ten}</option>
+                                        </c:forEach>
                                     </select>
                                 </td>
                             </tr>
@@ -172,10 +164,9 @@
                                 <td class="list" >Xuất thân </td>
                                 <td class="list_ret">
                                     <select name="xuatthan">
-                                        <option value="0">học vị 1</option>
-                                        <option value="1">học vị 2</option>
-                                        <option value="2">học vị 3</option>
-                                        <option value="3">Học vị 4</option>
+                                        <c:forEach items="${xuatthans }" var="xuatthan">
+                                        	<option value="${xuatthan.idxuatthan }">${xuatthan.ten}</option>
+                                        </c:forEach>
                                     </select>
                                 </td>
                             </tr>
@@ -183,10 +174,9 @@
                                 <td class="list" >Quốc gia </td>
                                 <td class="list_ret">
                                     <select name="quocgia">
-                                        <option value="0">học vị 1</option>
-                                        <option value="1">học vị 2</option>
-                                        <option value="2">học vị 3</option>
-                                        <option value="3">Học vị 4</option>
+                                        <c:forEach items="${quocgias }" var="quocgia">
+                                        	<option value="${quocgia.idquocgia }">${quocgia.ten}</option>
+                                        </c:forEach>
                                     </select>
                                 </td>
                             </tr>
@@ -201,11 +191,11 @@
                             </tr>
                             <tr>
                                 <td class="list">Số hiệu công chức </td>
-                                <td class="list_ret"><input type="text" name="sohieucongchuc" size="60" height="25"/></td>
+                                <td class="list_ret"><input type="number" name="sohieucongchuc" size="60" height="25"/></td>
                             </tr>
                             <tr>
                                 <td class="list">Số chứng minh nhân dân </td>
-                                <td class="list_ret"><input type="number" name="chungminhnhandan" size="60" height="25"/></td>
+                                <td class="list_ret"><input type="text" name="chungminhnhandan" size="60" height="25"/></td>
                             </tr>
                             <tr>
                                 <td class="list">Giới tính </td>
@@ -252,10 +242,9 @@
                                 <td class="list"> Dân tộc</td>
                                 <td class="list_ret">
                                     <select name="dantoc">
-                                        <option value="0">Kinh</option>
-                                        <option value="1">Mường</option>
-                                        <option value="2">Dao</option>
-                                        <option value="3">Mán</option>
+                                        <c:forEach items="${dantocs }" var="dantoc">
+                                        	<option value="${dantoc.iddantoc }">${dantoc.ten}</option>
+                                        </c:forEach>
                                     </select>
                                 </td>
                             </tr>
@@ -263,10 +252,9 @@
                                 <td class="list"> Tôn giáo</td>
                                 <td class="list_ret">
                                      <select name="tongiao">
-                                        <option value="0">Kinh</option>
-                                        <option value="1">Mường</option>
-                                        <option value="2">Dao</option>
-                                        <option value="3">Mán</option>
+                                        <c:forEach items="${tongiaos }" var="tongiao">
+                                        	<option value="${tongiao.idtongiao }">${tongiao.ten}</option>
+                                        </c:forEach>
                                     </select>
                                 </td>
                             </tr>

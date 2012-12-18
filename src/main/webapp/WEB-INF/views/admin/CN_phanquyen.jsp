@@ -22,56 +22,94 @@
                 <div id="wrap_left">
                     <div class="menu_left">
                         <ul>
-                            <li ><a href="#">Nhật ký hệ thống</a></li>
-                            <li ><a href="#">Cập nhật danh mục</a>
+                            <li ><a href="/k54/admin/logsystem.spms">Nhật ký hệ thống</a></li>
+                            <li ><a>Cập nhật danh mục</a>
                                 <ul>
-                                    <li><a href="#">Ngạch lương</a></li>
-                                    <li><a href="#">Chức vụ</a></li>
-                                    <li><a href="#">Học hàm</a></li>
-                                    <li><a href="#">Học vị</a></li>
+                                    <li><a href="/k54/admin/updatesalary.spms">Ngạch lương</a></li>
+                                    <li><a href="/k54/admin/updatechucvu.spms">Chức vụ</a></li>
+                                    <li><a href="/k54/admin/updatehocham.spms">Học hàm</a></li>
+                                    <li><a href="/k54/admin/updatehocvi.spms">Học vị</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Phân quyền</a></li>
-                            <li><a href="#">Tạo tài khoản</a></li>
-                            <li><a href="#">Duyệt tài khoản khách</a></li>
+                            <li><a href="/k54/admin/phanquyen.spms">Phân quyền</a></li>
+                            <li><a href="/k54/admin/taotaikhoan.spms">Tạo tài khoản</a></li>
+                            <li><a href="/k54/admin/duyettaikhoan.spms">Duyệt tài khoản khách</a></li>
                         </ul>
                     </div>
                 </div> <!--End wrap_left-->
                 <div id="wrap_center">
                     <div class="title_home"><a>Phân quyền</a></div>
                     <div class="list_data">
-                        <form name="edit_hocvi" action="#" method="POST">
+                        <form name="edit_phanquyen" action="/k54/admin/phanquyen.spms?manager=capnhat&iduser=${phanquyen.iduser}" method="POST">
                             <table  class="boloc" cellspacing="0" cellpadding="1" style="width: 700px">
                                 <tr>
                                     <td style="width: 20%;"><label>Username</label></td>
-                                    <td>datpm</td>
+                                    <td>${phanquyen.username }</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 20%;"><label>Họ tên</label></td>
-                                    <td>Phạm Minh Đạt</td>
+                                    <td>${phanquyen.soyeulylich.hoten }</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 20%;"><label>Đơn vị</label></td>
-                                    <td>Viện toán học</td>
+                                    <td>${phanquyen.soyeulylich.donviquanly.ten }</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 20%;"><label>Phòng ban</label></td>
-                                    <td>Phòng nghiên cứu chống tham nhũng</td>
+                                    <td>${phanquyen.soyeulylich.phongban.ten }</td>
                                 </tr>
                                 
                                 <tr>
                                     <td><label>Email</label></td>
-                                    <td>datpm@gmail.com</td>
+                                    <td>${phanquyen.email }</td>
                                 </tr>
                                 <tr>
                                     <td><label>Phân quyền</label></td>
                                     <td>
-                                        <select>
-                                            <option value="0">Khách</option>
-                                            <option value="1">Cán bộ</option>
-                                            <option value="2">Quản lý phòng ban</option>
-                                            <option value="3">Quản lý viện</option>
-                                            <option value="4">Quản trị hệ thống</option>
+                                        <select name="permission">
+	                                        <c:if test="${phanquyen.permission == 0 }">
+	                                        	<option value="0" selected>Khách</option>
+	                                            <option value="1">Cán bộ</option>
+	                                            <option value="2">Quản lý phòng ban</option>
+	                                            <option value="3">Quản lý viện</option>
+	                                            <option value="4">Quản trị hệ thống</option>
+	                                        </c:if>
+	                                        <c:if test="${phanquyen.permission == 1 }">
+	                                        	<option value="0" >Khách</option>
+	                                            <option value="1" selected>Cán bộ</option>
+	                                            <option value="2">Quản lý phòng ban</option>
+	                                            <option value="3">Quản lý viện</option>
+	                                            <option value="4">Quản trị hệ thống</option>
+	                                        </c:if>
+	                                        <c:if test="${phanquyen.permission == 2 }">
+	                                        	<option value="0" >Khách</option>
+	                                            <option value="1">Cán bộ</option>
+	                                            <option value="2" selected>Quản lý phòng ban</option>
+	                                            <option value="3">Quản lý viện</option>
+	                                            <option value="4">Quản trị hệ thống</option>
+	                                        </c:if>
+	                                        <c:if test="${phanquyen.permission == 3 }">
+	                                        	<option value="0" >Khách</option>
+	                                            <option value="1">Cán bộ</option>
+	                                            <option value="2">Quản lý phòng ban</option>
+	                                            <option value="3" selected>Quản lý viện</option>
+	                                            <option value="4">Quản trị hệ thống</option>
+	                                        </c:if>
+	                                        <c:if test="${phanquyen.permission == 4 }">
+	                                        	<option value="0" >Khách</option>
+	                                            <option value="1">Cán bộ</option>
+	                                            <option value="2">Quản lý phòng ban</option>
+	                                            <option value="3">Quản lý viện</option>
+	                                            <option value="4" selected>Quản trị hệ thống</option>
+	                                        </c:if>
+	                                        <c:if test="${phanquyen.permission == 5 }">
+	                                        	<option value="0" selected>Khách</option>
+	                                            <option value="1">Cán bộ</option>
+	                                            <option value="2">Quản lý phòng ban</option>
+	                                            <option value="3">Quản lý viện</option>
+	                                            <option value="4" >Quản trị hệ thống</option>
+	                                        </c:if>
+                                            
                                         </select>
                                     </td>
                                 </tr>
