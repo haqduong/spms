@@ -381,3 +381,19 @@ ul,ol         { list-style:none; }
     background-color: #3CF;
     font: bold 1em sans-serif;
 }
+#wrap_center .list_data tr td{
+	border-bottom: 2px solid #FFFFFF;
+}
+#wrap_center  .list{
+    height: 20px;
+    text-align: right;
+    width: 250px;
+    font: bold 1em sans-serif;
+    color: #554;
+    background: #E9E9E9;
+    padding-right: 10px;
+    
+}
+#wrap_main  .list_ret{
+    wrap_center-left: 10px;
+}
