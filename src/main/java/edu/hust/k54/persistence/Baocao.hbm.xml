@@ -3,9 +3,9 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="edu.hust.k54.persistence.Baocao" table="baocao" catalog="spms">
-        <id name="idbaocao" type="char">
-            <column name="idbaocao" length="1" />
-            <generator class="assigned" />
+        <id name="idbaocao" type="java.lang.Integer">
+            <column name="idbaocao" />
+            <generator class="native" />
         </id>
         <many-to-one name="soyeulylich" class="edu.hust.k54.persistence.Soyeulylich" fetch="select">
             <column name="idsoyeulylich" not-null="true" />

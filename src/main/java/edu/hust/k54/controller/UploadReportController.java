@@ -4,7 +4,6 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +16,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 
 import edu.hust.k54.model.UploadItem;
+import edu.hust.k54.persistence.Baocao;
+import edu.hust.k54.persistence.BaocaoHome;
 import edu.hust.k54.persistence.Taikhoandangnhap;
 
 @Controller
@@ -42,8 +43,8 @@ public class UploadReportController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String create(UploadItem uploadItem, BindingResult result,
-			HttpServletRequest request, Model model) {
+	public String create(String name, UploadItem uploadItem,
+			BindingResult result, HttpServletRequest request, Model model) {
 		model.addAttribute("form_type", "Report");
 		if (result.hasErrors()) {
 			for (ObjectError error : result.getAllErrors()) {
@@ -90,6 +91,11 @@ public class UploadReportController {
 				}
 				sOut.close();
 				sIn.close();
+
+				Baocao report = new Baocao(account.getSoyeulylich(), name, now,
+						fileName);
+				BaocaoHome ds = new BaocaoHome();
+				ds.persist(report);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

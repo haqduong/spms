@@ -1,5 +1,6 @@
 package edu.hust.k54.persistence;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
@@ -7,6 +8,7 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Restrictions;
 
 public class BaocaoHome {
 
@@ -112,5 +114,19 @@ public class BaocaoHome {
 			log.error("find by example failed", re);
 			throw re;
 		}
+	}
+
+	public List findBySoyeulylichs(ArrayList<Soyeulylich> crit) {
+		List result = null;
+		try {
+			result = sessionFactory.getCurrentSession()
+					.createCriteria("edu.hust.k54.persistence.Baocao")
+					.add(Restrictions.in("soyeulylich", crit.toArray())).list();
+		} catch (RuntimeException re) {
+			log.error("find by example failed", re);
+			throw re;
+		}
+
+		return result;
 	}
 }
