@@ -8,6 +8,7 @@ import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 public class BaocaoHome {
@@ -101,10 +102,10 @@ public class BaocaoHome {
 		}
 	}
 
-	public List findByExample(Baocao instance) {
+	public List<?> findByExample(Baocao instance) {
 		log.debug("finding Baocao instance by example");
 		try {
-			List results = sessionFactory.getCurrentSession()
+			List<?> results = sessionFactory.getCurrentSession()
 					.createCriteria("edu.hust.k54.persistence.Baocao")
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
@@ -116,12 +117,13 @@ public class BaocaoHome {
 		}
 	}
 
-	public List findBySoyeulylichs(ArrayList<Soyeulylich> crit) {
-		List result = null;
+	public List<Soyeulylich> findBySoyeulylichs(ArrayList<Soyeulylich> crit) {
+		List<Soyeulylich> result = null;
 		try {
 			result = sessionFactory.getCurrentSession()
 					.createCriteria("edu.hust.k54.persistence.Baocao")
-					.add(Restrictions.in("soyeulylich", crit.toArray())).list();
+					.add(Restrictions.in("soyeulylich", crit.toArray()))
+					.addOrder(Order.desc("ngaylap")).list();
 		} catch (RuntimeException re) {
 			log.error("find by example failed", re);
 			throw re;
