@@ -168,9 +168,6 @@
 				<entry key="/manager/quanly/baocao.spms">
 					<ref bean="managerController" />
 				</entry>
-				<entry key="/manager/quanly/thongke.spms">
-					<ref bean="managerController" />
-				</entry>
 				<entry key="/manager/thongtin/soyeulylich.spms">
 					<ref bean="staffController" />
 				</entry>
@@ -214,9 +211,6 @@
 					<ref bean="superManagerController" />
 				</entry>
 				<entry key="/superManager/quanly/baocao.spms">
-					<ref bean="superManagerController" />
-				</entry>
-				<entry key="/superManager/quanly/thongke.spms">
 					<ref bean="superManagerController" />
 				</entry>
 				<entry key="/superManager/thongtin/soyeulylich.spms">
