@@ -46,8 +46,8 @@
         <many-to-one name="giaoducphothong" class="edu.hust.k54.persistence.Giaoducphothong" fetch="select">
             <column name="idgiaoducphothong" />
         </many-to-one>
-        <property name="loaiCb" type="int">
-            <column name="loaiCB" not-null="true" />
+        <property name="loaiCb" type="java.lang.Integer">
+            <column name="loaiCB"/>
         </property>
         <property name="sohieucongchuc" type="java.lang.Integer">
             <column name="sohieucongchuc" />
