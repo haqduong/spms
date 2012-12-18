@@ -70,18 +70,20 @@ public class UploadReportController {
 		try {
 			MultipartFile file = uploadItem.getFileData();
 			String fileName = null;
+			String storageLink = null;
 
 			if (file.getSize() > 0) {
 				sIn = file.getInputStream();
 				System.out.println("Size: " + file.getSize());
 				Date now = new Date();
-				fileName = request.getRealPath("") + "/uploadContent/reports/"
-						+ now.getTime() + "-" + file.getOriginalFilename();
+				fileName = "/uploadContent/reports/" + now.getTime() + "-"
+						+ file.getOriginalFilename();
+				storageLink = request.getRealPath("") + fileName;
 				System.err.println(fileName);
 				System.err.println(file.getContentType());
 				String type = file.getContentType();
 
-				sOut = new FileOutputStream(fileName);
+				sOut = new FileOutputStream(storageLink);
 				System.out.println("fileName:" + file.getOriginalFilename());
 
 				int readBytes = 0;
@@ -95,7 +97,9 @@ public class UploadReportController {
 				Baocao report = new Baocao(account.getSoyeulylich(), name, now,
 						fileName);
 				BaocaoHome ds = new BaocaoHome();
-				ds.persist(report);
+
+				ds.attachDirty(report);
+				ds.getSessionFactory().getCurrentSession().flush();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
