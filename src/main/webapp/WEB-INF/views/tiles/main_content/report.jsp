@@ -12,8 +12,8 @@
 	</c:if>
 
 	<c:if test="${not empty report_list}">
-		<div class="title">Danh sách báo cáo</div>
-		<table id="report_list">
+		<div class="title_home">Danh sách báo cáo</div>
+		<table id="report_list" class="table table-hover">
 			<c:forEach var="report" items="${report_list}">
 				<tr>
 					<td class="reportid">${report.getIdbaocao()}</td>
