@@ -8,6 +8,8 @@
 		<put-attribute name="title" value="" />
 		<put-attribute name="css_js"
 			value="/WEB-INF/views/tiles/global_css_js.jsp" />
+		<put-attribute name="date_picker"
+			value="" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="session_info"
 			value="/WEB-INF/views/tiles/session_info.jsp" />
@@ -28,10 +30,30 @@
 			value="/WEB-INF/views/tiles/main_content/danhsachcanbo.jsp" />
 	</definition>
 
+	<definition name="danhsachdetai.spms" extends="base.spms">
+		<put-attribute name="title" value="Danh sách đề tài" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/danhsachdetai.jsp" />
+	</definition>
+
 	<definition name="danhsachphongban.spms" extends="base.spms">
 		<put-attribute name="title" value="Danh sách đơn vị" />
 		<put-attribute name="main_content"
 			value="/WEB-INF/views/tiles/main_content/danhsachphongban.jsp" />
+	</definition>
+
+	<definition name="dienbienluong.spms" extends="base.spms">
+		<put-attribute name="title" value="Thống kê diễn biến lương" />
+		<put-attribute name="date_picker"
+			value="date_picker_css_js.jsp" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/dienbienluong.jsp" />
+	</definition>
+	
+<definition name="info.spms" extends="base.spms">
+		<put-attribute name="title" value="Thông tin" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/info.jsp" />
 	</definition>
 	
 	<definition name="report.spms" extends="base.spms">
@@ -39,7 +61,7 @@
 		<put-attribute name="main_content"
 			value="/WEB-INF/views/tiles/main_content/report.jsp" />
 	</definition>
-	
+
 	<definition name="uploadForm.spms" extends="base.spms">
 		<put-attribute name="title" value="Upload" />
 		<put-attribute name="main_content"
