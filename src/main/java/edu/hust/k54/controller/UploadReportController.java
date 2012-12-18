@@ -105,8 +105,8 @@ public class UploadReportController {
 			e.printStackTrace();
 		}
 
-		model.addAttribute("flash", "Upload successfully");
+		request.getSession().setAttribute("flash", "Tải lên thành công");
 
-		return "report";
+		return "redirect:/report.spms";
 	}
 }
