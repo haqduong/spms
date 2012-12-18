@@ -1,5 +1,6 @@
 package edu.hust.k54.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -76,6 +77,58 @@ public class ReportController {
 			model.addAttribute("err", "File được yêu cầu không tồn tại");
 			return "report";
 		}
+	}
+	
+	@RequestMapping(value = "/deletereport.spms", method = RequestMethod.GET)
+	public String deleteReport(@RequestParam("id") int id,
+			HttpServletRequest request, HttpServletResponse response,
+			Model model) throws IOException {
+		Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
+				.getAttribute("user");
+		
+		if (account == null) {
+			model.addAttribute("err", NOT_ENOUGH_PERMISSION);
+			return "report";
+		}
+
+		BaocaoHome ds = new BaocaoHome();
+		Baocao report = ds.findById(id);
+
+		if (report == null) {
+			model.addAttribute("err", "File không tồn tại");
+			return "report";
+		}
+
+		if (!report.getSoyeulylich().getIdsoyeulylich()
+				.equals(account.getSoyeulylich().getIdsoyeulylich())) {
+			Manager man = new Manager();
+			ArrayList<Soyeulylich> list = man.getLowerPermission(account
+					.getSoyeulylich().getIdsoyeulylich());
+			if (!list.contains(report.getSoyeulylich())) {
+				model.addAttribute("err", NOT_ENOUGH_PERMISSION_TO_VIEW);
+				return "report";
+			}
+		}
+
+		try {
+			String file_path = request.getRealPath("")
+					+ "/uploadContent/reports/" + report.getNoidung();
+			File f = new File(file_path);
+			boolean re = f.delete();
+			String flash = "";
+			if (re) {
+				flash = "Xóa file thành công";
+			} else {
+				flash = "Xóa file không thành công";
+			}
+			ds.delete(report);
+			ds.getSessionFactory().getCurrentSession().flush();
+			request.getSession().setAttribute("flash", flash);
+			return "redirect:/report.spms";
+		} catch (Exception ex) {
+			model.addAttribute("err", "File được yêu cầu không tồn tại");
+			return "report";
+		}
 
 	}
 
@@ -87,6 +140,11 @@ public class ReportController {
 		if (account == null) {
 			model.addAttribute("err", NOT_ENOUGH_PERMISSION_TO_VIEW);
 			return "report";
+		}
+		String flash = (String) request.getSession().getAttribute("flash");
+		if (flash != null) {
+			model.addAttribute("flash", flash);
+			request.getSession().removeAttribute("flash");
 		}
 		Integer idcanbo = account.getIduser();
 		System.err.println("idcanbo: " + idcanbo);
