@@ -1,5 +1,6 @@
 package edu.hust.k54.controller;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -68,6 +69,14 @@ public class UploadReportController {
 		}
 
 		try {
+			String real_path = request.getSession().getServletContext()
+					.getRealPath("");
+			File dir = new File(real_path + "/uploadContent/reports");
+			if (!dir.exists()) {
+				boolean re = dir.mkdirs();
+				System.err.println(re);
+			}
+
 			MultipartFile file = uploadItem.getFileData();
 			String fileName = null;
 			String storageLink = null;
@@ -77,11 +86,9 @@ public class UploadReportController {
 				System.out.println("Size: " + file.getSize());
 				Date now = new Date();
 				fileName = now.getTime() + "-" + file.getOriginalFilename();
-				storageLink = request.getRealPath("")
-						+ "/uploadContent/reports/" + fileName;
+				storageLink = real_path + "/uploadContent/reports/" + fileName;
 				System.err.println(fileName);
 				System.err.println(file.getContentType());
-				String type = file.getContentType();
 
 				sOut = new FileOutputStream(storageLink);
 				System.out.println("fileName:" + file.getOriginalFilename());
