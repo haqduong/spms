@@ -54,7 +54,6 @@ public class ManagerController implements Controller {
 						modelAndView.addObject("result","Cập nhật thành công!");
 						phongban = phongbanHome.findById(idphongban);
 					}
-					
 					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("phongban",phongban);

@@ -94,7 +94,7 @@
 
 					<div class="list_data">
 						<div class="title_table">
-							<a> Danh sách cán bộ </a>
+							<a> Danh sách cán bộ của phòng ${phongban.ten} </a>
 						</div>
 						<table cellspacing="0" cellpadding="0" width="100%">
 							<tr>
@@ -103,146 +103,29 @@
 										<tr class="tieu_de">
 											<td style="width: 5%">STT</td>
 											<td style="width: 20%">Họ và tên</td>
-											<td style="width: 15%">Phòng ban</td>
 											<td style="width: 10%">Chức vụ</td>
-											<td style="width: 15%">SĐT</td>
-											<td style="width: 15%">Email</td>
-											<td style="width: 10%">Thông tin</td>
+											<td style="width: 15%">Điện thoại</td>
+											<td style="width: 15%">Số hiệu công chức</td>
+											<td style="width: 10%">Chỉnh sửa</td>
 										</tr>
 									</table>
 								</td>
 							</tr>
 							<tr>
+							<%int i = 0; %>
 								<td>
 									<div class="description">
 										<table cellspacing="0" cellpadding="1" style="width: 715px">
+											<c:forEach items="${phongban.soyeulyliches}" var="canbo"> 
 											<tr class="row_1">
-												<td style="width: 5%">1</td>
-												<td style="width: 20%">Phạm Minh Đạt</td>
-												<td style="width: 15%">Viện toán học</td>
-												<td style="width: 10%">Trưởng viện</td>
-												<td style="width: 15%">012346789</td>
-												<td style="width: 15%">abc@gamil.com</td>
-												<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
+												<td style="width: 5%"><%=++i%></td>
+												<td style="width: 20%">${canbo.hoten}</td>
+												<td style="width: 10%">${canbo.chucvu.ten}</td>
+												<td style="width: 15%">${canbo.sodienthoai}</td>
+												<td style="width: 15%">${canbo.sohieucongchuc}</td>
+												<td style="width: 10%"><a href="/k54/staff/capnhat/thongtincanhan.spms?idcanbo=${canbo.idsoyeulylich}">Cập nhật</a></td>
 											</tr>
-											<tr class="row_2">
-												<td>1</td>
-												<td>Phạm Minh Đạt</td>
-												<td>Viện toán học</td>
-												<td>Trưởng viện</td>
-												<td>012346789</td>
-												<td>abc@gamil.com</td>
-												<td><a href="#">Xem chi tiết</a></td>
-											</tr>
-											<tr class="row_1">
-												<td style="width: 5%">1</td>
-												<td style="width: 20%">Phạm Minh Đạt</td>
-												<td style="width: 15%">Viện toán học</td>
-												<td style="width: 10%">Trưởng viện</td>
-												<td style="width: 15%">012346789</td>
-												<td style="width: 15%">abc@gamil.com</td>
-												<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-											</tr>
-											<tr class="row_2">
-												<td>1</td>
-												<td>Phạm Minh Đạt</td>
-												<td>Viện toán học</td>
-												<td>Trưởng viện</td>
-												<td>012346789</td>
-												<td>abc@gamil.com</td>
-												<td><a href="#">Xem chi tiết</a></td>
-											</tr>
-											<tr class="row_1">
-												<td style="width: 5%">1</td>
-												<td style="width: 20%">Phạm Minh Đạt</td>
-												<td style="width: 15%">Viện toán học</td>
-												<td style="width: 10%">Trưởng viện</td>
-												<td style="width: 15%">012346789</td>
-												<td style="width: 15%">abc@gamil.com</td>
-												<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-											</tr>
-											<tr class="row_2">
-												<td>1</td>
-												<td>Phạm Minh Đạt</td>
-												<td>Viện toán học</td>
-												<td>Trưởng viện</td>
-												<td>012346789</td>
-												<td>abc@gamil.com</td>
-												<td><a href="#">Xem chi tiết</a></td>
-											</tr>
-											<tr class="row_1">
-												<td style="width: 5%">1</td>
-												<td style="width: 20%">Phạm Minh Đạt</td>
-												<td style="width: 15%">Viện toán học</td>
-												<td style="width: 10%">Trưởng viện</td>
-												<td style="width: 15%">012346789</td>
-												<td style="width: 15%">abc@gamil.com</td>
-												<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-											</tr>
-											<tr class="row_2">
-												<td>1</td>
-												<td>Phạm Minh Đạt</td>
-												<td>Viện toán học</td>
-												<td>Trưởng viện</td>
-												<td>012346789</td>
-												<td>abc@gamil.com</td>
-												<td><a href="#">Xem chi tiết</a></td>
-											</tr>
-											<tr class="row_1">
-												<td style="width: 5%">1</td>
-												<td style="width: 20%">Phạm Minh Đạt</td>
-												<td style="width: 15%">Viện toán học</td>
-												<td style="width: 10%">Trưởng viện</td>
-												<td style="width: 15%">012346789</td>
-												<td style="width: 15%">abc@gamil.com</td>
-												<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-											</tr>
-											<tr class="row_2">
-												<td>1</td>
-												<td>Phạm Minh Đạt</td>
-												<td>Viện toán học</td>
-												<td>Trưởng viện</td>
-												<td>012346789</td>
-												<td>abc@gamil.com</td>
-												<td><a href="#">Xem chi tiết</a></td>
-											</tr>
-											<tr class="row_1">
-												<td style="width: 5%">1</td>
-												<td style="width: 20%">Phạm Minh Đạt</td>
-												<td style="width: 15%">Viện toán học</td>
-												<td style="width: 10%">Trưởng viện</td>
-												<td style="width: 15%">012346789</td>
-												<td style="width: 15%">abc@gamil.com</td>
-												<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-											</tr>
-											<tr class="row_2">
-												<td>1</td>
-												<td>Phạm Minh Đạt</td>
-												<td>Viện toán học</td>
-												<td>Trưởng viện</td>
-												<td>012346789</td>
-												<td>abc@gamil.com</td>
-												<td><a href="#">Xem chi tiết</a></td>
-											</tr>
-											<tr class="row_1">
-												<td style="width: 5%">1</td>
-												<td style="width: 20%">Phạm Minh Đạt</td>
-												<td style="width: 15%">Viện toán học</td>
-												<td style="width: 10%">Trưởng viện</td>
-												<td style="width: 15%">012346789</td>
-												<td style="width: 15%">abc@gamil.com</td>
-												<td style="width: 10%"><a href="#">Xem chi tiết</a></td>
-											</tr>
-											<tr class="row_2">
-												<td>1</td>
-												<td>Phạm Minh Đạt</td>
-												<td>Viện toán học</td>
-												<td>Trưởng viện</td>
-												<td>012346789</td>
-												<td>abc@gamil.com</td>
-												<td><a href="#">Xem chi tiết</a></td>
-											</tr>
-
+											</c:forEach>
 										</table>
 									</div>
 								</td>
@@ -250,225 +133,10 @@
 						</table>
 					</div>
 					<!--End list_data-->
-
 					<br /> <br />
-
-
 				</form>
 			</div>
 			<!--End infomation -->
-			<div class="title_home">
-				<h2>Thông tin sơ yếu lý lịch</h2>
-			</div>
-			<div class="images">
-				<img style="margin-left: 30px;" src="../images/public/mainh.jpg"
-					width="100" height="150" />
-
-			</div>
-			<!--End images-->
-
-
-			<div class="contact_us">
-				<div>
-
-					<div class="title_info">
-						<a>Họ tên:&nbsp&nbsp</a><span style="text-transform: uppercase">Phạm
-							Minh Đạt</span>
-					</div>
-
-
-					<div class="detail_info">Nhà A5, số 18 Hoàng Quốc Việt, Cầu
-						Giấy, Hà Nội</div>
-
-
-					<div class="detail_info">Điện thoại: (+84)(4) 37563474</div>
-
-
-					<div class="detail_info">Fax: (+84)(4) 37564303</div>
-
-
-					<div class="detail_info">Email: toanhoc@vast.com</div>
-					<br />
-
-				</div>
-				<div>
-					<div class="title_info">
-						<a>Chức vụ:&nbsp&nbsp</a><span style="text-transform: uppercase;">Viện
-							trưởng</span>
-					</div>
-				</div>
-				<div>
-
-					<!--                        <div align="left" class="detail_info"><b>Viện trưởng: </b> Phạm Minh Đạt</sdivong></div>
-                                                <div align="left" class="detail_info"><b>Phó viện trưởng:</b></div>
-                                                    <div align="left" class="detail_info_sub">
-                                                            
-                                                    <a>&nbsp;Kỹ sư&nbsp;Nguyễn Tuấn Vinh</a> <br>
-                                                                    
-                                                    <a>&nbsp;Kỹ sư&nbsp;Nguyễn Duy Hưởng</a> <br>
-                                                                    
-                                                </div>-->
-				</div>
-			</div>
-			<!--End contact_us-->
-			<div class="clear"></div>
-
-			<div class="infomation_staff">
-				<form>
-
-					<table border="0" bgcolor="#fff" align="center" id="info">
-						<tr>
-							<td class="title" colspan=2 align="center" height="50">Thông
-								tin cá nhân</td>
-						</tr>
-						<tr>
-							<td class="list">Họ và tên</td>
-							<td class="list_ret" width="500">${soyeu.hoten}</td>
-						</tr>
-						<tr>
-							<td class="list">Đơn vị quản lý</td>
-							<td class="list_ret">${soyeu.donviquanly.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Phòng ban</td>
-							<td class="list_ret">${soyeu.phongban.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Số hiệu công chức</td>
-							<td class="list_ret">${soyeu.sohieucongchuc}</td>
-						</tr>
-
-						<tr>
-							<td class="list">Giới tính</td>
-							<td class="list_ret">${soyeu.gioitinh}</td>
-						</tr>
-						<tr>
-							<td class="list">Số chứng minh thư nhân dân</td>
-							<td class="list_ret">${soyeu.chungminhnhandan}</td>
-						</tr>
-						<tr>
-							<td class="list">Tên thường dùng khác</td>
-							<td class="list_ret">${soyeu.tenthuongdung}</td>
-						</tr>
-						<tr>
-							<td class="list">Ngày tháng năm sinh</td>
-							<td class="list_ret">${sNgaySinh}</td>
-						</tr>
-						<tr>
-							<td class="list">Nơi sinh</td>
-							<td class="list_ret">${soyeu.noisinh}</td>
-						</tr>
-						<tr>
-							<td class="list">Quê quán</td>
-							<td class="list_ret">${soyeu.quequan}</td>
-						</tr>
-						<tr>
-							<td class="list">Nơi ở hiện nay</td>
-							<td class="list_ret">${soyeu.noiohiennay}</td>
-						</tr>
-						<tr>
-							<td class="list">Gia đình xuất thân</td>
-							<td class="list_ret">${soyeu.xuatthan.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Dân tộc</td>
-							<td class="list_ret">${soyeu.dantoc.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Tôn giáo</td>
-							<td class="list_ret">${soyeu.tongiao.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Ngày vào Đảng dự bị</td>
-							<td class="list_ret">${soyeu.ngayvaodangdubi}</td>
-						</tr>
-						<tr>
-							<td class="list">Ngày vào Đảng chính thức</td>
-							<td class="list_ret">${soyeu.ngayvaodangchinhthuc}</td>
-						</tr>
-						<tr>
-							<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
-							<td class="list_ret">${soyeu.tencntn1}</td>
-						</tr>
-						<tr>
-							<td class="list">Năm tốt nghiệp</td>
-							<td class="list_ret">${soyeu.namtn1}</td>
-						</tr>
-						<tr>
-							<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
-							<td class="list_ret">${soyeu.tencntn2}</td>
-						</tr>
-						<tr>
-							<td class="list">Năm tốt nghiệp</td>
-							<td class="list_ret">${soyeu.namtn2}</td>
-						</tr>
-						<tr>
-							<td class="list">Chuyên ngành tốt nghiệp ĐH/CĐ</td>
-							<td class="list_ret">${soyeu.tencntn3}</td>
-						</tr>
-						<tr>
-							<td class="list">Năm tốt nghiệp</td>
-							<td class="list_ret">${soyeu.namtn3}</td>
-						</tr>
-						<tr>
-							<td class="list">Học vị</td>
-							<td class="list_ret">${soyeu.hocvi.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Học hàm</td>
-							<td class="list_ret">${soyeu.hocham.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Hệ số lương</td>
-							<td class="list_ret">${soyeu.hesoluong.heso}</td>
-						</tr>
-						<tr>
-							<td class="list">Cấp ủy Đảng</td>
-							<td class="list_ret">${soyeu.capuy.ten}</td>
-						</tr>
-						<tr>
-							<td class="list">Danh hiệu được Nhà nước phong</td>
-							<td class="list_ret">${soyeu.danhhieu.ten}</td>
-						</tr>
-					</table>
-					<br /> <br />
-
-					<table border="0" bgcolor="#fff" align="center" id="info">
-						<tr>
-							<td class="title" colspan=2 align="center" height="50">Sách
-								xuất bản</td>
-						</tr>
-						<tr>
-							<td colspan="2" align="">
-								<table>
-									<thead>
-										<tr>
-											<th>Tên sách</th>
-											<th>Năm xuất bản</th>
-										</tr>
-									</thead>
-
-									<tbody>
-
-										<tr>
-											<td class="list">${sxb.ten}</td>
-											<td class="list_ret">${sxb.namxuatban}</td>
-										</tr>
-
-									</tbody>
-								</table>
-							</td>
-						</tr>
-					</table>
-
-					<br /> <br />
-
-
-				</form>
-			</div>
-			<!--End infomation -->
-
-
 		</div>
 		<!--End wrap_main-->
 
