@@ -84,7 +84,7 @@ public class BaocaoHome {
 		}
 	}
 
-	public Baocao findById(char id) {
+	public Baocao findById(Integer id) {
 		log.debug("getting Baocao instance with id: " + id);
 		try {
 			Baocao instance = (Baocao) sessionFactory.getCurrentSession().get(

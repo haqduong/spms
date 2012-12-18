@@ -34,6 +34,12 @@
 			value="/WEB-INF/views/tiles/main_content/danhsachphongban.jsp" />
 	</definition>
 	
+	<definition name="report.spms" extends="base.spms">
+		<put-attribute name="title" value="Report" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/report.jsp" />
+	</definition>
+	
 	<definition name="uploadForm.spms" extends="base.spms">
 		<put-attribute name="title" value="Upload" />
 		<put-attribute name="main_content"
