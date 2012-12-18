@@ -425,6 +425,25 @@
 						<!--end content_box-->
 					</div>
 					<!--box_right-->
+					
+					<div class="box_right">
+						<div class="title_box">
+							<a>Cập nhật</a>
+						</div>
+						<!--title_box-->
+						<div class="content_box">
+							<div id="accordion">
+								<ul>
+									<li><a href="/k54/staff/capnhat/thongtincanhan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập nhật thông tin cá nhân</a></li>
+									<li><a href="/k54/staff/capnhat/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập nhật lý lịch khoa học</a></li>
+									<li><a href="/k54/staff/capnhat/taikhoan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập nhật tài khoản</a></li>
+								</ul>
+							</div>
+							<!--End accordion -->
+						</div>
+						<!--end content_box-->
+					</div>
+					<!--box_right-->
 					<div class="box_right">
 						<div class="title_box">
 							<a>Thông tin cá nhân</a>
@@ -465,6 +484,25 @@
 									<li><a href="/superManager/quanly/thongtincanbo.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản lý thông tin cán bộ</a></li>
 									<li><a href="/superManager/quanly/baocao.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Báo cáo</a></li>
 									<li><a href="/superManager/quanly/thongke.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Thống kê</a></li>
+								</ul>
+							</div>
+							<!--End accordion -->
+						</div>
+						<!--end content_box-->
+					</div>
+					<!--box_right-->
+					
+					<div class="box_right">
+						<div class="title_box">
+							<a>Cập nhật</a>
+						</div>
+						<!--title_box-->
+						<div class="content_box">
+							<div id="accordion">
+								<ul>
+									<li><a href="/k54/staff/capnhat/thongtincanhan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập nhật thông tin cá nhân</a></li>
+									<li><a href="/k54/staff/capnhat/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập nhật lý lịch khoa học</a></li>
+									<li><a href="/k54/staff/capnhat/taikhoan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập nhật tài khoản</a></li>
 								</ul>
 							</div>
 							<!--End accordion -->
