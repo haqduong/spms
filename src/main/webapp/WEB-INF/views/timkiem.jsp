@@ -193,10 +193,7 @@
 													<td style="width: 15%"><a href="/k54/guest/donviquanly/xemphongban.spms?idphongban=${canbo.phongban.idphongban}">${canbo.phongban.ten}</a></td>
 													<td style="width: 10%">${canbo.chucvu.ten}</td>
 													<td style="width: 15%">${canbo.sodienthoai}</td>
-													<c:forEach items="${canbo.taikhoandangnhaps}"
-														var="taikhoan">
-														<td style="width: 15%">${taikhoan.email}</td>
-													</c:forEach>
+													<td style="width: 15%">${canbo.taikhoandangnhaps.email}</td>
 													<c:if test="${ not empty user}">
 														<c:if test="${user.permission >= 1}">
 															<td style="width: 10%"><a href="/k54/chitietcanbo.spms?idcanbo=${canbo.idsoyeulylich}">Chi tiết</a></td>

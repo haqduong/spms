@@ -12,9 +12,6 @@
 		<div class="flash">${flash }</div>
 	</c:if>
 
-	<div class="add">
-		<a href="uploadreport.spms">Thêm báo cáo</a>
-	</div>
 	<form:form modelAttribute="uploadItem" method="post"
 		enctype="multipart/form-data" class="bootstrap"
 		action="uploadreport.spms">

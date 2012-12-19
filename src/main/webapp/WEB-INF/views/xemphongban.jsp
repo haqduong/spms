@@ -130,10 +130,8 @@
 										<a>Chức vụ : &nbsp;</a><a class="postion_staff">${canbo.chucvu.ten}</a>
 									</p>
 									<p>
-										<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
 											<a>Email : &nbsp;</a>
-											<a class="email_staff">${taikhoan.email} </a>
-										</c:forEach>
+											<a class="email_staff">${canbo.taikhoandangnhaps.email} </a>
 	
 									</p>
 									<p>
@@ -160,11 +158,8 @@
 										<a>Chức vụ : &nbsp;<a class="postion_staff">${canbo.chucvu.ten}</a>
 									</p>
 									<p>
-	
-										<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
 											<a>Email : &nbsp;</a>
-											<a class="email_staff">${taikhoan.email} </a>
-										</c:forEach>
+											<a class="email_staff">${canbo.taikhoandangnhaps.email} </a>
 	
 									</p>
 									<p>

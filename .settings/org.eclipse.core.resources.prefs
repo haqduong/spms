@@ -6,6 +6,7 @@ encoding//src/main/java/edu/hust/k54/controller/ReportController.java=UTF-8
 encoding//src/main/java/edu/hust/k54/controller/SessionController.java=UTF-8
 encoding//src/main/java/edu/hust/k54/controller/StaffController.java=UTF-8
 encoding//src/main/java/edu/hust/k54/controller/SuperManagerController.java=UTF-8
+encoding//src/main/java/edu/hust/k54/controller/UploadReportController.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/contact.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/errorPage.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/sua_thongtincanhan.jsp=UTF-8
