@@ -34,6 +34,8 @@ public class FileUploadController extends SimpleFormController {
 			HttpServletResponse response, Object command, BindException errors)
 			throws Exception {
 
+		Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
+				.getAttribute("user");
 		FileUpload file = (FileUpload) command;
 		String typeaccount = request.getParameter("type");
 		MultipartFile multipartFile = file.getFile();
@@ -56,7 +58,26 @@ public class FileUploadController extends SimpleFormController {
 				System.err.println(multipartFile.getContentType());
 				String type = multipartFile.getContentType();
 				if (!type.startsWith("image")) {
-					// model.addAttribute("err", "You must upload an image");
+					if (typeaccount.equals("staff")){
+						ModelAndView modelAndView =  new ModelAndView("sua_thongtincanhan");
+						modelAndView.addObject("error", "File ảnh không hợp lệ");
+						modelAndView.addObject("canbo", account.getSoyeulylich());
+						return modelAndView;
+					} else if (typeaccount.equals("manager")){
+						ModelAndView modelAndView =  new ModelAndView("QL_TTPhongban");
+						modelAndView.addObject("error", "File ảnh không hợp lệ");
+						Soyeulylich soyeulylich = account.getSoyeulylich();
+						(new SoyeulylichHome()).attachDirty(soyeulylich);
+						modelAndView.addObject("phongban", soyeulylich.getPhongban());
+						return modelAndView;
+					} else {
+						ModelAndView modelAndView =  new ModelAndView("quanly_TTDonVi");
+						modelAndView.addObject("error", "File ảnh không hợp lệ");
+						Soyeulylich soyeulylich = account.getSoyeulylich();
+						(new SoyeulylichHome()).attachDirty(soyeulylich);
+						modelAndView.addObject("donvi", soyeulylich.getPhongban().getDonviquanly());
+						return modelAndView;
+					}
 				}
 				sOut = new FileOutputStream(pathFile);
 				System.out.println("fileName:"
@@ -70,8 +91,6 @@ public class FileUploadController extends SimpleFormController {
 				sOut.close();
 				sIn.close();
 				if (typeaccount.equalsIgnoreCase("staff")){
-				Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
-						.getAttribute("user");
 				SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
 				Soyeulylich soyeulylich = account.getSoyeulylich();
 				soyeulylichHome.attachDirty(soyeulylich);
@@ -81,8 +100,6 @@ public class FileUploadController extends SimpleFormController {
 				return new ModelAndView("sua_thongtincanhan", "canbo", soyeulylich);
 				}
 				else if (typeaccount.equalsIgnoreCase("manager")){
-					Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
-							.getAttribute("user");
 					PhongbanHome phongbanHome = new PhongbanHome();
 					Phongban phongban = account.getSoyeulylich().getPhongban();
 					phongbanHome.attachDirty(phongban);
@@ -93,8 +110,6 @@ public class FileUploadController extends SimpleFormController {
 				}
 				else {
 					System.out.println("here");
-					Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
-							.getAttribute("user");
 					DonviquanlyHome donviquanlyHome = new DonviquanlyHome();
 					SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
 					Soyeulylich soyeulylich = account.getSoyeulylich();

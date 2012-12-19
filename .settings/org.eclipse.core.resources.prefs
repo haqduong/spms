@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/java/edu/hust/k54/controller/AdminController.java=UTF-8
+encoding//src/main/java/edu/hust/k54/controller/FileUploadController.java=UTF-8
 encoding//src/main/java/edu/hust/k54/controller/ManagerController.java=UTF-8
 encoding//src/main/java/edu/hust/k54/controller/ReportController.java=UTF-8
 encoding//src/main/java/edu/hust/k54/controller/SessionController.java=UTF-8

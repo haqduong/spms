@@ -85,6 +85,9 @@
 			<div class="clear"></div>
 			<img width="96" height="50"
 								src="<c:url value="${phongban.hinhanh}"/>" />
+			<c:if test="${not empty error}">
+			${error }
+			</c:if> 
 			<form:form action="/k54/upload.spms" method="POST" commandName="fileUploadForm"
 				enctype="multipart/form-data">
 
