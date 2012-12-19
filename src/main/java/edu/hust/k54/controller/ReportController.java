@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
+
+import edu.hust.k54.model.UploadItem;
 import edu.hust.k54.persistence.Baocao;
 import edu.hust.k54.persistence.BaocaoHome;
 import edu.hust.k54.persistence.Soyeulylich;
@@ -131,6 +133,9 @@ public class ReportController {
 			model.addAttribute("flash", flash);
 			request.getSession().removeAttribute("flash");
 		}
+		
+		model.addAttribute(new UploadItem());
+		
 		Integer idcanbo = account.getIduser();
 		List<Baocao> baocaos = new ArrayList<Baocao>();
 		Soyeulylich soyeulylich = account.getSoyeulylich();
