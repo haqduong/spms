@@ -51,48 +51,88 @@ public class ManagerController implements Controller {
 		Staff staffController = new Staff();
 		Taikhoandangnhap taikhoandangnhap = (Taikhoandangnhap) arg0
 				.getSession().getAttribute("user");
+		String uri = arg0.getRequestURI();
+
 		if ((taikhoandangnhap == null)
 				|| taikhoandangnhap.getPermission() < PERMISSION) {
 			modelAndView = new ModelAndView("errorPage");
 			return modelAndView;
 		} else {
-			String uri = arg0.getRequestURI();
 			Integer idphongban = null;
 			if (arg0.getParameter("idphongban") != null) {
 				idphongban = Integer.parseInt(arg0.getParameter("idphongban"));
+				if(taikhoandangnhap.getSoyeulylich().getPhongban().getIdphongban() != idphongban){
+					modelAndView = new ModelAndView("errorPage");
+					return modelAndView;
+				}
 				PhongbanHome phongbanHome = new PhongbanHome();
 				if (uri.contains("quanly/phongban")) {
-					Map parameter = arg0.getParameterMap();
-					modelAndView = new ModelAndView("QL_TTPhongban");
-					Phongban phongban = phongbanHome.findById(idphongban);
-					if (parameter.containsKey("update")){
-						String dienthoai =arg0.getParameter("dienthoai");
-						String fax = arg0.getParameter("fax");
-						String thongtinchung = arg0.getParameter("thongtinchung");
-						String ten = arg0.getParameter("tenphong");
-						phongban.setDienthoai(dienthoai);
-						phongban.setFax(fax);
-						phongban.setTen(ten);
-						phongban.setThongtinchung(thongtinchung);
-						Manager manager = new Manager();
-						manager.capNhatTTPB(phongban);
-						modelAndView.addObject("result","Cập nhật thành công!");
-						phongban = phongbanHome.findById(idphongban);
+					if (arg0.getParameter("phongbantype") == null) {
+
+						Map parameter = arg0.getParameterMap();
+						modelAndView = new ModelAndView("QL_TTPhongban");
+						Phongban phongban = phongbanHome.findById(idphongban);
+						if (parameter.containsKey("update")) {
+							String dienthoai = arg0.getParameter("dienthoai");
+							String fax = arg0.getParameter("fax");
+							String thongtinchung = arg0
+									.getParameter("thongtinchung");
+							String ten = arg0.getParameter("tenphong");
+							phongban.setDienthoai(dienthoai);
+							phongban.setFax(fax);
+							phongban.setTen(ten);
+							phongban.setThongtinchung(thongtinchung);
+							Manager manager = new Manager();
+							manager.capNhatTTPB(phongban);
+							modelAndView.addObject("result",
+									"Cập nhật thành công!");
+							phongban = phongbanHome.findById(idphongban);
+						}
+						List<Donviquanly> donviquanly = guestController
+								.TimDVQL(0, 0, null);
+						modelAndView.addObject("donviquanly", donviquanly);
+						modelAndView.addObject("phongban", phongban);
+					} else {
+
+						Map parameter = arg0.getParameterMap();
+						modelAndView = new ModelAndView("QL_TTPhongban");
+						Phongban phongban = phongbanHome.findById(idphongban);
+						Donviquanly donvi = phongban.getDonviquanly();
+						if (parameter.containsKey("update")) {
+							String dienthoai = arg0.getParameter("dienthoai");
+							String fax = arg0.getParameter("fax");
+							String thongtinchung = arg0
+									.getParameter("thongtinchung");
+							String ten = arg0.getParameter("tenphong");
+							phongban.setDienthoai(dienthoai);
+							phongban.setFax(fax);
+							phongban.setTen(ten);
+							phongban.setThongtinchung(thongtinchung);
+							Manager manager = new Manager();
+							manager.capNhatTTPB(phongban);
+							modelAndView.addObject("result",
+									"Cập nhật thành công!");
+							phongban = phongbanHome.findById(idphongban);
+						}
+						modelAndView.addObject("donvi", donvi);
+						List<Donviquanly> donviquanly = guestController
+								.TimDVQL(0, 0, null);
+						modelAndView.addObject("donviquanly", donviquanly);
+						modelAndView.addObject("phongban", phongban);
 					}
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
-					modelAndView.addObject("donviquanly", donviquanly);
-					modelAndView.addObject("phongban",phongban);
-					
+
 				} else if (uri.contains("quanly/hosocanbo")) {
 					Phongban phongban = phongbanHome.findById(idphongban);
 					modelAndView = new ModelAndView("quanly_canbo");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
+							0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
-					modelAndView.addObject("phongban",phongban);
-				}else if (uri.contains("quanly/themcanbo")) {
+					modelAndView.addObject("phongban", phongban);
+				} else if (uri.contains("quanly/themcanbo")) {
 					Phongban phongban = phongbanHome.findById(idphongban);
 					modelAndView = new ModelAndView("them_canbo");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
+							0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
 					Map parameter = arg0.getParameterMap();
 					HochamHome hochamHome = new HochamHome();
@@ -152,7 +192,8 @@ public class ManagerController implements Controller {
 						Date newNgayCapNhat = dateFormat.parse(arg0
 								.getParameter("ngaycapnhat"));
 						String newSucKhoe = arg0.getParameter("suckhoe");
-						String newNgonNguBiet = arg0.getParameter("ngonngubiet");
+						String newNgonNguBiet = arg0
+								.getParameter("ngonngubiet");
 						Soyeulylich soyeulylich = new Soyeulylich();
 						soyeulylich.setHoten(newName);
 						soyeulylich.setDonviquanly(donviquanlyHome
@@ -169,9 +210,11 @@ public class ManagerController implements Controller {
 								.findById(newIdDanhHieu));
 						soyeulylich.setXuatthan(xuatthanHome
 								.findById(newIdXuatThan));
-						soyeulylich.setQuocgia(quocgiaHome.findById(newIdQuocGia));
+						soyeulylich.setQuocgia(quocgiaHome
+								.findById(newIdQuocGia));
 						soyeulylich.setDantoc(dantocHome.findById(newIdDanToc));
-						soyeulylich.setTongiao(tongiaoHome.findById(newIdTonGiao));
+						soyeulylich.setTongiao(tongiaoHome
+								.findById(newIdTonGiao));
 						soyeulylich.setLoaiCb(newLoaiCanBo);
 						soyeulylich.setSohieucongchuc(newSoHieuCongChuc);
 						soyeulylich.setChungminhnhandan(newSoCMT);
@@ -187,8 +230,8 @@ public class ManagerController implements Controller {
 						soyeulylich.setSuckhoe(newSucKhoe);
 						soyeulylich.setNgonngubiet(newNgonNguBiet);
 						staffController.suaSoYeuLiLich(soyeulylich);
-						modelAndView.addObject("updateSoYeuOK","Cập nhật thành công!");
-
+						modelAndView.addObject("updateSoYeuOK",
+								"Thêm cán bộ thành công!");
 					}
 					modelAndView.addObject("hocham",
 							hochamHome.findByExample(new Hocham()));
@@ -198,8 +241,9 @@ public class ManagerController implements Controller {
 							chucvuHome.findByExample(new Chucvu()));
 					modelAndView.addObject("capuy",
 							capuyHome.findByExample(new Capuy()));
-					modelAndView.addObject("giaoducphothong", giaoducphothongHome
-							.findByExample(new Giaoducphothong()));
+					modelAndView.addObject("giaoducphothong",
+							giaoducphothongHome
+									.findByExample(new Giaoducphothong()));
 					modelAndView.addObject("danhhieu",
 							danhhieuHome.findByExample(new Danhhieu()));
 					modelAndView.addObject("xuatthan",
@@ -210,131 +254,166 @@ public class ManagerController implements Controller {
 							dantocHome.findByExample(new Dantoc()));
 					modelAndView.addObject("tongiao",
 							tongiaoHome.findByExample(new Tongiao()));
-					
+
 				} else if (uri.contains("quanly/khenthuong")) {
 					Phongban phongban = phongbanHome.findById(idphongban);
 					modelAndView = new ModelAndView("thongke_khenthuong");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
+							0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
-					modelAndView.addObject("phongban",phongban);
+					modelAndView.addObject("phongban", phongban);
 				} else if (uri.contains("quanly/kyluat")) {
 					Phongban phongban = phongbanHome.findById(idphongban);
 					modelAndView = new ModelAndView("thongke_kyluat");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
+							0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
-					modelAndView.addObject("phongban",phongban);
+					modelAndView.addObject("phongban", phongban);
 				} else if (uri.contains("quanly/baocao")) {
 					Phongban phongban = phongbanHome.findById(idphongban);
 					modelAndView = new ModelAndView("thongke_baocao");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
+							0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
-					modelAndView.addObject("phongban",phongban);
+					modelAndView.addObject("phongban", phongban);
 				}
 			}
 
 			Integer idcanbo = null;
 			if (arg0.getParameter("idcanbo") != null) {
 				idcanbo = Integer.parseInt(arg0.getParameter("idcanbo"));
-
 				SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
 				Taikhoandangnhap curentUser = (Taikhoandangnhap) soyeulylichHome
-						.findById(idcanbo).getTaikhoandangnhaps().toArray()[0];
+						.findById(idcanbo).getTaikhoandangnhaps().iterator()
+						.next();
 				if ((taikhoandangnhap.getSoyeulylich().getIdsoyeulylich() != idcanbo)
-						&& (taikhoandangnhap.getPermission() < curentUser
+						&& (taikhoandangnhap.getPermission() <= curentUser
 								.getPermission())) {
 					modelAndView = new ModelAndView("errorPage");
 					return modelAndView;
-				} else if (uri.contains("thongtin/soyeulylich")) {
-					modelAndView = new ModelAndView("xem_TTcanbo");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
-							0, null);
-					modelAndView.addObject("donviquanly", donviquanly);
-					modelAndView.addObject("canbo",
-							guestController.TimCB(idcanbo));
-				} else if (uri.contains("thongtin/lylichkhoahoc")) {
-					modelAndView = new ModelAndView("lylichKH");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
-							0, null);
-					modelAndView.addObject("donviquanly", donviquanly);
-					modelAndView.addObject("canbo",
-							guestController.TimCB(idcanbo));
-				} else if (uri.contains("thongtin/quatrinhcongtac")) {
-					// TODO
-				} else if (uri.contains("thongtin/dienbienluong")) {
-					modelAndView = new ModelAndView("dienbienluong");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
-							0, null);
-					modelAndView.addObject("donviquanly", donviquanly);
-					modelAndView.addObject("canbo",
-							guestController.TimCB(idcanbo));
-				} else if (uri.contains("thongtin/khenthuong")) {
-					modelAndView = new ModelAndView("khenthuong");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
-							0, null);
-					modelAndView.addObject("donviquanly", donviquanly);
-					modelAndView.addObject("canbo",
-							guestController.TimCB(idcanbo));
-				} else if (uri.contains("thongtin/kyluat")) {
-					modelAndView = new ModelAndView("kyluat");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
-							0, null);
-					modelAndView.addObject("donviquanly", donviquanly);
-					modelAndView.addObject("canbo",
-							guestController.TimCB(idcanbo));
-				} else if (uri.contains("search")) {
-					modelAndView = new ModelAndView("timkiem");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
-							0, null);
-					modelAndView.addObject("donviquanly", donviquanly);
-					String Vien = arg0.getParameter("vien");
-					String PhongBan = arg0.getParameter("phongban");
-					String LoaiCB = arg0.getParameter("loaiCB");
-					String tenCb = arg0.getParameter("tenCanBo");
-					if ((tenCb != "") || (Vien != null) || (PhongBan != null)) {
-						Integer idVien, idPhongBan, loaiCB;
-						if (Vien == null) {
-							idVien = 0;
-						} else {
-							idVien = Integer.parseInt(Vien);
+				} else {
+					System.out.println("uri " + uri);
+					if (uri.contains("capnhat/xoacanbo")) {
+						String type = arg0.getParameter("deleteType");
+						if (type.equals("0")) {
+							Soyeulylich soyeulylich = soyeulylichHome
+									.findById(idcanbo);
+							Phongban phongban = soyeulylich.getPhongban();
+							soyeulylichHome.delete(soyeulylich);
+							soyeulylichHome.getSessionFactory()
+									.getCurrentSession().flush();
+							modelAndView = new ModelAndView("quanly_canbo");
+							List<Donviquanly> donviquanly = guestController
+									.TimDVQL(0, 0, null);
+							modelAndView.addObject("donviquanly", donviquanly);
+							modelAndView.addObject("phongban", phongban);
+						} else if (type.equals("1")) {
+							Soyeulylich soyeulylich = soyeulylichHome
+									.findById(idcanbo);
+							Donviquanly donvi = soyeulylich.getPhongban()
+									.getDonviquanly();
+							soyeulylichHome.delete(soyeulylich);
+							soyeulylichHome.getSessionFactory()
+									.getCurrentSession().flush();
+							modelAndView = new ModelAndView("quanly_canboDV");
+							List<Donviquanly> donviquanly = guestController
+									.TimDVQL(0, 0, null);
+							System.out.println("don vi" + donvi.getChucnang());
+							modelAndView.addObject("donviquanly", donviquanly);
+							modelAndView.addObject("donvi", donvi);
 						}
 
-						if (PhongBan == null) {
-							idPhongBan = 0;
-						} else {
-							idPhongBan = Integer.parseInt(PhongBan);
-						}
-
-						if (LoaiCB == null) {
-							loaiCB = 0;
-						} else {
-							loaiCB = Integer.parseInt(LoaiCB);
-						}
-						System.out.println("id vien = " + idVien
-								+ "id phong ban = " + idPhongBan
-								+ "tencanbo = " + tenCb);
-						List<Soyeulylich> danhsachcanbo = guestController
-								.TimCB(idVien, idPhongBan,
-										((tenCb == "") ? null : tenCb), loaiCB);
-						modelAndView.addObject("result", danhsachcanbo);
+					} else if (uri.contains("thongtin/soyeulylich")) {
+						modelAndView = new ModelAndView("xem_TTcanbo");
+						List<Donviquanly> donviquanly = guestController
+								.TimDVQL(0, 0, null);
+						modelAndView.addObject("donviquanly", donviquanly);
+						modelAndView.addObject("canbo",
+								guestController.TimCB(idcanbo));
+					} else if (uri.contains("thongtin/lylichkhoahoc")) {
+						modelAndView = new ModelAndView("lylichKH");
+						List<Donviquanly> donviquanly = guestController
+								.TimDVQL(0, 0, null);
+						modelAndView.addObject("donviquanly", donviquanly);
+						modelAndView.addObject("canbo",
+								guestController.TimCB(idcanbo));
+					} else if (uri.contains("thongtin/dienbienluong")) {
+						modelAndView = new ModelAndView("dienbienluong");
+						List<Donviquanly> donviquanly = guestController
+								.TimDVQL(0, 0, null);
+						modelAndView.addObject("donviquanly", donviquanly);
+						modelAndView.addObject("canbo",
+								guestController.TimCB(idcanbo));
+					} else if (uri.contains("thongtin/khenthuong")) {
+						modelAndView = new ModelAndView("khenthuong");
+						List<Donviquanly> donviquanly = guestController
+								.TimDVQL(0, 0, null);
+						modelAndView.addObject("donviquanly", donviquanly);
+						modelAndView.addObject("canbo",
+								guestController.TimCB(idcanbo));
+					} else if (uri.contains("thongtin/kyluat")) {
+						modelAndView = new ModelAndView("kyluat");
+						List<Donviquanly> donviquanly = guestController
+								.TimDVQL(0, 0, null);
+						modelAndView.addObject("donviquanly", donviquanly);
+						modelAndView.addObject("canbo",
+								guestController.TimCB(idcanbo));
 					}
-					modelAndView = setLink(modelAndView);
-				} else if (uri.contains("info")) {
-					modelAndView = new ModelAndView("info");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
-							0, null);
-					modelAndView.addObject("donviquanly", donviquanly);
-					modelAndView = setLink(modelAndView);
-				} else if (uri.contains("contact")) {
-					modelAndView = new ModelAndView("contact");
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
-							0, null);
-					modelAndView.addObject("donviquanly", donviquanly);
-					modelAndView = setLink(modelAndView);
 				}
 			}
-			return modelAndView;
+			if (uri.contains("search")) {
+				modelAndView = new ModelAndView("timkiem");
+				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,
+						null);
+				modelAndView.addObject("donviquanly", donviquanly);
+				String Vien = arg0.getParameter("vien");
+				String PhongBan = arg0.getParameter("phongban");
+				String LoaiCB = arg0.getParameter("loaiCB");
+				String tenCb = arg0.getParameter("tenCanBo");
+				if ((tenCb != "") || (Vien != null) || (PhongBan != null)) {
+					Integer idVien, idPhongBan, loaiCB;
+					if (Vien == null) {
+						idVien = 0;
+					} else {
+						idVien = Integer.parseInt(Vien);
+					}
+
+					if (PhongBan == null) {
+						idPhongBan = 0;
+					} else {
+						idPhongBan = Integer.parseInt(PhongBan);
+					}
+
+					if (LoaiCB == null) {
+						loaiCB = 0;
+					} else {
+						loaiCB = Integer.parseInt(LoaiCB);
+					}
+					System.out.println("id vien = " + idVien
+							+ "id phong ban = " + idPhongBan + "tencanbo = "
+							+ tenCb);
+					List<Soyeulylich> danhsachcanbo = guestController.TimCB(
+							idVien, idPhongBan, ((tenCb == "") ? null : tenCb),
+							loaiCB);
+					modelAndView.addObject("result", danhsachcanbo);
+				}
+				modelAndView = setLink(modelAndView);
+			} else if (uri.contains("info")) {
+				modelAndView = new ModelAndView("info");
+				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,
+						null);
+				modelAndView.addObject("donviquanly", donviquanly);
+				modelAndView = setLink(modelAndView);
+			} else if (uri.contains("contact")) {
+				modelAndView = new ModelAndView("contact");
+				List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,
+						null);
+				modelAndView.addObject("donviquanly", donviquanly);
+				modelAndView = setLink(modelAndView);
+			}
 		}
 
+		return modelAndView;
 	}
 
 	private ModelAndView setLink(ModelAndView view) {
