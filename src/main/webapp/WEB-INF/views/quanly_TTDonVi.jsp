@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -83,7 +85,7 @@
 			</div>
 			<div class="clear"></div>
 			<img width="96" height="50"
-								src="<c:url value="${phongban.duongdananh}"/>" />
+								src="<c:url value="${donvi.duongdananh}"/>" />
 			<form:form action="/k54/upload.spms" method="POST" commandName="fileUploadForm"
 				enctype="multipart/form-data">
 
@@ -91,7 +93,7 @@
 
 				<input type="file" name="file" />
 				<input type="hidden" name="type" value="supermanager">
-				<input type="submit" value="managerUpload" />
+				<input type="submit" value="superManagerUpload" />
 				<span><form:errors path="file" cssClass="error" /></span>
 
 			</form:form>

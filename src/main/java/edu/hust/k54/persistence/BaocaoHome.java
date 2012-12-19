@@ -6,6 +6,7 @@ import javax.naming.InitialContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.LockMode;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Order;
@@ -117,18 +118,25 @@ public class BaocaoHome {
 		}
 	}
 
-	public List<Soyeulylich> findBySoyeulylichs(ArrayList<Soyeulylich> crit) {
-		List<Soyeulylich> result = null;
-		try {
-			result = sessionFactory.getCurrentSession()
-					.createCriteria("edu.hust.k54.persistence.Baocao")
-					.add(Restrictions.in("soyeulylich", crit.toArray()))
-					.addOrder(Order.desc("ngaylap")).list();
-		} catch (RuntimeException re) {
-			log.error("find by example failed", re);
-			throw re;
+	public List<Baocao> findBySoyeulylichs(ArrayList<Soyeulylich> crit) {
+//		List<Soyeulylich> result = null;
+//		try {
+//			result = sessionFactory.getCurrentSession()
+//					.createCriteria("edu.hust.k54.persistence.Baocao")
+//					.add(Restrictions.in("soyeulylich", crit.toArray()))
+//					.addOrder(Order.desc("ngaylap")).list();
+//		} catch (RuntimeException re) {
+//			log.error("find by example failed", re);
+//			throw re;
+//		}
+//
+//		return result;
+		List<Baocao> result = new ArrayList<Baocao>();
+		Session session = sessionFactory.getCurrentSession();
+		for (Soyeulylich soyeu : crit){
+//			session.saveOrUpdate(soyeu);
+			result.addAll(soyeu.getBaocaos());
 		}
-
 		return result;
 	}
 }

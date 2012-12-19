@@ -92,14 +92,18 @@ public class FileUploadController extends SimpleFormController {
 					return new ModelAndView("QL_TTPhongban", "phongban", phongban);
 				}
 				else {
+					System.out.println("here");
 					Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
 							.getAttribute("user");
 					DonviquanlyHome donviquanlyHome = new DonviquanlyHome();
-					Donviquanly donviquanly = account.getSoyeulylich().getPhongban().getDonviquanly();
+					SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
+					Soyeulylich soyeulylich = account.getSoyeulylich();
+					soyeulylichHome.attachDirty(soyeulylich);
+					Donviquanly donviquanly = soyeulylich.getPhongban().getDonviquanly();
 					donviquanlyHome.attachDirty(donviquanly);
 					donviquanly.setDuongdananh(filename);
 					donviquanlyHome.getSessionFactory().getCurrentSession().flush();
-					return new ModelAndView("QL_TTPhongban", "donvi", donviquanly);
+					return new ModelAndView("quanly_TTDonVi", "donvi", donviquanly);
 				}
 			}
 
