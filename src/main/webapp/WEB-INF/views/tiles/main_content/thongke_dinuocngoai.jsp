@@ -86,7 +86,5 @@
 		</table>
 	</div>
 	<!--End tranfer_work -->
-
-
 </div>
 <!--End wrap_main-->

@@ -14,7 +14,7 @@
 			<p>
 				<a class="button">Xem thống kê</a>
 			</p>
-	
+
 		</div>
 		<script type="text/javascript">
                         window.onload = function(){
@@ -110,7 +110,6 @@
 	</div>
 	<!--End tranfer_work -->
 
+
 </div>
 <!--End wrap_main-->
-
-

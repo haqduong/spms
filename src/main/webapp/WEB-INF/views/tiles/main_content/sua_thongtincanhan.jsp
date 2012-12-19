@@ -5,7 +5,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <div id="wrap_main">
 	<div class="title_home">
 		<h2>Cập nhât thông tin sơ yếu lý lịch của ${canbo.hoten}</h2>
@@ -330,7 +329,6 @@
 
 </div>
 <!--End wrap_main-->
-
 
 
 <script type="text/javascript">
