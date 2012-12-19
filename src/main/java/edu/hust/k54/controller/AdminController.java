@@ -1,11 +1,16 @@
 package edu.hust.k54.controller;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
 
 import org.apache.commons.lang.ObjectUtils.Null;
+import java.util.HashSet;
+import java.util.Set;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
@@ -47,6 +52,7 @@ public class AdminController implements Controller{
 	public ModelAndView handleRequest(HttpServletRequest arg0,
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView modelAndView = null;
+		Guest guestController = new Guest();
 		Taikhoandangnhap taikhoandangnhap = (Taikhoandangnhap) arg0.getSession().getAttribute("user");
 		if((taikhoandangnhap == null) || taikhoandangnhap.getPermission() < PERMISSION){
 			modelAndView = new ModelAndView("errorPage");
@@ -58,15 +64,23 @@ public class AdminController implements Controller{
 			if(uri.contains("search")){
 				modelAndView = new ModelAndView("timkiem");
 				//TODO
-			}else if(uri.contains("info")){
+				return modelAndView;
+			} //End: Search
+			if(uri.contains("info")){
 				//TODO
-			}else if(uri.contains("contact")){
+				return modelAndView;
+			}//End: info
+			
+			if(uri.contains("contact")){
 				//TODO
-			}else if(uri.contains("logsystem")){
+				return modelAndView;
+			}//End contact
+			
+			if(uri.contains("logsystem")){
 				if(arg0.getParameter("iduser")==null){
 					modelAndView = new ModelAndView("admin/xem_nhatkyhethong");
 					List <Nhatkyhethong> nhatkyhethong = admin.xemNkHt();
-					modelAndView.addObject("nhatkyhethong", nhatkyhethong);
+					modelAndView.addObject("nhatkyhethongs", nhatkyhethong);
 				}else{
 					modelAndView = new ModelAndView("admin/xem_tttaikhoan");
 					Integer iduser = null;
@@ -76,8 +90,64 @@ public class AdminController implements Controller{
 					modelAndView.addObject("taikhoan",taikhoan);
 				}
 				
+				//chức năng lọc xem nhật ký hệ thống
+				if(arg0.getParameter("manager") != null && arg0.getParameter("manager").equalsIgnoreCase("filter")){
+					modelAndView = new ModelAndView("admin/xem_nhatkyhethong");
+					String username = arg0.getParameter("username");
+					String addrIP = arg0.getParameter("addrip");
+					String start_date = arg0.getParameter("start_date");
+					String end_date = arg0.getParameter("end_date");
+					TaikhoandangnhapHome taikhoanHome = new TaikhoandangnhapHome();
+					Taikhoandangnhap taikhoan = new Taikhoandangnhap();
+					ArrayList<Nhatkyhethong> nhatkyhethongs = new ArrayList<Nhatkyhethong>();
+					
+					if(username != ""){
+						taikhoan.setUsername(username);
+						List<Taikhoandangnhap> taikhoans =  taikhoanHome.findByExample(taikhoan);
+						if(taikhoans.size() == 0){
+							modelAndView.addObject("statusError", "Không có kết quả phù hợp");
+							modelAndView.addObject("nhatkyhethongs", nhatkyhethongs);
+							return modelAndView;
+						}
+						
+						taikhoan = taikhoans.get(0);
+						System.out.println("aaa = "+taikhoan.getUsername());
+						Set nhatkys = taikhoan.getNhatkyhethongs();
+						if(addrIP != ""){
+							
+							for(Iterator<Nhatkyhethong> nhatky = nhatkys.iterator(); nhatky.hasNext();){
+								Nhatkyhethong nhatkyTemp = new Nhatkyhethong();
+								nhatkyTemp = nhatky.next();
+								if(nhatkyTemp.getDiachiip().equals(addrIP))
+									nhatkyhethongs.add(nhatkyTemp);
+								
+							}
+						}else{
+							for(Iterator<Nhatkyhethong> nhatky = nhatkys.iterator(); nhatky.hasNext();){
+									Nhatkyhethong nhatkyTemp = new Nhatkyhethong();
+									nhatkyTemp = nhatky.next();
+									nhatkyhethongs.add(nhatkyTemp);
+							}
+						} 
+						
+					}//End if (username != "")
+					else{
+						List <Nhatkyhethong> nhatkyhethong = admin.xemNkHt();
+						modelAndView.addObject("nhatkyhethongs", nhatkyhethong);
+						return modelAndView;
+					}//End else của if (username != "")
+					
+					if(nhatkyhethongs.size() == 0)
+						modelAndView.addObject("statusError", "Không có kết quả phù hợp");
+					modelAndView.addObject("nhatkyhethongs", nhatkyhethongs);
+					return modelAndView;
+				}
 				
-			}else if(uri.contains("updatesalary")){
+				return modelAndView;
+			}//End logsystem
+			
+			
+			if(uri.contains("updatesalary")){
 				if(arg0.getParameter("manager")==null){
 					if(arg0.getParameter("idngachluong")==null){
 						modelAndView = new ModelAndView("admin/xem_Ngachluong");
@@ -118,9 +188,11 @@ public class AdminController implements Controller{
 					modelAndView.addObject("title_home", "Thêm ngạch lương");
 				}				
 				
-				
-				
-			}else if(uri.contains("updatechucvu")){
+				return modelAndView;
+			}//End updatesalary
+			
+			
+			if(uri.contains("updatechucvu")){
 				if(arg0.getParameter("manager")==null){
 					if(arg0.getParameter("idchucvu")==null){
 						modelAndView = new ModelAndView("admin/xem_Chucvu");
@@ -148,6 +220,7 @@ public class AdminController implements Controller{
 					}else{
 						Chucvu chucvu = new Chucvu();
 						chucvu.setTen(arg0.getParameter("ten"));
+						System.out.print("---------------------" +chucvu.getTen());
 						ChucvuHome home = new ChucvuHome();
 						home.attachDirty(chucvu);
 						home.getSessionFactory().getCurrentSession().flush();
@@ -158,8 +231,11 @@ public class AdminController implements Controller{
 					modelAndView = new ModelAndView("admin/CN_Chucvu");
 					modelAndView.addObject("title_home", "Thêm chức vụ");
 				}	
-				
-			}else if(uri.contains("updatehocham")){
+				return modelAndView;
+			}//End updatechucvu
+			
+			
+			if(uri.contains("updatehocham")){
 				if(arg0.getParameter("manager")==null){
 					if(arg0.getParameter("idhocham")==null){
 						modelAndView = new ModelAndView("admin/xem_Hocham");
@@ -198,10 +274,11 @@ public class AdminController implements Controller{
 				}else if(arg0.getParameter("manager").equalsIgnoreCase("taomoi")){
 					modelAndView = new ModelAndView("admin/CN_Hocham");
 					modelAndView.addObject("title_home", "Thêm học hàm");
-				}	
-				
-				
-			}else if(uri.contains("updatehocvi")){
+				}
+				return modelAndView;
+			}//End updatehocham
+			
+			if(uri.contains("updatehocvi")){
 				if(arg0.getParameter("manager")==null){
 					if(arg0.getParameter("idhocvi")==null){
 						modelAndView = new ModelAndView("admin/xem_Hocvi");
@@ -241,24 +318,104 @@ public class AdminController implements Controller{
 					modelAndView = new ModelAndView("admin/CN_Hocvi");
 					modelAndView.addObject("title_home", "Thêm học vị");
 				}	
-				
-				
+				return modelAndView;
+			}//End updatehocvi
 			
-				
-				
-			}else if(uri.contains("phanquyen")){
+			if(uri.contains("phanquyen")){
 				if(arg0.getParameter("iduser") == null){
 					modelAndView = new ModelAndView("admin/xem_phanquyen");
-					List <Taikhoandangnhap> phanquyens = admin.xemPhanquyen();
-					modelAndView.addObject("phanquyens", phanquyens);
-				}else{
+					String statusError = "Không tìm thấy kết quả";
+					
+					//dispatcher: Vào chức năng phân quyền
+					if(arg0.getParameter("manager") == null){
+						List <Taikhoandangnhap> phanquyens = admin.xemPhanquyen();
+						modelAndView.addObject("phanquyens", phanquyens);
+					}
+					// End: Vào chức năng phân quyền
+					//----------------------------------------------------------------------------------
+					//dispatcher: lọc danh sách phân quyền
+					else if(arg0.getParameter("manager").equalsIgnoreCase("filter")){
+						
+						TaikhoandangnhapHome taikhoanhome = new TaikhoandangnhapHome();
+						
+						
+						String username = arg0.getParameter("username");
+						if(username == ""){
+							String strDonvi = arg0.getParameter("donvi");
+							String strPhongban = arg0.getParameter("phongban");
+							if(strDonvi != null && strDonvi != ""){
+								DonviquanlyHome donvihome = new DonviquanlyHome();
+								PhongbanHome phongbanHome = new PhongbanHome();
+								
+								Integer idDonvi = Integer.parseInt(strDonvi);
+								Donviquanly donviquanly = donvihome.findById(idDonvi);
+								ArrayList<Taikhoandangnhap> phanquyens = new ArrayList<Taikhoandangnhap>();
+								if(strPhongban != null && strPhongban != ""){
+									Integer idPhongban = Integer.parseInt(strPhongban);
+									Phongban phongban = phongbanHome.findById(idPhongban);
+									Set soyeus = phongban.getSoyeulyliches();
+									for(Iterator<Soyeulylich> soyeu = soyeus.iterator(); soyeu.hasNext();){
+										Taikhoandangnhap taikhoan = new Taikhoandangnhap();
+										taikhoan = (Taikhoandangnhap)soyeu.next().getTaikhoandangnhaps().iterator().next();
+										phanquyens.add(taikhoan);
+									}
+								}else{
+									Set soyeus = donviquanly.getSoyeulyliches();
+									for(Iterator<Soyeulylich> soyeu = soyeus.iterator(); soyeu.hasNext();){
+										Taikhoandangnhap taikhoan = new Taikhoandangnhap();
+										taikhoan = (Taikhoandangnhap)soyeu.next().getTaikhoandangnhaps().iterator().next();
+										phanquyens.add(taikhoan);
+									}
+								}
+								if(phanquyens.size() == 0)
+									modelAndView.addObject("statusError", statusError);
+								modelAndView.addObject("phanquyens", phanquyens);
+								
+								
+								
+							}else{
+								List <Taikhoandangnhap> phanquyens = admin.xemPhanquyen();
+								if(phanquyens.size() == 0)
+									modelAndView.addObject("statusError", statusError);
+								modelAndView.addObject("phanquyens", phanquyens);
+								
+							}
+						}else{
+							Taikhoandangnhap taikhoan = new Taikhoandangnhap();
+							taikhoan.setUsername(username);
+							List<Taikhoandangnhap> phanquyens = taikhoanhome.findByExample(taikhoan);
+							if(phanquyens.size() == 0)
+								modelAndView.addObject("statusError", statusError);
+							modelAndView.addObject("phanquyens", phanquyens);
+						}
+					}// end: lọc danh sách phân quyền
+					
+					//Dùng để có list lựa chọn đơn vị
+					DonviquanlyHome dvhome = new DonviquanlyHome();
+					Donviquanly donvi = new Donviquanly();
+					List <Donviquanly> donviquanlies = dvhome.findByExample(donvi);
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
+							0, null);
+					modelAndView.addObject("donviquanly", donviquanly);
+					modelAndView.addObject("donvis", donviquanlies);
+					//-------Dùng để có list lựa chọn đơn vị
+					modelAndView.addObject("statusErr", statusError);
+					return modelAndView;
+				} //End if iduser != null
+				
+				else{
+					//Dispatcher: xem phân quyền cụ thể
 					if(arg0.getParameter("manager") == null){
 						modelAndView = new ModelAndView("admin/CN_phanquyen");
 						Integer iduser = Integer.parseInt(arg0.getParameter("iduser"));
 						TaikhoandangnhapHome home = new TaikhoandangnhapHome();
 						Taikhoandangnhap taikhoan = home.findById(iduser);
 						modelAndView.addObject("phanquyen", taikhoan);
-					}else{
+						return modelAndView;
+					}//End: xem phân quyền cụ thể
+					//--------------------------------------------------------------------
+					//Dispatcher: Cập nhật phân quyền
+					if(arg0.getParameter("manager").equalsIgnoreCase("capnhat")){
 						modelAndView = new ModelAndView("admin/CN_phanquyen");
 						Integer iduser = Integer.parseInt(arg0.getParameter("iduser"));
 						TaikhoandangnhapHome home = new TaikhoandangnhapHome();
@@ -270,14 +427,26 @@ public class AdminController implements Controller{
 						modelAndView = new ModelAndView("admin/xem_phanquyen");
 						List <Taikhoandangnhap> phanquyens = admin.xemPhanquyen();
 						modelAndView.addObject("phanquyens", phanquyens);
-					}
-					
-					
+						
+						//Dùng để có list lựa chọn đơn vị
+						DonviquanlyHome dvhome = new DonviquanlyHome();
+						Donviquanly donvi = new Donviquanly();
+						List <Donviquanly> donviquanlies = dvhome.findByExample(donvi);
+						List<Donviquanly> donviquanly = guestController.TimDVQL(0,
+								0, null);
+						modelAndView.addObject("donviquanly", donviquanly);
+						modelAndView.addObject("donvis", donviquanlies);
+						//-------Dùng để có list lựa chọn đơn vị
+						return modelAndView;
+						
+						
+					}//End: Cập nhật phân quyền
 				}
 				
-				
-				
-			}else if(uri.contains("taotaikhoan")){
+				return modelAndView;
+			}//End phan quyen
+			
+			if(uri.contains("taotaikhoan")){
 				
 				SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
 				DonviquanlyHome donviquanlyHome = new DonviquanlyHome();
@@ -418,16 +587,15 @@ public class AdminController implements Controller{
 					modelAndView.addObject("phanquyens", phanquyens);
 					
 				}
-				
-					
-				
-				
-				
-			}else if(uri.contains("duyettaikhoan")){
+				return modelAndView;
+			}//End taotaikhoan
+			
+			
+			if(uri.contains("duyettaikhoan")){
 				modelAndView = new ModelAndView("admin/homepage");
 				
-				
-			}
+				return modelAndView;
+			}//End duyettaikhoan
 			
 		}
 		return modelAndView;

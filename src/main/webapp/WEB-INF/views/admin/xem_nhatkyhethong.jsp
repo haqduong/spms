@@ -45,7 +45,7 @@
 					<div class="title_table">
 						<a> Bộ lọc </a>
 					</div>
-					<form name="boloc" action="#" method="POST">
+					<form name="boloc" action="/k54/admin/logsystem.spms?manager=filter" method="POST">
 						<table class="boloc" cellspacing="0" cellpadding="1"
 							style="width: 600px">
 							<tr>
@@ -68,6 +68,7 @@
 
 					</form>
 					<br />
+					<c:if test='${not empty "${statusError}" }'><a style="font-weight: bold;color: red;">${statusError}</a></c:if>
 					<table cellspacing="0" cellpadding="0" width="100%">
 						<tr>
 							<td>
@@ -87,7 +88,7 @@
 								<div class="description">
 									<table cellspacing="0" cellpadding="1" style="width: 782px">
 									<%int count =0;  %>
-										<c:forEach items="${nhatkyhethong}" var="nhatky">
+										<c:forEach items="${nhatkyhethongs}" var="nhatky">
 										
 											<tr>
 												<td style="width: 5%"><%=++count%></td>
