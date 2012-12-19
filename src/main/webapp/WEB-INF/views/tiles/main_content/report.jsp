@@ -30,6 +30,14 @@
 	<c:if test="${not empty report_list}">
 		<div class="title_home">Danh sách báo cáo</div>
 		<table id="report_list" class="table table-hover">
+			<tr>
+				<th>ID báo cáo</th>
+				<th>ID người tạo</th>
+				<th>Tên báo cáo</th>
+				<th>Ngày nộp báo cáo</th>
+				<th></th>
+				<th></th>
+			</tr>
 			<c:forEach var="report" items="${report_list}">
 				<tr>
 					<td class="reportid">${report.idbaocao}</td>
