@@ -30,7 +30,7 @@
 										<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
 									</p>
 									<p>
-										<a class="postion_staff">${canbo.chucvu.ten}</a>
+										<a>Chức vụ : &nbsp;</a><a class="postion_staff">${canbo.chucvu.ten}</a>
 									</p>
 									<p>
 	
@@ -41,7 +41,7 @@
 	
 									</p>
 									<p>
-										<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff">${canbo.sodienthoai}</a>
+										<a>Điện thoại: &nbsp;</a><a class="contact_staff">${canbo.sodienthoai}</a>
 									</p>
 									<p class="more_staff">
 										<a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${canbo.idsoyeulylich}">Chi tiết</a>
@@ -61,7 +61,7 @@
 										<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
 									</p>
 									<p>
-										<a class="postion_staff">${canbo.chucvu.ten}</a>
+										<a>Chức vụ : &nbsp;<a class="postion_staff">${canbo.chucvu.ten}</a>
 									</p>
 									<p>
 	

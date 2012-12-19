@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Viện khoa học</title>
+<title>Phòng ban</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
@@ -79,58 +79,113 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>${donvi.ten}</h2>
+				<h2>${phongban.ten}</h2>
 			</div>
 			<div class="images">
-				<img src="${donvi.duongdananh}" width="300" height="200" />
-
+				<img src="${phongban.hinhanh}" width="300" height="200" />
 			</div>
 			<!--End images-->
 			<div class="contact_us">
 				<div>
 
 					<div class="title_info">
-						<span><sdivong>ĐỊA CHỈ&nbsp; LIÊN HỆ</sdivong></span>
+						<span><sdivong>LIÊN HỆ</sdivong></span>
 					</div>
 
-
-					<div class="detail_info">${donvi.diachitruso}</div>
-
-
-					<div class="detail_info">Điện thoại: ${donvi.dienthoai}</div>
+					<div class="detail_info">Điện thoại: ${phongban.dienthoai}</div>
 
 
-					<div class="detail_info">Fax: ${donvi.fax}</div>
+					<div class="detail_info">Fax: ${phongban.fax}</div>
 
 
 					<div class="detail_info">Email: ${donvi.email}</div>
-					<br/>
-					<div class="title_info">
-						<span><sdivong>Viện Trưởng</sdivong></span>
-					</div>
-					<div class="detail_info"><p class="more_staff"> <a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${vientruong.idsoyeulylich}"> ${vientruong.hocvi.ten}.${vientruong.hoten}</a></p></div>
-					<br>
-					<div class="title_info">
-						<span><sdivong>Phó Viện Trưởng</sdivong></span>
-					</div>
-					<div class="detail_info"><p class="more_staff"> <a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${vienpho.idsoyeulylich}"> ${vienpho.hocvi.ten}.${vientruong.hoten}</a></p></div>
+					<br />
+
 				</div>
 			</div>
 			<!--End contact_us-->
 			<div class="clear"></div>
 			<div class="infomation">
-				<div class="title_info">CHỨC NĂNG</div>
-				<div class="content_text">${donvi.chucnang}</div>
+				<div class="title_info">THÔNG TIN CHUNG</div>
+				<div class="content_text">${phongban.thongtinchung}</div>
 				<!-- content_text -->
-				<div class="title_info">NHIỆM VỤ</div>
-				<div class="content_text">${donvi.nhiemvu}</div>
-				<!-- content_text -->
-				<div class="title_info">HOẠT ĐỘNG THƯỜNG XUYÊN</div>
-				<div class="content_text">${donvi.hoatdongthuongxuyen}</div>
-				<!-- content_text -->
-				<div class="title_info">THÀNH TỰU</div>
-				<div class="content_text">${donvi.thanhtuu}</div>
-				<!-- content_text -->
+					<div class="list_staff">
+		<form>
+			<table cellspacing="0" cellpadding="0" border-collapse="10px"
+				width="100%">
+				<div class="title_info">DANH SÁCH CÁN BỘ THUỘC QUẢN LÝ CỦA PHÒNG</div>
+				<br></br>
+				<c:forEach items="${phongban.soyeulyliches}" var="canbo" varStatus="count">
+					<c:if test="${(count.index % 2) == 0}">
+						<tr style="margin-bottom: 50px;">
+							<td style="width: 50%">
+								<div class="avatar_img">
+									<img src="<c:url value = "${canbo.duongdananh}"/>" width="90" height="120" />
+								</div>
+								<div class="content_staff">
+									<p>
+										<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
+									</p>
+									<p>
+										<a>Chức vụ : &nbsp;</a><a class="postion_staff">${canbo.chucvu.ten}</a>
+									</p>
+									<p>
+										<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
+											<a>Email : &nbsp;</a>
+											<a class="email_staff">${taikhoan.email} </a>
+										</c:forEach>
+	
+									</p>
+									<p>
+										<a>Điện thoại : &nbsp;</a><a class="contact_staff">${canbo.sodienthoai}</a>
+									</p>
+									<p class="more_staff">
+										<a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${canbo.idsoyeulylich}">Chi tiết</a>
+									</p>
+								</div>
+								<div class="clear"></div>
+							</td>
+					</c:if>
+					
+					<c:if test="${(count.index % 2) == 1}">
+						<td style="width: 50%; padding-left: 20px">
+								<div class="avatar_img">
+									<img src="${canbo.duongdananh}" width="90" height="120" />
+								</div>
+								<div class="content_staff">
+									<p>
+										<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
+									</p>
+									<p>
+										<a>Chức vụ : &nbsp;<a class="postion_staff">${canbo.chucvu.ten}</a>
+									</p>
+									<p>
+	
+										<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
+											<a>Email : &nbsp;</a>
+											<a class="email_staff">${taikhoan.email} </a>
+										</c:forEach>
+	
+									</p>
+									<p>
+										<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff">${canbo.sodienthoai}</a>
+									</p>
+									<p class="more_staff">
+										<a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${canbo.idsoyeulylich}">Chi tiết</a>
+									</p>
+								</div>
+								<div class="clear"></div>
+							</td>
+						</tr>
+					</c:if>
+						
+						
+				</c:forEach>
+			</table>
+			<!--End table -->
+		</form>
+	</div>
+	<!--end manager_staff -->
 			</div>
 			<!--End infomation -->
 		</div>
