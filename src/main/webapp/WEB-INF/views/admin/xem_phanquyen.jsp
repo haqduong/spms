@@ -1,6 +1,11 @@
+<%@page import="edu.hust.k54.persistence.Phongban"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.List"%>
+<%@page import="edu.hust.k54.persistence.Donviquanly"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,7 +46,7 @@
                     <div class="title_home"><a>Phân quyền</a></div>
                     <div class="list_data">
                         <div class="title_table"><a> Bộ lọc </a></div>
-                        <form name="boloc" action="#" method="POST">
+                        <form name="boloc" action="/k54/admin/phanquyen.spms?manager=filter" method="POST">
                             <table  class="boloc" cellspacing="0" cellpadding="1" style="width: 600px">
                                 <tr>
                                     <td><label>Username</label></td>
@@ -50,24 +55,19 @@
                                 <tr>
                                     <td><label>Đơn vị</label></td>
                                     <td>
-                                        <select name="donvi">
-                                            <option value="0">Tất cả</option>
-                                            <option value="0">Viên toán học</option>
-                                            <option value="0">Viên toán học</option>
-                                            <option value="0">Viên toán học</option>
-                                            <option value="0">Viên toán học</option>
+                                        <select name="donvi" id="find_vien"  onchange="chageDonViState()">
+                                        	
+	                                        <c:forEach items="${donvis}" var="donvi">
+	                                        	<option value="${donvi.iddonviquanly }">${donvi.ten}</option>
+	                                        </c:forEach>
                                         </select>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td><label>Phòng ban</label></td>
                                     <td>
-                                        <select name="phongban">
-                                            <option value="0">Tất cả</option>
-                                            <option value="0">Viên toán học</option>
-                                            <option value="0">Viên toán học</option>
-                                            <option value="0">Viên toán học</option>
-                                            <option value="0">Viên toán học</option>
+                                        <select name="phongban" id="phongban">
+                                            <option value="">Tất cả</option>
                                         </select>
                                     </td>
                                 </tr>
@@ -78,6 +78,7 @@
                             
                         </form>
                         <br/>
+                        <c:if test='${not empty "${statusError}" }'><a style="font-weight: bold;color: red;">${statusError}</a></c:if>
                         <table cellspacing="0" cellpadding="0"  width="100%">
                             <tr>
                                 <td>
@@ -131,5 +132,43 @@
 
             </div> <!--End wrap_footer-->
         </div> <!--End wrapper-->
+        
+        <script type="text/javascript">
+	        function chageDonViState() {
+	    		removePBOption();
+	    		<%String dsPhongBan = new String();
+	    		List listDonviquanly = (List) request.getAttribute("donviquanly");
+	    		if (listDonviquanly != null) {
+	    			for(int i = 0; i < listDonviquanly.size(); i++){
+	    				Donviquanly donviquanly = (Donviquanly)listDonviquanly.get(i);
+	    				Set<Phongban> phongban = donviquanly.getPhongbans();
+	    				for(Phongban pb: phongban){
+	    					dsPhongBan += i + "@" + pb.getIdphongban() + "@" + pb.getTen() +"|";	
+	    				}
+	    			}
+	    			
+	    		}%>
+	    		var dir = ("<%=dsPhongBan%>");
+	    			var allType = dir.split("|");
+	    			var i;
+	    			var count = 0;
+	    			var selectDir = document.getElementById("find_vien");
+	    			var dirIndex = selectDir.selectedIndex;
+	    			for (i = 0; i < eval(allType).length - 1; i++) {
+	    				var dirType = eval(allType)[i].split("@");
+	    				if (eval(dirType)[0] == dirIndex) {
+	    					document.boloc.phongban.options[count++] = new Option(
+	    							eval(dirType)[2], eval(dirType)[1]);
+	    				}
+	    			}
+	    		}
+		        function removePBOption() {
+					var x = document.getElementById("phongban");
+					while (x.options.length > 0) {
+						x.remove(0);
+					}
+				}
+
+        </script>
     </body>
 </html>

@@ -248,7 +248,7 @@ ul,ol         { list-style:none; }
 
 #wrap_center .list_data .description{
     width:800px; 
-    height:300px; 
+    max-height:500px; 
     overflow-y:auto;
     border-bottom: 2px solid #2b2a25;
 }
