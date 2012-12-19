@@ -7,9 +7,8 @@
             <column name="iduser" />
             <generator class="identity" />
         </id>
-        <many-to-one name="soyeulylich" class="edu.hust.k54.persistence.Soyeulylich" fetch="select">
-            <column name="idsoyeulylich" />
-        </many-to-one>
+        <one-to-one name="soyeulylich" class="edu.hust.k54.persistence.Soyeulylich">
+        </one-to-one>
         <property name="username" type="string">
             <column name="username" length="30" not-null="true" />
         </property>
