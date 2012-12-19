@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><tiles:getAsString name="title" /></title>
 <tiles:insertAttribute name="css_js" />
+<tiles:insertAttribute name="date_picker" />
 
 </head>
 <body>

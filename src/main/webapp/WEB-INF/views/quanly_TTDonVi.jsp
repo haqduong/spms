@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -79,9 +81,25 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>Quản lý thông tin đơn vị</h2>
+				<h2>Quản lý thông tin đơn vị - ${donvi.ten}</h2>
 			</div>
 			<div class="clear"></div>
+			<img width="96" height="50"
+								src="<c:url value="${donvi.duongdananh}"/>" />
+			<c:if test="${not empty error}">
+			${error }
+			</c:if>
+			<form:form action="/k54/upload.spms" method="POST" commandName="fileUploadForm"
+				enctype="multipart/form-data">
+
+				<form:errors path="*" cssClass="errorblock" element="div" />
+
+				<input type="file" name="file" />
+				<input type="hidden" name="type" value="supermanager">
+				<input type="submit" value="superManagerUpload" />
+				<span><form:errors path="file" cssClass="error" /></span>
+
+			</form:form>
 			<div class="infomation_staff">
 				<form name="edit_staff" action="#" method="POST">
 
@@ -90,60 +108,51 @@
 						<tr>
 							<td class="list">Tên đơn vị</td>
 							<td class="list_ret" width="70%"><input type="text"
-								name="user_name" size="60" height="25" /></td>
+								name="tendonvi" id="tendonvi" size="60" height="25" value="${donvi.ten}" />(*)</td>
 						</tr>
 						<tr>
 							<td class="list">Nhiệm vụ</td>
-							<td class="list_ret"><textarea name="nhiemvu"></textarea></td>
+							<td class="list_ret"><textarea id ="nhiemvu" name="nhiemvu">${donvi.nhiemvu}</textarea></td>
 						</tr>
 						<tr>
 							<td class="list">Chức năng</td>
-							<td class="list_ret"><textarea name="chucnang"></textarea></td>
+							<td class="list_ret"><textarea id ="chucnang" name="chucnang">${donvi.chucnang}</textarea></td>
 						</tr>
 						<tr>
 							<td class="list">Hoạt động thường xuyên</td>
-							<td class="list_ret"><textarea name="hoatdongthuongxuyen"></textarea>
+							<td class="list_ret"><textarea id= "hoatdongthuongquyen" name="hoatdongthuongxuyen">${donvi.hoatdongthuongxuyen}</textarea>
 							</td>
 						</tr>
 
 						<tr>
 							<td class="list">Thành tựu</td>
-							<td class="list_ret"><textarea name="thanhtuu"></textarea></td>
+							<td class="list_ret"><textarea id ="thanhtuu" name="thanhtuu">${donvi.thanhtuu}</textarea></td>
 						</tr>
 						<tr>
 							<td class="list">Thông tin khác</td>
-							<td class="list_ret"><textarea name="thongtinkhac"></textarea>
+							<td class="list_ret"><textarea id = "thongtinkhac" name="thongtinkhac">${donvi.thongtinkhac}</textarea>
 							</td>
 						</tr>
 						<tr>
 							<td class="list">Địa chỉ trụ sở</td>
-							<td class="list_ret"><input name="diachitruso" type="text" /></td>
+							<td class="list_ret"><input id = "diachitruso" name="diachitruso" type="text" value="${donvi.diachitruso}" />(*)</td>
 						</tr>
 						<tr>
 							<td class="list">Điện thoại</td>
-							<td class="list_ret"><input name="diachitruso" type="tel" /></td>
+							<td class="list_ret"><input onkeydown="checkPhone()" id="dienthoai" name="dienthoai" type="tel" value="${donvi.dienthoai}" />(*)</td>
 						</tr>
 						<tr>
 							<td class="list">Email</td>
-							<td class="list_ret"><input name="email" type="email" /></td>
+							<td class="list_ret"><input id ="email" name="email" type="email" value="${donvi.email}" />(*)</td>
 						</tr>
 						<tr>
 							<td class="list">Fax</td>
-							<td class="list_ret"><input name="fax" type="text" /></td>
-						</tr>
-						<tr>
-							<td class="list">Thư điện tử</td>
-							<td class="list_ret"><input name="thudientu" type="email" /></td>
-						</tr>
-						<tr>
-							<td class="list">Avatar</td>
-							<td class="list_ret"><img width="96" height="50"
-								src="../images/public/vientoanhoc.jpg" /> <br /> <input
-								type="button" name="upload" value="upload" /></td>
+							<td class="list_ret"><input onkeydown="checkFax()" id = "fax" name="fax" type="text" value="${donvi.fax}" />(*)</td>
 						</tr>
 					</table>
+					<h3>${result}</h3>
 					<div style="text-align: center; margin-top: 20px;">
-						<input type="submit" class="button" value="Cập nhật" />
+						<input onclick="checkSubmit()" class="button" name="update" value="Cập nhật" />
 					</div>
 				</form>
 			</div>
@@ -158,187 +167,324 @@
 
 
 
-		<div id="wrap_right">
-			<div class="box_right">
-				<c:if test="${not empty user}">
-					<div class="title_ok">
-						<a>Xin chào:${user.username}</a>
-					</div>
-					<div class="content_box">
-						<div class="loginpopup" style="">
-							<form action="/k54/logout.spms" method="POST">
-								<input value="Đăng xuất" class="button" type="submit"
-									name="logout" />
-							</form>
-						</div>
-					</div>
-				</c:if>
+<div id="wrap_right">
+	<div class="box_right">
+		<c:if test="${not empty user}">
+			<div class="title_ok">
+				<a>Xin chào:${user.username}</a>
+			</div>
+			<div class="content_box">
+				<div class="loginpopup" style="">
+					<form action="/k54/logout.spms" method="POST">
+						<input value="Đăng xuất" class="button" type="submit"
+							name="logout" />
+					</form>
+				</div>
+			</div>
+		</c:if>
 
-				<c:if test="${empty user}">
-					<div class="title_box">
-						<a>Đăng nhập</a>
+		<c:if test="${empty user}">
+			<div class="title_box">
+				<a>Đăng nhập</a>
+			</div>
+			<!--title_box-->
+			<div class="content_box">
+				<div class="loginpopup" style="">
+					<form action="/k54/login.spms" method="POST">
+						<label>Tài khoản : </label> <input type="text" name="user_name"
+							placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
+							type="password" name="user_password" placeholder="Mật khẩu" /> <input
+							value="Đăng nhập" class="button" type="submit" name="login" />
+					</form>
+					<label> ${loginFalse} </label>
+				</div>
+			</div>
+		</c:if>
+		<!--end content_box-->
+	</div>
+	<!--box_right-->
+
+	<c:if test="${not empty user}">
+		<c:if test="${user.permission == 1}">
+			<div class="box_right">
+				<div class="title_box">
+					<a>Cập nhật</a>
+				</div>
+				<!--title_box-->
+				<div class="content_box">
+					<div id="accordion">
+						<ul>
+							<li><a
+								href="/k54/staff/capnhat/thongtincanhan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+									nhật thông tin cá nhân</a></li>
+							<li><a
+								href="/k54/staff/capnhat/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+									nhật lý lịch khoa học</a></li>
+							<li><a
+								href="/k54/staff/capnhat/taikhoan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+									nhật tài khoản</a></li>
+						</ul>
 					</div>
-					<!--title_box-->
-					<div class="content_box">
-						<div class="loginpopup" style="">
-							<form action="/k54/login.spms" method="POST">
-								<label>Tài khoản : </label> <input type="text" name="user_name"
-									placeholder="Tài khoản" /> <label>Mật khẩu : </label> <input
-									type="password" name="user_password" placeholder="Mật khẩu" />
-								<input value="Đăng nhập" class="button" type="submit"
-									name="login" />
-							</form>
-							<label> ${loginFalse} </label>
-						</div>
+					<!--End accordion -->
+				</div>
+				<!--end content_box-->
+			</div>
+			<!--box_right-->
+			<div class="box_right">
+				<div class="title_box">
+					<a>Thông tin cá nhân</a>
+				</div>
+				<!--title_box-->
+				<div class="content_box">
+					<div id="accordion">
+						<ul>
+							<li><a
+								href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ
+									yếu lý lịch</a></li>
+							<li><a
+								href="/k54/staff/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý
+									lịch khoa học</a></li>
+							<li><a
+								href="/k54/staff/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn
+									biến lương</a></li>
+							<li><a
+								href="/k54/staff/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen
+									thưởng</a></li>
+							<li><a
+								href="/k54/staff/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ
+									luật</a></li>
+						</ul>
 					</div>
-				</c:if>
+					<!--End accordion -->
+
+				</div>
+				<!--end content_box-->
+			</div>
+			<!--box_right-->
+		</c:if>
+
+		<c:if test="${user.permission == 2}">
+			<div class="box_right">
+				<div class="title_box">
+					<a>Chức năng quản lý</a>
+				</div>
+				<!--title_box-->
+				<div class="content_box">
+					<div id="accordion">
+						<ul>
+							<li><a
+								href="/k54/manager/quanly/phongban.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản
+									lý phòng ban</a></li>
+							<li><a
+								href="/k54/manager/quanly/hosocanbo.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản
+									lý hồ sơ cán bộ</a></li>
+							<li><a
+								href="/k54/manager/quanly/khenthuong.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản
+									lý khen thưởng</a></li>
+							<li><a
+								href="/k54/manager/quanly/kyluat.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản
+									lý kỷ luật</a></li>
+							<li><a
+								href="/k54/manager/quanly/baocao.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Báo
+									cáo</a></li>
+						</ul>
+					</div>
+					<!--End accordion -->
+				</div>
 				<!--end content_box-->
 			</div>
 			<!--box_right-->
 
-			<c:if test="${not empty user}">
-				<c:if test="${user.permission == 1}">
-					<div class="box_right">
-						<div class="title_box">
-							<a>Cập nhật</a>
-						</div>
-						<!--title_box-->
-						<div class="content_box">
-							<div id="accordion">
-								<ul>
-									<li><a href="/k54/staff/capnhat/thongtincanhan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập nhật thông tin cá nhân</a></li>
-									<li><a href="/k54/staff/capnhat/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập nhật lý lịch khoa học</a></li>
-									<li><a href="/k54/staff/capnhat/taikhoan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập nhật tài khoản</a></li>
-								</ul>
-							</div>
-							<!--End accordion -->
-						</div>
-						<!--end content_box-->
+			<div class="box_right">
+				<div class="title_box">
+					<a>Cập nhật</a>
+				</div>
+				<!--title_box-->
+				<div class="content_box">
+					<div id="accordion">
+						<ul>
+							<li><a
+								href="/k54/staff/capnhat/thongtincanhan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+									nhật thông tin cá nhân</a></li>
+							<li><a
+								href="/k54/staff/capnhat/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+									nhật lý lịch khoa học</a></li>
+							<li><a
+								href="/k54/staff/capnhat/taikhoan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+									nhật tài khoản</a></li>
+						</ul>
 					</div>
-					<!--box_right-->
-					<div class="box_right">
-						<div class="title_box">
-							<a>Thông tin cá nhân</a>
-						</div>
-						<!--title_box-->
-						<div class="content_box">
-							<div id="accordion">
-								<ul>
-									<li><a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ yếu lý lịch</a></li>
-									<li><a href="/k54/staff/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý lịch khoa học</a></li>
-									<li><a href="/k54/staff/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá trình công tác</a></li>
-									<li><a href="/k54/staff/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn biến lương</a></li>
-									<li><a href="/k54/staff/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen thưởng</a></li>
-									<li><a href="/k54/staff/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ luật</a></li>
-								</ul>
-							</div>
-							<!--End accordion -->
-
-						</div>
-						<!--end content_box-->
+					<!--End accordion -->
+				</div>
+				<!--end content_box-->
+			</div>
+			<!--box_right-->
+			<div class="box_right">
+				<div class="title_box">
+					<a>Thông tin cá nhân</a>
+				</div>
+				<!--title_box-->
+				<div class="content_box">
+					<div id="accordion">
+						<ul>
+							<li><a
+								href="/k54/manager/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ
+									yếu lý lịch</a></li>
+							<li><a
+								href="/k54/manager/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý
+									lịch khoa học</a></li>
+							<li><a
+								href="/k54/manager/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn
+									biến lương</a></li>
+							<li><a
+								href="/k54/manager/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen
+									thưởng</a></li>
+							<li><a
+								href="/k54/manager/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ
+									luật</a></li>
+						</ul>
 					</div>
-					<!--box_right-->
-				</c:if>
+					<!--End accordion -->
 
-				<c:if test="${user.permission == 2}">
-					<div class="box_right">
-						<div class="title_box">
-							<a>Chức năng quản lý</a>
-						</div>
-						<!--title_box-->
-						<div class="content_box">
-							<div id="accordion">
-								<ul>
-									<li><a href="/k54/manager/quanly/phongban.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản lý phòng ban</a></li>
-									<li><a href="/k54/manager/quanly/hosocanbo.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản lý hồ sơ cán bộ</a></li>
-									<li><a href="/k54/manager/quanly/khenthuong.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản lý khen thưởng</a></li>
-									<li><a href="/k54/manager/quanly/kyluat.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản lý kỷ luật</a></li>
-									<li><a href="/k54/manager/quanly/baocao.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Báo cáo</a></li>
-									<li><a href="/k54/manager/quanly/thongke.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Thống kê</a></li>
-								</ul>
-							</div>
-							<!--End accordion -->
-						</div>
-						<!--end content_box-->
+				</div>
+				<!--end content_box-->
+			</div>
+			<!--box_right-->
+		</c:if>
+
+
+
+		<c:if test="${user.permission == 3}">
+			<div class="box_right">
+				<div class="title_box">
+					<a>Chức năng quản lý</a>
+				</div>
+				<!--title_box-->
+				<div class="content_box">
+					<div id="accordion">
+						<ul>
+							<li><a
+								href="/k54/superManager/quanly/donvi.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản
+									lý đơn vị</a></li>
+							<li><a
+								href="/k54/superManager/quanly/phongban.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản
+									lý phòng ban</a></li>
+							<li><a
+								href="/k54/superManager/quanly/thongtincanbo.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản
+									lý thông tin cán bộ</a></li>
+							<li><a
+								href="/k54/superManager/quanly/baocao.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Báo
+									cáo</a></li>
+						</ul>
 					</div>
-					<!--box_right-->
-					<div class="box_right">
-						<div class="title_box">
-							<a>Thông tin cá nhân</a>
-						</div>
-						<!--title_box-->
-						<div class="content_box">
-							<div id="accordion">
-								<ul>
-									<li><a href="/k54/manager/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ yếu lý lịch</a></li>
-									<li><a href="/k54/manager/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý lịch khoa học</a></li>
-									<li><a href="/k54/manager/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá trình công tác</a></li>
-									<li><a href="/k54/manager/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn biến lương</a></li>
-									<li><a href="/k54/manager/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen thưởng</a></li>
-									<li><a href="/k54/manager/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ luật</a></li>
-								</ul>
-							</div>
-							<!--End accordion -->
+					<!--End accordion -->
+				</div>
+				<!--end content_box-->
+			</div>
+			<!--box_right-->
 
-						</div>
-						<!--end content_box-->
+			<div class="box_right">
+				<div class="title_box">
+					<a>Cập nhật</a>
+				</div>
+				<!--title_box-->
+				<div class="content_box">
+					<div id="accordion">
+						<ul>
+							<li><a
+								href="/k54/staff/capnhat/thongtincanhan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+									nhật thông tin cá nhân</a></li>
+							<li><a
+								href="/k54/staff/capnhat/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+									nhật lý lịch khoa học</a></li>
+							<li><a
+								href="/k54/staff/capnhat/taikhoan.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Cập
+									nhật tài khoản</a></li>
+						</ul>
 					</div>
-					<!--box_right-->
-				</c:if>
-
-
-
-				<c:if test="${user.permission == 3}">
-					<div class="box_right">
-						<div class="title_box">
-							<a>Chức năng quản lý</a>
-						</div>
-						<!--title_box-->
-						<div class="content_box">
-							<div id="accordion">
-								<ul>
-									<li><a href="/superManager/quanly/donvi.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản lý đơn vị</a></li>
-									<li><a href="/superManager/quanly/phongban.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản lý phòng ban</a></li>
-									<li><a href="/superManager/quanly/thongtincanbo.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản lý thông tin cán bộ</a></li>
-									<li><a href="/superManager/quanly/baocao.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Báo cáo</a></li>
-									<li><a href="/superManager/quanly/thongke.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Thống kê</a></li>
-								</ul>
-							</div>
-							<!--End accordion -->
-						</div>
-						<!--end content_box-->
+					<!--End accordion -->
+				</div>
+				<!--end content_box-->
+			</div>
+			<!--box_right-->
+			<div class="box_right">
+				<div class="title_box">
+					<a>Thông tin cá nhân</a>
+				</div>
+				<!--title_box-->
+				<div class="content_box">
+					<div id="accordion">
+						<ul>
+							<li><a
+								href="/k54/superManager/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ
+									yếu lý lịch</a></li>
+							<li><a
+								href="/k54/superManager/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý
+									lịch khoa học</a></li>
+							<li><a
+								href="/k54/superManager/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn
+									biến lương</a></li>
+							<li><a
+								href="/k54/superManager/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen
+									thưởng</a></li>
+							<li><a
+								href="/k54/superManager/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ
+									luật</a></li>
+						</ul>
 					</div>
-					<!--box_right-->
-					<div class="box_right">
-						<div class="title_box">
-							<a>Thông tin cá nhân</a>
-						</div>
-						<!--title_box-->
-						<div class="content_box">
-							<div id="accordion">
-								<ul>
-									<li><a href="/k54/superManager/thongtin/soyeulylich.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Sơ yếu lý lịch</a></li>
-									<li><a href="/k54/superManager/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý lịch khoa học</a></li>
-									<li><a href="/k54/superManager/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá trình công tác</a></li>
-									<li><a href="/k54/superManager/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn biến lương</a></li>
-									<li><a href="/k54/superManager/thongtin/khenthuong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Khen thưởng</a></li>
-									<li><a href="/k54/superManager/thongtin/kyluat.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Kỷ luật</a></li>
-								</ul>
-							</div>
-							<!--End accordion -->
+					<!--End accordion -->
 
-						</div>
-						<!--end content_box-->
-					</div>
-					<!--box_right-->
-				</c:if>
-			</c:if>
-		</div>
-		<!--End wrap_right-->
+				</div>
+				<!--end content_box-->
+			</div>
+			<!--box_right-->
+		</c:if>
+	</c:if>
+</div>
+<!--End wrap_right-->
 		<div class="clear"></div>
 		<div id="wrap_footer"></div>
 		<!--End wrap_footer-->
 	</div>
 	<!--End wrapper -->
+	
+		<script type="text/javascript">
+		function checkPhone() {
+			var digits = "0123456789.)(+";
+			var sohieucongchuc = document.getElementById("dienthoai").value;
+			for ( var i = 0; i < sohieucongchuc.length; i++) {
+				temp = sohieucongchuc.substring(i, i + 1);
+				if (digits.indexOf(temp) == -1) {
+					alert("Số điện thoại không hợp lệ, số điện thoại chỉ bao gồm chữ số hoặc mã vùng, mã quốc gia (+84)..");
+					document.getElementById("dienthoai").value = "";
+				}
+			}
+		}
+
+		function checkSubmit() {
+			var tendonvi =document.getElementById("tendonvi").value;
+			var diachitruso = document.getElementById("diachitruso").value;
+			var dienthoai = document.getElementById("dienthoai").value;
+			var email = document.getElementById("email").value;
+			var fax = document.getElementById("fax").value;
+			if (tendonvi == "" || dienthoai == "" || email =="" ||diachitruso==""||fax=="") {
+				alert("Không được để trống các mục bắt buộc (*), xin kiểm tra lại");
+			} else {
+				document.forms["edit_staff"].submit();
+			}
+		}
+		
+		function checkFax() {
+			var digits = "0123456789.)(+";
+			var sohieucongchuc = document.getElementById("fax").value;
+			for ( var i = 0; i < sohieucongchuc.length; i++) {
+				temp = sohieucongchuc.substring(i, i + 1);
+				if (digits.indexOf(temp) == -1) {
+					alert("Số fax không hợp lệ, số fax chỉ bao gồm chữ số hoặc mã vùng, mã quốc gia (+84)..");
+					document.getElementById("fax").value = "";
+				}
+			}
+		}
+	</script>
 </body>
 </html>

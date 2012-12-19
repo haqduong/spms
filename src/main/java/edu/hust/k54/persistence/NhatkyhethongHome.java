@@ -15,7 +15,7 @@ public class NhatkyhethongHome {
 
 	private final SessionFactory sessionFactory = getSessionFactory();
 
-	protected SessionFactory getSessionFactory() {
+	public SessionFactory getSessionFactory() {
 		try {
 			return (SessionFactory) new InitialContext()
 					.lookup("SessionFactory");

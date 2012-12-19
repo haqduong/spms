@@ -8,6 +8,7 @@
 		<put-attribute name="title" value="" />
 		<put-attribute name="css_js"
 			value="/WEB-INF/views/tiles/global_css_js.jsp" />
+		<put-attribute name="date_picker" value="" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="session_info"
 			value="/WEB-INF/views/tiles/session_info.jsp" />
@@ -21,11 +22,17 @@
 		<put-attribute name="main_content"
 			value="/WEB-INF/views/tiles/main_content/homepage.jsp" />
 	</definition>
-	
+
 	<definition name="danhsachcanbo.spms" extends="base.spms">
 		<put-attribute name="title" value="Danh sách cán bộ" />
 		<put-attribute name="main_content"
 			value="/WEB-INF/views/tiles/main_content/danhsachcanbo.jsp" />
+	</definition>
+
+	<definition name="danhsachdetai.spms" extends="base.spms">
+		<put-attribute name="title" value="Danh sách đề tài" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/danhsachdetai.jsp" />
 	</definition>
 
 	<definition name="danhsachphongban.spms" extends="base.spms">
@@ -34,9 +41,115 @@
 			value="/WEB-INF/views/tiles/main_content/danhsachphongban.jsp" />
 	</definition>
 
-	<!-- <definition name="contact" extends="base.definition"> -->
-	<!-- <put-attribute name="title" value="Contact Manager" /> -->
-	<!-- <put-attribute name="body" value="/WEB-INF/jsp/contact.jsp" /> -->
-	<!-- </definition> -->
+	<definition name="dienbienluong.spms" extends="base.spms">
+		<put-attribute name="title" value="Thống kê diễn biến lương" />
+		<put-attribute name="date_picker" value="date_picker_css_js.jsp" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/dienbienluong.jsp" />
+	</definition>
 
+	<definition name="info.spms" extends="base.spms">
+		<put-attribute name="title" value="Thông tin" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/info.jsp" />
+	</definition>
+
+	<definition name="khenthuong.spms" extends="base.spms">
+		<put-attribute name="title" value="Thống kê khen thưởng" />
+		<put-attribute name="date_picker" value="date_picker_css_js.jsp" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/khenthuong.jsp" />
+	</definition>
+
+	<definition name="kyluat.spms" extends="base.spms">
+		<put-attribute name="title" value="Thống kê kỷ luật" />
+		<put-attribute name="date_picker" value="date_picker_css_js.jsp" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/kyluat.jsp" />
+	</definition>
+
+	<definition name="lylichKH.spms" extends="base.spms">
+		<put-attribute name="title" value="Quản lý lý lịch khoa học" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/lylichKH.jsp" />
+	</definition>
+
+	<definition name="QL_TTPhongban.spms" extends="base.spms">
+		<put-attribute name="title" value="Quản lý thông tin phòng ban" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/QL_TTPhongban.jsp" />
+	</definition>
+
+	<definition name="sua_thongtincanhan.spms" extends="base.spms">
+		<put-attribute name="title" value="Sửa thông tin cá nhân" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/sua_thongtincanhan.jsp" />
+	</definition>
+
+	<definition name="sua_thongtintaikhoan.spms" extends="base.spms">
+		<put-attribute name="title" value="Sửa thông tin tài khoản" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/sua_thongtintaikhoan.jsp" />
+	</definition>
+
+	<definition name="thongke_baocao.spms" extends="base.spms">
+		<put-attribute name="title" value="Thống kê báo cáo" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/thongke_baocao.jsp" />
+	</definition>
+
+	<definition name="thongke_chuyencongtac.spms" extends="base.spms">
+		<put-attribute name="title" value="Thống kê chuyển công tác" />
+		<put-attribute name="date_picker" value="date_picker_css_js.jsp" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/thongke_chuyencongtac.jsp" />
+	</definition>
+
+	<definition name="thongke_dienbienluong.spms" extends="base.spms">
+		<put-attribute name="title" value="Thống kê diễn biến lương" />
+		<put-attribute name="date_picker" value="date_picker_css_js.jsp" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/thongke_dienbienluong.jsp" />
+	</definition>
+
+	<definition name="thongke_dinuocngoai.spms" extends="base.spms">
+		<put-attribute name="title" value="Thống kê đi nước ngoài" />
+		<put-attribute name="date_picker" value="date_picker_css_js.jsp" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/thongke_dinuocngoai.jsp" />
+	</definition>
+
+	<definition name="thongke_khenthuong.spms" extends="base.spms">
+		<put-attribute name="title" value="Thống kê khen thưởng" />
+		<put-attribute name="date_picker" value="date_picker_css_js.jsp" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/thongke_khenthuong.jsp" />
+	</definition>
+
+	<definition name="thongke_kyluat.spms" extends="base.spms">
+		<put-attribute name="title" value="Thống kê kỷ luật" />
+		<put-attribute name="date_picker" value="date_picker_css_js.jsp" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/thongke_kyluat.jsp" />
+	</definition>
+
+	<definition name="report.spms" extends="base.spms">
+		<put-attribute name="title" value="Report" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/report.jsp" />
+	</definition>
+
+	<definition name="uploadForm.spms" extends="base.spms">
+		<put-attribute name="title" value="Upload" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/uploadForm.jsp" />
+	</definition>
+
+	<definition name="uploadAvatar.spms" extends="uploadForm.spms">
+		<put-attribute name="title" value="Upload avatar" />
+	</definition>
+
+	<definition name="uploadReport.spms" extends="uploadForm.spms">
+		<put-attribute name="title" value="Upload report" />
+	</definition>
 </tiles-definitions>

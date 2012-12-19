@@ -112,68 +112,63 @@
         <property name="ngonngubiet" type="string">
             <column name="ngonngubiet" length="65535" />
         </property>
-        <set name="quatrinhnghiencuus" table="quatrinhnghiencuu" inverse="true" lazy="true" fetch="select">
+        <set name="quatrinhnghiencuus" cascade="delete" table="quatrinhnghiencuu" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idsoyeulylich" not-null="true" />
             </key>
             <one-to-many class="edu.hust.k54.persistence.Quatrinhnghiencuu" />
         </set>
-        <set name="dienbienphucaps" table="dienbienphucap" inverse="true" lazy="true" fetch="select">
+        <set name="dienbienphucaps" cascade="delete" table="dienbienphucap" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idsoyeulylich" />
             </key>
             <one-to-many class="edu.hust.k54.persistence.Dienbienphucap" />
         </set>
-        <set name="kyluats" table="kyluat" inverse="true" lazy="true" fetch="select">
+        <set name="kyluats" cascade="delete" table="kyluat" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idsoyeulylich" />
             </key>
             <one-to-many class="edu.hust.k54.persistence.Kyluat" />
         </set>
-        <set name="dienbienhocvis" table="dienbienhocvi" inverse="true" lazy="true" fetch="select">
+        <set name="dienbienhocvis" cascade="delete" table="dienbienhocvi" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idsoyeulylich" not-null="true" />
             </key>
             <one-to-many class="edu.hust.k54.persistence.Dienbienhocvi" />
         </set>
-        <set name="quatrinhdinuocngoais" table="quatrinhdinuocngoai" inverse="true" lazy="true" fetch="select">
+        <set name="quatrinhdinuocngoais" cascade="delete" table="quatrinhdinuocngoai" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idsoyeulylich" not-null="true" />
             </key>
             <one-to-many class="edu.hust.k54.persistence.Quatrinhdinuocngoai" />
         </set>
-        <set name="dienbienluongs" table="dienbienluong" inverse="true" lazy="true" fetch="select">
+        <set name="dienbienluongs" cascade="delete" table="dienbienluong" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idsoyeulylich" not-null="true" />
             </key>
             <one-to-many class="edu.hust.k54.persistence.Dienbienluong" />
         </set>
-        <set name="baocaos" table="baocao" inverse="true" lazy="true" fetch="select">
+        <set name="baocaos" cascade="delete" table="baocao" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idsoyeulylich" not-null="true" />
             </key>
             <one-to-many class="edu.hust.k54.persistence.Baocao" />
         </set>
-        <set name="khenthuongs" table="khenthuong" inverse="true" lazy="true" fetch="select">
+        <set name="khenthuongs" cascade="delete" table="khenthuong" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idsoyeulylich" />
             </key>
             <one-to-many class="edu.hust.k54.persistence.Khenthuong" />
         </set>
-        <set name="dienbienhochams" table="dienbienhocham" inverse="true" lazy="true" fetch="select">
+        <set name="dienbienhochams" cascade="delete" table="dienbienhocham" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idsoyeulylich" not-null="true" />
             </key>
             <one-to-many class="edu.hust.k54.persistence.Dienbienhocham" />
         </set>
-        <set name="taikhoandangnhaps" table="taikhoandangnhap" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="idsoyeulylich" />
-            </key>
-            <one-to-many class="edu.hust.k54.persistence.Taikhoandangnhap" />
-        </set>
+        <one-to-one name="taikhoandangnhaps" class="edu.hust.k54.persistence.Taikhoandangnhap" constrained="true"> </one-to-one>
         <one-to-one name="lylichkhoahoc" class="edu.hust.k54.persistence.Lylichkhoahoc"></one-to-one>
-        <set name="sachxuatbans" table="sachxuatban" inverse="true" lazy="true" fetch="select">
+        <set name="sachxuatbans" cascade="delete" table="sachxuatban" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idsoyeulylich" not-null="true" />
             </key>

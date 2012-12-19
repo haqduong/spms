@@ -13,70 +13,78 @@
 	</div>
 	<!--End images-->
 	<div class="clear"></div>
-	<%
-				int i = 0;
-			%>
 	<div class="list_staff">
 		<form>
 			<table cellspacing="0" cellpadding="0" border-collapse="10px"
 				width="100%">
-				<c:forEach items="${danhsachcanbo}" var="canbo">
-					<%
-							i++;
-						    int div = i/2;
-						%>
+				
+				<c:forEach items="${danhsachcanbo}" var="canbo" varStatus="count">
+					<c:if test="${(count.index % 2) == 0}">
+						<tr style="margin-bottom: 50px;">
+							<td style="width: 50%">
+								<div class="avatar_img">
+									<img src="${canbo.duongdananh}" width="90" height="120" />
+								</div>
+								<div class="content_staff">
+									<p>
+										<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
+									</p>
+									<p>
+										<a>Chức vụ : &nbsp;</a><a class="postion_staff">${canbo.chucvu.ten}</a>
+									</p>
+									<p>
+	
+										<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
+											<a>Email : &nbsp;</a>
+											<a class="email_staff">${taikhoan.email} </a>
+										</c:forEach>
+	
+									</p>
+									<p>
+										<a>Điện thoại: &nbsp;</a><a class="contact_staff">${canbo.sodienthoai}</a>
+									</p>
+									<p class="more_staff">
+										<a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${canbo.idsoyeulylich}">Chi tiết</a>
+									</p>
+								</div>
+								<div class="clear"></div>
+							</td>
+					</c:if>
+					
+					<c:if test="${(count.index % 2) == 1}">
+						<td style="width: 50%; padding-left: 20px">
+								<div class="avatar_img">
+									<img src="${canbo.duongdananh}" width="90" height="120" />
+								</div>
+								<div class="content_staff">
+									<p>
+										<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
+									</p>
+									<p>
+										<a>Chức vụ : &nbsp;<a class="postion_staff">${canbo.chucvu.ten}</a>
+									</p>
+									<p>
+	
+										<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
+											<a>Email : &nbsp;</a>
+											<a class="email_staff">${taikhoan.email} </a>
+										</c:forEach>
+	
+									</p>
+									<p>
+										<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff">${canbo.sodienthoai}</a>
+									</p>
+									<p class="more_staff">
+										<a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${canbo.idsoyeulylich}">Chi tiết</a>
+									</p>
+								</div>
+								<div class="clear"></div>
+							</td>
+						</tr>
+					</c:if>
+						
+						
 				</c:forEach>
-				<tr style="margin-bottom: 50px;">
-					<td style="width: 50%">
-						<div class="avatar_img">
-							<img src="../images/public/canbo_1.jpg" width="90" height="120" />
-						</div>
-						<div class="content_staff">
-							<p>
-								<a class="name_staff">GS. Châu Văn Minh</a>
-							</p>
-							<p>
-								<a class="postion_staff">Viện trưởng</a>
-							</p>
-							<p>
-								<a>Email : &nbsp;</a><a class="email_staff">cvminh@vast.ac.vn</a>
-							</p>
-							<p>
-								<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff"> (+84)
-									3 868 2595</a>
-							</p>
-							<p class="more_staff">
-								<a href="#">Chi tiết</a>
-							</p>
-						</div>
-						<div class="clear"></div>
-					</td>
-					<td style="width: 50%; padding-left: 20px;">
-						<div class="avatar_img">
-							<img src="../images/public/canbo_1.jpg" width="90" height="120" />
-						</div>
-						<div class="content_staff">
-							<p>
-								<a class="name_staff">GS. Châu Văn Minh</a>
-							</p>
-							<p>
-								<a class="postion_staff">Viện trưởng</a>
-							</p>
-							<p>
-								<a>Email : &nbsp;</a><a class="email_staff">cvminh@vast.ac.vn</a>
-							</p>
-							<p>
-								<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff"> (+84)
-									3 868 2595</a>
-							</p>
-							<p class="more_staff">
-								<a href="#">Chi tiết</a>
-							</p>
-						</div>
-						<div class="clear"></div>
-					</td>
-				</tr>
-
 			</table>
 			<!--End table -->
 		</form>

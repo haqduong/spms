@@ -66,11 +66,7 @@
 				<ref local="localeChangeInterceptor" />
 			</list>
 		</property>
-		<property name="mappings">
-			<map>
-				<entry key="/upload.spms" value-ref="uploadAvatarController" />
-			</map>
-		</property>
+	
 		<property name="urlMap">
 			<map>
 				<entry key="/home.spms">
@@ -96,6 +92,9 @@
 					<ref bean="guestController" />
 				</entry>
 				<entry key="/guest/donviquanly/danhsachphongban.spms">
+					<ref bean="guestController" />
+				</entry>
+				<entry key="/guest/donviquanly/xemphongban.spms">
 					<ref bean="guestController" />
 				</entry>
 				<entry key="/guest/donviquanly/nghiencuu.spms">
@@ -159,6 +158,13 @@
 				<entry key="/manager/quanly/hosocanbo.spms">
 					<ref bean="managerController" />
 				</entry>
+				<entry key="/manager/quanly/themcanbo.spms">
+					<ref bean="managerController" />
+				</entry>
+				<entry key="/manager/capnhat/xoacanbo.spms">
+					<ref bean="managerController" />
+				</entry>
+				
 				<entry key="/manager/quanly/khenthuong.spms">
 					<ref bean="managerController" />
 				</entry>
@@ -166,9 +172,6 @@
 					<ref bean="managerController" />
 				</entry>
 				<entry key="/manager/quanly/baocao.spms">
-					<ref bean="managerController" />
-				</entry>
-				<entry key="/manager/quanly/thongke.spms">
 					<ref bean="managerController" />
 				</entry>
 				<entry key="/manager/thongtin/soyeulylich.spms">
@@ -186,6 +189,18 @@
 				<entry key="/manager/thongtin/khenthuong.spms">
 					<ref bean="staffController" />
 				</entry>
+				<entry key="/manager/thongtin/khenthuong/xoakhenthuong.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/manager/thongtin/themkhenthuong.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/manager/thongtin/kyluat/xoakyluat.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/manager/thongtin/kyluat/themkyluat.spms">
+					<ref bean="staffController" />
+				</entry>
 				<entry key="/manager/thongtin/kyluat.spms">
 					<ref bean="staffController" />
 				</entry>
@@ -200,23 +215,25 @@
 				</entry>
 
 
-
-
-
-
 				<entry key="/superManager/quanly/donvi.spms">
 					<ref bean="superManagerController" />
 				</entry>
 				<entry key="/superManager/quanly/phongban.spms">
 					<ref bean="superManagerController" />
 				</entry>
+				<entry key="/superManager/quanly/xoaphongban.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/superManager/quanly/capnhatphongban.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/superManager/quanly/themphongban.spms">
+					<ref bean="superManagerController" />
+				</entry>
 				<entry key="/superManager/quanly/thongtincanbo.spms">
 					<ref bean="superManagerController" />
 				</entry>
 				<entry key="/superManager/quanly/baocao.spms">
-					<ref bean="superManagerController" />
-				</entry>
-				<entry key="/superManager/quanly/thongke.spms">
 					<ref bean="superManagerController" />
 				</entry>
 				<entry key="/superManager/thongtin/soyeulylich.spms">
@@ -282,7 +299,10 @@
 				    <ref bean="adminController"/>
 				</entry>
 
-
+				<entry key="/upload.spms">
+				    <ref bean="upload"/>
+				</entry>
+				
 			</map>
 		</property>
 	</bean>
@@ -300,6 +320,26 @@
 	</bean>
 	<bean id="uploadAvatarController" class="edu.hust.k54.controller.UploadAvatarController">
 	</bean>
+	
+	<bean id="multipartResolver"
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+	<bean id = "upload" class="edu.hust.k54.controller.FileUploadController">
+		<property name="formView" value="FileUploadForm" />
+		<property name="successView" value="FileUploadSuccess" />
+ 
+		<!-- Map a validator -->
+		<property name="validator">
+			<bean class="edu.hust.k54.controller.FileUploadValidator" />
+		</property>
+	</bean>
+ 
+ 	<!-- Register the Customer.properties -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="message" />
+	</bean>
+	
 	<bean id="localeChangeInterceptor"
 		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 		<property name="paramName" value="hl" />
