@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Quản lý cán bộ</title>
+<title>Phòng ban</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
@@ -79,91 +79,117 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>Quản lý cán bộ</h2>
+				<h2>${phongban.ten}</h2>
 			</div>
 			<div class="images">
-				<div class="button">
-					<a href="/k54/manager/quanly/themcanbo.spms?idphongban=${phongban.idphongban}">Thêm cán bộ</a>
-				</div>
-
+				<img src="${phongban.hinhanh}" width="300" height="200" />
 			</div>
 			<!--End images-->
-			<div class="clear"></div>
-			<div class="manager_staff">
-				<form>
+			<div class="contact_us">
+				<div>
 
-					<div class="list_data">
-						<div class="title_table">
-							<a> Danh sách cán bộ của phòng ${phongban.ten} </a>
-						</div>
-						<table cellspacing="0" cellpadding="0" width="100%">
-							<tr>
-								<td>
-									<table cellspacing="0" cellpadding="1" style="width: 715px">
-										<tr class="tieu_de">
-											<td style="width: 5%">STT</td>
-											<td style="width: 20%">Họ và tên</td>
-											<td style="width: 15%">Chức vụ</td>
-											<td style="width: 15%">Điện thoại</td>
-											<td style="width: 10%">Chỉnh sửa</td>
-											<td style="width: 10%">Xóa</td>
-										</tr>
-									</table>
-								</td>
-							</tr>
-							<tr>
-								<%
-									int i = 0;
-								%>
-								<td>
-									<div class="description">
-										<table cellspacing="0" cellpadding="1" style="width: 715px">
-											<c:forEach items="${phongban.soyeulyliches}" var="canbo">
-												<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
-												<c:if
-													test="${user.permission > taikhoan.permission }">
-													<tr class="row_1">
-														<td style="width: 5%"><%=++i%></td>
-														<td style="width: 20%">${canbo.hoten}</td>
-														<td style="width: 15%">${canbo.chucvu.ten}</td>
-														<td style="width: 15%">${canbo.sodienthoai}</td>
-														<td style="width: 10%"><a
-															href="/k54/staff/capnhat/thongtincanhan.spms?idcanbo=${canbo.idsoyeulylich}">Cập
-																nhật</a></td>
-														<td style="width: 10%">
-														
-																<a href="/k54/manager/capnhat/xoacanbo.spms?idcanbo=${canbo.idsoyeulylich}&deleteType=0">Xóa</a>
-																</td>
-													</tr>
-												</c:if>
-												<c:if
-													test="${user.permission <= taikhoan.permission }">
-													<tr class="row_1">
-														<td style="width: 5%"><%=++i%></td>
-														<td style="width: 20%">${canbo.hoten}</td>
-														<td style="width: 10%">${canbo.chucvu.ten}</td>
-														<td style="width: 15%">${canbo.sodienthoai}</td>
-														<td style="width: 15%">Không có quyền</td>
-														<td style="width: 10%">Không có quyền</td>
-													</tr>
-												</c:if>
-												
-												</c:forEach>
-											</c:forEach>
-										</table>
-									</div>
-								</td>
-							</tr>
-						</table>
+					<div class="title_info">
+						<span><sdivong>LIÊN HỆ</sdivong></span>
 					</div>
-					<!--End list_data-->
-					<br /> <br />
-				</form>
+
+					<div class="detail_info">Điện thoại: ${phongban.dienthoai}</div>
+
+
+					<div class="detail_info">Fax: ${phongban.fax}</div>
+
+
+					<div class="detail_info">Email: ${donvi.email}</div>
+					<br />
+
+				</div>
+			</div>
+			<!--End contact_us-->
+			<div class="clear"></div>
+			<div class="infomation">
+				<div class="title_info">THÔNG TIN CHUNG</div>
+				<div class="content_text">${phongban.thongtinchung}</div>
+				<!-- content_text -->
+					<div class="list_staff">
+		<form>
+			<table cellspacing="0" cellpadding="0" border-collapse="10px"
+				width="100%">
+				<div class="title_info">DANH SÁCH CÁN BỘ THUỘC QUẢN LÝ CỦA PHÒNG</div>
+				<br></br>
+				<c:forEach items="${phongban.soyeulyliches}" var="canbo" varStatus="count">
+					<c:if test="${(count.index % 2) == 0}">
+						<tr style="margin-bottom: 50px;">
+							<td style="width: 50%">
+								<div class="avatar_img">
+									<img src="<c:url value = "${canbo.duongdananh}"/>" width="90" height="120" />
+								</div>
+								<div class="content_staff">
+									<p>
+										<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
+									</p>
+									<p>
+										<a>Chức vụ : &nbsp;</a><a class="postion_staff">${canbo.chucvu.ten}</a>
+									</p>
+									<p>
+										<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
+											<a>Email : &nbsp;</a>
+											<a class="email_staff">${taikhoan.email} </a>
+										</c:forEach>
+	
+									</p>
+									<p>
+										<a>Điện thoại : &nbsp;</a><a class="contact_staff">${canbo.sodienthoai}</a>
+									</p>
+									<p class="more_staff">
+										<a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${canbo.idsoyeulylich}">Chi tiết</a>
+									</p>
+								</div>
+								<div class="clear"></div>
+							</td>
+					</c:if>
+					
+					<c:if test="${(count.index % 2) == 1}">
+						<td style="width: 50%; padding-left: 20px">
+								<div class="avatar_img">
+									<img src="${canbo.duongdananh}" width="90" height="120" />
+								</div>
+								<div class="content_staff">
+									<p>
+										<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
+									</p>
+									<p>
+										<a>Chức vụ : &nbsp;<a class="postion_staff">${canbo.chucvu.ten}</a>
+									</p>
+									<p>
+	
+										<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
+											<a>Email : &nbsp;</a>
+											<a class="email_staff">${taikhoan.email} </a>
+										</c:forEach>
+	
+									</p>
+									<p>
+										<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff">${canbo.sodienthoai}</a>
+									</p>
+									<p class="more_staff">
+										<a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${canbo.idsoyeulylich}">Chi tiết</a>
+									</p>
+								</div>
+								<div class="clear"></div>
+							</td>
+						</tr>
+					</c:if>
+						
+						
+				</c:forEach>
+			</table>
+			<!--End table -->
+		</form>
+	</div>
+	<!--end manager_staff -->
 			</div>
 			<!--End infomation -->
 		</div>
 		<!--End wrap_main-->
-
 <div id="wrap_right">
 	<div class="box_right">
 		<c:if test="${not empty user}">
@@ -446,3 +472,4 @@
 	<!--End wrapper -->
 </body>
 </html>
+

@@ -52,7 +52,7 @@ public class ReportController {
 			model.addAttribute("err", "File được yêu cầu không tồn tạ");
 			return "report";
 		}
-		
+
 		try {
 			String file_path = request.getRealPath("")
 					+ "/uploadContent/reports/" + report.getNoidung();
@@ -60,7 +60,8 @@ public class ReportController {
 			FileInputStream is = new FileInputStream(file_path);
 
 			OutputStream os = response.getOutputStream();
-			response.addHeader("Content-Disposition", "attachment; filename=\"" + report.getNoidung() + "\"");
+			response.addHeader("Content-Disposition", "attachment; filename=\""
+					+ report.getNoidung() + "\"");
 			IOUtils.copy(is, os);
 			response.flushBuffer();
 			return null;
@@ -69,14 +70,14 @@ public class ReportController {
 			return "report";
 		}
 	}
-	
+
 	@RequestMapping(value = "/deletereport.spms", method = RequestMethod.GET)
 	public String deleteReport(@RequestParam("id") int id,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) throws IOException {
 		Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
 				.getAttribute("user");
-		
+
 		if (account == null) {
 			model.addAttribute("err", NOT_ENOUGH_PERMISSION);
 			return "report";
@@ -120,20 +121,25 @@ public class ReportController {
 		if (account == null || account.getPermission() < 2) {
 			return "errorPage";
 		}
+		Integer iduser = account.getIduser();
+		TaikhoandangnhapHome tk_ds = new TaikhoandangnhapHome();
+		request.getSession().removeAttribute("user");
+		request.getSession().setAttribute("user", tk_ds.findById(iduser));
 		String flash = (String) request.getSession().getAttribute("flash");
 		if (flash != null) {
 			model.addAttribute("flash", flash);
 			request.getSession().removeAttribute("flash");
 		}
 		Integer idcanbo = account.getIduser();
-		System.err.println("idcanbo: " + idcanbo);
-		List <Baocao> baocaos = new ArrayList<Baocao>();
+//		System.err.println("idcanbo: " + idcanbo);
+		List<Baocao> baocaos = new ArrayList<Baocao>();
 		Soyeulylich soyeulylich = account.getSoyeulylich();
-		(new SoyeulylichHome()).attachDirty(soyeulylich);
-		List <Baocao> list = man.getLowerPermission(idcanbo);
+		SoyeulylichHome temp_ds = new SoyeulylichHome();
+		temp_ds.attachDirty(soyeulylich);
+		temp_ds.getSessionFactory().getCurrentSession().flush();
+		List<Baocao> list = man.getLowerPermission(idcanbo);
 		baocaos.addAll(list);
 		BaocaoHome ds = new BaocaoHome();
-		System.out.println(baocaos.size());
 		model.addAttribute("report_list", baocaos);
 
 		return "report";

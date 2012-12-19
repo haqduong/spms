@@ -11,24 +11,22 @@
 
 			<div class="row_dv">
 				<div class="avatar_dv">
-					<img src="${phongban.hinhanh}" width="200" height="150" />
+					<img src="<c:url value = "${phongban.hinhanh}"/>"
+			width="200" height="150" />
 				</div>
 				<div class="content_dv">
 					<p class="name_dv">
 						<a>${phongban.ten}</a>
 					</p>
 					<p class="addr_dv">
-						<a><b> Trụ sở &nbsp:</b> ${donvi.diachitruso}</a>
+						<a><b> Điện thoại &nbsp:</b> ${phongban.dienthoai}</a>
 					</p>
 					<p class="addr_dv">
-						<a><b> Điện thoại &nbsp:</b> ${donvi.dienthoai}</a>
-					</p>
-					<p class="addr_dv">
-						<a> <b>Fax &nbsp:</b> ${donvi.fax}
+						<a> <b>Fax &nbsp:</b> ${phongban.fax}
 						</a>
 					</p>
 					<p class="more_dv">
-						<a>Xem chi tiết</a>
+						<a href="/k54/guest/donviquanly/xemphongban.spms?idphongban=${phongban.idphongban}">Xem chi tiết</a>
 					</p>
 				</div>
 				<div class="clear"></div>

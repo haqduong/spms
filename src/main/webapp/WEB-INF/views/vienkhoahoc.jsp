@@ -104,8 +104,16 @@
 
 
 					<div class="detail_info">Email: ${donvi.email}</div>
-					<br />
-
+					<br/>
+					<div class="title_info">
+						<span><sdivong>Viện Trưởng</sdivong></span>
+					</div>
+					<div class="detail_info"><p class="more_staff"> <a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${vientruong.idsoyeulylich}"> ${vientruong.hocvi.ten}.${vientruong.hoten}</a></p></div>
+					<br>
+					<div class="title_info">
+						<span><sdivong>Phó Viện Trưởng</sdivong></span>
+					</div>
+					<div class="detail_info"><p class="more_staff"> <a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${vienpho.idsoyeulylich}"> ${vienpho.hocvi.ten}.${vientruong.hoten}</a></p></div>
 				</div>
 			</div>
 			<!--End contact_us-->

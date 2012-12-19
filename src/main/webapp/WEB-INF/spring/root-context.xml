@@ -94,6 +94,9 @@
 				<entry key="/guest/donviquanly/danhsachphongban.spms">
 					<ref bean="guestController" />
 				</entry>
+				<entry key="/guest/donviquanly/xemphongban.spms">
+					<ref bean="guestController" />
+				</entry>
 				<entry key="/guest/donviquanly/nghiencuu.spms">
 					<ref bean="guestController" />
 				</entry>
@@ -158,6 +161,10 @@
 				<entry key="/manager/quanly/themcanbo.spms">
 					<ref bean="managerController" />
 				</entry>
+				<entry key="/manager/capnhat/xoacanbo.spms">
+					<ref bean="managerController" />
+				</entry>
+				
 				<entry key="/manager/quanly/khenthuong.spms">
 					<ref bean="managerController" />
 				</entry>
@@ -200,6 +207,15 @@
 					<ref bean="superManagerController" />
 				</entry>
 				<entry key="/superManager/quanly/phongban.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/superManager/quanly/xoaphongban.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/superManager/quanly/capnhatphongban.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/superManager/quanly/themphongban.spms">
 					<ref bean="superManagerController" />
 				</entry>
 				<entry key="/superManager/quanly/thongtincanbo.spms">

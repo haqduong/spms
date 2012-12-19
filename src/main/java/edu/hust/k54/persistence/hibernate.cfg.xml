@@ -9,6 +9,7 @@
 		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/spms</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
 		<property name="hibernate.session_factory_name">SessionFactory</property>
+		<property name="hibernate.show_sql">true</property>
 
 		<mapping resource="edu/hust/k54/persistence/Capuy.hbm.xml" />
 		<mapping resource="edu/hust/k54/persistence/Chucvu.hbm.xml" />
