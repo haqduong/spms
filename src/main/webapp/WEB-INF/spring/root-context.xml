@@ -247,7 +247,30 @@
 				<entry key="/admin/contact.spms">
 					<ref bean="adminController" />
 				</entry>
-
+				<entry key="/admin/logsystem.spms">
+				    <ref bean="adminController"/>
+				</entry>
+				<entry key="/admin/updatesalary.spms">
+				    <ref bean="adminController"/>
+				</entry>
+				<entry key="/admin/updatechucvu.spms">
+				    <ref bean="adminController"/>
+				</entry>
+				<entry key="/admin/updatehocham.spms">
+				    <ref bean="adminController"/>
+				</entry>
+				<entry key="/admin/updatehocvi.spms">
+				    <ref bean="adminController"/>
+				</entry>
+				<entry key="/admin/phanquyen.spms">
+				    <ref bean="adminController"/>
+				</entry>
+				<entry key="/admin/taotaikhoan.spms">
+				    <ref bean="adminController"/>
+				</entry>
+				<entry key="/admin/duyettaikhoan.spms">
+				    <ref bean="adminController"/>
+				</entry>
 
 
 			</map>

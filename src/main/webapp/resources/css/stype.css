@@ -142,7 +142,7 @@ ul,ol         { list-style:none; }
 /*.header-row-1 ul li:first-child {background:none;}*/
 .header-row-1 ul li {
     display: block;
-    height: 40px; 
+    height: 40px;
     line-height: 40px; 
     float:left; 
     position: relative;
@@ -173,6 +173,7 @@ ul,ol         { list-style:none; }
 }
 
 .header-row-1  ul li ul li {
+	height:auto;
 	padding: 0px;
 	border-bottom: 1px solid #ccdfdf;
 	width: 100%;
