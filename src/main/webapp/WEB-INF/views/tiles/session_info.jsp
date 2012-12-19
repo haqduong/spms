@@ -80,9 +80,6 @@
 								href="/k54/staff/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý
 									lịch khoa học</a></li>
 							<li><a
-								href="/k54/staff/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá
-									trình công tác</a></li>
-							<li><a
 								href="/k54/staff/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn
 									biến lương</a></li>
 							<li><a
@@ -172,9 +169,6 @@
 								href="/k54/manager/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý
 									lịch khoa học</a></li>
 							<li><a
-								href="/k54/manager/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá
-									trình công tác</a></li>
-							<li><a
 								href="/k54/manager/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn
 									biến lương</a></li>
 							<li><a
@@ -262,9 +256,6 @@
 							<li><a
 								href="/k54/superManager/thongtin/lylichkhoahoc.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Lý
 									lịch khoa học</a></li>
-							<li><a
-								href="/k54/superManager/thongtin/quatrinhcongtac.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Quá
-									trình công tác</a></li>
 							<li><a
 								href="/k54/superManager/thongtin/dienbienluong.spms?idcanbo=${user.soyeulylich.idsoyeulylich}">Diễn
 									biến lương</a></li>
