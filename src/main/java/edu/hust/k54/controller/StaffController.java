@@ -77,7 +77,7 @@ public class StaffController implements Controller {
 			if (arg0.getParameter("idcanbo") != null) {
 				idcanbo = Integer.parseInt(arg0.getParameter("idcanbo"));
 				Taikhoandangnhap curentUser = (Taikhoandangnhap) soyeulylichHome
-						.findById(idcanbo).getTaikhoandangnhaps().toArray()[0];
+						.findById(idcanbo).getTaikhoandangnhaps();
 				if ((taikhoandangnhap.getSoyeulylich().getIdsoyeulylich() != idcanbo)
 						&& (taikhoandangnhap.getPermission() <= curentUser
 								.getPermission())) {
