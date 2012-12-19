@@ -36,7 +36,10 @@ public class SuperManagerController implements Controller {
 			Integer iddonvi = null;
 			if (arg0.getParameter("iddonvi") != null) {
 				iddonvi = Integer.parseInt(arg0.getParameter("iddonvi"));
-				if(taikhoandangnhap.getSoyeulylich().getPhongban().getDonviquanly().getIddonviquanly() != iddonvi){
+				PhongbanHome phongbanHome = new PhongbanHome();
+				Phongban phongban = taikhoandangnhap.getSoyeulylich().getPhongban();
+				phongbanHome.attachDirty(phongban);
+				if(phongban.getDonviquanly().getIddonviquanly() != iddonvi){
 					modelAndView = new ModelAndView("errorPage");
 					return modelAndView;
 				}
@@ -85,7 +88,7 @@ public class SuperManagerController implements Controller {
 					Integer idphongban = Integer.parseInt(arg0.getParameter("idphongban"));
 					
 					System.out.println("Phong ban + " + idphongban);
-					PhongbanHome phongbanHome = new PhongbanHome();
+					phongbanHome = new PhongbanHome();
 					phongbanHome.delete(phongbanHome.findById(idphongban));
 					phongbanHome.getSessionFactory().getCurrentSession().flush();
 					Donviquanly donvi= donviquanlyHome.findById(iddonvi);
