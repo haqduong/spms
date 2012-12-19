@@ -70,7 +70,7 @@ public class UploadAvatarController {
 		try {
 			MultipartFile file = uploadItem.getFileData();
 			String fileName = null;
-
+			System.out.println(file);
 			if (file.getSize() > 0) {
 				sIn = file.getInputStream();
 				System.out.println("Size: " + file.getSize());

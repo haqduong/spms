@@ -272,7 +272,10 @@
 				    <ref bean="adminController"/>
 				</entry>
 
-
+				<entry key="/upload.spms">
+				    <ref bean="upload"/>
+				</entry>
+				
 			</map>
 		</property>
 	</bean>
@@ -290,6 +293,26 @@
 	</bean>
 	<bean id="uploadAvatarController" class="edu.hust.k54.controller.UploadAvatarController">
 	</bean>
+	
+	<bean id="multipartResolver"
+	class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+	<bean id = "upload" class="edu.hust.k54.controller.FileUploadController">
+		<property name="formView" value="FileUploadForm" />
+		<property name="successView" value="FileUploadSuccess" />
+ 
+		<!-- Map a validator -->
+		<property name="validator">
+			<bean class="edu.hust.k54.controller.FileUploadValidator" />
+		</property>
+	</bean>
+ 
+ 	<!-- Register the Customer.properties -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="message" />
+	</bean>
+	
 	<bean id="localeChangeInterceptor"
 		class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
 		<property name="paramName" value="hl" />

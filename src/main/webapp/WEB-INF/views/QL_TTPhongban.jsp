@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,6 +83,19 @@
 				<h2>Thông tin phòng ${phongban.ten} - ${phongban.donviquanly.ten}</h2>
 			</div>
 			<div class="clear"></div>
+			<img width="96" height="50"
+								src="<c:url value="${phongban.hinhanh}"/>" />
+			<form:form action="/k54/upload.spms" method="POST" commandName="fileUploadForm"
+				enctype="multipart/form-data">
+
+				<form:errors path="*" cssClass="errorblock" element="div" />
+
+				<input type="file" name="file" />
+				<input type="hidden" name="type" value="manager">
+				<input type="submit" value="managerUpload" />
+				<span><form:errors path="file" cssClass="error" /></span>
+
+			</form:form>
 			<div class="infomation_staff">
 				<form name="edit_staff" action="#" method="POST">
 
@@ -106,12 +120,6 @@
 						<tr>
 							<td class="list">Thông tin chung</td>
 							<td class="list_ret"><textarea id="thongtinchung" name="thongtinchung"> ${phongban.thongtinchung}</textarea>(*)</td>
-						</tr>
-						<tr>
-							<td class="list">Avatar</td>
-							<td class="list_ret"><img width="96" height="50"
-								src="../images/public/vientoanhoc.jpg" /> <br /> <input
-								type="button" name="upload" value="upload" /></td>
 						</tr>
 					</table>
 					<h3>${result}</h3>

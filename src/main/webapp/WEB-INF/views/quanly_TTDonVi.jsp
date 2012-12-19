@@ -82,6 +82,19 @@
 				<h2>Quản lý thông tin đơn vị - ${donvi.ten}</h2>
 			</div>
 			<div class="clear"></div>
+			<img width="96" height="50"
+								src="<c:url value="${phongban.duongdananh}"/>" />
+			<form:form action="/k54/upload.spms" method="POST" commandName="fileUploadForm"
+				enctype="multipart/form-data">
+
+				<form:errors path="*" cssClass="errorblock" element="div" />
+
+				<input type="file" name="file" />
+				<input type="hidden" name="type" value="supermanager">
+				<input type="submit" value="managerUpload" />
+				<span><form:errors path="file" cssClass="error" /></span>
+
+			</form:form>
 			<div class="infomation_staff">
 				<form name="edit_staff" action="#" method="POST">
 
@@ -130,12 +143,6 @@
 						<tr>
 							<td class="list">Fax</td>
 							<td class="list_ret"><input onkeydown="checkFax()" id = "fax" name="fax" type="text" value="${donvi.fax}" />(*)</td>
-						</tr>
-						<tr>
-							<td class="list">Avatar</td>
-							<td class="list_ret"><img width="96" height="50"
-								src="${donvi.duongdananh}" /> <br /> <input
-								type="button" name="upload" value="upload" /></td>
 						</tr>
 					</table>
 					<h3>${result}</h3>
