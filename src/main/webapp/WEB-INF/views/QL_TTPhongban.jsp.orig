@@ -1,12 +1,17 @@
+<<<<<<< HEAD
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<tiles:insertDefinition name="QL_TTPhongban.spms" />
+=======
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Quản lý thông tin đơn vị</title>
+<title>Quản lý thông tin phòng ban</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
@@ -21,7 +26,7 @@
 				<h1 class="stitle_web">Viện khoa học và công nghệ Việt Nam</h1>
 			</div>
 			<!--End banner_header -->
-<div id="nav_menu">
+			<div id="nav_menu">
 				<div class="header-row-1">
 					<ul>
 						<li><a
@@ -81,22 +86,19 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>Quản lý thông tin đơn vị - ${donvi.ten}</h2>
+				<h2>Thông tin phòng ${phongban.ten} - ${phongban.donviquanly.ten}</h2>
 			</div>
 			<div class="clear"></div>
 			<img width="96" height="50"
-								src="<c:url value="${donvi.duongdananh}"/>" />
-			<c:if test="${not empty error}">
-			${error }
-			</c:if>
+								src="<c:url value="${phongban.hinhanh}"/>" />
 			<form:form action="/k54/upload.spms" method="POST" commandName="fileUploadForm"
 				enctype="multipart/form-data">
 
 				<form:errors path="*" cssClass="errorblock" element="div" />
 
 				<input type="file" name="file" />
-				<input type="hidden" name="type" value="supermanager">
-				<input type="submit" value="superManagerUpload" />
+				<input type="hidden" name="type" value="manager">
+				<input type="submit" value="managerUpload" />
 				<span><form:errors path="file" cssClass="error" /></span>
 
 			</form:form>
@@ -106,53 +108,29 @@
 					<table border="0" bgcolor="#fff" align="center" id="info"
 						style="width: 100%">
 						<tr>
-							<td class="list">Tên đơn vị</td>
+							<td class="list">Tên phòng ban</td>
 							<td class="list_ret" width="70%"><input type="text"
-								name="tendonvi" id="tendonvi" size="60" height="25" value="${donvi.ten}" />(*)</td>
+								id ="tenphong" name="tenphong" size="60" height="25" value="${phongban.ten}" />(*)</td>
 						</tr>
 						<tr>
-							<td class="list">Nhiệm vụ</td>
-							<td class="list_ret"><textarea id ="nhiemvu" name="nhiemvu">${donvi.nhiemvu}</textarea></td>
-						</tr>
-						<tr>
-							<td class="list">Chức năng</td>
-							<td class="list_ret"><textarea id ="chucnang" name="chucnang">${donvi.chucnang}</textarea></td>
-						</tr>
-						<tr>
-							<td class="list">Hoạt động thường xuyên</td>
-							<td class="list_ret"><textarea id= "hoatdongthuongquyen" name="hoatdongthuongxuyen">${donvi.hoatdongthuongxuyen}</textarea>
-							</td>
-						</tr>
-
-						<tr>
-							<td class="list">Thành tựu</td>
-							<td class="list_ret"><textarea id ="thanhtuu" name="thanhtuu">${donvi.thanhtuu}</textarea></td>
-						</tr>
-						<tr>
-							<td class="list">Thông tin khác</td>
-							<td class="list_ret"><textarea id = "thongtinkhac" name="thongtinkhac">${donvi.thongtinkhac}</textarea>
-							</td>
-						</tr>
-						<tr>
-							<td class="list">Địa chỉ trụ sở</td>
-							<td class="list_ret"><input id = "diachitruso" name="diachitruso" type="text" value="${donvi.diachitruso}" />(*)</td>
-						</tr>
-						<tr>
-							<td class="list">Điện thoại</td>
-							<td class="list_ret"><input onkeydown="checkPhone()" id="dienthoai" name="dienthoai" type="tel" value="${donvi.dienthoai}" />(*)</td>
-						</tr>
-						<tr>
-							<td class="list">Email</td>
-							<td class="list_ret"><input id ="email" name="email" type="email" value="${donvi.email}" />(*)</td>
+							<td class="list">Điện thọai</td>
+							<td class="list_ret"><input id = "sodienthoai" onkeydown="checkPhone()" type="text" name="dienthoai"
+								size="60" height="25" value="${phongban.dienthoai}" />(*)</td>
 						</tr>
 						<tr>
 							<td class="list">Fax</td>
-							<td class="list_ret"><input onkeydown="checkFax()" id = "fax" name="fax" type="text" value="${donvi.fax}" />(*)</td>
+							<td class="list_ret"><input type="text" id = "fax" onkeydown="checkFax()" name="fax"
+								size="60" height="25" value="${phongban.fax}" />(*)</td>
+						</tr>
+
+						<tr>
+							<td class="list">Thông tin chung</td>
+							<td class="list_ret"><textarea id="thongtinchung" name="thongtinchung"> ${phongban.thongtinchung}</textarea>(*)</td>
 						</tr>
 					</table>
 					<h3>${result}</h3>
 					<div style="text-align: center; margin-top: 20px;">
-						<input onclick="checkSubmit()" class="button" name="update" value="Cập nhật" />
+						<input onclick="checkSubmit()" class="button"  name="update" value="Cập nhật" />
 					</div>
 				</form>
 			</div>
@@ -160,11 +138,6 @@
 
 		</div>
 		<!--End wrap_main-->
-
-
-
-
-
 
 
 <div id="wrap_right">
@@ -447,28 +420,27 @@
 		<!--End wrap_footer-->
 	</div>
 	<!--End wrapper -->
-	
-		<script type="text/javascript">
+	<script type="text/javascript">
 		function checkPhone() {
 			var digits = "0123456789.)(+";
-			var sohieucongchuc = document.getElementById("dienthoai").value;
+			var sohieucongchuc = document.getElementById("sodienthoai").value;
 			for ( var i = 0; i < sohieucongchuc.length; i++) {
 				temp = sohieucongchuc.substring(i, i + 1);
 				if (digits.indexOf(temp) == -1) {
 					alert("Số điện thoại không hợp lệ, số điện thoại chỉ bao gồm chữ số hoặc mã vùng, mã quốc gia (+84)..");
-					document.getElementById("dienthoai").value = "";
+					document.getElementById("sodienthoai").value = "";
 				}
 			}
 		}
 
 		function checkSubmit() {
-			var tendonvi =document.getElementById("tendonvi").value;
-			var diachitruso = document.getElementById("diachitruso").value;
-			var dienthoai = document.getElementById("dienthoai").value;
-			var email = document.getElementById("email").value;
-			var fax = document.getElementById("fax").value;
-			if (tendonvi == "" || dienthoai == "" || email =="" ||diachitruso==""||fax=="") {
-				alert("Không được để trống các mục bắt buộc (*), xin kiểm tra lại");
+			var ten = document.getElementById("tenphong").value;
+			var sohieucongchuc = document.getElementById("thongtinchung").value;
+			var CMT = document.getElementById("fax").value;
+			var sodienthoai = document.getElementById("sodienthoai").value;
+			if (ten == "" || sohieucongchuc == ""
+					|| CMT == "" || sodienthoai == "") {
+				alert("Không được để trống các mục bắt buộc - có dấu (*)");
 			} else {
 				document.forms["edit_staff"].submit();
 			}
@@ -488,3 +460,4 @@
 	</script>
 </body>
 </html>
+>>>>>>> nguyendam/master

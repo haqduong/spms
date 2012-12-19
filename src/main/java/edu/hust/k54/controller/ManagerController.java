@@ -294,7 +294,7 @@ public class ManagerController implements Controller {
 					modelAndView.addObject("kyluat", kyluat);
 				} else if (uri.contains("quanly/baocao")) {
 					Phongban phongban = phongbanHome.findById(idphongban);
-					modelAndView = new ModelAndView("thongke_baocao");
+					modelAndView = new ModelAndView("report.spms");
 					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
 							0, null);
 					modelAndView.addObject("donviquanly", donviquanly);

@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -22,15 +25,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
+
+import edu.hust.k54.model.UploadItem;
 import edu.hust.k54.persistence.Baocao;
 import edu.hust.k54.persistence.BaocaoHome;
 import edu.hust.k54.persistence.Soyeulylich;
+import edu.hust.k54.persistence.SoyeulylichHome;
 import edu.hust.k54.persistence.Taikhoandangnhap;
+import edu.hust.k54.persistence.TaikhoandangnhapHome;
 
 @Controller
 public class ReportController {
 	private static String NOT_ENOUGH_PERMISSION = "Không đủ quyền xem file này";
-	private static String NOT_ENOUGH_PERMISSION_TO_VIEW = "Không đủ quyền xem trang này";
+	private static String NOT_ENOUGH_PERMISSION_TO_VIEW = "Không đủ quyền xem trang nà";
 
 	@RequestMapping(value = "/showreport.spms", method = RequestMethod.GET)
 	public String getReport(@RequestParam("id") int id,
@@ -47,19 +54,8 @@ public class ReportController {
 		Baocao report = ds.findById(id);
 
 		if (report == null) {
-			model.addAttribute("err", "File được yêu cầu không tồn tại");
+			model.addAttribute("err", "File được yêu cầu không tồn tạ");
 			return "report";
-		}
-
-		if (!report.getSoyeulylich().getIdsoyeulylich()
-				.equals(account.getSoyeulylich().getIdsoyeulylich())) {
-			Manager man = new Manager();
-			ArrayList<Soyeulylich> list = man.getLowerPermission(account
-					.getSoyeulylich().getIdsoyeulylich());
-			if (!list.contains(report.getSoyeulylich())) {
-				model.addAttribute("err", NOT_ENOUGH_PERMISSION_TO_VIEW);
-				return "report";
-			}
 		}
 
 		try {
@@ -69,7 +65,8 @@ public class ReportController {
 			FileInputStream is = new FileInputStream(file_path);
 
 			OutputStream os = response.getOutputStream();
-			response.addHeader("Content-Disposition", "attachment; filename=\"" + report.getNoidung() + "\"");
+			response.addHeader("Content-Disposition", "attachment; filename=\""
+					+ report.getNoidung() + "\"");
 			IOUtils.copy(is, os);
 			response.flushBuffer();
 			return null;
@@ -78,14 +75,14 @@ public class ReportController {
 			return "report";
 		}
 	}
-	
+
 	@RequestMapping(value = "/deletereport.spms", method = RequestMethod.GET)
 	public String deleteReport(@RequestParam("id") int id,
 			HttpServletRequest request, HttpServletResponse response,
 			Model model) throws IOException {
 		Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
 				.getAttribute("user");
-		
+
 		if (account == null) {
 			model.addAttribute("err", NOT_ENOUGH_PERMISSION);
 			return "report";
@@ -95,19 +92,8 @@ public class ReportController {
 		Baocao report = ds.findById(id);
 
 		if (report == null) {
-			model.addAttribute("err", "File không tồn tại");
+			model.addAttribute("err", "File được yêu cầu không tồn tại");
 			return "report";
-		}
-
-		if (!report.getSoyeulylich().getIdsoyeulylich()
-				.equals(account.getSoyeulylich().getIdsoyeulylich())) {
-			Manager man = new Manager();
-			ArrayList<Soyeulylich> list = man.getLowerPermission(account
-					.getSoyeulylich().getIdsoyeulylich());
-			if (!list.contains(report.getSoyeulylich())) {
-				model.addAttribute("err", NOT_ENOUGH_PERMISSION_TO_VIEW);
-				return "report";
-			}
 		}
 
 		try {
@@ -137,28 +123,42 @@ public class ReportController {
 		Manager man = new Manager();
 		Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
 				.getAttribute("user");
-		if (account == null) {
-			model.addAttribute("err", NOT_ENOUGH_PERMISSION_TO_VIEW);
-			return "report";
+		if (account == null || account.getPermission() < 2) {
+			return "errorPage";
 		}
+		Integer iduser = account.getIduser();
+		TaikhoandangnhapHome tk_ds = new TaikhoandangnhapHome();
+		request.getSession().removeAttribute("user");
+		account = tk_ds.findById(iduser);
+		request.getSession().setAttribute("user", account);
 		String flash = (String) request.getSession().getAttribute("flash");
 		if (flash != null) {
 			model.addAttribute("flash", flash);
 			request.getSession().removeAttribute("flash");
 		}
+		
+		model.addAttribute(new UploadItem());
+		
 		Integer idcanbo = account.getIduser();
-		System.err.println("idcanbo: " + idcanbo);
-		ArrayList<Soyeulylich> list = man.getLowerPermission(idcanbo);
-		if (list == null)
-			list = new ArrayList<Soyeulylich>();
-		list.add(account.getSoyeulylich());
-
+		List<Baocao> baocaos = new ArrayList<Baocao>();
+		Soyeulylich soyeulylich = account.getSoyeulylich();
+		SoyeulylichHome temp_ds = new SoyeulylichHome();
+		temp_ds.attachDirty(soyeulylich);
+		temp_ds.getSessionFactory().getCurrentSession().flush();
+		List<Baocao> list = man.getLowerPermission(idcanbo);
+		Collections.sort(list,
+				new Comparator<Baocao> (){
+					@Override
+					public int compare(Baocao arg0, Baocao arg1) {
+						return - arg0.getNgaylap().compareTo(arg1.getNgaylap());
+					}
+		});
+		baocaos.addAll(list);
 		BaocaoHome ds = new BaocaoHome();
-		List<Soyeulylich> reportList = ds.findBySoyeulylichs(list);
-		model.addAttribute("report_list", reportList);
-		System.err.println("list: " + reportList);
+		model.addAttribute("report_list", baocaos);
 
 		return "report";
 	}
 
 }
+

@@ -208,7 +208,7 @@
 								href="/k54/superManager/quanly/thongtincanbo.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Quản
 									lý thông tin cán bộ</a></li>
 							<li><a
-								href="/k54/superManager/quanly/baocao.spms?iddonvi=${user.soyeulylich.donviquanly.iddonviquanly}">Báo
+								href="/k54/report.spms">Báo
 									cáo</a></li>
 						</ul>
 					</div>

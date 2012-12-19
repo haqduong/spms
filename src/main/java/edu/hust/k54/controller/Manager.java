@@ -1,8 +1,10 @@
 package edu.hust.k54.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
+import edu.hust.k54.persistence.Baocao;
 import edu.hust.k54.persistence.Donviquanly;
 import edu.hust.k54.persistence.DonviquanlyHome;
 import edu.hust.k54.persistence.Hesoluong;
@@ -23,8 +25,8 @@ public class Manager {
 	private static final Integer MANAGER_PERMISSION = 2;
 	private static final Integer SUPER_MANAGER_PERMISSION = 3;
 
-	public ArrayList<Soyeulylich> getLowerPermission(Integer idcanbo) {
-		ArrayList<Soyeulylich> output = new ArrayList<Soyeulylich>();
+	public List <Baocao> getLowerPermission(Integer idcanbo) {
+		List<Baocao> output = new ArrayList<Baocao>();
 		SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
 		Soyeulylich soyeulylich = soyeulylichHome.findById(idcanbo);
 		if (soyeulylich != null) {
@@ -37,27 +39,26 @@ public class Manager {
 				Phongban phongban = soyeulylich.getPhongban();
 				Set<Soyeulylich> listStaff = phongban.getSoyeulyliches();
 				for (Soyeulylich staff : listStaff) {
-					if (((Taikhoandangnhap) staff.getTaikhoandangnhaps()
-							.iterator().next()).getPermission() < currenPermission) {
-						output.add(staff);
-					}
+					output.addAll(staff.getBaocaos());
 				}
 				return output;
 			} else if (currenPermission == SUPER_MANAGER_PERMISSION) {
+				DonviquanlyHome donviquanlyHome = new DonviquanlyHome();
 				Donviquanly donviquanly = soyeulylich.getDonviquanly();
+				donviquanlyHome.attachDirty(donviquanly);
 				Set<Phongban> listPhongBan = donviquanly.getPhongbans();
+				System.out.println("pb" + listPhongBan.size());
 				for (Phongban phongban : listPhongBan) {
 					Set<Soyeulylich> listStaff = phongban.getSoyeulyliches();
 					for (Soyeulylich staff : listStaff) {
-						if (((Taikhoandangnhap) staff.getTaikhoandangnhaps()
-								.iterator().next()).getPermission() < currenPermission) {
-							output.add(staff);
+						output.addAll(staff.getBaocaos());
+						System.out.println(output.size());
+						
 						}
 					}
 				}
 				return output;
 			}
-		}
 		return null;
 	}
 
