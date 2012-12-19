@@ -100,7 +100,8 @@ public class UploadReportController {
 				}
 				sOut.close();
 				sIn.close();
-
+				
+				
 				Baocao report = new Baocao(account.getSoyeulylich(), name, now,
 						fileName);
 				BaocaoHome ds = new BaocaoHome();

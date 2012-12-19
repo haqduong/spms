@@ -25,12 +25,14 @@ import org.springframework.ui.Model;
 import edu.hust.k54.persistence.Baocao;
 import edu.hust.k54.persistence.BaocaoHome;
 import edu.hust.k54.persistence.Soyeulylich;
+import edu.hust.k54.persistence.SoyeulylichHome;
 import edu.hust.k54.persistence.Taikhoandangnhap;
+import edu.hust.k54.persistence.TaikhoandangnhapHome;
 
 @Controller
 public class ReportController {
 	private static String NOT_ENOUGH_PERMISSION = "Không đủ quyền xem file này";
-	private static String NOT_ENOUGH_PERMISSION_TO_VIEW = "Không đủ quyền xem trang này";
+	private static String NOT_ENOUGH_PERMISSION_TO_VIEW = "Không đủ quyền xem trang nà";
 
 	@RequestMapping(value = "/showreport.spms", method = RequestMethod.GET)
 	public String getReport(@RequestParam("id") int id,
@@ -47,21 +49,10 @@ public class ReportController {
 		Baocao report = ds.findById(id);
 
 		if (report == null) {
-			model.addAttribute("err", "File được yêu cầu không tồn tại");
+			model.addAttribute("err", "File được yêu cầu không tồn tạ");
 			return "report";
 		}
-
-		if (!report.getSoyeulylich().getIdsoyeulylich()
-				.equals(account.getSoyeulylich().getIdsoyeulylich())) {
-			Manager man = new Manager();
-			ArrayList<Soyeulylich> list = man.getLowerPermission(account
-					.getSoyeulylich().getIdsoyeulylich());
-			if (!list.contains(report.getSoyeulylich())) {
-				model.addAttribute("err", NOT_ENOUGH_PERMISSION_TO_VIEW);
-				return "report";
-			}
-		}
-
+		
 		try {
 			String file_path = request.getRealPath("")
 					+ "/uploadContent/reports/" + report.getNoidung();
@@ -95,19 +86,8 @@ public class ReportController {
 		Baocao report = ds.findById(id);
 
 		if (report == null) {
-			model.addAttribute("err", "File không tồn tại");
+			model.addAttribute("err", "File được yêu cầu không tồn tại");
 			return "report";
-		}
-
-		if (!report.getSoyeulylich().getIdsoyeulylich()
-				.equals(account.getSoyeulylich().getIdsoyeulylich())) {
-			Manager man = new Manager();
-			ArrayList<Soyeulylich> list = man.getLowerPermission(account
-					.getSoyeulylich().getIdsoyeulylich());
-			if (!list.contains(report.getSoyeulylich())) {
-				model.addAttribute("err", NOT_ENOUGH_PERMISSION_TO_VIEW);
-				return "report";
-			}
 		}
 
 		try {
@@ -137,9 +117,8 @@ public class ReportController {
 		Manager man = new Manager();
 		Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
 				.getAttribute("user");
-		if (account == null) {
-			model.addAttribute("err", NOT_ENOUGH_PERMISSION_TO_VIEW);
-			return "report";
+		if (account == null && account.getPermission() < 2) {
+			return "errorPage";
 		}
 		String flash = (String) request.getSession().getAttribute("flash");
 		if (flash != null) {
@@ -148,15 +127,14 @@ public class ReportController {
 		}
 		Integer idcanbo = account.getIduser();
 		System.err.println("idcanbo: " + idcanbo);
-		ArrayList<Soyeulylich> list = man.getLowerPermission(idcanbo);
-		if (list == null)
-			list = new ArrayList<Soyeulylich>();
-		list.add(account.getSoyeulylich());
-
+		List <Baocao> baocaos = new ArrayList<Baocao>();
+		Soyeulylich soyeulylich = account.getSoyeulylich();
+		(new SoyeulylichHome()).attachDirty(soyeulylich);
+		List <Baocao> list = man.getLowerPermission(idcanbo);
+		baocaos.addAll(list);
 		BaocaoHome ds = new BaocaoHome();
-		List<Soyeulylich> reportList = ds.findBySoyeulylichs(list);
-		model.addAttribute("report_list", reportList);
-		System.err.println("list: " + reportList);
+		System.out.println(baocaos.size());
+		model.addAttribute("report_list", baocaos);
 
 		return "report";
 	}
