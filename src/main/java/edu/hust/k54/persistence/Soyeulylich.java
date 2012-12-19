@@ -43,6 +43,7 @@ public class Soyeulylich implements java.io.Serializable {
 	private Date ngaycapnhat;
 	private String suckhoe;
 	private String ngonngubiet;
+	private Taikhoandangnhap taikhoandangnhaps;
 	private Set quatrinhnghiencuus = new HashSet(0);
 	private Set dienbienphucaps = new HashSet(0);
 	private Set kyluats = new HashSet(0);
@@ -52,7 +53,6 @@ public class Soyeulylich implements java.io.Serializable {
 	private Set baocaos = new HashSet(0);
 	private Set khenthuongs = new HashSet(0);
 	private Set dienbienhochams = new HashSet(0);
-	private Set taikhoandangnhaps = new HashSet(0);
 	private Lylichkhoahoc lylichkhoahoc;
 	private Set sachxuatbans = new HashSet(0);
 
@@ -77,7 +77,7 @@ public class Soyeulylich implements java.io.Serializable {
 			String ngonngubiet, Set quatrinhnghiencuus, Set dienbienphucaps,
 			Set kyluats, Set dienbienhocvis, Set quatrinhdinuocngoais,
 			Set dienbienluongs, Set baocaos, Set khenthuongs,
-			Set dienbienhochams, Set taikhoandangnhaps,
+			Set dienbienhochams, Taikhoandangnhap taikhoandangnhaps,
 			Lylichkhoahoc lylichkhoahoc, Set sachxuatbans) {
 		this.capuy = capuy;
 		this.phongban = phongban;
@@ -488,11 +488,11 @@ public class Soyeulylich implements java.io.Serializable {
 		this.dienbienhochams = dienbienhochams;
 	}
 
-	public Set getTaikhoandangnhaps() {
+	public Taikhoandangnhap getTaikhoandangnhaps() {
 		return this.taikhoandangnhaps;
 	}
 
-	public void setTaikhoandangnhaps(Set taikhoandangnhaps) {
+	public void setTaikhoandangnhaps(Taikhoandangnhap taikhoandangnhaps) {
 		this.taikhoandangnhaps = taikhoandangnhaps;
 	}
 

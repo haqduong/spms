@@ -31,7 +31,7 @@ public class Manager {
 		Soyeulylich soyeulylich = soyeulylichHome.findById(idcanbo);
 		if (soyeulylich != null) {
 			Taikhoandangnhap taikhoandangnhap = (Taikhoandangnhap) soyeulylich
-					.getTaikhoandangnhaps().iterator().next();
+					.getTaikhoandangnhaps();
 			Integer currenPermission = taikhoandangnhap.getPermission();
 			if (currenPermission == STAFF_PERMISSION) {
 				return null; // staff
