@@ -117,7 +117,7 @@ public class ReportController {
 		Manager man = new Manager();
 		Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
 				.getAttribute("user");
-		if (account == null && account.getPermission() < 2) {
+		if (account == null || account.getPermission() < 2) {
 			return "errorPage";
 		}
 		String flash = (String) request.getSession().getAttribute("flash");
