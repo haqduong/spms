@@ -13,6 +13,7 @@
 
 	<c:if test="${not empty report_list}">
 		<div class="title_home">Danh sách báo cáo</div>
+		<div class="add"><a href="uploadreport.spms">Thêm báo cáo</a></div>
 		<table id="report_list" class="table table-hover">
 			<c:forEach var="report" items="${report_list}">
 				<tr>
