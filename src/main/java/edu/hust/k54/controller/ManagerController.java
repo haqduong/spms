@@ -264,6 +264,7 @@ public class ManagerController implements Controller {
 				} else if (uri.contains("quanly/khenthuong")) {
 					if (uri.contains("khenthuong/xoakhenthuong")) {
 						KhenthuongHome khenthuongHome = new KhenthuongHome();
+						System.out.println("1111111111111111111111111111111111111111");
 						if (arg0.getParameter("idkhenthuong") != null) {
 							Integer idkhenthuong = Integer.parseInt(arg0
 									.getParameter("idkhenthuong"));

@@ -134,6 +134,9 @@ public class SessionController implements Controller {
 			ModelAndView modelAndView = new ModelAndView("homepage");
 			Taikhoandangnhap taikhoan = (Taikhoandangnhap) arg0.getAttribute("user");
 			TaikhoandangnhapHome taikhoandangnhapHome = new TaikhoandangnhapHome();
+			if(taikhoan == null){
+				//do nothings
+			}else{
 			taikhoan = (Taikhoandangnhap) taikhoandangnhapHome.findByExample(taikhoan).get(0);
 			NhatkyhethongHome nhatkyhethongHome = new NhatkyhethongHome();
 			Nhatkyhethong nhatkyhethong = new Nhatkyhethong();
@@ -145,6 +148,7 @@ public class SessionController implements Controller {
 			nhatkyhethong.setDiachiip(arg0.getRemoteAddr());
 			nhatkyhethongHome.attachDirty(nhatkyhethong);
 			nhatkyhethongHome.getSessionFactory().getCurrentSession().flush();
+			}
 			arg0.getSession().removeAttribute("user");
 			List< Donviquanly> donviquanly = guest.TimDVQL(0, 0, null);
 			modelAndView.addObject("donviquanly", donviquanly);
