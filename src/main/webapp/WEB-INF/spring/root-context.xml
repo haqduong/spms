@@ -189,6 +189,18 @@
 				<entry key="/manager/thongtin/khenthuong.spms">
 					<ref bean="staffController" />
 				</entry>
+				<entry key="/manager/thongtin/khenthuong/xoakhenthuong.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/manager/thongtin/themkhenthuong.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/manager/thongtin/kyluat/xoakyluat.spms">
+					<ref bean="staffController" />
+				</entry>
+				<entry key="/manager/thongtin/kyluat/themkyluat.spms">
+					<ref bean="staffController" />
+				</entry>
 				<entry key="/manager/thongtin/kyluat.spms">
 					<ref bean="staffController" />
 				</entry>
