@@ -94,6 +94,9 @@
 				<entry key="/guest/donviquanly/danhsachphongban.spms">
 					<ref bean="guestController" />
 				</entry>
+				<entry key="/guest/donviquanly/xemphongban.spms">
+					<ref bean="guestController" />
+				</entry>
 				<entry key="/guest/donviquanly/nghiencuu.spms">
 					<ref bean="guestController" />
 				</entry>

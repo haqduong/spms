@@ -182,9 +182,6 @@ public class Guest {
 				if (test == false) {
 					if (maDV != 0) {
 						if (soyeulylichTemp.getDonviquanly().getIddonviquanly() == maDV) {
-							System.out.println(soyeulylichTemp.getDonviquanly().getIddonviquanly());
-							System.out.println(soyeulylichTemp.getHoten());
-							System.out.println(soyeulylichTemp.getPhongban().getTen());
 							test = true;
 						}
 						if (test == false) {

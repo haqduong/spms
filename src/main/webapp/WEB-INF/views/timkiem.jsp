@@ -188,9 +188,9 @@
 											<c:forEach items="${result}" var="canbo">
 												<tr class="row_1">
 													<td style="width: 5%"><%=count++%></td>
-													<td style="width: 15%">${canbo.hoten}</td>
-													<td style="width: 15%">${canbo.donviquanly.ten}</td>
-													<td style="width: 15%">${canbo.phongban.ten}</td>
+													<td style="width: 15%"><a href="/k54/chitietcanbo.spms?idcanbo=${canbo.idsoyeulylich}">${canbo.hoten}</a></td>
+													<td style="width: 15%"><a href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${canbo.donviquanly.iddonviquanly}">${canbo.donviquanly.ten}</a></td>
+													<td style="width: 15%"><a href="/k54/guest/donviquanly/xemphongban.spms?idphongban=${canbo.phongban.idphongban}">${canbo.phongban.ten}</a></td>
 													<td style="width: 10%">${canbo.chucvu.ten}</td>
 													<td style="width: 15%">${canbo.sodienthoai}</td>
 													<c:forEach items="${canbo.taikhoandangnhaps}"
@@ -207,6 +207,7 @@
 											</c:forEach>
 										</c:if>
 									</table>
+									<c:if test="${empty result}"> <br></br> <center> <h3>Không tìm thấy kết quả phù hợp!</h3></center></c:if>
 								</div>
 							</td>
 						</tr>

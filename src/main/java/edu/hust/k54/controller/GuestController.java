@@ -1,6 +1,7 @@
 package edu.hust.k54.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -9,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
 import edu.hust.k54.persistence.Donviquanly;
+import edu.hust.k54.persistence.Phongban;
+import edu.hust.k54.persistence.PhongbanHome;
 import edu.hust.k54.persistence.Soyeulylich;
 import edu.hust.k54.persistence.Taikhoandangnhap;
 
@@ -161,9 +164,6 @@ public class GuestController implements Controller {
 					} else {
 						loaiCB = Integer.parseInt(LoaiCB);
 					}
-					System.out.println("id vien = " + idVien
-							+ "id phong ban = " + idPhongBan + "tencanbo = "
-							+ tenCb);
 					List<Soyeulylich> danhsachcanbo = guestController.TimCB(
 							idVien, idPhongBan, ((tenCb == "") ? null : tenCb),
 							loaiCB);
@@ -197,8 +197,31 @@ public class GuestController implements Controller {
 					modelAndView.addObject("donviquanly", donviquanly);
 					Integer iddonviquanly = Integer.parseInt(arg0
 							.getParameter("iddonviquanly"));
-					modelAndView.addObject("donvi",
-							guestController.timDonVi(iddonviquanly));
+					Donviquanly donvi = guestController.timDonVi(iddonviquanly);
+					Soyeulylich vientruong = new Soyeulylich();
+					Soyeulylich vienpho = new Soyeulylich();
+					Set<Phongban> phongban = donvi.getPhongbans();
+					for (Phongban pb : phongban) {
+						Set<Soyeulylich> soyeulylichs = pb.getSoyeulyliches();
+						for (Soyeulylich soyeulylich : soyeulylichs) {
+							if(soyeulylich.getChucvu().getIdchucvu() == 1){
+								vientruong= soyeulylich;
+							}else if(soyeulylich.getChucvu().getIdchucvu() == 2){
+								vienpho = soyeulylich;
+							}
+						}
+					}
+					modelAndView.addObject("vientruong", vientruong);
+					modelAndView.addObject("vienpho", vienpho);
+					modelAndView.addObject("donvi", donvi);
+				} else if (uri.contains("xemphongban")) {
+					Integer idphongban = Integer.parseInt(arg0
+							.getParameter("idphongban"));
+					PhongbanHome phongbanHome = new PhongbanHome();
+					modelAndView = new ModelAndView("xemphongban");
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
+					modelAndView.addObject("donviquanly", donviquanly);
+					modelAndView.addObject("phongban", phongbanHome.findById(idphongban));
 				} else if (uri.contains("danhsachcanbo")) {
 					Integer iddonviquanly = Integer.parseInt(arg0
 							.getParameter("iddonviquanly"));
