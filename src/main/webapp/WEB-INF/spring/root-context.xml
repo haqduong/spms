@@ -206,6 +206,15 @@
 				<entry key="/superManager/quanly/phongban.spms">
 					<ref bean="superManagerController" />
 				</entry>
+				<entry key="/superManager/quanly/xoaphongban.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/superManager/quanly/capnhatphongban.spms">
+					<ref bean="superManagerController" />
+				</entry>
+				<entry key="/superManager/quanly/themphongban.spms">
+					<ref bean="superManagerController" />
+				</entry>
 				<entry key="/superManager/quanly/thongtincanbo.spms">
 					<ref bean="superManagerController" />
 				</entry>

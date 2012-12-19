@@ -86,103 +86,27 @@
 				<h2>Quản lý phòng ban</h2>
 			</div>
 			<div class="tranfer_work">
-				<div class="filter_date">
-					<label>Đơn vị: </label> <select name="donvi">
-						<option value="0">Viện CNTT</option>
-						<option value="0">Viện Toán học</option>
-						<option value="0">Viện CNTT</option>
-						<option value="0">Viàện CNfTT</option>
-						<option value="0">Viện fCNTT</option>
-						<option value="0">Viàệàn àfCNTT</option>
-						<option value="0">Viàện CNTT</option>
-					</select>
-
-				</div>
-
-
 				<table style="width: 100%;">
 					<tr class="head_tb_tranfer_work">
 						<td style="width: 5%">STT</td>
 						<td style="width: 30%">Tên phòng</td>
-						<td style="width: 30%">Trưởng phòng</td>
-						<td style="width: 10%">SĐT</td>
+						<td style="width: 30%">Số điện thoại</td>
+						<td style="width: 10%">Fax</td>
 						<td style="width:"></td>
 						<td style="width:"></td>
 						<td></td>
 					</tr>
+					<%int i = 1; %>
+					<c:forEach items="${donvi.phongbans}" var="phongban">
 					<tr class="row_1">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phòng 1</td>
-						<td class="tranfer_work_old">PHạm thần kinh</td>
-						<td class="tranfer_work_new">0987654321</td>
-						<td class=""><a href="#">Sửa</a></td>
-						<td class=""><a href="#">Chi tiết</a></td>
-						<td class=""><a href="#">Xóa</a></td>
+						<td class="tranfer_STT"><%=i++ %></td>
+						<td class="tranfer_name">${ phongban.ten}</td>
+						<td class="tranfer_work_old">${phongban.dienthoai}</td>
+						<td class="tranfer_work_new">${phongban.fax}</td>
+						<td class=""><a href="/k54/manager/quanly/phongban.spms?idphongban=${phongban.idphongban}&phongbantype=0">Cập nhật</a></td>
+						<td class=""><a href="/k54/superManager/quanly/xoaphongban.spms?iddonvi=${donvi.iddonviquanly}&idphongban=${phongban.idphongban}">Xóa</a></td>
 					</tr>
-					<tr class="row_2">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phòng 1</td>
-						<td class="tranfer_work_old">PHạm thần kinh</td>
-						<td class="tranfer_work_new">0987654321</td>
-						<td class=""><a href="#">Sửa</a></td>
-						<td class=""><a href="#">Chi tiết</a></td>
-						<td class=""><a href="#">Xóa</a></td>
-					</tr>
-					<tr class="row_1">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phòng 1</td>
-						<td class="tranfer_work_old">PHạm thần kinh</td>
-						<td class="tranfer_work_new">0987654321</td>
-						<td class=""><a href="#">Sửa</a></td>
-						<td class=""><a href="#">Chi tiết</a></td>
-						<td class=""><a href="#">Xóa</a></td>
-					</tr>
-					<tr class="row_2">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phòng 1</td>
-						<td class="tranfer_work_old">PHạm thần kinh</td>
-						<td class="tranfer_work_new">0987654321</td>
-						<td class=""><a href="#">Sửa</a></td>
-						<td class=""><a href="#">Chi tiết</a></td>
-						<td class=""><a href="#">Xóa</a></td>
-					</tr>
-					<tr class="row_1">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phòng 1</td>
-						<td class="tranfer_work_old">PHạm thần kinh</td>
-						<td class="tranfer_work_new">0987654321</td>
-						<td class=""><a href="#">Sửa</a></td>
-						<td class=""><a href="#">Chi tiết</a></td>
-						<td class=""><a href="#">Xóa</a></td>
-					</tr>
-					<tr class="row_2">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phòng 1</td>
-						<td class="tranfer_work_old">PHạm thần kinh</td>
-						<td class="tranfer_work_new">0987654321</td>
-						<td class=""><a href="#">Sửa</a></td>
-						<td class=""><a href="#">Chi tiết</a></td>
-						<td class=""><a href="#">Xóa</a></td>
-					</tr>
-					<tr class="row_1">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phòng 1</td>
-						<td class="tranfer_work_old">PHạm thần kinh</td>
-						<td class="tranfer_work_new">0987654321</td>
-						<td class=""><a href="#">Sửa</a></td>
-						<td class=""><a href="#">Chi tiết</a></td>
-						<td class=""><a href="#">Xóa</a></td>
-					</tr>
-					<tr class="row_2 end_tb_tranfer_work">
-						<td class="tranfer_STT">1</td>
-						<td class="tranfer_name">Phòng 1</td>
-						<td class="tranfer_work_old">PHạm thần kinh</td>
-						<td class="tranfer_work_new">0987654321</td>
-						<td class=""><a href="#">Sửa</a></td>
-						<td class=""><a href="#">Chi tiết</a></td>
-						<td class=""><a href="#">Xóa</a></td>
-					</tr>
-
+					</c:forEach>
 				</table>
 			</div>
 			<!--End tranfer_work -->

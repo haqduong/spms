@@ -132,7 +132,7 @@
 																nhật</a></td>
 														<td style="width: 10%">
 														
-																<a href="/k54/manager/capnhat/xoacanbo.spms?idcanbo=${canbo.idsoyeulylich}">Xóa</a>
+																<a href="/k54/manager/capnhat/xoacanbo.spms?idcanbo=${canbo.idsoyeulylich}&deleteType=0">Xóa</a>
 																</td>
 													</tr>
 												</c:if>

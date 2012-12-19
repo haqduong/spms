@@ -61,11 +61,11 @@ public class SessionController implements Controller {
 									"/k54/manager/contact.spms");
 						} else if (userPermission == SUPER_MANAGER_PERMISSION) {
 							modelAndView.addObject("search",
-									"/k54/supperManager/search.spms");
+									"/k54/superManager/search.spms");
 							modelAndView.addObject("info",
-									"/k54/supperManager/info.spms");
+									"/k54/superManager/info.spms");
 							modelAndView.addObject("contact",
-									"/k54/supperManager/contact.spms");
+									"/k54/superManager/contact.spms");
 						} else if (userPermission == ADMIN_PERMISSION) {
 							ModelAndView admin = new ModelAndView("admin/homepage");
 //							admin.addObject("logsystem", "/k54/admin/logsystem.spms");
@@ -102,11 +102,11 @@ public class SessionController implements Controller {
 				if (userPermission == GUEST_PERMISSION) {
 					modelAndView = addlink(modelAndView, "guest");
 				} else if (userPermission == STAFF_PERMISSION) {
-					modelAndView = addlink(modelAndView, "staf");
+					modelAndView = addlink(modelAndView, "staff");
 				} else if (userPermission == MANAGER_PERMISSION) {
 					modelAndView = addlink(modelAndView, "manager");
 				} else if (userPermission == SUPER_MANAGER_PERMISSION) {
-					modelAndView = addlink(modelAndView, "supperManager");
+					modelAndView = addlink(modelAndView, "superManager");
 				} else if (userPermission == ADMIN_PERMISSION) {
 					modelAndView = addlink(modelAndView, "admin");
 				}
