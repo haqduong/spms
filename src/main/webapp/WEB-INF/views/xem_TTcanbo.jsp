@@ -102,9 +102,7 @@
 
 					<div class="detail_info">Điện thoại: ${canbo.sodienthoai}</div>
 
-					<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
-						<div class="detail_info">Email: ${taikhoan.email}</div>
-					</c:forEach>
+					<div class="detail_info">Email: ${canbo.taikhoandangnhaps.email}</div>
 					<br />
 
 				</div>
