@@ -36,6 +36,8 @@ public class FileUploadController extends SimpleFormController {
 
 		Taikhoandangnhap account = (Taikhoandangnhap) request.getSession()
 				.getAttribute("user");
+		Soyeulylich soyeulylich = account.getSoyeulylich();
+		(new SoyeulylichHome()).attachDirty(soyeulylich);
 		FileUpload file = (FileUpload) command;
 		String typeaccount = request.getParameter("type");
 		MultipartFile multipartFile = file.getFile();
@@ -58,6 +60,7 @@ public class FileUploadController extends SimpleFormController {
 				System.err.println(multipartFile.getContentType());
 				String type = multipartFile.getContentType();
 				if (!type.startsWith("image")) {
+					System.out.println("here");
 					if (typeaccount.equals("staff")){
 						ModelAndView modelAndView =  new ModelAndView("sua_thongtincanhan");
 						modelAndView.addObject("error", "File ảnh không hợp lệ");
@@ -66,15 +69,12 @@ public class FileUploadController extends SimpleFormController {
 					} else if (typeaccount.equals("manager")){
 						ModelAndView modelAndView =  new ModelAndView("QL_TTPhongban");
 						modelAndView.addObject("error", "File ảnh không hợp lệ");
-						Soyeulylich soyeulylich = account.getSoyeulylich();
-						(new SoyeulylichHome()).attachDirty(soyeulylich);
 						modelAndView.addObject("phongban", soyeulylich.getPhongban());
 						return modelAndView;
 					} else {
 						ModelAndView modelAndView =  new ModelAndView("quanly_TTDonVi");
 						modelAndView.addObject("error", "File ảnh không hợp lệ");
-						Soyeulylich soyeulylich = account.getSoyeulylich();
-						(new SoyeulylichHome()).attachDirty(soyeulylich);
+						
 						modelAndView.addObject("donvi", soyeulylich.getPhongban().getDonviquanly());
 						return modelAndView;
 					}
@@ -92,8 +92,6 @@ public class FileUploadController extends SimpleFormController {
 				sIn.close();
 				if (typeaccount.equalsIgnoreCase("staff")){
 				SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
-				Soyeulylich soyeulylich = account.getSoyeulylich();
-				soyeulylichHome.attachDirty(soyeulylich);
 				soyeulylich.setDuongdananh(filename);
 				soyeulylichHome.attachDirty(soyeulylich);
 				soyeulylichHome.getSessionFactory().getCurrentSession().flush();
@@ -112,8 +110,6 @@ public class FileUploadController extends SimpleFormController {
 					System.out.println("here");
 					DonviquanlyHome donviquanlyHome = new DonviquanlyHome();
 					SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
-					Soyeulylich soyeulylich = account.getSoyeulylich();
-					soyeulylichHome.attachDirty(soyeulylich);
 					Donviquanly donviquanly = soyeulylich.getPhongban().getDonviquanly();
 					donviquanlyHome.attachDirty(donviquanly);
 					donviquanly.setDuongdananh(filename);
