@@ -32,7 +32,7 @@
 				<td style="width: 10%">${kt.nguoikyquyetdinh}</td>
 				<td style="width: 10%">${kt.ngayquyetdinh}</td>
 				<td style="width: 10%">${kt.trangthai} </td>
-				<td style="width: 10%"><a href="/k54/manager/thongtin/khenthuong/xoakhenthuong.spms?idkhenthuong=${kt.idkhenthuong}">Xóa</a></td>
+				<td style="width: 10%"><a href="/k54/manager/quanly/khenthuong/xoakhenthuong.spms?idphongban=${phongban.idphongban}&idkhenthuong=${kt.idkhenthuong}">Xóa</a></td>
 			</tr>
 			</c:forEach>
 		</table>
