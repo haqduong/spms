@@ -118,7 +118,7 @@ public class SuperManagerController implements Controller {
 				idcanbo = Integer.parseInt(arg0.getParameter("idcanbo"));
 				SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
 				Taikhoandangnhap curentUser = (Taikhoandangnhap) soyeulylichHome
-						.findById(idcanbo).getTaikhoandangnhaps().toArray()[0];
+						.findById(idcanbo).getTaikhoandangnhaps();
 				if ((taikhoandangnhap.getSoyeulylich().getIdsoyeulylich() != idcanbo)
 						&& (taikhoandangnhap.getPermission() <= curentUser
 								.getPermission())) {

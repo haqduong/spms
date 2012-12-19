@@ -166,12 +166,7 @@
             </key>
             <one-to-many class="edu.hust.k54.persistence.Dienbienhocham" />
         </set>
-        <set name="taikhoandangnhaps" cascade="delete" table="taikhoandangnhap" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="idsoyeulylich" />
-            </key>
-            <one-to-many class="edu.hust.k54.persistence.Taikhoandangnhap" />
-        </set>
+        <one-to-one name="taikhoandangnhaps" class="edu.hust.k54.persistence.Taikhoandangnhap" constrained="true"> </one-to-one>
         <one-to-one name="lylichkhoahoc" class="edu.hust.k54.persistence.Lylichkhoahoc"></one-to-one>
         <set name="sachxuatbans" cascade="delete" table="sachxuatban" inverse="true" lazy="true" fetch="select">
             <key>
