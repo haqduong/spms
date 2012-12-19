@@ -124,14 +124,14 @@ public class ReportController {
 		Integer iduser = account.getIduser();
 		TaikhoandangnhapHome tk_ds = new TaikhoandangnhapHome();
 		request.getSession().removeAttribute("user");
-		request.getSession().setAttribute("user", tk_ds.findById(iduser));
+		account = tk_ds.findById(iduser);
+		request.getSession().setAttribute("user", account);
 		String flash = (String) request.getSession().getAttribute("flash");
 		if (flash != null) {
 			model.addAttribute("flash", flash);
 			request.getSession().removeAttribute("flash");
 		}
 		Integer idcanbo = account.getIduser();
-//		System.err.println("idcanbo: " + idcanbo);
 		List<Baocao> baocaos = new ArrayList<Baocao>();
 		Soyeulylich soyeulylich = account.getSoyeulylich();
 		SoyeulylichHome temp_ds = new SoyeulylichHome();
