@@ -14,14 +14,13 @@
 
 	<c:if test="${not empty loggedIn}">
 	<form:form modelAttribute="uploadItem" method="post"
-		enctype="multipart/form-data">
+		enctype="multipart/form-data" class="bootstrap" >
 
 		<fieldset>
-			<legend>Upload Fields</legend>
 			<p>
-				<form:label for="name" path="name">Name</form:label>
+				<form:label for="name" path="name">Tên</form:label>
 				<br />
-				<form:input path="name" />
+				<form:input path="name" type="text" />
 			</p>
 			<p>
 				<form:label for="fileData" path="fileData">File</form:label>
