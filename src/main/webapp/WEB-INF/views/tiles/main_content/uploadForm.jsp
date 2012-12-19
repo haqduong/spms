@@ -14,7 +14,7 @@
 
 	<c:if test="${not empty loggedIn}">
 	<form:form modelAttribute="uploadItem" method="post"
-		enctype="multipart/form-data" class="bootstrap" >
+		enctype="multipart/form-data" class="bootstrap" action="uploadreport.spms" >
 
 		<fieldset>
 			<p>

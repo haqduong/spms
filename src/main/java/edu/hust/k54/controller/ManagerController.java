@@ -31,6 +31,7 @@ import edu.hust.k54.persistence.HochamHome;
 import edu.hust.k54.persistence.Hocvi;
 import edu.hust.k54.persistence.HocviHome;
 import edu.hust.k54.persistence.Khenthuong;
+import edu.hust.k54.persistence.KhenthuongHome;
 import edu.hust.k54.persistence.Phongban;
 import edu.hust.k54.persistence.PhongbanHome;
 import edu.hust.k54.persistence.Quocgia;
@@ -64,11 +65,12 @@ public class ManagerController implements Controller {
 			Integer idphongban = null;
 			if (arg0.getParameter("idphongban") != null) {
 				idphongban = Integer.parseInt(arg0.getParameter("idphongban"));
-//				if(taikhoandangnhap.getSoyeulylich().getPhongban().getIdphongban() != idphongban){
-//					//bug
-//					modelAndView = new ModelAndView("errorPage");
-//					return modelAndView;
-//				}
+				// if(taikhoandangnhap.getSoyeulylich().getPhongban().getIdphongban()
+				// != idphongban){
+				// //bug
+				// modelAndView = new ModelAndView("errorPage");
+				// return modelAndView;
+				// }
 				PhongbanHome phongbanHome = new PhongbanHome();
 				if (uri.contains("quanly/phongban")) {
 					if (arg0.getParameter("phongbantype") == null) {
@@ -260,6 +262,21 @@ public class ManagerController implements Controller {
 							tongiaoHome.findByExample(new Tongiao()));
 
 				} else if (uri.contains("quanly/khenthuong")) {
+					if (uri.contains("khenthuong/xoakhenthuong")) {
+						KhenthuongHome khenthuongHome = new KhenthuongHome();
+						if (arg0.getParameter("idkhenthuong") != null) {
+							Integer idkhenthuong = Integer.parseInt(arg0
+									.getParameter("idkhenthuong"));
+							Khenthuong khenthuong = khenthuongHome
+									.findById(idkhenthuong);
+							khenthuongHome.delete(khenthuong);
+							khenthuongHome.getSessionFactory()
+									.getCurrentSession().flush();
+						}
+					} else if (uri.contains("khenthuong/themkhenthuong")) {
+
+					}
+					phongbanHome = new PhongbanHome();
 					Phongban phongban = phongbanHome.findById(idphongban);
 					modelAndView = new ModelAndView("thongke_khenthuong");
 					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
@@ -269,11 +286,26 @@ public class ManagerController implements Controller {
 					for (Soyeulylich canbo : dscanbo) {
 						khenthuong.addAll(canbo.getKhenthuongs());
 					}
-					
+
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("phongban", phongban);
 					modelAndView.addObject("khenthuong", khenthuong);
 				} else if (uri.contains("quanly/kyluat")) {
+					if (uri.contains("kyluat/xoakyluat")) {
+						KhenthuongHome khenthuongHome = new KhenthuongHome();
+						if (arg0.getParameter("idkyluat") != null) {
+							Integer idkhenthuong = Integer.parseInt(arg0
+									.getParameter("idkyluat"));
+							Khenthuong khenthuong = khenthuongHome
+									.findById(idkhenthuong);
+							khenthuongHome.delete(khenthuong);
+							khenthuongHome.getSessionFactory()
+									.getCurrentSession().flush();
+						}
+					} else if (uri.contains("kyluat/themkyluat")) {
+
+					}
+					phongbanHome = new PhongbanHome();
 					Phongban phongban = phongbanHome.findById(idphongban);
 					modelAndView = new ModelAndView("thongke_kyluat");
 					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
@@ -283,10 +315,9 @@ public class ManagerController implements Controller {
 					for (Soyeulylich canbo : dscanbo) {
 						kyluat.addAll(canbo.getKyluats());
 					}
-					
+
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("phongban", phongban);
-					modelAndView.addObject("kyluat", kyluat);
 				} else if (uri.contains("quanly/baocao")) {
 					Phongban phongban = phongbanHome.findById(idphongban);
 					modelAndView = new ModelAndView("report.spms");

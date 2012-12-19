@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -22,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
+
+import edu.hust.k54.model.UploadItem;
 import edu.hust.k54.persistence.Baocao;
 import edu.hust.k54.persistence.BaocaoHome;
 import edu.hust.k54.persistence.Soyeulylich;
@@ -131,6 +136,9 @@ public class ReportController {
 			model.addAttribute("flash", flash);
 			request.getSession().removeAttribute("flash");
 		}
+		
+		model.addAttribute(new UploadItem());
+		
 		Integer idcanbo = account.getIduser();
 		List<Baocao> baocaos = new ArrayList<Baocao>();
 		Soyeulylich soyeulylich = account.getSoyeulylich();
@@ -138,6 +146,13 @@ public class ReportController {
 		temp_ds.attachDirty(soyeulylich);
 		temp_ds.getSessionFactory().getCurrentSession().flush();
 		List<Baocao> list = man.getLowerPermission(idcanbo);
+		Collections.sort(list,
+				new Comparator<Baocao> (){
+					@Override
+					public int compare(Baocao arg0, Baocao arg1) {
+						return - arg0.getNgaylap().compareTo(arg1.getNgaylap());
+					}
+		});
 		baocaos.addAll(list);
 		BaocaoHome ds = new BaocaoHome();
 		model.addAttribute("report_list", baocaos);
@@ -146,3 +161,4 @@ public class ReportController {
 	}
 
 }
+
