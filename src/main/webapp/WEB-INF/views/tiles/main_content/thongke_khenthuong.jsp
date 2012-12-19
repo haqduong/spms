@@ -19,6 +19,7 @@
 				<td style="width: 10%">Người quyết định</td>
 				<td style="width: 10%">Ngày khen thưởng</td>
 				<td style="width: 10%">Trạng thái</td>
+				<td style="width: 10%">Xóa</td>
 			</tr>
 			<c:forEach items="${khenthuong}" var="kt">
 			

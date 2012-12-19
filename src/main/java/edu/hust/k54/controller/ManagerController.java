@@ -260,6 +260,11 @@ public class ManagerController implements Controller {
 							tongiaoHome.findByExample(new Tongiao()));
 
 				} else if (uri.contains("quanly/khenthuong")) {
+					if(uri.contains("khenthuong/xoakhenthong")){
+						
+					}else if(uri.contains("khenthuong/xoakhenthong")){
+						
+					}
 					Phongban phongban = phongbanHome.findById(idphongban);
 					modelAndView = new ModelAndView("thongke_khenthuong");
 					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
