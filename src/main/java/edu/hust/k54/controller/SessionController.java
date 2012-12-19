@@ -1,5 +1,9 @@
 package edu.hust.k54.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
 import edu.hust.k54.persistence.Donviquanly;
+import edu.hust.k54.persistence.Nhatkyhethong;
+import edu.hust.k54.persistence.NhatkyhethongHome;
 import edu.hust.k54.persistence.Soyeulylich;
 import edu.hust.k54.persistence.Taikhoandangnhap;
 import edu.hust.k54.persistence.TaikhoandangnhapHome;
@@ -39,6 +45,16 @@ public class SessionController implements Controller {
 																		// Ok
 						Taikhoandangnhap user = (Taikhoandangnhap) checkLogin
 								.findByExample(persion).get(0);
+						NhatkyhethongHome nhatkyhethongHome = new NhatkyhethongHome();
+						Nhatkyhethong nhatkyhethong = new Nhatkyhethong();
+						nhatkyhethong.setTaikhoandangnhap(user);
+						nhatkyhethong.setMota("Login");
+						DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+						Calendar cal = Calendar.getInstance();
+						nhatkyhethong.setThoigiantruycapgannhat(cal.getTime());
+						nhatkyhethong.setDiachiip(arg0.getRemoteAddr());
+						nhatkyhethongHome.attachDirty(nhatkyhethong);
+						nhatkyhethongHome.getSessionFactory().getCurrentSession().flush();
 						int userPermission = user.getPermission();
 						modelAndView.addObject("homePage", "/k54/home.spms");
 						if (userPermission == GUEST_PERMISSION) {
@@ -116,6 +132,19 @@ public class SessionController implements Controller {
 			}
 		} else if (arg0.getRequestURI().contains("logout")) {
 			ModelAndView modelAndView = new ModelAndView("homepage");
+			Taikhoandangnhap taikhoan = (Taikhoandangnhap) arg0.getAttribute("user");
+			TaikhoandangnhapHome taikhoandangnhapHome = new TaikhoandangnhapHome();
+			taikhoan = (Taikhoandangnhap) taikhoandangnhapHome.findByExample(taikhoan).get(0);
+			NhatkyhethongHome nhatkyhethongHome = new NhatkyhethongHome();
+			Nhatkyhethong nhatkyhethong = new Nhatkyhethong();
+			nhatkyhethong.setTaikhoandangnhap(taikhoan);
+			nhatkyhethong.setMota("Logout");
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			Calendar cal = Calendar.getInstance();
+			nhatkyhethong.setThoigiantruycapgannhat(cal.getTime());
+			nhatkyhethong.setDiachiip(arg0.getRemoteAddr());
+			nhatkyhethongHome.attachDirty(nhatkyhethong);
+			nhatkyhethongHome.getSessionFactory().getCurrentSession().flush();
 			arg0.getSession().removeAttribute("user");
 			List< Donviquanly> donviquanly = guest.TimDVQL(0, 0, null);
 			modelAndView.addObject("donviquanly", donviquanly);
