@@ -168,7 +168,19 @@
 				<entry key="/manager/quanly/khenthuong.spms">
 					<ref bean="managerController" />
 				</entry>
+				<entry key="/manager/quanly/khenthuong/xoakhenthuong.spms">
+					<ref bean="managerController" />
+				</entry>
+				<entry key="/manager/quanly/themkhenthuong.spms">
+					<ref bean="managerController" />
+				</entry>
 				<entry key="/manager/quanly/kyluat.spms">
+					<ref bean="managerController" />
+				</entry>
+				<entry key="/manager/quanly/kyluat/xoakyluat.spms">
+					<ref bean="managerController" />
+				</entry>
+				<entry key="/manager/quanly/kyluat/themkyluat.spms">
 					<ref bean="managerController" />
 				</entry>
 				<entry key="/manager/quanly/baocao.spms">
@@ -187,18 +199,6 @@
 					<ref bean="staffController" />
 				</entry>
 				<entry key="/manager/thongtin/khenthuong.spms">
-					<ref bean="staffController" />
-				</entry>
-				<entry key="/manager/thongtin/khenthuong/xoakhenthuong.spms">
-					<ref bean="staffController" />
-				</entry>
-				<entry key="/manager/thongtin/themkhenthuong.spms">
-					<ref bean="staffController" />
-				</entry>
-				<entry key="/manager/thongtin/kyluat/xoakyluat.spms">
-					<ref bean="staffController" />
-				</entry>
-				<entry key="/manager/thongtin/kyluat/themkyluat.spms">
 					<ref bean="staffController" />
 				</entry>
 				<entry key="/manager/thongtin/kyluat.spms">
