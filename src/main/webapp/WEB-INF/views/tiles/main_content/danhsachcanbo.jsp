@@ -34,10 +34,8 @@
 									</p>
 									<p>
 	
-										<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
 											<a>Email : &nbsp;</a>
-											<a class="email_staff">${taikhoan.email} </a>
-										</c:forEach>
+											<a class="email_staff">${canbo.taikhoandangnhaps.email} </a>
 	
 									</p>
 									<p>
@@ -65,10 +63,8 @@
 									</p>
 									<p>
 	
-										<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
 											<a>Email : &nbsp;</a>
-											<a class="email_staff">${taikhoan.email} </a>
-										</c:forEach>
+											<a class="email_staff">${canbo.taikhoandangnhaps.email} </a>
 	
 									</p>
 									<p>
