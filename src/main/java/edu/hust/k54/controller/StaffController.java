@@ -50,14 +50,29 @@ public class StaffController implements Controller {
 		Guest guestController = new Guest();
 		Staff staffController = new Staff();
 		SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
+		String uri = arg0.getRequestURI();
 		Taikhoandangnhap taikhoandangnhap = (Taikhoandangnhap) arg0
 				.getSession().getAttribute("user");
+		if (uri.contains("thongtin/soyeulylich")) {
+			Integer idcanbo = null;
+			if (arg0.getParameter("idcanbo") != null) {
+				idcanbo = Integer.parseInt(arg0.getParameter("idcanbo"));
+			modelAndView = new ModelAndView("xem_TTcanbo");
+			List<Donviquanly> donviquanly = guestController.TimDVQL(0, 0,
+					null);
+			modelAndView.addObject("donviquanly", donviquanly);
+			modelAndView.addObject("canbo", guestController.TimCB(idcanbo));
+			modelAndView = setLink(modelAndView);
+			return modelAndView;
+			}
+		}
 		if ((taikhoandangnhap == null)
 				|| taikhoandangnhap.getPermission() < PERMISSION) {
 			modelAndView = new ModelAndView("errorPage");
 			return modelAndView;
 		} else {
-			String uri = arg0.getRequestURI();
+			
+			
 			Integer idcanbo = null;
 			if (arg0.getParameter("idcanbo") != null) {
 				idcanbo = Integer.parseInt(arg0.getParameter("idcanbo"));
