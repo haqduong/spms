@@ -80,6 +80,18 @@
 			value="/WEB-INF/views/tiles/main_content/QL_TTPhongban.jsp" />
 	</definition>
 
+	<definition name="sua_thongtincanhan.spms" extends="base.spms">
+		<put-attribute name="title" value="Sửa thông tin cá nhân" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/sua_thongtincanhan.jsp" />
+	</definition>
+
+	<definition name="sua_thongtintaikhoan.spms" extends="base.spms">
+		<put-attribute name="title" value="Sửa thông tin tài khoản" />
+		<put-attribute name="main_content"
+			value="/WEB-INF/views/tiles/main_content/sua_thongtintaikhoan.jsp" />
+	</definition>
+
 	<definition name="thongke_baocao.spms" extends="base.spms">
 		<put-attribute name="title" value="Thống kê báo cáo" />
 		<put-attribute name="main_content"
@@ -140,10 +152,4 @@
 	<definition name="uploadReport.spms" extends="uploadForm.spms">
 		<put-attribute name="title" value="Upload report" />
 	</definition>
-
-	<!-- <definition name="contact" extends="base.definition"> -->
-	<!-- <put-attribute name="title" value="Contact Manager" /> -->
-	<!-- <put-attribute name="body" value="/WEB-INF/jsp/contact.jsp" /> -->
-	<!-- </definition> -->
-
 </tiles-definitions>
