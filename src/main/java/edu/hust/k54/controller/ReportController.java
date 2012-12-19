@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -143,6 +146,13 @@ public class ReportController {
 		temp_ds.attachDirty(soyeulylich);
 		temp_ds.getSessionFactory().getCurrentSession().flush();
 		List<Baocao> list = man.getLowerPermission(idcanbo);
+		Collections.sort(list,
+				new Comparator<Baocao> (){
+					@Override
+					public int compare(Baocao arg0, Baocao arg1) {
+						return - arg0.getNgaylap().compareTo(arg1.getNgaylap());
+					}
+		});
 		baocaos.addAll(list);
 		BaocaoHome ds = new BaocaoHome();
 		model.addAttribute("report_list", baocaos);
@@ -151,3 +161,4 @@ public class ReportController {
 	}
 
 }
+
