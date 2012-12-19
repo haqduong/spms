@@ -25,7 +25,7 @@
         <property name="hinhanh" type="string">
             <column name="hinhanh" length="256" />
         </property>
-        <set name="soyeulyliches" table="soyeulylich" inverse="true" lazy="true" fetch="select">
+        <set name="soyeulyliches" cascade="delete" table="soyeulylich" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idphongban" />
             </key>
