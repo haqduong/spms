@@ -87,20 +87,22 @@
 				<h2>Cập nhât thông tin sơ yếu lý lịch của ${canbo.hoten}</h2>
 			</div>
 			<div class="images">
-				<img src="<c:url value="${canbo.duongdananh}"/>" width="100" height="150" /> <input
-					name="duongdananh" type="text"
-					placeholder="Chỗ này là đường dẫn ảnh" />
-			<form:form action="/k54/upload.spms" method="POST" commandName="fileUploadForm"
-				enctype="multipart/form-data">
+				<img src="<c:url value="${canbo.duongdananh}"/>" width="100"
+					height="150" />
+				<c:if test="${not empty error}">
+			${error }
+			</c:if>
+				<form:form action="/k54/upload.spms" method="POST"
+					commandName="fileUploadForm" enctype="multipart/form-data">
 
-				<form:errors path="*" cssClass="errorblock" element="div" />
+					<form:errors path="*" cssClass="errorblock" element="div" />
 
-				<input type="file" name="file" />
-				<input type="hidden" name="type" value="staff">
-				<input type="submit" value="Upload" />
-				<span><form:errors path="file" cssClass="error" /></span>
+					<input type="file" name="file" />
+					<input type="hidden" name="type" value="staff">
+					<input type="submit" value="Upload" />
+					<span><form:errors path="file" cssClass="error" /></span>
 
-			</form:form>
+				</form:form>
 			</div>
 			<!--End images-->
 			<div class="clear"></div>
@@ -721,7 +723,8 @@
 			}
 			
 		}%>
-		var dir = ("<%=dsPhongBan%>");
+		var dir = ("<%=dsPhongBan%>
+		");
 			var allType = dir.split("|");
 			var i;
 			var count = 0;
