@@ -119,9 +119,8 @@
 									<div class="description">
 										<table cellspacing="0" cellpadding="1" style="width: 715px">
 											<c:forEach items="${phongban.soyeulyliches}" var="canbo">
-												<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
 												<c:if
-													test="${user.permission > taikhoan.permission }">
+													test="${user.permission > canbo.taikhoandangnhaps.permission }">
 													<tr class="row_1">
 														<td style="width: 5%"><%=++i%></td>
 														<td style="width: 20%">${canbo.hoten}</td>
@@ -137,7 +136,7 @@
 													</tr>
 												</c:if>
 												<c:if
-													test="${user.permission <= taikhoan.permission }">
+													test="${user.permission <= canbo.taikhoandangnhaps.permission }">
 													<tr class="row_1">
 														<td style="width: 5%"><%=++i%></td>
 														<td style="width: 20%">${canbo.hoten}</td>
@@ -147,8 +146,6 @@
 														<td style="width: 10%">Không có quyền</td>
 													</tr>
 												</c:if>
-												
-												</c:forEach>
 											</c:forEach>
 										</table>
 									</div>

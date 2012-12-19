@@ -169,19 +169,19 @@
 					<ref bean="managerController" />
 				</entry>
 				<entry key="/manager/quanly/khenthuong/xoakhenthuong.spms">
-					<ref bean="staffController" />
+					<ref bean="managerController" />
 				</entry>
 				<entry key="/manager/quanly/themkhenthuong.spms">
-					<ref bean="staffController" />
+					<ref bean="managerController" />
 				</entry>
 				<entry key="/manager/quanly/kyluat.spms">
 					<ref bean="managerController" />
 				</entry>
 				<entry key="/manager/quanly/kyluat/xoakyluat.spms">
-					<ref bean="staffController" />
+					<ref bean="managerController" />
 				</entry>
 				<entry key="/manager/quanly/kyluat/themkyluat.spms">
-					<ref bean="staffController" />
+					<ref bean="managerController" />
 				</entry>
 				<entry key="/manager/quanly/baocao.spms">
 					<ref bean="managerController" />

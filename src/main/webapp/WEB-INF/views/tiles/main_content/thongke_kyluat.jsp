@@ -24,7 +24,7 @@
 				<td style="width: 30%">${kl.muckyluat.noidung}</td>
 				<td style="width: 35%">${kl.hinhthuc}</td>
 				<td style="width: 15%">${kl.thoigian}</td>
-				<td style="width: 10%"><a href="/k54/manager/quanly/kyluat/xoakyluat.spms?idphongban=${phongban.idphongban}&idkyluat=${kt.idkyluat}">Xóa</a></td>
+				<td style="width: 10%"><a href="/k54/manager/quanly/kyluat/xoakyluat.spms?idphongban=${phongban.idphongban}&idkyluat=${kl.idkyluat}">Xóa</a></td>
 			</tr>
 			</c:forEach>
 		</table>
