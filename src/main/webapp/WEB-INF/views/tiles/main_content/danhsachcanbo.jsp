@@ -17,65 +17,73 @@
 		<form>
 			<table cellspacing="0" cellpadding="0" border-collapse="10px"
 				width="100%">
+				
 				<c:forEach items="${danhsachcanbo}" var="canbo" varStatus="count">
-					<tr style="margin-bottom: 50px;">
-						<td style="width: 50%">
-							<div class="avatar_img">
-								<img src="${canbo.duongdananh}" width="90" height="120" />
-							</div>
-							<div class="content_staff">
-								<p>
-									<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
-								</p>
-								<p>
-									<a class="postion_staff">${canbo.chucvu.ten}</a>
-								</p>
-								<p>
-
-									<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
-										<a>Email : &nbsp;</a>
-										<a class="email_staff">${taikhoan.email} </a>
-									</c:forEach>
-
-								</p>
-								<p>
-									<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff">${canbo.sodienthoai}</a>
-								</p>
-								<p class="more_staff">
-									<a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${canbo.idsoyeulylich}">Chi tiết</a>
-								</p>
-							</div>
-							<div class="clear"></div>
-						</td>
+					<c:if test="${(count.index % 2) == 0}">
+						<tr style="margin-bottom: 50px;">
+							<td style="width: 50%">
+								<div class="avatar_img">
+									<img src="${canbo.duongdananh}" width="90" height="120" />
+								</div>
+								<div class="content_staff">
+									<p>
+										<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
+									</p>
+									<p>
+										<a class="postion_staff">${canbo.chucvu.ten}</a>
+									</p>
+									<p>
+	
+										<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
+											<a>Email : &nbsp;</a>
+											<a class="email_staff">${taikhoan.email} </a>
+										</c:forEach>
+	
+									</p>
+									<p>
+										<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff">${canbo.sodienthoai}</a>
+									</p>
+									<p class="more_staff">
+										<a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${canbo.idsoyeulylich}">Chi tiết</a>
+									</p>
+								</div>
+								<div class="clear"></div>
+							</td>
+					</c:if>
+					
+					<c:if test="${(count.index % 2) == 1}">
 						<td style="width: 50%; padding-left: 20px">
-							<div class="avatar_img">
-								<img src="${canbo.duongdananh}" width="90" height="120" />
-							</div>
-							<div class="content_staff">
-								<p>
-									<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
-								</p>
-								<p>
-									<a class="postion_staff">${canbo.chucvu.ten}</a>
-								</p>
-								<p>
-
-									<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
-										<a>Email : &nbsp;</a>
-										<a class="email_staff">${taikhoan.email} </a>
-									</c:forEach>
-
-								</p>
-								<p>
-									<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff">${canbo.sodienthoai}</a>
-								</p>
-								<p class="more_staff">
-									<a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${canbo.idsoyeulylich}">Chi tiết</a>
-								</p>
-							</div>
-							<div class="clear"></div>
-						</td>
-					</tr>
+								<div class="avatar_img">
+									<img src="${canbo.duongdananh}" width="90" height="120" />
+								</div>
+								<div class="content_staff">
+									<p>
+										<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
+									</p>
+									<p>
+										<a class="postion_staff">${canbo.chucvu.ten}</a>
+									</p>
+									<p>
+	
+										<c:forEach items="${canbo.taikhoandangnhaps}" var="taikhoan">
+											<a>Email : &nbsp;</a>
+											<a class="email_staff">${taikhoan.email} </a>
+										</c:forEach>
+	
+									</p>
+									<p>
+										<a>Điện thoại CQ : &nbsp;</a><a class="contact_staff">${canbo.sodienthoai}</a>
+									</p>
+									<p class="more_staff">
+										<a href="/k54/staff/thongtin/soyeulylich.spms?idcanbo=${canbo.idsoyeulylich}">Chi tiết</a>
+									</p>
+								</div>
+								<div class="clear"></div>
+							</td>
+						</tr>
+					</c:if>
+						
+						
 				</c:forEach>
 			</table>
 			<!--End table -->

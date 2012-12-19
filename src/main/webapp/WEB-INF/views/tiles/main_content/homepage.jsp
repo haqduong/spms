@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div id="wrap_main">
 	<div class="title_home">
 		<h2>Thông tin nổi bật</h2>
@@ -11,8 +12,8 @@
 						động lực Biển Đông”</b></li>
 				<li><a style="color: #8d8a8a; font-size: 11px;">12/12/2012
 						17:22</a></li>
-				<li><img src="/resources/images/news/biendong2.jpg" width="400"
-					height="200" /></li>
+				<li><img src="<c:url value = "/resources/images/news/biendong2.jpg"/>"
+			width="400" height="240" /></li>
 				<li><br /> <a>Ngày 23 và sáng ngày 24/11/2012, tại Đồ Sơn,
 						TP. Hải Phòng đã diễn ra Hội thảo khoa học quốc tế đề tài
 						KC.09.02/11-15 với chủ đề “Tiến hóa kiến tạo và địa động lực Biển
@@ -34,7 +35,7 @@
 			<ul>
 				<li>
 					<div class="sub_left">
-						<img src="/resources/images/news/new_1.jpg" width="100"
+						<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 							height="100" />
 					</div>
 					<div class="sub_right">
@@ -48,7 +49,7 @@
 				</li>
 				<li>
 					<div class="sub_left">
-						<img src="/resources/images/news/new_2.jpg" width="100"
+						<img src= "<c:url value = "/resources/images/news/new_2.jpg"/>" width="100"
 							height="100" />
 					</div>
 					<div class="sub_right">
@@ -62,7 +63,7 @@
 				</li>
 				<li>
 					<div class="sub_left">
-						<img src="/resources/images/news/new_1.jpg" width="100"
+						<img src= "<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 							height="100" />
 					</div>
 					<div class="sub_right">
@@ -76,7 +77,7 @@
 				</li>
 				<li>
 					<div class="sub_left">
-						<img src="/resources/images/news/new_2.jpg" width="100"
+						<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 							height="100" />
 					</div>
 					<div class="sub_right">
@@ -90,7 +91,7 @@
 				</li>
 				<li>
 					<div class="sub_left">
-						<img src="/resources/images/news/new_1.jpg" width="100"
+						<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 							height="100" />
 					</div>
 					<div class="sub_right">
@@ -119,7 +120,7 @@
 					<ul>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_1.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">
@@ -136,7 +137,7 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_2.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">
@@ -153,7 +154,7 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_2.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">
@@ -170,7 +171,7 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="../images/news/new_1.jpg" width="100" height="100" />
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>"width="100" height="100" />
 							</div>
 							<div class="sub_right">
 								<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy điện
@@ -202,7 +203,7 @@
 					<ul>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_1.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">
@@ -219,7 +220,7 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_2.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">
@@ -236,7 +237,7 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_1.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">
@@ -253,7 +254,7 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_2.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">
@@ -285,7 +286,7 @@
 					<ul>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_1.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">
@@ -302,7 +303,7 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_2.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">
@@ -319,7 +320,7 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_2.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">
@@ -336,7 +337,7 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_1.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">
@@ -368,7 +369,7 @@
 					<ul>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_1.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">
@@ -385,7 +386,7 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_2.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">
@@ -402,7 +403,7 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="../images/news/new_1.jpg" width="100" height="100" />
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100" height="100" />
 							</div>
 							<div class="sub_right">
 								<b>Kết quả khảo sát động đất tháng 9/2012 khu vực thủy điện
@@ -418,7 +419,7 @@
 						</li>
 						<li>
 							<div class="sub_left">
-								<img src="/resources/images/news/new_2.jpg" width="100"
+								<img src="<c:url value = "/resources/images/news/new_1.jpg"/>" width="100"
 									height="100" />
 							</div>
 							<div class="sub_right">

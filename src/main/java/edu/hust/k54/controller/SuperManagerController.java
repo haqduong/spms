@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.Controller;
 import edu.hust.k54.persistence.Donviquanly;
 import edu.hust.k54.persistence.DonviquanlyHome;
 import edu.hust.k54.persistence.Phongban;
+import edu.hust.k54.persistence.PhongbanHome;
 import edu.hust.k54.persistence.Soyeulylich;
 import edu.hust.k54.persistence.SoyeulylichHome;
 import edu.hust.k54.persistence.Taikhoandangnhap;
@@ -35,6 +36,10 @@ public class SuperManagerController implements Controller {
 			Integer iddonvi = null;
 			if (arg0.getParameter("iddonvi") != null) {
 				iddonvi = Integer.parseInt(arg0.getParameter("iddonvi"));
+				if(taikhoandangnhap.getSoyeulylich().getPhongban().getDonviquanly().getIddonviquanly() != iddonvi){
+					modelAndView = new ModelAndView("errorPage");
+					return modelAndView;
+				}
 				DonviquanlyHome donviquanlyHome = new DonviquanlyHome();
 				if (uri.contains("quanly/donvi")) {
 					Map parameter = arg0.getParameterMap();
@@ -72,7 +77,25 @@ public class SuperManagerController implements Controller {
 					modelAndView.addObject("donvi",donvi);
 				} else if (uri.contains("quanly/phongban")) {
 					Donviquanly donvi= donviquanlyHome.findById(iddonvi);
-					modelAndView = new ModelAndView("quanly_TTPhongban");
+					modelAndView = new ModelAndView("quanly_phongban");
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
+					modelAndView.addObject("donviquanly", donviquanly);
+					modelAndView.addObject("donvi",donvi);
+				}else if (uri.contains("quanly/xoaphongban")) {
+					Integer idphongban = Integer.parseInt(arg0.getParameter("idphongban"));
+					
+					System.out.println("Phong ban + " + idphongban);
+					PhongbanHome phongbanHome = new PhongbanHome();
+					phongbanHome.delete(phongbanHome.findById(idphongban));
+					phongbanHome.getSessionFactory().getCurrentSession().flush();
+					Donviquanly donvi= donviquanlyHome.findById(iddonvi);
+					modelAndView = new ModelAndView("quanly_phongban");
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
+					modelAndView.addObject("donviquanly", donviquanly);
+					modelAndView.addObject("donvi",donvi);
+				}else if (uri.contains("quanly/themphongban")) {
+					Donviquanly donvi= donviquanlyHome.findById(iddonvi);
+					modelAndView = new ModelAndView("quanly_phongban");
 					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("donvi",donvi);
@@ -90,12 +113,11 @@ public class SuperManagerController implements Controller {
 			Integer idcanbo = null;
 			if (arg0.getParameter("idcanbo") != null) {
 				idcanbo = Integer.parseInt(arg0.getParameter("idcanbo"));
-
 				SoyeulylichHome soyeulylichHome = new SoyeulylichHome();
 				Taikhoandangnhap curentUser = (Taikhoandangnhap) soyeulylichHome
 						.findById(idcanbo).getTaikhoandangnhaps().toArray()[0];
 				if ((taikhoandangnhap.getSoyeulylich().getIdsoyeulylich() != idcanbo)
-						&& (taikhoandangnhap.getPermission() < curentUser
+						&& (taikhoandangnhap.getPermission() <= curentUser
 								.getPermission())) {
 					modelAndView = new ModelAndView("errorPage");
 					return modelAndView;
@@ -113,8 +135,6 @@ public class SuperManagerController implements Controller {
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("canbo",
 							guestController.TimCB(idcanbo));
-				} else if (uri.contains("thongtin/quatrinhcongtac")) {
-					// TODO
 				} else if (uri.contains("thongtin/dienbienluong")) {
 					modelAndView = new ModelAndView("dienbienluong");
 					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
@@ -136,7 +156,11 @@ public class SuperManagerController implements Controller {
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("canbo",
 							guestController.TimCB(idcanbo));
-				} else if (uri.contains("search")) {
+				}
+			}
+			
+			
+			if (uri.contains("search")) {
 					modelAndView = new ModelAndView("timkiem");
 					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
 							0, null);
@@ -190,7 +214,7 @@ public class SuperManagerController implements Controller {
 			return modelAndView;
 		}
 
-	}
+	
 
 	private ModelAndView setLink(ModelAndView view) {
 		view.addObject("homePage", "/k54/home.spms");
