@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
 import edu.hust.k54.persistence.Donviquanly;
+import edu.hust.k54.persistence.Soyeulylich;
 import edu.hust.k54.persistence.Taikhoandangnhap;
 import edu.hust.k54.persistence.TaikhoandangnhapHome;
 
@@ -66,7 +67,16 @@ public class SessionController implements Controller {
 							modelAndView.addObject("contact",
 									"/k54/supperManager/contact.spms");
 						} else if (userPermission == ADMIN_PERMISSION) {
-							ModelAndView admin = new ModelAndView("admin/home");
+							ModelAndView admin = new ModelAndView("admin/homepage");
+//							admin.addObject("logsystem", "/k54/admin/logsystem.spms");
+//							admin.addObject("updatesalary", "/k54/admin/updatesalary.spms");
+//							admin.addObject("updatechucvu", "/k54/admin/updatechucvu.spms");
+//							admin.addObject("updatehocham", "/k54/admin/updatehocham.spms");
+//							admin.addObject("updatehocvi", "/k54/admin/updatehocvi.spms");
+//							admin.addObject("phanquyen", "/k54/admin/phanquyen.spms");
+//							admin.addObject("taotaikhoan", "/k54/admin/taotaikhoan.spms");
+//							admin.addObject("duyettaikhoan", "/k54/admin/duyettaikhoan.spms");
+							arg0.getSession(true).setAttribute("user", user);
 							return admin;
 						}
 						arg0.getSession(true).setAttribute("user", user);

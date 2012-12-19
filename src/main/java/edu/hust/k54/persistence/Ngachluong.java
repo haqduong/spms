@@ -7,18 +7,18 @@ import java.util.Set;
 public class Ngachluong implements java.io.Serializable {
 
 	private Integer idngachluong;
-	private long mangach;
+	private String mangach;
 	private String ten;
 	private Set hesoluongs = new HashSet(0);
 
 	public Ngachluong() {
 	}
 
-	public Ngachluong(long mangach) {
+	public Ngachluong(String mangach) {
 		this.mangach = mangach;
 	}
 
-	public Ngachluong(long mangach, String ten, Set hesoluongs) {
+	public Ngachluong(String mangach, String ten, Set hesoluongs) {
 		this.mangach = mangach;
 		this.ten = ten;
 		this.hesoluongs = hesoluongs;
@@ -32,11 +32,11 @@ public class Ngachluong implements java.io.Serializable {
 		this.idngachluong = idngachluong;
 	}
 
-	public long getMangach() {
+	public String getMangach() {
 		return this.mangach;
 	}
 
-	public void setMangach(long mangach) {
+	public void setMangach(String mangach) {
 		this.mangach = mangach;
 	}
 

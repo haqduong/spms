@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Baocao implements java.io.Serializable {
 
-	private char idbaocao;
+	private Integer idbaocao;
 	private Soyeulylich soyeulylich;
 	private String tenbaocao;
 	private Date ngaylap;
@@ -13,28 +13,26 @@ public class Baocao implements java.io.Serializable {
 	public Baocao() {
 	}
 
-	public Baocao(char idbaocao, Soyeulylich soyeulylich, String tenbaocao,
+	public Baocao(Soyeulylich soyeulylich, String tenbaocao,
 			Date ngaylap) {
-		this.idbaocao = idbaocao;
 		this.soyeulylich = soyeulylich;
 		this.tenbaocao = tenbaocao;
 		this.ngaylap = ngaylap;
 	}
 
-	public Baocao(char idbaocao, Soyeulylich soyeulylich, String tenbaocao,
+	public Baocao(Soyeulylich soyeulylich, String tenbaocao,
 			Date ngaylap, String noidung) {
-		this.idbaocao = idbaocao;
 		this.soyeulylich = soyeulylich;
 		this.tenbaocao = tenbaocao;
 		this.ngaylap = ngaylap;
 		this.noidung = noidung;
 	}
 
-	public char getIdbaocao() {
+	public Integer getIdbaocao() {
 		return this.idbaocao;
 	}
 
-	public void setIdbaocao(char idbaocao) {
+	public void setIdbaocao(Integer idbaocao) {
 		this.idbaocao = idbaocao;
 	}
 

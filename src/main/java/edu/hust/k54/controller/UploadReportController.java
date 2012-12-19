@@ -1,10 +1,10 @@
 package edu.hust.k54.controller;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Date;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,6 +17,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 
 import edu.hust.k54.model.UploadItem;
+import edu.hust.k54.persistence.Baocao;
+import edu.hust.k54.persistence.BaocaoHome;
 import edu.hust.k54.persistence.Taikhoandangnhap;
 
 @Controller
@@ -42,8 +44,8 @@ public class UploadReportController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String create(UploadItem uploadItem, BindingResult result,
-			HttpServletRequest request, Model model) {
+	public String create(String name, UploadItem uploadItem,
+			BindingResult result, HttpServletRequest request, Model model) {
 		model.addAttribute("form_type", "Report");
 		if (result.hasErrors()) {
 			for (ObjectError error : result.getAllErrors()) {
@@ -67,20 +69,28 @@ public class UploadReportController {
 		}
 
 		try {
+			String real_path = request.getSession().getServletContext()
+					.getRealPath("");
+			File dir = new File(real_path + "/uploadContent/reports");
+			if (!dir.exists()) {
+				boolean re = dir.mkdirs();
+				System.err.println(re);
+			}
+
 			MultipartFile file = uploadItem.getFileData();
 			String fileName = null;
+			String storageLink = null;
 
 			if (file.getSize() > 0) {
 				sIn = file.getInputStream();
 				System.out.println("Size: " + file.getSize());
 				Date now = new Date();
-				fileName = request.getRealPath("") + "/uploadContent/reports/"
-						+ now.getTime() + "-" + file.getOriginalFilename();
+				fileName = now.getTime() + "-" + file.getOriginalFilename();
+				storageLink = real_path + "/uploadContent/reports/" + fileName;
 				System.err.println(fileName);
 				System.err.println(file.getContentType());
-				String type = file.getContentType();
 
-				sOut = new FileOutputStream(fileName);
+				sOut = new FileOutputStream(storageLink);
 				System.out.println("fileName:" + file.getOriginalFilename());
 
 				int readBytes = 0;
@@ -90,13 +100,20 @@ public class UploadReportController {
 				}
 				sOut.close();
 				sIn.close();
+
+				Baocao report = new Baocao(account.getSoyeulylich(), name, now,
+						fileName);
+				BaocaoHome ds = new BaocaoHome();
+
+				ds.attachDirty(report);
+				ds.getSessionFactory().getCurrentSession().flush();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		model.addAttribute("flash", "Upload successfully");
+		request.getSession().setAttribute("flash", "Tải lên thành công");
 
-		return "upload/uploadForm";
+		return "redirect:/report.spms";
 	}
 }

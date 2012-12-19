@@ -13,8 +13,8 @@
         <property name="thoigiantruycapgannhat" type="timestamp">
             <column name="thoigiantruycapgannhat" length="19" />
         </property>
-        <property name="diachiip" type="java.lang.Integer">
-            <column name="diachiip" />
+        <property name="diachiip" type="string">
+            <column name="diachiip" length="20" />
         </property>
         <property name="mota" type="string">
             <column name="mota" length="65535" />

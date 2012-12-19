@@ -8,14 +8,14 @@ public class Nhatkyhethong implements java.io.Serializable {
 	private Integer idnhatky;
 	private Taikhoandangnhap taikhoandangnhap;
 	private Date thoigiantruycapgannhat;
-	private Integer diachiip;
+	private String diachiip;
 	private String mota;
 
 	public Nhatkyhethong() {
 	}
 
 	public Nhatkyhethong(Taikhoandangnhap taikhoandangnhap,
-			Date thoigiantruycapgannhat, Integer diachiip, String mota) {
+			Date thoigiantruycapgannhat, String diachiip, String mota) {
 		this.taikhoandangnhap = taikhoandangnhap;
 		this.thoigiantruycapgannhat = thoigiantruycapgannhat;
 		this.diachiip = diachiip;
@@ -46,11 +46,11 @@ public class Nhatkyhethong implements java.io.Serializable {
 		this.thoigiantruycapgannhat = thoigiantruycapgannhat;
 	}
 
-	public Integer getDiachiip() {
+	public String getDiachiip() {
 		return this.diachiip;
 	}
 
-	public void setDiachiip(Integer diachiip) {
+	public void setDiachiip(String diachiip) {
 		this.diachiip = diachiip;
 	}
 
