@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sửa thông tin cá nhân</title>
+<title>Thêm cán bộ</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css"
 	href="<c:url value = "/resources/css/stype.css"/>">
@@ -83,17 +83,8 @@
 
 		<div id="wrap_main">
 			<div class="title_home">
-				<h2>Cập nhât thông tin sơ yếu lý lịch của ${canbo.hoten}</h2>
+				<h2>Thêm cán bộ mới</h2>
 			</div>
-			<div class="images">
-				<img src="${canbo.duongdananh}" width="100" height="150" /> <input
-					name="duongdananh" type="text"
-					placeholder="Chỗ này là đường dẫn ảnh" />
-				<p>
-					<input type="button" value="Upload" class="button" />
-				</p>
-			</div>
-			<!--End images-->
 			<div class="clear"></div>
 			<div class="infomation_staff">
 				<form name="edit_staff" action="#" method="POST">
@@ -101,8 +92,7 @@
 					<table border="0" bgcolor="#fff" align="center" id="info"
 						style="width: 100%">
 						<tr>
-							<td class="title" colspan=2 align="center" height="50">Thông
-								tin cá nhân</td>
+							<td class="title" colspan=2 align="center" height="50">Nhập thông tin cán bộ mới</td>
 						</tr>
 						<tr>
 							<td class="list">Họ và tên</td>
@@ -698,7 +688,6 @@
 
 	<script type="text/javascript">
 	function chageDonViState() {
-		
 		removePBOption();
 		<%String dsPhongBan = new String();
 		List listDonviquanly = (List) request.getAttribute("donviquanly");

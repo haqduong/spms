@@ -83,7 +83,7 @@
 			</div>
 			<div class="images">
 				<div class="button">
-					<a>Thêm cán bộ</a>
+					<a href="/k54/manager/quanly/themcanbo.spms?idphongban=${phongban.idphongban}">Thêm cán bộ</a>
 				</div>
 
 			</div>

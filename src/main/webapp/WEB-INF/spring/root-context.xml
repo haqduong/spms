@@ -155,6 +155,9 @@
 				<entry key="/manager/quanly/hosocanbo.spms">
 					<ref bean="managerController" />
 				</entry>
+				<entry key="/manager/quanly/themcanbo.spms">
+					<ref bean="managerController" />
+				</entry>
 				<entry key="/manager/quanly/khenthuong.spms">
 					<ref bean="managerController" />
 				</entry>
@@ -191,10 +194,6 @@
 				<entry key="/manager/contact.spms">
 					<ref bean="managerController" />
 				</entry>
-
-
-
-
 
 
 				<entry key="/superManager/quanly/donvi.spms">

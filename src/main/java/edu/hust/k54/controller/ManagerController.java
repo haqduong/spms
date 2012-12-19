@@ -1,5 +1,8 @@
 package edu.hust.k54.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -9,12 +12,33 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import edu.hust.k54.persistence.Capuy;
+import edu.hust.k54.persistence.CapuyHome;
+import edu.hust.k54.persistence.Chucvu;
+import edu.hust.k54.persistence.ChucvuHome;
+import edu.hust.k54.persistence.Danhhieu;
+import edu.hust.k54.persistence.DanhhieuHome;
+import edu.hust.k54.persistence.Dantoc;
+import edu.hust.k54.persistence.DantocHome;
 import edu.hust.k54.persistence.Donviquanly;
+import edu.hust.k54.persistence.DonviquanlyHome;
+import edu.hust.k54.persistence.Giaoducphothong;
+import edu.hust.k54.persistence.GiaoducphothongHome;
+import edu.hust.k54.persistence.Hocham;
+import edu.hust.k54.persistence.HochamHome;
+import edu.hust.k54.persistence.Hocvi;
+import edu.hust.k54.persistence.HocviHome;
 import edu.hust.k54.persistence.Phongban;
 import edu.hust.k54.persistence.PhongbanHome;
+import edu.hust.k54.persistence.Quocgia;
+import edu.hust.k54.persistence.QuocgiaHome;
 import edu.hust.k54.persistence.Soyeulylich;
 import edu.hust.k54.persistence.SoyeulylichHome;
 import edu.hust.k54.persistence.Taikhoandangnhap;
+import edu.hust.k54.persistence.Tongiao;
+import edu.hust.k54.persistence.TongiaoHome;
+import edu.hust.k54.persistence.Xuatthan;
+import edu.hust.k54.persistence.XuatthanHome;
 
 public class ManagerController implements Controller {
 
@@ -24,6 +48,7 @@ public class ManagerController implements Controller {
 			HttpServletResponse arg1) throws Exception {
 		ModelAndView modelAndView = null;
 		Guest guestController = new Guest();
+		Staff staffController = new Staff();
 		Taikhoandangnhap taikhoandangnhap = (Taikhoandangnhap) arg0
 				.getSession().getAttribute("user");
 		if ((taikhoandangnhap == null)
@@ -64,6 +89,128 @@ public class ManagerController implements Controller {
 					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("phongban",phongban);
+				}else if (uri.contains("quanly/themcanbo")) {
+					Phongban phongban = phongbanHome.findById(idphongban);
+					modelAndView = new ModelAndView("them_canbo");
+					List<Donviquanly> donviquanly = guestController.TimDVQL(0,0, null);
+					modelAndView.addObject("donviquanly", donviquanly);
+					Map parameter = arg0.getParameterMap();
+					HochamHome hochamHome = new HochamHome();
+					HocviHome hocviHome = new HocviHome();
+					ChucvuHome chucvuHome = new ChucvuHome();
+					GiaoducphothongHome giaoducphothongHome = new GiaoducphothongHome();
+					CapuyHome capuyHome = new CapuyHome();
+					XuatthanHome xuatthanHome = new XuatthanHome();
+					DanhhieuHome danhhieuHome = new DanhhieuHome();
+					DantocHome dantocHome = new DantocHome();
+					QuocgiaHome quocgiaHome = new QuocgiaHome();
+					TongiaoHome tongiaoHome = new TongiaoHome();
+					DonviquanlyHome donviquanlyHome = new DonviquanlyHome();
+					if (parameter.containsKey("update")) {
+						DateFormat dateFormat = new SimpleDateFormat("yy-MM-dd");
+						String newName = arg0.getParameter("name");
+						Integer newIdDonVi = Integer.parseInt(arg0
+								.getParameter("choiceDonviquanly"));
+						Integer newIdPhongBan = Integer.parseInt(arg0
+								.getParameter("phongban"));
+						Integer newIdHocVi = Integer.parseInt(arg0
+								.getParameter("hocvi"));
+						Integer newIdChucVu = Integer.parseInt(arg0
+								.getParameter("chucvu"));
+						Integer newIdHocHam = Integer.parseInt(arg0
+								.getParameter("hocham"));
+						Integer newIdCapUy = Integer.parseInt(arg0
+								.getParameter("capuy"));
+						Integer newIdGiaoDucPhoThong = Integer.parseInt(arg0
+								.getParameter("giaoducphothong"));
+						Integer newIdDanhHieu = Integer.parseInt(arg0
+								.getParameter("danhhieu"));
+						Integer newIdXuatThan = Integer.parseInt(arg0
+								.getParameter("xuatthan"));
+						Integer newIdQuocGia = Integer.parseInt(arg0
+								.getParameter("quocgia"));
+						Integer newIdDanToc = Integer.parseInt(arg0
+								.getParameter("dantoc"));
+						Integer newIdTonGiao = Integer.parseInt(arg0
+								.getParameter("tongiao"));
+						Integer newLoaiCanBo = Integer.parseInt(arg0
+								.getParameter("loaicanbo"));
+						Integer newSoHieuCongChuc = Integer.parseInt(arg0
+								.getParameter("sohieucongchuc"));
+						String newSoCMT = arg0.getParameter("chungminhnhandan");
+						String newGioiTinh = arg0.getParameter("gioitinh");
+						String newTenThuongDung = arg0
+								.getParameter("tenthuongdung");
+						Date newNgaySinh = dateFormat.parse(arg0
+								.getParameter("ngaysinh"));
+						String newNoiSinh = arg0.getParameter("noisinh");
+						String newQueQuan = arg0.getParameter("quequan");
+						String newNoiO = arg0.getParameter("noiohiennay");
+						String newSoDT = arg0.getParameter("sodienthoai");
+						String newNgayVaoDang = arg0
+								.getParameter("ngayvaodangchinhthuc");
+						Date newNgayCapNhat = dateFormat.parse(arg0
+								.getParameter("ngaycapnhat"));
+						String newSucKhoe = arg0.getParameter("suckhoe");
+						String newNgonNguBiet = arg0.getParameter("ngonngubiet");
+						Soyeulylich soyeulylich = new Soyeulylich();
+						soyeulylich.setHoten(newName);
+						soyeulylich.setDonviquanly(donviquanlyHome
+								.findById(newIdDonVi));
+						soyeulylich.setPhongban(phongbanHome
+								.findById(newIdPhongBan));
+						soyeulylich.setHocvi(hocviHome.findById(newIdHocVi));
+						soyeulylich.setChucvu(chucvuHome.findById(newIdChucVu));
+						soyeulylich.setHocham(hochamHome.findById(newIdHocHam));
+						soyeulylich.setCapuy(capuyHome.findById(newIdCapUy));
+						soyeulylich.setGiaoducphothong(giaoducphothongHome
+								.findById(newIdGiaoDucPhoThong));
+						soyeulylich.setDanhhieu(danhhieuHome
+								.findById(newIdDanhHieu));
+						soyeulylich.setXuatthan(xuatthanHome
+								.findById(newIdXuatThan));
+						soyeulylich.setQuocgia(quocgiaHome.findById(newIdQuocGia));
+						soyeulylich.setDantoc(dantocHome.findById(newIdDanToc));
+						soyeulylich.setTongiao(tongiaoHome.findById(newIdTonGiao));
+						soyeulylich.setLoaiCb(newLoaiCanBo);
+						soyeulylich.setSohieucongchuc(newSoHieuCongChuc);
+						soyeulylich.setChungminhnhandan(newSoCMT);
+						soyeulylich.setGioitinh(newGioiTinh);
+						soyeulylich.setTenthuongdung(newTenThuongDung);
+						soyeulylich.setNoisinh(newNoiSinh);
+						soyeulylich.setNgaysinh(newNgaySinh);
+						soyeulylich.setQuequan(newQueQuan);
+						soyeulylich.setNoiohiennay(newNoiO);
+						soyeulylich.setSodienthoai(newSoDT);
+						soyeulylich.setNgayvaodangchinhthuc(newNgayVaoDang);
+						soyeulylich.setNgaycapnhat(newNgayCapNhat);
+						soyeulylich.setSuckhoe(newSucKhoe);
+						soyeulylich.setNgonngubiet(newNgonNguBiet);
+						staffController.suaSoYeuLiLich(soyeulylich);
+						modelAndView.addObject("updateSoYeuOK","Cập nhật thành công!");
+
+					}
+					modelAndView.addObject("hocham",
+							hochamHome.findByExample(new Hocham()));
+					modelAndView.addObject("hocvi",
+							hocviHome.findByExample(new Hocvi()));
+					modelAndView.addObject("chucvu",
+							chucvuHome.findByExample(new Chucvu()));
+					modelAndView.addObject("capuy",
+							capuyHome.findByExample(new Capuy()));
+					modelAndView.addObject("giaoducphothong", giaoducphothongHome
+							.findByExample(new Giaoducphothong()));
+					modelAndView.addObject("danhhieu",
+							danhhieuHome.findByExample(new Danhhieu()));
+					modelAndView.addObject("xuatthan",
+							xuatthanHome.findByExample(new Xuatthan()));
+					modelAndView.addObject("quocgia",
+							quocgiaHome.findByExample(new Quocgia()));
+					modelAndView.addObject("dantoc",
+							dantocHome.findByExample(new Dantoc()));
+					modelAndView.addObject("tongiao",
+							tongiaoHome.findByExample(new Tongiao()));
+					
 				} else if (uri.contains("quanly/khenthuong")) {
 					Phongban phongban = phongbanHome.findById(idphongban);
 					modelAndView = new ModelAndView("thongke_khenthuong");
