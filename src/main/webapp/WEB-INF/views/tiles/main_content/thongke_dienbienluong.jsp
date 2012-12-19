@@ -17,19 +17,20 @@
 
 		</div>
 		<script type="text/javascript">
-			window.onload = function() {
-				new JsDatePick({
-					useMode : 2,
-					target : "inputField_start",
-					dateFormat : "%d-%M-%Y"
-				});
-				new JsDatePick({
-					useMode : 2,
-					target : "inputField_end",
-					dateFormat : "%d-%M-%Y"
-				});
-			};
-		</script>
+                        window.onload = function(){
+                            new JsDatePick({
+                                useMode:2,
+                                target:"inputField_start",
+                                dateFormat:"%d-%M-%Y"
+                            });
+                            new JsDatePick({
+                                useMode:2,
+                                target:"inputField_end",
+                                dateFormat:"%d-%M-%Y"
+                            });
+                        };
+                        
+                    </script>
 
 		<table style="width: 100%;">
 			<tr class="head_tb_tranfer_work">

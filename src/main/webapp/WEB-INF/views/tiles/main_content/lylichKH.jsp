@@ -60,7 +60,5 @@
 	</div>
 	<!--End infomation -->
 	<div class="clear"></div>
-
-
 </div>
 <!--End wrap_main-->

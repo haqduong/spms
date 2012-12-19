@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <div id="wrap_main">
 	<div class="title_home">
 		<h2>Thống kê khen thưởng</h2>

@@ -215,6 +215,4 @@
 		<!--End list_data-->
 
 	</div>
-
 </div>
-
