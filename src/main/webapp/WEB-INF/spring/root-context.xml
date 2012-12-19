@@ -158,6 +158,10 @@
 				<entry key="/manager/quanly/themcanbo.spms">
 					<ref bean="managerController" />
 				</entry>
+				<entry key="/manager/capnhat/xoacanbo.spms">
+					<ref bean="managerController" />
+				</entry>
+				
 				<entry key="/manager/quanly/khenthuong.spms">
 					<ref bean="managerController" />
 				</entry>

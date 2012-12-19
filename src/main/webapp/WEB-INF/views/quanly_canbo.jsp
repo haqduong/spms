@@ -103,10 +103,10 @@
 										<tr class="tieu_de">
 											<td style="width: 5%">STT</td>
 											<td style="width: 20%">Họ và tên</td>
-											<td style="width: 10%">Chức vụ</td>
+											<td style="width: 15%">Chức vụ</td>
 											<td style="width: 15%">Điện thoại</td>
-											<td style="width: 15%">Số hiệu công chức</td>
 											<td style="width: 10%">Chỉnh sửa</td>
+											<td style="width: 10%">Xóa</td>
 										</tr>
 									</table>
 								</td>
@@ -125,12 +125,15 @@
 													<tr class="row_1">
 														<td style="width: 5%"><%=++i%></td>
 														<td style="width: 20%">${canbo.hoten}</td>
-														<td style="width: 10%">${canbo.chucvu.ten}</td>
+														<td style="width: 15%">${canbo.chucvu.ten}</td>
 														<td style="width: 15%">${canbo.sodienthoai}</td>
-														<td style="width: 15%">${canbo.sohieucongchuc}</td>
 														<td style="width: 10%"><a
 															href="/k54/staff/capnhat/thongtincanhan.spms?idcanbo=${canbo.idsoyeulylich}">Cập
 																nhật</a></td>
+														<td style="width: 10%">
+														
+																<a href="/k54/manager/capnhat/xoacanbo.spms?idcanbo=${canbo.idsoyeulylich}">Xóa</a>
+																</td>
 													</tr>
 												</c:if>
 												<c:if
@@ -140,8 +143,8 @@
 														<td style="width: 20%">${canbo.hoten}</td>
 														<td style="width: 10%">${canbo.chucvu.ten}</td>
 														<td style="width: 15%">${canbo.sodienthoai}</td>
-														<td style="width: 15%">${canbo.sohieucongchuc}</td>
-														<td style="width: 10%">Không có quyền cập nhật</td>
+														<td style="width: 15%">Không có quyền</td>
+														<td style="width: 10%">Không có quyền</td>
 													</tr>
 												</c:if>
 												
