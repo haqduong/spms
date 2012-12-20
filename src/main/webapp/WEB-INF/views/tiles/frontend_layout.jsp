@@ -12,13 +12,13 @@
 
 </head>
 <body>
+	<tiles:insertAttribute name="header" />
 	<div id="wrapper">
-		<tiles:insertAttribute name="header" />
 		<tiles:insertAttribute name="main_content" />
 		<tiles:insertAttribute name="session_info" />
 		<div class="clear"></div>
-		<tiles:insertAttribute name="footer" />
 	</div>
+	<tiles:insertAttribute name="footer" />
 	<!--End wrapper -->
 </body>
 </html>

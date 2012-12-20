@@ -12,71 +12,72 @@
 	src="<c:url value = "/resources/js/jquery.js"/>"></script>
 </head>
 <body>
-	<div id="wrapper">
-
-		<div id="wrap_header">
-			<div id="banner_header">
-				<h1 class="stitle_web">Viện khoa học và công nghệ Việt Nam</h1>
+	<div id="wrap_header">
+		<div id="banner_header">
+			<div class="stitle_web">
+				<img src="<c:url value = "/resources/images/banner/logonew.png"/>" />
 			</div>
-			<!--End banner_header -->
-			<div id="nav_menu">
-				<div class="header-row-1">
-					<ul>
-						<li><a
-							href="<c:if test="${not empty homePage}"> ${homePage} </c:if>
-							<c:if test="${empty homePage}">/k54/home.spms</c:if>">Trang
-								chủ</a></li>
-						<li><a href="#">Tin tức - thông báo</a>
-							<ul>
-								<li><a href="#">Hoạt động</a></li>
-								<li><a href="#">Tin KH trong nước</a></li>
-								<li><a href="#">Tin KH quốc tế</a></li>
-								<li><a href="#">Thông báo</a></li>
-							</ul></li>
-						<li><a>Đơn vị</a>
-							<ul>
-								<c:forEach items="${donviquanly}" var="donviquanly">
-									<li><a
-										href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">${donviquanly.ten}</a>
-										<ul>
-											<li><a
-												href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">Giới
-													thiệu chung</a></li>
-											<li><a
-												href="/k54/guest/donviquanly/danhsachcanbo.spms?iddonviquanly=${donviquanly.iddonviquanly}">Danh
-													mục cán bộ</a></li>
-											<li><a
-												href="/k54/guest/donviquanly/danhsachphongban.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các
-													phòng ban</a>
-											<li><a
-												href="/k54/guest/donviquanly/nghiencuu.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các
-													nghiên cứu</a></li>
-										</ul></li>
-								</c:forEach>
-
-							</ul></li>
-						<li></li>
-
-						<li><a
-							href="<c:if test="${not empty search}"> ${search} </c:if>
-							<c:if test="${empty search}"> /k54/guest/search.spms</c:if>">Tìm
-								kiếm</a></li>
-						<li><a
-							href="<c:if test="${not empty info}"> ${info} </c:if>
-							<c:if test="${empty info}"> /k54/guest/info.spms</c:if>">Giới
-								thiệu</a></li>
-						<li><a
-							href="<c:if test="${not empty contact}"> ${contact} </c:if>
-							<c:if test="${empty contact}"> /k54/guest/contact.spms</c:if>">Liên
-								hệ</a></li>
-					</ul>
-				</div>
-				<!--End header-row-1-->
-			</div>
-			<!-- end nav_menu -->
 		</div>
-		<!--End wrap_header -->
+		<!--End banner_header -->
+		<div id="nav_menu">
+			<div class="header-row-1">
+				<ul>
+					<li><a
+						href="<c:if test="${not empty homePage}"> ${homePage} </c:if>
+							<c:if test="${empty homePage}">/k54/home.spms</c:if>">Trang
+							chủ</a></li>
+					<li><a href="#">Tin tức - thông báo</a>
+						<ul>
+							<li><a href="#">Hoạt động</a></li>
+							<li><a href="#">Tin KH trong nước</a></li>
+							<li><a href="#">Tin KH quốc tế</a></li>
+							<li><a href="#">Thông báo</a></li>
+						</ul></li>
+					<li><a>Đơn vị</a>
+						<ul>
+							<c:forEach items="${donviquanly}" var="donviquanly">
+								<li><a
+									href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">${donviquanly.ten}</a>
+									<ul>
+										<li><a
+											href="/k54/guest/donviquanly/gioithieuchung.spms?iddonviquanly=${donviquanly.iddonviquanly}">Giới
+												thiệu chung</a></li>
+										<li><a
+											href="/k54/guest/donviquanly/danhsachcanbo.spms?iddonviquanly=${donviquanly.iddonviquanly}">Danh
+												mục cán bộ</a></li>
+										<li><a
+											href="/k54/guest/donviquanly/danhsachphongban.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các
+												phòng ban</a>
+										<li><a
+											href="/k54/guest/donviquanly/nghiencuu.spms?iddonviquanly=${donviquanly.iddonviquanly}">Các
+												nghiên cứu</a></li>
+									</ul></li>
+							</c:forEach>
 
+						</ul></li>
+					<li></li>
+
+					<li><a
+						href="<c:if test="${not empty search}"> ${search} </c:if>
+							<c:if test="${empty search}"> /k54/guest/search.spms</c:if>">Tìm
+							kiếm</a></li>
+					<li><a
+						href="<c:if test="${not empty info}"> ${info} </c:if>
+							<c:if test="${empty info}"> /k54/guest/info.spms</c:if>">Giới
+							thiệu</a></li>
+					<li><a
+						href="<c:if test="${not empty contact}"> ${contact} </c:if>
+							<c:if test="${empty contact}"> /k54/guest/contact.spms</c:if>">Liên
+							hệ</a></li>
+				</ul>
+			</div>
+			<!--End header-row-1-->
+		</div>
+		<!-- end nav_menu -->
+	</div>
+	<!--End wrap_header -->
+
+	<div id="wrapper">
 		<div id="wrap_main">
 			<div class="title_home">
 				<h2>${phongban.ten}</h2>
@@ -109,27 +110,30 @@
 				<div class="title_info">THÔNG TIN CHUNG</div>
 				<div class="content_text">${phongban.thongtinchung}</div>
 				<!-- content_text -->
-					<div class="list_staff">
-		<form>
-			<table cellspacing="0" cellpadding="0" border-collapse="10px"
-				width="100%">
-				<div class="title_info">DANH SÁCH CÁN BỘ THUỘC QUẢN LÝ CỦA PHÒNG</div>
-				<br></br>
-				<c:forEach items="${phongban.soyeulyliches}" var="canbo" varStatus="count">
-					<c:if test="${(count.index % 2) == 0}">
-						<tr style="margin-bottom: 50px;">
-							<td style="width: 50%">
-								<div class="avatar_img">
-									<img src="<c:url value = "${canbo.duongdananh}"/>" width="90" height="120" />
-								</div>
-								<div class="content_staff">
-									<p>
-										<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
-									</p>
-									<p>
-										<a>Chức vụ : &nbsp;</a><a class="postion_staff">${canbo.chucvu.ten}</a>
-									</p>
-									<p>
+				<div class="list_staff">
+					<form>
+						<table cellspacing="0" cellpadding="0" border-collapse="10px"
+							width="100%">
+							<div class="title_info">DANH SÁCH CÁN BỘ THUỘC QUẢN LÝ CỦA
+								PHÒNG</div>
+							<br></br>
+							<c:forEach items="${phongban.soyeulyliches}" var="canbo"
+								varStatus="count">
+								<c:if test="${(count.index % 2) == 0}">
+									<tr style="margin-bottom: 50px;">
+										<td style="width: 50%">
+											<div class="avatar_img">
+												<img src="<c:url value = "${canbo.duongdananh}"/>"
+													width="90" height="120" />
+											</div>
+											<div class="content_staff">
+												<p>
+													<a class="name_staff">${canbo.hocvi.ten}.${canbo.hoten}</a>
+												</p>
+												<p>
+													<a>Chức vụ : &nbsp;</a><a class="postion_staff">${canbo.chucvu.ten}</a>
+												</p>
+												<p>
 											<a>Email : &nbsp;</a>
 											<a class="email_staff">${canbo.taikhoandangnhaps.email} </a>
 	
@@ -461,10 +465,20 @@
 </div>
 <!--End wrap_right-->
 		<div class="clear"></div>
-		<div id="wrap_footer"></div>
-		<!--End wrap_footer-->
 	</div>
 	<!--End wrapper -->
+	<div id="wrap_footer">
+		<div id="wrap_footer_sub">
+			<ul>
+				<li>Bản quyền thuộc về Viện Khoa học và Công nghệ Việt Nam.</li>
+				<li>Địa chỉ: 18 Hoàng Quốc Việt, Cầu Giấy, Hà Nội. Email:
+					thongtin@vast.vn</li>
+				<li>Khi phát hành lại thông tin trên Website, cần ghi rõ nguồn:
+					"Viện Khoa học và Công nghệ Việt Nam".</li>
+			</ul>
+		</div>
+	</div>
+	<!--End wrap_footer-->
 </body>
 </html>
 

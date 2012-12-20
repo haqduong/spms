@@ -116,7 +116,7 @@ ul,ol         { list-style:none; }
 }
 /*========================= MENU_LEFT ===================================================*/
 #wrap_main{
-    height: 800px;
+    /*height: 800px;*/
     width: 1000px;
     /*background: #EFEFAF;*/
 }
@@ -172,7 +172,7 @@ ul,ol         { list-style:none; }
 #wrap_center{
     width: 800px;
     float: left;
-    height: 800px;
+    min-height: 800px;
     /*background: #FB5B04;*/
 }
 #wrap_center .list_data{

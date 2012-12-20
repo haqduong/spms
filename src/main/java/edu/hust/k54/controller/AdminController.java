@@ -80,6 +80,10 @@ public class AdminController implements Controller{
 				if(arg0.getParameter("iduser")==null){
 					modelAndView = new ModelAndView("admin/xem_nhatkyhethong");
 					List <Nhatkyhethong> nhatkyhethong = admin.xemNkHt();
+					System.out.println("fuckkkkkk");
+					for (Nhatkyhethong nhatkyhethong2 : nhatkyhethong) {
+						System.out.println(nhatkyhethong2.getTaikhoandangnhap().getUsername() + "\n");
+					}
 					modelAndView.addObject("nhatkyhethongs", nhatkyhethong);
 				}else{
 					modelAndView = new ModelAndView("admin/xem_tttaikhoan");
@@ -91,7 +95,8 @@ public class AdminController implements Controller{
 				}
 				
 				//chức năng lọc xem nhật ký hệ thống
-				if(arg0.getParameter("manager") != null && arg0.getParameter("manager").equalsIgnoreCase("filter")){
+				if(arg0.getParameter("manager") != null && arg0.getParameter("manager").equals("filter")){
+					System.out.println("sao lai vao day");
 					modelAndView = new ModelAndView("admin/xem_nhatkyhethong");
 					String username = arg0.getParameter("username");
 					String addrIP = arg0.getParameter("addrip");
@@ -141,7 +146,7 @@ public class AdminController implements Controller{
 						modelAndView.addObject("statusError", "Không có kết quả phù hợp");
 					modelAndView.addObject("nhatkyhethongs", nhatkyhethongs);
 					return modelAndView;
-				}
+				}//End chức năng lọc xem nhật ký hệ thống
 				
 				return modelAndView;
 			}//End logsystem
@@ -329,6 +334,9 @@ public class AdminController implements Controller{
 					//dispatcher: Vào chức năng phân quyền
 					if(arg0.getParameter("manager") == null){
 						List <Taikhoandangnhap> phanquyens = admin.xemPhanquyen();
+						for (Taikhoandangnhap taikhoandangnhap2 : phanquyens) {
+							System.out.println(taikhoandangnhap2.getUsername() + "\n");
+						}
 						modelAndView.addObject("phanquyens", phanquyens);
 					}
 					// End: Vào chức năng phân quyền
@@ -401,7 +409,7 @@ public class AdminController implements Controller{
 					//-------Dùng để có list lựa chọn đơn vị
 					modelAndView.addObject("statusErr", statusError);
 					return modelAndView;
-				} //End if iduser != null
+				} //End if iduser == null
 				
 				else{
 					//Dispatcher: xem phân quyền cụ thể

@@ -14,9 +14,14 @@
 
 </head>
 <body>
+	<div id="wrap_header">
+		<div id="banner_header">
+			<img src="<c:url value = "/resources/images/banner/logonew.png"/>" />
+		</div>
+		<!--End banner_header -->
+	</div>
+	<!--End wrap_header-->
 	<div id="wrapper">
-		<div id="wrap_header"></div>
-		<!--End wrap_header-->
 		<div id="wrap_main">
 			<div id="wrap_left">
 				<div class="menu_left">
@@ -45,7 +50,8 @@
 					<div class="title_table">
 						<a> Bộ lọc </a>
 					</div>
-					<form name="boloc" action="/k54/admin/logsystem.spms?manager=filter" method="POST">
+					<form name="boloc"
+						action="/k54/admin/logsystem.spms?manager=filter" method="POST">
 						<table class="boloc" cellspacing="0" cellpadding="1"
 							style="width: 600px">
 							<tr>
@@ -68,7 +74,9 @@
 
 					</form>
 					<br />
-					<c:if test='${not empty "${statusError}" }'><a style="font-weight: bold;color: red;">${statusError}</a></c:if>
+					<c:if test='${not empty "${statusError}" }'>
+						<a style="font-weight: bold; color: red;">${statusError}</a>
+					</c:if>
 					<table cellspacing="0" cellpadding="0" width="100%">
 						<tr>
 							<td>
@@ -87,12 +95,25 @@
 							<td>
 								<div class="description">
 									<table cellspacing="0" cellpadding="1" style="width: 782px">
-									<%int count =0;  %>
+										<%
+											int count = 0;
+										%>
 										<c:forEach items="${nhatkyhethongs}" var="nhatky">
-										
+
 											<tr>
 												<td style="width: 5%"><%=++count%></td>
-												<td style="width: 15%; font-weight: bold;"><a href="/k54/admin/logsystem.spms?iduser=${nhatky.taikhoandangnhap.iduser}">${nhatky.taikhoandangnhap.username}</a></td>
+
+												<c:if
+													test="${nhatky.taikhoandangnhap.iduser== null ||nhatky.taikhoandangnhap.iduser == ''}">
+													<td style="width: 15%; font-weight: bold;"><a>Khách
+															vãng lai</a></td>
+												</c:if>
+												<c:if
+													test="${nhatky.taikhoandangnhap.iduser != null && nhatky.taikhoandangnhap.iduser != ''}">
+													<td style="width: 15%; font-weight: bold;"><a
+														href="/k54/admin/logsystem.spms?iduser=${nhatky.taikhoandangnhap.iduser}">${nhatky.taikhoandangnhap.username}</a></td>
+												</c:if>
+
 												<td style="width: 15%">${nhatky.thoigiantruycapgannhat}</td>
 												<td style="width: 15%">${nhatky.diachiip}</td>
 												<td style="">${nhatky.mota }</td>
@@ -115,9 +136,19 @@
 		</div>
 		<!--End wrap_main -->
 		<div class="clear"></div>
-		<div id="wrap_footer"></div>
-		<!--End wrap_footer-->
 	</div>
 	<!--End wrapper-->
+	<div id="wrap_footer">
+		<div id="wrap_footer_sub">
+			<ul>
+				<li>Bản quyền thuộc về Viện Khoa học và Công nghệ Việt Nam.</li>
+				<li>Địa chỉ: 18 Hoàng Quốc Việt, Cầu Giấy, Hà Nội. Email:
+					thongtin@vast.vn</li>
+				<li>Khi phát hành lại thông tin trên Website, cần ghi rõ nguồn:
+					"Viện Khoa học và Công nghệ Việt Nam".</li>
+			</ul>
+		</div>
+	</div>
+	<!--End wrap_footer-->
 </body>
 </html>

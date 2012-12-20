@@ -83,7 +83,7 @@ public class SessionController implements Controller {
 							modelAndView.addObject("contact",
 									"/k54/superManager/contact.spms");
 						} else if (userPermission == ADMIN_PERMISSION) {
-							ModelAndView admin = new ModelAndView("admin/homepage");
+							ModelAndView admin = new ModelAndView("admin/xem_nhatkyhethong");
 //							admin.addObject("logsystem", "/k54/admin/logsystem.spms");
 //							admin.addObject("updatesalary", "/k54/admin/updatesalary.spms");
 //							admin.addObject("updatechucvu", "/k54/admin/updatechucvu.spms");
