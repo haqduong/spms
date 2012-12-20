@@ -82,7 +82,8 @@
 				<h2>${donvi.ten}</h2>
 			</div>
 			<div class="images">
-				<img src="${donvi.duongdananh}" width="300" height="200" />
+				<img src="<c:url value = "${donvi.duongdananh}"/>"
+			width="300" height="200" />
 
 			</div>
 			<!--End images-->
