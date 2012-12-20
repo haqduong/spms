@@ -83,8 +83,8 @@
 				<h2>Thông tin sơ yếu lý lịch</h2>
 			</div>
 			<div class="images">
-				<img style="margin-left: 30px;" src="${canbo.duongdananh}"
-					width="100" height="150" />
+				<img src="<c:url value = "${canbo.duongdananh}"/>" width="100"
+					height="150" />
 
 			</div>
 			<!--End images-->
@@ -103,7 +103,8 @@
 
 					<div class="detail_info">Điện thoại: ${canbo.sodienthoai}</div>
 
-					<div class="detail_info">Email: ${canbo.taikhoandangnhaps.email}</div>
+					<div class="detail_info">Email:
+						${canbo.taikhoandangnhaps.email}</div>
 					<br />
 
 				</div>
