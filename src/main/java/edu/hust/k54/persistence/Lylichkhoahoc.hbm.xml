@@ -3,27 +3,18 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
     <class name="edu.hust.k54.persistence.Lylichkhoahoc" table="lylichkhoahoc" catalog="spms">
-        <id name="idsoyeulylich" type="int">
-            <column name="idsoyeulylich" />
-            <generator class="foreign">
-                <param name="property">soyeulylich</param>
-            </generator>
+        <id name="idlylichkhoahoc" type="java.lang.Integer">
+            <column name="idlylichkhoahoc" />
+            <generator class="native" />
         </id>
-        <one-to-one name="soyeulylich" class="edu.hust.k54.persistence.Soyeulylich" constrained="true"></one-to-one>
-        <property name="idquatrinhghiencuu" type="int">
-            <column name="idquatrinhghiencuu" not-null="true" />
-        </property>
+        <many-to-one name="soyeulylich" class="edu.hust.k54.persistence.Soyeulylich" fetch="select">
+            <column name="idsoyeulylich" />
+        </many-to-one>
         <property name="daotaohocvien" type="string">
             <column name="daotaohocvien" length="30" not-null="true" />
         </property>
         <property name="dinhhuongnc" type="string">
             <column name="dinhhuongnc" length="250" not-null="true" />
-        </property>
-        <property name="lylichkhoahoccol" type="string">
-            <column name="lylichkhoahoccol" length="45" />
-        </property>
-        <property name="lylichkhoahoccol1" type="string">
-            <column name="lylichkhoahoccol1" length="45" />
         </property>
     </class>
 </hibernate-mapping>

@@ -94,8 +94,25 @@ public class GuestController implements Controller {
 						modelAndView.addObject("donviquanly", donviquanly);
 						Integer iddonviquanly = Integer.parseInt(arg0
 								.getParameter("iddonviquanly"));
-						modelAndView.addObject("donvi", guestController
-								.timDonVi(iddonviquanly));
+						Donviquanly donvi = guestController.timDonVi(iddonviquanly);
+						Soyeulylich vientruong = new Soyeulylich();
+						Soyeulylich vienpho = new Soyeulylich();
+						Set<Phongban> phongban = donvi.getPhongbans();
+						for (Phongban pb : phongban) {
+							Set<Soyeulylich> soyeulylichs = pb.getSoyeulyliches();
+							for (Soyeulylich soyeulylich : soyeulylichs) {
+								if(soyeulylich.getChucvu().getIdchucvu() == 1){
+									vientruong= soyeulylich;
+								}else if(soyeulylich.getChucvu().getIdchucvu() == 2){
+									vienpho = soyeulylich;
+								}
+							}
+						}
+						modelAndView.addObject("vientruong", vientruong);
+						modelAndView.addObject("vienpho", vienpho);
+						modelAndView.addObject("donvi", donvi);
+//						modelAndView.addObject("donvi", guestController
+//								.timDonVi(iddonviquanly));
 					} else if (uri.contains("danhsachcanbo")) {
 						Integer iddonviquanly = Integer.parseInt(arg0
 								.getParameter("iddonviquanly"));
