@@ -4,7 +4,7 @@
 	
 <div id="wrap_header">
 	<div id="banner_header">
-		<h1 class="stitle_web">Viện khoa học và công nghệ Việt Nam</h1>
+		<div class="stitle_web" ><img src="<c:url value = "/resources/images/banner/logonew.png"/>" /> </div>
 	</div>
 	<!--End banner_header -->
 	<div id="nav_menu">

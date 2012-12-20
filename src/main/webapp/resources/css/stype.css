@@ -96,19 +96,22 @@ ul,ol         { list-style:none; }
 /* ======================================================================================= */
 #wrapper{
     width: 1000px;
-    margin: auto;
+    margin: 0px auto 20px auto;
 }
 
 /*========================HEADER========================*/
 #wrap_header{
     margin: auto;
-    width: 1000px;
+    width: 100%;
 /*    height: 200px;*/
     /*background: aqua;*/
     text-align: left;
+   background:url(../images/banner/header.png) repeat-x left top;
 }
 #banner_header{
-    padding-top: 50px;
+    width: 1000px;
+    margin: auto;
+    padding-top: 20px;
 }
 .stitle_web{
     font-family: sans-serif;
@@ -119,8 +122,15 @@ ul,ol         { list-style:none; }
 }
 #nav_menu{
     margin-top: 30px;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#14248D', endColorstr='#0055A8'); /* IE6-9 */
+    background: -webkit-gradient(linear, left top, left bottom, from(#14248D), to(#0055A8));
+    background: -moz-linear-gradient(top,  #14248D,  #0055A8); /* firefox 3.6+ */
+    background: -o-linear-gradient(top,  #14248D,  #0055A8); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #14248D,  #0055A8); /* IE10+ */
 }
 .header-row-1 {
+	width: 1000px;
+	margin:auto;
     display: block;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#14248D', endColorstr='#0055A8'); /* IE6-9 */
     background: -webkit-gradient(linear, left top, left bottom, from(#14248D), to(#0055A8));
@@ -878,12 +888,20 @@ ul,ol         { list-style:none; }
 }
 /* ======================================================================================= */
 #wrap_footer{
-    margin: 10px auto;
+    margin: auto;
+    width: 100%;
+    background: url(../images/banner/footer.png) repeat-x left top;
+    
+    height: 100px;
+}
+#wrap_footer_sub{
+    margin: auto;
     width: 1000px;
-    text-align: center;
-    height: 200px;
-    background: darkseagreen;
-    float:left;
+    text-align: left;
+/*    height: 200px;*/
+    /*background: darkseagreen;*/
+    padding-top: 20px;
+    color: #FFFFFF;
 }
 /* ======================================================================================= */
 #wrap_center{

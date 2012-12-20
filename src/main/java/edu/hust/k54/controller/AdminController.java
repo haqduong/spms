@@ -80,6 +80,10 @@ public class AdminController implements Controller{
 				if(arg0.getParameter("iduser")==null){
 					modelAndView = new ModelAndView("admin/xem_nhatkyhethong");
 					List <Nhatkyhethong> nhatkyhethong = admin.xemNkHt();
+					System.out.println("fuckkkkkk");
+					for (Nhatkyhethong nhatkyhethong2 : nhatkyhethong) {
+						System.out.println(nhatkyhethong2.getTaikhoandangnhap().getUsername() + "\n");
+					}
 					modelAndView.addObject("nhatkyhethongs", nhatkyhethong);
 				}else{
 					modelAndView = new ModelAndView("admin/xem_tttaikhoan");
@@ -91,7 +95,8 @@ public class AdminController implements Controller{
 				}
 				
 				//chức năng lọc xem nhật ký hệ thống
-				if(arg0.getParameter("manager") != null && arg0.getParameter("manager").equalsIgnoreCase("filter")){
+				if(arg0.getParameter("manager") != null && arg0.getParameter("manager").equals("filter")){
+					System.out.println("sao lai vao day");
 					modelAndView = new ModelAndView("admin/xem_nhatkyhethong");
 					String username = arg0.getParameter("username");
 					String addrIP = arg0.getParameter("addrip");
@@ -141,7 +146,7 @@ public class AdminController implements Controller{
 						modelAndView.addObject("statusError", "Không có kết quả phù hợp");
 					modelAndView.addObject("nhatkyhethongs", nhatkyhethongs);
 					return modelAndView;
-				}
+				}//End chức năng lọc xem nhật ký hệ thống
 				
 				return modelAndView;
 			}//End logsystem
@@ -329,79 +334,82 @@ public class AdminController implements Controller{
 					//dispatcher: Vào chức năng phân quyền
 					if(arg0.getParameter("manager") == null){
 						List <Taikhoandangnhap> phanquyens = admin.xemPhanquyen();
+						for (Taikhoandangnhap taikhoandangnhap2 : phanquyens) {
+							System.out.println(taikhoandangnhap2.getUsername() + "\n");
+						}
 						modelAndView.addObject("phanquyens", phanquyens);
 					}
 					// End: Vào chức năng phân quyền
 					//----------------------------------------------------------------------------------
 					//dispatcher: lọc danh sách phân quyền
-					else if(arg0.getParameter("manager").equalsIgnoreCase("filter")){
-						
-						TaikhoandangnhapHome taikhoanhome = new TaikhoandangnhapHome();
-						
-						
-						String username = arg0.getParameter("username");
-						if(username == ""){
-							String strDonvi = arg0.getParameter("donvi");
-							String strPhongban = arg0.getParameter("phongban");
-							if(strDonvi != null && strDonvi != ""){
-								DonviquanlyHome donvihome = new DonviquanlyHome();
-								PhongbanHome phongbanHome = new PhongbanHome();
-								
-								Integer idDonvi = Integer.parseInt(strDonvi);
-								Donviquanly donviquanly = donvihome.findById(idDonvi);
-								ArrayList<Taikhoandangnhap> phanquyens = new ArrayList<Taikhoandangnhap>();
-								if(strPhongban != null && strPhongban != ""){
-									Integer idPhongban = Integer.parseInt(strPhongban);
-									Phongban phongban = phongbanHome.findById(idPhongban);
-									Set soyeus = phongban.getSoyeulyliches();
-									for(Iterator<Soyeulylich> soyeu = soyeus.iterator(); soyeu.hasNext();){
-										Taikhoandangnhap taikhoan = new Taikhoandangnhap();
-										taikhoan = (Taikhoandangnhap)soyeu.next().getTaikhoandangnhaps().iterator().next();
-										phanquyens.add(taikhoan);
-									}
-								}else{
-									Set soyeus = donviquanly.getSoyeulyliches();
-									for(Iterator<Soyeulylich> soyeu = soyeus.iterator(); soyeu.hasNext();){
-										Taikhoandangnhap taikhoan = new Taikhoandangnhap();
-										taikhoan = (Taikhoandangnhap)soyeu.next().getTaikhoandangnhaps().iterator().next();
-										phanquyens.add(taikhoan);
-									}
-								}
-								if(phanquyens.size() == 0)
-									modelAndView.addObject("statusError", statusError);
-								modelAndView.addObject("phanquyens", phanquyens);
-								
-								
-								
-							}else{
-								List <Taikhoandangnhap> phanquyens = admin.xemPhanquyen();
-								if(phanquyens.size() == 0)
-									modelAndView.addObject("statusError", statusError);
-								modelAndView.addObject("phanquyens", phanquyens);
-								
-							}
-						}else{
-							Taikhoandangnhap taikhoan = new Taikhoandangnhap();
-							taikhoan.setUsername(username);
-							List<Taikhoandangnhap> phanquyens = taikhoanhome.findByExample(taikhoan);
-							if(phanquyens.size() == 0)
-								modelAndView.addObject("statusError", statusError);
-							modelAndView.addObject("phanquyens", phanquyens);
-						}
-					}// end: lọc danh sách phân quyền
-					
-					//Dùng để có list lựa chọn đơn vị
-					DonviquanlyHome dvhome = new DonviquanlyHome();
-					Donviquanly donvi = new Donviquanly();
-					List <Donviquanly> donviquanlies = dvhome.findByExample(donvi);
-					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
-							0, null);
-					modelAndView.addObject("donviquanly", donviquanly);
-					modelAndView.addObject("donvis", donviquanlies);
-					//-------Dùng để có list lựa chọn đơn vị
-					modelAndView.addObject("statusErr", statusError);
-					return modelAndView;
-				} //End if iduser != null
+//					else if(arg0.getParameter("manager").equalsIgnoreCase("filter")){
+//						
+//						TaikhoandangnhapHome taikhoanhome = new TaikhoandangnhapHome();
+//						
+//						
+//						String username = arg0.getParameter("username");
+//						if(username == ""){
+//							String strDonvi = arg0.getParameter("donvi");
+//							String strPhongban = arg0.getParameter("phongban");
+//							if(strDonvi != null && strDonvi != ""){
+//								DonviquanlyHome donvihome = new DonviquanlyHome();
+//								PhongbanHome phongbanHome = new PhongbanHome();
+//								
+//								Integer idDonvi = Integer.parseInt(strDonvi);
+//								Donviquanly donviquanly = donvihome.findById(idDonvi);
+//								ArrayList<Taikhoandangnhap> phanquyens = new ArrayList<Taikhoandangnhap>();
+//								if(strPhongban != null && strPhongban != ""){
+//									Integer idPhongban = Integer.parseInt(strPhongban);
+//									Phongban phongban = phongbanHome.findById(idPhongban);
+//									Set soyeus = phongban.getSoyeulyliches();
+//									for(Iterator<Soyeulylich> soyeu = soyeus.iterator(); soyeu.hasNext();){
+//										Taikhoandangnhap taikhoan = new Taikhoandangnhap();
+//										taikhoan = (Taikhoandangnhap)soyeu.next().getTaikhoandangnhaps();
+//										phanquyens.add(taikhoan);
+//									}
+//								}else{
+//									Set soyeus = donviquanly.getSoyeulyliches();
+//									for(Iterator<Soyeulylich> soyeu = soyeus.iterator(); soyeu.hasNext();){
+//										Taikhoandangnhap taikhoan = new Taikhoandangnhap();
+//										taikhoan = (Taikhoandangnhap)soyeu.next().getTaikhoandangnhaps();
+//										phanquyens.add(taikhoan);
+//									}
+//								}
+//								if(phanquyens.size() == 0)
+//									modelAndView.addObject("statusError", statusError);
+//								modelAndView.addObject("phanquyens", phanquyens);
+//								
+//								
+//								
+//							}else{
+//								List <Taikhoandangnhap> phanquyens = admin.xemPhanquyen();
+//								if(phanquyens.size() == 0)
+//									modelAndView.addObject("statusError", statusError);
+//								modelAndView.addObject("phanquyens", phanquyens);
+//								
+//							}
+//						}else{
+//							Taikhoandangnhap taikhoan = new Taikhoandangnhap();
+//							taikhoan.setUsername(username);
+//							List<Taikhoandangnhap> phanquyens = taikhoanhome.findByExample(taikhoan);
+//							if(phanquyens.size() == 0)
+//								modelAndView.addObject("statusError", statusError);
+//							modelAndView.addObject("phanquyens", phanquyens);
+//						}
+//					}// end: lọc danh sách phân quyền
+//					
+//					//Dùng để có list lựa chọn đơn vị
+//					DonviquanlyHome dvhome = new DonviquanlyHome();
+//					Donviquanly donvi = new Donviquanly();
+//					List <Donviquanly> donviquanlies = dvhome.findByExample(donvi);
+//					List<Donviquanly> donviquanly = guestController.TimDVQL(0,
+//							0, null);
+//					modelAndView.addObject("donviquanly", donviquanly);
+//					modelAndView.addObject("donvis", donviquanlies);
+//					//-------Dùng để có list lựa chọn đơn vị
+//					modelAndView.addObject("statusErr", statusError);
+//					return modelAndView;
+				} //End if iduser == null
 				
 				else{
 					//Dispatcher: xem phân quyền cụ thể
