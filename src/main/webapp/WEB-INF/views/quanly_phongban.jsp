@@ -233,7 +233,7 @@
 								href="/k54/manager/quanly/kyluat.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Quản
 									lý kỷ luật</a></li>
 							<li><a
-								href="/k54/manager/quanly/baocao.spms?idphongban=${user.soyeulylich.phongban.idphongban}">Báo
+								href="/k54/report.spms">Báo
 									cáo</a></li>
 						</ul>
 					</div>

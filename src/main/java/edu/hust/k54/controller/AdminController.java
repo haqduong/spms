@@ -356,14 +356,14 @@ public class AdminController implements Controller{
 									Set soyeus = phongban.getSoyeulyliches();
 									for(Iterator<Soyeulylich> soyeu = soyeus.iterator(); soyeu.hasNext();){
 										Taikhoandangnhap taikhoan = new Taikhoandangnhap();
-										taikhoan = (Taikhoandangnhap)soyeu.next().getTaikhoandangnhaps().iterator().next();
+										taikhoan = (Taikhoandangnhap)soyeu.next().getTaikhoandangnhaps();
 										phanquyens.add(taikhoan);
 									}
 								}else{
 									Set soyeus = donviquanly.getSoyeulyliches();
 									for(Iterator<Soyeulylich> soyeu = soyeus.iterator(); soyeu.hasNext();){
 										Taikhoandangnhap taikhoan = new Taikhoandangnhap();
-										taikhoan = (Taikhoandangnhap)soyeu.next().getTaikhoandangnhaps().iterator().next();
+										taikhoan = (Taikhoandangnhap)soyeu.next().getTaikhoandangnhaps();
 										phanquyens.add(taikhoan);
 									}
 								}

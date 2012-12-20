@@ -134,6 +134,7 @@ public class ManagerController implements Controller {
 							0, null);
 					modelAndView.addObject("donviquanly", donviquanly);
 					modelAndView.addObject("phongban", phongban);
+					System.out.println("fjdkjf" + phongban.getTen());
 				} else if (uri.contains("quanly/themcanbo")) {
 					Phongban phongban = phongbanHome.findById(idphongban);
 					modelAndView = new ModelAndView("them_canbo");

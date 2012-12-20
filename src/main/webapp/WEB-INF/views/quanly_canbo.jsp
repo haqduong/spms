@@ -136,7 +136,7 @@
 													</tr>
 												</c:if>
 												<c:if
-													test="${user.permission <= taikhoan.permission }">
+													test="${user.permission <= canbo.taikhoandangnhaps.permission }">
 													<tr class="row_1">
 														<td style="width: 5%"><%=++i%></td>
 														<td style="width: 20%">${canbo.hoten}</td>
