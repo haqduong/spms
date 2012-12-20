@@ -723,8 +723,7 @@
 			}
 			
 		}%>
-		var dir = ("<%=dsPhongBan%>
-		");
+		var dir = ("<%=dsPhongBan%>");
 			var allType = dir.split("|");
 			var i;
 			var count = 0;

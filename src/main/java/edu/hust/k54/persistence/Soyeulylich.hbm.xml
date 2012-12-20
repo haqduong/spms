@@ -5,7 +5,7 @@
     <class name="edu.hust.k54.persistence.Soyeulylich" table="soyeulylich" catalog="spms">
         <id name="idsoyeulylich" type="java.lang.Integer">
             <column name="idsoyeulylich" />
-            <generator class="identity" />
+            <generator class="native" />
         </id>
         <many-to-one name="capuy" class="edu.hust.k54.persistence.Capuy" fetch="select">
             <column name="idcapuy" />
@@ -167,7 +167,16 @@
             <one-to-many class="edu.hust.k54.persistence.Dienbienhocham" />
         </set>
         <one-to-one name="taikhoandangnhaps" class="edu.hust.k54.persistence.Taikhoandangnhap" constrained="true"> </one-to-one>
-        <one-to-one name="lylichkhoahoc" class="edu.hust.k54.persistence.Lylichkhoahoc"></one-to-one>
+        
+        
+        <set name="lylichkhoahoc" cascade="delete" table="lylichkhoahoc" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idsoyeulylich" />
+            </key>
+            <one-to-many class="edu.hust.k54.persistence.Lylichkhoahoc" />
+        </set>
+        
+        
         <set name="sachxuatbans" cascade="delete" table="sachxuatban" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idsoyeulylich" not-null="true" />
